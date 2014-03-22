@@ -1,4 +1,4 @@
-package net.mostlyoriginal.ns2d.system;
+package net.mostlyoriginal.ns2d.system.passive;
 
 import com.artemis.systems.VoidEntitySystem;
 import com.badlogic.gdx.Gdx;

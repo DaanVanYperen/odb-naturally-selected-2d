@@ -4,6 +4,7 @@ import com.artemis.Entity;
 import com.artemis.World;
 import net.mostlyoriginal.ns2d.component.Anim;
 import net.mostlyoriginal.ns2d.component.CameraFocus;
+import net.mostlyoriginal.ns2d.component.Physics;
 import net.mostlyoriginal.ns2d.component.Pos;
 
 /**
@@ -15,6 +16,7 @@ public class EntityFactory {
 
         return newPositioned(world, x, y)
                 .addComponent(new Anim("player", Anim.Layer.PLAYER))
+                .addComponent(new Physics())
                 .addComponent(new CameraFocus());
     }
 

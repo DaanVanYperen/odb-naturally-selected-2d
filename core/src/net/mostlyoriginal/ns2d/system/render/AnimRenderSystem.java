@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import net.mostlyoriginal.ns2d.component.Anim;
 import net.mostlyoriginal.ns2d.component.Pos;
-import net.mostlyoriginal.ns2d.system.CameraSystem;
+import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 
 import java.util.ArrayList;

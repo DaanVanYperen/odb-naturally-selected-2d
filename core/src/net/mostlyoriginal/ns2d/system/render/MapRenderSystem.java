@@ -4,7 +4,7 @@ import com.artemis.annotations.Wire;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import net.mostlyoriginal.ns2d.MyMapRendererImpl;
-import net.mostlyoriginal.ns2d.system.CameraSystem;
+import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 import net.mostlyoriginal.ns2d.system.passive.MapSystem;
 import net.mostlyoriginal.ns2d.system.passive.PassiveSystem;
 

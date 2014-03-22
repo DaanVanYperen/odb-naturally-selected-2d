@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.utils.Array;
 import net.mostlyoriginal.ns2d.G;
+import net.mostlyoriginal.ns2d.util.MapMask;
 
 /**
  * Handles map loading.
@@ -33,6 +34,10 @@ public class MapSystem extends VoidEntitySystem {
         height = layers.get(0).getHeight();
     }
 
+    public MapMask getMask( String property )
+    {
+        return new MapMask(height, width, layers, property);
+    }
 
     /**
      * Spawn map entities.
