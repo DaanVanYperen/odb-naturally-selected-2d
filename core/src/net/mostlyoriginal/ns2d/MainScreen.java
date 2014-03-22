@@ -5,7 +5,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import net.mostlyoriginal.ns2d.system.CameraFocusSystem;
 import net.mostlyoriginal.ns2d.system.CameraSystem;
+import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
+import net.mostlyoriginal.ns2d.system.passive.EntitySpawnSystem;
+import net.mostlyoriginal.ns2d.system.passive.MapSystem;
+import net.mostlyoriginal.ns2d.system.render.AnimRenderSystem;
+import net.mostlyoriginal.ns2d.system.render.MapRenderSystem;
 
 /**
  * @author Daan van Yperen
@@ -19,7 +25,18 @@ public class MainScreen implements Screen {
 
         G.world = new World();
 
+        // Passive System, loader helpers.
+        G.world.setSystem(new AssetSystem());
+        G.world.setSystem(new MapSystem());
+        G.world.setSystem(new EntitySpawnSystem());
         G.world.setSystem(new CameraSystem());
+
+        // Active
+        G.world.setSystem(new CameraFocusSystem());
+
+        // Render
+        G.world.setSystem(new MapRenderSystem());
+        G.world.setSystem(new AnimRenderSystem());
 
         G.world.initialize();
     }

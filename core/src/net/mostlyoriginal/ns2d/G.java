@@ -6,6 +6,10 @@ import com.artemis.World;
  * @author Daan van Yperen
  */
 public class G {
+
+
+    public static final float CELL_SIZE = 32;
+
     public static MainScreen screen;
     public static World world;
 }
