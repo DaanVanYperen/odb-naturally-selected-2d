@@ -55,14 +55,15 @@ public class EntityFactory {
         return newPositioned(world, x, y)
                 .addComponent(new Anim("bullet", Anim.Layer.BULLETS))
                 .addComponent(new Physics())
-                .addComponent(new Gravity())
+                .addComponent(new Gravity(-4f))
                 .addComponent(new Bounds(7,4));
     }
 
-    public static Entity createPlayerArm(World world, float x, float y, Entity player) {
+    public static Entity createRifle(World world, float x, float y, Entity player) {
         return newPositioned(world, x, y)
                 .addComponent(new Anim("player-arm", Anim.Layer.PLAYER_ARM))
                 .addComponent(new Attached(player))
+                .addComponent(new Weapon())
                 .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
     }
 

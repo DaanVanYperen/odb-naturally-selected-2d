@@ -48,11 +48,6 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
             case "duct":
                 EntityFactory.createDuct(world, x, y).addToWorld();
                 break;
-            case "bullet":
-                Entity bullet = EntityFactory.createBullet(world, x, y);
-                groupManager.add(bullet, "bullet");
-                bullet.addToWorld();
-                break;
             case "skulk":
                 Entity skulk = EntityFactory.createSkulk(world, x, y);
                 groupManager.add(skulk, "enemy");
@@ -67,10 +62,10 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
         Entity player = EntityFactory.createPlayer(world, x, y);
         player.addToWorld();
 
-        Entity mouseCursor = EntityFactory.createMouseCursor(world,x,y);
+        Entity mouseCursor = EntityFactory.createMouseCursor(world, x, y);
         mouseCursor.addToWorld();
 
-        EntityFactory.createPlayerArm(world, x, y, player).addComponent(new Aim(mouseCursor)).addToWorld();
+        EntityFactory.createRifle(world, x, y, player).addComponent(new Aim(mouseCursor)).addToWorld();
     }
 
 

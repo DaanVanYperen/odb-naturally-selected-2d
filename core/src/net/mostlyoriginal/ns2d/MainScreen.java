@@ -39,6 +39,7 @@ public class MainScreen implements Screen {
         // Active - Input/Logic
         G.world.setSystem(new PlayerControlSystem());
         G.world.setSystem(new SkulkControlSystem());
+        G.world.setSystem(new WeaponSystem());
 
         // Active - Physics. Order is important! Alter velocity, then constrain.
         G.world.setSystem(new GravitySystem());

@@ -7,7 +7,6 @@ import com.artemis.annotations.Wire;
 import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.math.Vector2;
 import net.mostlyoriginal.ns2d.component.Gravity;
 import net.mostlyoriginal.ns2d.component.Physics;
 import net.mostlyoriginal.ns2d.component.PlayerControlled;
@@ -51,11 +50,6 @@ public class PlayerControlSystem extends EntityProcessingSystem {
                 dy = (-Gravity.DEFAULT_Y_GRAVITY + 1.5f) * GravitySystem.GRAVITY_FACTOR;
             }
         };
-
-        if ( Gdx.input.isKeyPressed(Input.Keys.SPACE))
-        {
-            entitySpawnerSystem.spawnEntity(pos.x, pos.y, "bullet");
-        }
 
         if ( dx != 0 ) physics.vx += dx * world.delta;
         if ( dy != 0 ) physics.vy += dy * world.delta;
