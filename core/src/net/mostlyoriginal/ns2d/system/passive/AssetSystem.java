@@ -62,8 +62,15 @@ public class AssetSystem extends PassiveSystem {
         add("player", 0, 0, TILE_SIZE, TILE_SIZE, 1);
         add("player-jetpack", 192, 0, TILE_SIZE, TILE_SIZE, 1);
 
+        add("spawner", 0, 464, 16,16, 1);
+        add("resourcetower", 0, 336, 16*3, 16*3, 1);
+        add("techpoint", 0, 384, TILE_SIZE*2, TILE_SIZE*2, 1);
+
+        add("spawner-unbuilt", 16, 464, 16,16, 1);
+        add("resourcetower-unbuilt", 16*3, 336, 16*3, 16*3, 1);
+        add("techpoint-unbuilt", TILE_SIZE*2, 384, TILE_SIZE*2, TILE_SIZE*2, 1);
+
         add("duct", 32, 224, TILE_SIZE, TILE_SIZE, 1);
-        add("spawner", 0, 448, TILE_SIZE, TILE_SIZE, 1);
         add("skulk", 0, 64, TILE_SIZE, TILE_SIZE, 1);
         add("debug-marker", 44, 51, 3, 3, 1);
         add("bullet", 44, 51, 7, 4, 1);

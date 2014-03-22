@@ -11,6 +11,7 @@ import net.mostlyoriginal.ns2d.system.active.*;
 import net.mostlyoriginal.ns2d.system.collide.BulletCollisionSystem;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
+import net.mostlyoriginal.ns2d.system.passive.CollisionSystem;
 import net.mostlyoriginal.ns2d.system.passive.MapSystem;
 import net.mostlyoriginal.ns2d.system.render.AnimRenderSystem;
 import net.mostlyoriginal.ns2d.system.render.MapRenderSystem;
@@ -38,11 +39,15 @@ public class MainScreen implements Screen {
         G.world.setSystem(new AssetSystem());
         G.world.setSystem(new MapSystem());
         G.world.setSystem(new CameraSystem());
+        G.world.setSystem(new CollisionSystem());
 
         // Active - Input/Logic
         G.world.setSystem(new PlayerControlSystem());
         G.world.setSystem(new SkulkControlSystem());
         G.world.setSystem(new WeaponSystem());
+
+        // Active - Interactions
+        G.world.setSystem(new BuildableSystem());
 
         // Active - Physics. Order is important! Alter velocity, then constrain.
         G.world.setSystem(new PhysicsSystem());

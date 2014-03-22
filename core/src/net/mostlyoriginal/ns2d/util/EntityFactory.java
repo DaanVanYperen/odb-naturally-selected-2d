@@ -33,12 +33,6 @@ public class EntityFactory {
                 .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
     }
 
-    public static Entity createSpawner(final World world, final float x, final float y) {
-        return newPositioned(world, x, y)
-                .addComponent(new Anim("spawner", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
-
-    }
-
     private static Entity newPositioned(final World world, final float x, final float y) {
         return world.createEntity()
                 .addComponent(new Pos(x, y));
@@ -73,5 +67,25 @@ public class EntityFactory {
     public static Entity createMouseCursor(World world, float x, float y) {
         return newPositioned(world, x, y)
                 .addComponent(new MouseCursor());
+    }
+
+    public static Entity createResourceTower(World world, float x, float y) {
+        return newPositioned(world, x, y)
+                .addComponent(new Bounds(16*3,16*3))
+                .addComponent(new Buildable("resourcetower", "resourcetower-unbuilt"))
+                .addComponent(new Anim("resourcetower-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
+    }
+
+    public static Entity createTechpoint(World world, float x, float y) {
+        return newPositioned(world, x, y)
+                .addComponent(new Anim("techpoint", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
+    }
+
+    public static Entity createSpawner(final World world, final float x, final float y) {
+        return newPositioned(world, x, y)
+                .addComponent(new Bounds(16,16))
+                .addComponent(new Buildable("spawner", "spawner-unbuilt"))
+                .addComponent(new Anim("spawner", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
+
     }
 }
