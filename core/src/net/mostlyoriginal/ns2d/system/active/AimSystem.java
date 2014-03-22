@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import net.mostlyoriginal.ns2d.component.Aim;
 import net.mostlyoriginal.ns2d.component.Anim;
 import net.mostlyoriginal.ns2d.component.Pos;
+import net.mostlyoriginal.ns2d.util.EntityUtil;
 
 /**
  * Aim (by rotation) at a target.
@@ -19,7 +20,6 @@ import net.mostlyoriginal.ns2d.component.Pos;
 public class AimSystem extends EntityProcessingSystem {
 
     private ComponentMapper<Aim> am;
-    private ComponentMapper<Pos> pm;
     private ComponentMapper<Anim> nm;
 
     public AimSystem() {
@@ -30,19 +30,20 @@ public class AimSystem extends EntityProcessingSystem {
 
     @Override
     protected void process(Entity e) {
-        final Pos origin = pm.get(e);
         final Aim aim = am.get(e);
 
         if ( aim.at != null )
         {
             if ( aim.at.isActive() )
             {
-                Pos target = pm.get(aim.at);
-
-                nm.get(e).rotation = vTmp.set(target.x, target.y).sub(origin.x, origin.y).angle();
+                aimAt(e, aim.at);
             } else {
                 aim.at = null;
             }
         }
+    }
+
+    public void aimAt(Entity e, Entity at) {
+        nm.get(e).rotation = EntityUtil.angle(e,at);
     }
 }

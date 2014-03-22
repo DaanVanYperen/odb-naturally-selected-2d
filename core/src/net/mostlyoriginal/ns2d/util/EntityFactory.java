@@ -16,6 +16,7 @@ public class EntityFactory {
                 .addComponent(new Anim("player", Anim.Layer.PLAYER))
                 .addComponent(new Physics())
                 .addComponent(new Gravity())
+                .addComponent(new WallSensor())
                 .addComponent(new PlayerControlled())
                 .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE))
                 .addComponent(new CameraFocus());
@@ -28,6 +29,7 @@ public class EntityFactory {
                 .addComponent(new Anim("skulk", Anim.Layer.ENEMIES))
                 .addComponent(new Physics())
                 .addComponent(new Gravity())
+                .addComponent(new WallSensor())
                 .addComponent(new SkulkControlled())
                 .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
     }
@@ -52,9 +54,11 @@ public class EntityFactory {
     }
 
     public static Entity createBullet(World world, float x, float y) {
+        Physics physics = new Physics();
+        physics.friction=0.01f;
         return newPositioned(world, x, y)
                 .addComponent(new Anim("bullet", Anim.Layer.BULLETS))
-                .addComponent(new Physics())
+                .addComponent(physics)
                 .addComponent(new Gravity(-4f))
                 .addComponent(new Bounds(7,4));
     }

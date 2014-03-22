@@ -8,7 +8,5 @@ import com.artemis.Component;
 public class Physics extends Component {
     public float vx; // velocityX
     public float vy; // velocityY
-
-    public boolean onFloor = false;
-    public boolean onWall = false;
+    public float friction = 4f;
 }

@@ -25,8 +25,8 @@ public class CameraFocusSystem extends EntityProcessingSystem {
     @Override
     protected void process(Entity e) {
         final Pos pos = pm.get(e);
-        cameraSystem.camera.position.x = pos.x;
-        cameraSystem.camera.position.y = pos.y;
+        cameraSystem.camera.position.x = (int)(pos.x);
+        cameraSystem.camera.position.y = (int)(pos.y);
         cameraSystem.camera.update();
     }
 }

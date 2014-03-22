@@ -13,7 +13,7 @@ import net.mostlyoriginal.ns2d.util.MapMask;
 
 /**
  * Constrain movement to map collision.
- *
+ * <p/>
  * Inteded to clamp physics calculations.
  *
  * @author Daan van Yperen
@@ -21,7 +21,7 @@ import net.mostlyoriginal.ns2d.util.MapMask;
 @Wire
 public class MapCollisionSystem extends EntityProcessingSystem {
 
-    private static boolean DEBUG=false;
+    private static boolean DEBUG = false;
 
     private MapSystem mapSystem;
     private AssetSystem assetSystem;
@@ -40,9 +40,8 @@ public class MapCollisionSystem extends EntityProcessingSystem {
 
     @Override
     protected void begin() {
-        if ( !initialized )
-        {
-            initialized=true;
+        if (!initialized) {
+            initialized = true;
             solidMask = mapSystem.getMask("solid");
         }
     }
@@ -58,41 +57,35 @@ public class MapCollisionSystem extends EntityProcessingSystem {
         final Bounds bounds = bm.get(e);
 
         //  no math required here.
-        if ( physics.vx == 0 && physics.vy == 0 ) return;
+        if (physics.vx != 0 || physics.vy != 0) {
 
-        float px = pos.x + physics.vx * world.delta;
-        float py = pos.y + physics.vy * world.delta;
+            float px = pos.x + physics.vx * world.delta;
+            float py = pos.y + physics.vy * world.delta;
 
-        physics.onWall = physics.onFloor = false;
+            if ((physics.vx > 0 && collides(px + bounds.x2, py + bounds.y1 + (bounds.y2 - bounds.y1) * 0.5f)) ||
+                    (physics.vx < 0 && collides(px + bounds.x1, py + bounds.y1 + (bounds.y2 - bounds.y1) * 0.5f))) {
+                physics.vx = 0;
+                px = pos.x;
+            }
 
-        if ( (physics.vx > 0 && collides(px + bounds.x2, py + bounds.y1 + (bounds.y2 - bounds.y1) * 0.5f)) ||
-             (physics.vx < 0 && collides(px + bounds.x1, py + bounds.y1 + (bounds.y2 - bounds.y1) * 0.5f)) )
-        {
-            physics.onWall = true;
-            physics.vx = 0;
-            px = pos.x;
-        }
+            if ((physics.vy > 0 && collides(px + bounds.x1 + (bounds.x2 - bounds.x1) * 0.5f, py + bounds.y2)) ||
+                    (physics.vy < 0 && collides(px + bounds.x1 + (bounds.x2 - bounds.x1) * 0.5f, py + bounds.y1))) {
+                physics.vy = 0;
+            }
 
-        if ( (physics.vy > 0 && collides(px + bounds.x1 + (bounds.x2 - bounds.x1) * 0.5f, py + bounds.y2)) ||
-             (physics.vy < 0 && collides(px + bounds.x1 + (bounds.x2 - bounds.x1) * 0.5f, py + bounds.y1)) )
-        {
-            if ( physics.vy < 0 ) physics.onFloor = true;
-            physics.onWall = true;
-            physics.vy = 0;
         }
 
     }
 
     private boolean collides(final float x, final float y) {
-        if ( DEBUG )
-        {
+        if (DEBUG) {
             world.createEntity()
-                    .addComponent(new Pos(x-1,y-1))
+                    .addComponent(new Pos(x - 1, y - 1))
                     .addComponent(new Anim("debug-marker"))
                     .addComponent(new Terminal(1))
                     .addToWorld();
         }
 
-        return solidMask.atScreen(x,y);
+        return solidMask.atScreen(x, y);
     }
 }

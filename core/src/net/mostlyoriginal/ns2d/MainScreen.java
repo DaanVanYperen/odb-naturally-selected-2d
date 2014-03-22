@@ -2,11 +2,13 @@ package net.mostlyoriginal.ns2d;
 
 import com.artemis.World;
 import com.artemis.managers.GroupManager;
+import com.artemis.managers.TagManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import net.mostlyoriginal.ns2d.system.active.*;
+import net.mostlyoriginal.ns2d.system.collide.BulletCollisionSystem;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 import net.mostlyoriginal.ns2d.system.passive.MapSystem;
@@ -26,6 +28,7 @@ public class MainScreen implements Screen {
         G.world = new World();
 
         G.world.setManager(new GroupManager());
+        G.world.setManager(new TagManager());
 
         // Active - Cleanup
         G.world.setSystem(new TerminalSystem());
@@ -42,6 +45,7 @@ public class MainScreen implements Screen {
         G.world.setSystem(new WeaponSystem());
 
         // Active - Physics. Order is important! Alter velocity, then constrain.
+        G.world.setSystem(new PhysicsSystem());
         G.world.setSystem(new GravitySystem());
         G.world.setSystem(new MapCollisionSystem());
         G.world.setSystem(new AfterPhysicsSystem());
@@ -50,6 +54,9 @@ public class MainScreen implements Screen {
         G.world.setSystem(new AttachmentSystem());
         G.world.setSystem(new MouseCursorSystem());
         G.world.setSystem(new AimSystem());
+
+        // Active - Post Movement Calculations.
+        G.world.setSystem(new WallSensorSystem());
 
         G.world.setSystem(new BulletCollisionSystem());
 

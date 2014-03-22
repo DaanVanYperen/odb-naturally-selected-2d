@@ -87,8 +87,8 @@ public class AnimRenderSystem extends EntitySystem {
         if ( animation.rotation != 0 )
         {
             batch.draw(frame,
-                    position.x,
-                    position.y,
+                    (int)position.x,
+                    (int)position.y,
                     frame.getRegionWidth() * animation.scale * 0.5f ,
                     frame.getRegionHeight() * animation.scale * 0.5f,
                     frame.getRegionWidth() * animation.scale,
@@ -96,8 +96,8 @@ public class AnimRenderSystem extends EntitySystem {
                     animation.rotation);
         } else {
             batch.draw(frame,
-                    position.x,
-                    position.y,
+                    (int)position.x,
+                    (int)position.y,
                     frame.getRegionWidth() * animation.scale,
                     frame.getRegionHeight() * animation.scale);
         }

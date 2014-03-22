@@ -9,7 +9,6 @@ import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Vector2;
 import net.mostlyoriginal.ns2d.component.*;
 import net.mostlyoriginal.ns2d.util.EntityFactory;
 
@@ -23,15 +22,13 @@ public class WeaponSystem extends EntityProcessingSystem {
     private ComponentMapper<Pos> pm;
     private ComponentMapper<Bounds> om;
     private ComponentMapper<Anim> am;
-    private ComponentMapper<Physics> ym;
     private GroupManager groupManager;
+    private PhysicsSystem physicsSystems;
     private AfterPhysicsSystem afterPhysicsSystem;
 
     public WeaponSystem() {
         super(Aspect.getAspectForAll(Weapon.class, Pos.class, Bounds.class, Anim.class));
     }
-
-    Vector2 vTmp = new Vector2();
 
     @Override
     protected void process(Entity e) {
@@ -52,12 +49,9 @@ public class WeaponSystem extends EntityProcessingSystem {
 
                 // rotate bullet to player rotation
                 float rotation = anim.rotation + MathUtils.random(-weapon.spread, weapon.spread);
-
                 am.get(bullet).rotation = rotation;
 
-                vTmp.set(weapon.bulletSpeed, 0).setAngle(rotation);
-                ym.get(bullet).vx = vTmp.x;
-                ym.get(bullet).vy = vTmp.y;
+                physicsSystems.push(bullet, rotation, weapon.bulletSpeed);
 
                 bullet.addToWorld();
             }

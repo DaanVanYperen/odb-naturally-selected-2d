@@ -5,6 +5,7 @@ import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
 import com.artemis.managers.GroupManager;
+import com.artemis.managers.TagManager;
 import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.MathUtils;
@@ -25,6 +26,7 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
     private ComponentMapper<Bounds> bm;
 
     private GroupManager groupManager;
+    private TagManager tagManager;
 
     public EntitySpawnerSystem() {
         super(Aspect.getAspectForAll(EntitySpawner.class, Pos.class, Bounds.class));
@@ -66,6 +68,7 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
         mouseCursor.addToWorld();
 
         EntityFactory.createRifle(world, x, y, player).addComponent(new Aim(mouseCursor)).addToWorld();
+        tagManager.register("player", player);
     }
 
 
@@ -74,7 +77,9 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
         final EntitySpawner spawner = sm.get(e);
 
         if ( spawner.cooldown == -1 ) {
+
             scheduleSpawn(spawner);
+            spawner.cooldown /= 4;
         }
 
         spawner.cooldown -= world.delta;

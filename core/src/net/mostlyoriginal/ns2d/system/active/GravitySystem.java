@@ -19,8 +19,7 @@ public class GravitySystem extends EntityProcessingSystem {
     ComponentMapper<Physics> pm;
     ComponentMapper<Gravity> gm;
 
-    public GravitySystem()
-    {
+    public GravitySystem() {
         super(Aspect.getAspectForAll(Gravity.class, Physics.class));
     }
 
@@ -29,7 +28,9 @@ public class GravitySystem extends EntityProcessingSystem {
         final Physics physics = pm.get(e);
         final Gravity gravity = gm.get(e);
 
-        physics.vy += gravity.y * GRAVITY_FACTOR * world.delta;
-        physics.vx += gravity.x * GRAVITY_FACTOR * world.delta;
+        if (gravity.enabled) {
+            physics.vy += gravity.y * GRAVITY_FACTOR * world.delta;
+            physics.vx += gravity.x * GRAVITY_FACTOR * world.delta;
+        }
     }
 }

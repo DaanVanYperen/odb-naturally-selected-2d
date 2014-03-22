@@ -1,4 +1,4 @@
-package net.mostlyoriginal.ns2d.system.active;
+package net.mostlyoriginal.ns2d.system.collide;
 
 import com.artemis.ComponentMapper;
 import com.artemis.Entity;

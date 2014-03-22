@@ -7,10 +7,7 @@ import com.artemis.annotations.Wire;
 import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import net.mostlyoriginal.ns2d.component.Gravity;
-import net.mostlyoriginal.ns2d.component.Physics;
-import net.mostlyoriginal.ns2d.component.PlayerControlled;
-import net.mostlyoriginal.ns2d.component.Pos;
+import net.mostlyoriginal.ns2d.component.*;
 
 /**
  * @author Daan van Yperen
@@ -21,18 +18,20 @@ public class PlayerControlSystem extends EntityProcessingSystem {
     public static final int MOVEMENT_FACTOR = 250;
     public static final int JUMP_FACTOR = 1000;
     private ComponentMapper<Physics> ym;
+    private ComponentMapper<WallSensor> wm;
     private ComponentMapper<Pos> pm;
 
     private EntitySpawnerSystem entitySpawnerSystem;
 
     public PlayerControlSystem()
     {
-        super(Aspect.getAspectForAll(PlayerControlled.class, Physics.class));
+        super(Aspect.getAspectForAll(PlayerControlled.class, Physics.class, WallSensor.class));
     }
 
     @Override
     protected void process(Entity e) {
         final Physics physics = ym.get(e);
+        final WallSensor wallSensor = wm.get(e);
         final Pos pos = pm.get(e);
 
         float dx = 0;
@@ -42,7 +41,7 @@ public class PlayerControlSystem extends EntityProcessingSystem {
         if ( Gdx.input.isKeyPressed(Input.Keys.D)) dx = MOVEMENT_FACTOR;
         if ( Gdx.input.isKeyPressed(Input.Keys.W))
         {
-            if ( physics.onFloor )
+            if ( wallSensor.onFloor )
             {
                 // jump.
                 dy = JUMP_FACTOR * 10f;
