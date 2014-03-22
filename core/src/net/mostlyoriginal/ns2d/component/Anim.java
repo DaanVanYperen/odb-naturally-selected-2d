@@ -10,6 +10,9 @@ public class Anim extends Component {
 
     public static enum Layer
     {
+        ON_WALL,
+        DIRECTLY_BEHIND_PLAYER,
+        PLAYER,
         DEFAULT_LAYER
     };
 

@@ -14,7 +14,7 @@ import java.util.HashMap;
  */
 public class AssetSystem extends PassiveSystem {
 
-    public static final int TILE_SIZE = 40;
+    public static final int TILE_SIZE = 32;
     public final BitmapFont font;
 
     public Texture tileset;
@@ -58,7 +58,9 @@ public class AssetSystem extends PassiveSystem {
 
         tileset = new Texture("ns2d_tileset.png");
 
-        add("knuckles", 0, 880, TILE_SIZE, TILE_SIZE, 1);
+        add("player", 0, 0, TILE_SIZE, TILE_SIZE, 1);
+        add("duct", 32, 224, TILE_SIZE, TILE_SIZE, 1);
+        add("spawner", 0, 448, TILE_SIZE, TILE_SIZE, 1);
     }
 
 
