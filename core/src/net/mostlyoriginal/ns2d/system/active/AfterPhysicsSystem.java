@@ -32,7 +32,7 @@ public class AfterPhysicsSystem extends EntityProcessingSystem {
         final Physics physics = ym.get(e);
         final Pos pos = pm.get(e);
 
-        pos.x += physics.vx;
-        pos.y += physics.vy;
+        pos.x += physics.vx * world.getDelta();
+        pos.y += physics.vy * world.getDelta();
     }
 }

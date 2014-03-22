@@ -25,6 +25,9 @@ public class MainScreen implements Screen {
 
         G.world = new World();
 
+        // Active - Cleanup
+        G.world.setSystem(new TerminalSystem());
+
         // Passive System, loader helpers.
         G.world.setSystem(new AssetSystem());
         G.world.setSystem(new MapSystem());
