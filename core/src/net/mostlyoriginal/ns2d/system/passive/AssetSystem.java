@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import net.mostlyoriginal.ns2d.api.PassiveSystem;
 
 import java.util.HashMap;
 
@@ -63,6 +64,7 @@ public class AssetSystem extends PassiveSystem {
         add("spawner", 0, 448, TILE_SIZE, TILE_SIZE, 1);
         add("skulk", 0, 64, TILE_SIZE, TILE_SIZE, 1);
         add("debug-marker", 44, 51, 3, 3, 1);
+        add("bullet", 44, 51, 7, 4, 1);
     }
 
 

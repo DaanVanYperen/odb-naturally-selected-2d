@@ -49,4 +49,12 @@ public class EntityFactory {
                 .addComponent(new EntitySpawner("skulk"))
                 .addComponent(new Anim("duct", Anim.Layer.ON_WALL));
     }
+
+    public static Entity createBullet(World world, float x, float y) {
+        return newPositioned(world, x, y)
+                .addComponent(new Anim("bullet", Anim.Layer.BULLETS))
+                .addComponent(new Physics())
+                .addComponent(new Gravity())
+                .addComponent(new Bounds(7,4));
+    }
 }

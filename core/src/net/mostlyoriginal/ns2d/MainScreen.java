@@ -1,6 +1,7 @@
 package net.mostlyoriginal.ns2d;
 
 import com.artemis.World;
+import com.artemis.managers.GroupManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -24,6 +25,8 @@ public class MainScreen implements Screen {
 
         G.world = new World();
 
+        G.world.setManager(new GroupManager());
+
         // Active - Cleanup
         G.world.setSystem(new TerminalSystem());
         G.world.setSystem(new EntitySpawnerSystem());
@@ -41,6 +44,8 @@ public class MainScreen implements Screen {
         G.world.setSystem(new GravitySystem());
         G.world.setSystem(new MapCollisionSystem());
         G.world.setSystem(new AfterPhysicsSystem());
+
+        G.world.setSystem(new BulletCollisionSystem());
 
         // Active - Camera
         G.world.setSystem(new CameraFocusSystem());

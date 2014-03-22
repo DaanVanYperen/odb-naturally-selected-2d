@@ -6,7 +6,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import net.mostlyoriginal.ns2d.MyMapRendererImpl;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 import net.mostlyoriginal.ns2d.system.passive.MapSystem;
-import net.mostlyoriginal.ns2d.system.passive.PassiveSystem;
+import net.mostlyoriginal.ns2d.api.PassiveSystem;
 
 /**
  * @author Daan van Yperen

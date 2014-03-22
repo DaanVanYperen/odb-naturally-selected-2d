@@ -4,6 +4,7 @@ import com.artemis.Aspect;
 import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
+import com.artemis.managers.GroupManager;
 import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.MathUtils;
@@ -22,6 +23,8 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
     private ComponentMapper<Pos> pm;
     private ComponentMapper<Bounds> bm;
 
+    private GroupManager groupManager;
+
     public EntitySpawnerSystem() {
         super(Aspect.getAspectForAll(EntitySpawner.class, Pos.class, Bounds.class));
     }
@@ -33,7 +36,7 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
         spawnEntity(x, y, entity);
     }
 
-    private void spawnEntity(float x, float y, String entity) {
+    public void spawnEntity(float x, float y, String entity) {
         switch (entity) {
             case "player":
                 EntityFactory.createPlayer(world, x, y).addToWorld();
@@ -44,8 +47,15 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
             case "duct":
                 EntityFactory.createDuct(world, x, y).addToWorld();
                 break;
+            case "bullet":
+                Entity bullet = EntityFactory.createBullet(world, x, y);
+                groupManager.add(bullet, "bullet");
+                bullet.addToWorld();
+                break;
             case "skulk":
-                EntityFactory.createSkulk(world, x, y).addToWorld();
+                Entity skulk = EntityFactory.createSkulk(world, x, y);
+                groupManager.add(skulk, "enemy");
+                skulk.addToWorld();
                 break;
             default:
                 throw new RuntimeException("No idea how to spawn entity of type " + entity);

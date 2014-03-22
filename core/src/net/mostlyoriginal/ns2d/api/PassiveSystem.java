@@ -1,4 +1,4 @@
-package net.mostlyoriginal.ns2d.system.passive;
+package net.mostlyoriginal.ns2d.api;
 
 import com.artemis.systems.VoidEntitySystem;
 
