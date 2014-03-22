@@ -18,6 +18,9 @@ public class DesktopLauncher {
         360p: 640x360
         240p: 426x240 */
 
+        config.title  = "NS2D";
+        config.resizable = false;
+        config.foregroundFPS = 60;
         config.width  = 1280;
         config.height = 720;
 		new LwjglApplication(new NsGame(), config);
