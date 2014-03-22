@@ -65,4 +65,9 @@ public class EntityFactory {
                 .addComponent(new Attached(player))
                 .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
     }
+
+    public static Entity createMouseCursor(World world, float x, float y) {
+        return newPositioned(world, x, y)
+                .addComponent(new MouseCursor());
+    }
 }

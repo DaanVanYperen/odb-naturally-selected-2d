@@ -6,7 +6,6 @@ import com.artemis.Entity;
 import com.artemis.annotations.Wire;
 import com.artemis.systems.EntityProcessingSystem;
 import net.mostlyoriginal.ns2d.component.Attached;
-import net.mostlyoriginal.ns2d.component.Bounds;
 import net.mostlyoriginal.ns2d.component.Pos;
 
 /**
@@ -16,11 +15,10 @@ import net.mostlyoriginal.ns2d.component.Pos;
 public class AttachmentSystem extends EntityProcessingSystem {
 
     private ComponentMapper<Pos> pm;
-    private ComponentMapper<Bounds> bm;
     private ComponentMapper<Attached> am;
 
     public AttachmentSystem() {
-        super(Aspect.getAspectForAll(Pos.class, Bounds.class, Attached.class));
+        super(Aspect.getAspectForAll(Pos.class, Attached.class));
     }
 
     @Override
@@ -30,7 +28,6 @@ public class AttachmentSystem extends EntityProcessingSystem {
         {
             Pos pos = pm.get(e);
             Pos parPos = pm.get(attached.parent);
-            Bounds parBounds = bm.get(attached.parent);
 
             pos.x = parPos.x;
             pos.y = parPos.y;

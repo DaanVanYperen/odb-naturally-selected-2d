@@ -8,6 +8,7 @@ import com.artemis.managers.GroupManager;
 import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.MathUtils;
+import net.mostlyoriginal.ns2d.component.Aim;
 import net.mostlyoriginal.ns2d.component.Bounds;
 import net.mostlyoriginal.ns2d.component.EntitySpawner;
 import net.mostlyoriginal.ns2d.component.Pos;
@@ -65,7 +66,11 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
     private void assemblePlayer(float x, float y) {
         Entity player = EntityFactory.createPlayer(world, x, y);
         player.addToWorld();
-        EntityFactory.createPlayerArm(world, x, y, player).addToWorld();
+
+        Entity mouseCursor = EntityFactory.createMouseCursor(world,x,y);
+        mouseCursor.addToWorld();
+
+        EntityFactory.createPlayerArm(world, x, y, player).addComponent(new Aim(mouseCursor)).addToWorld();
     }
 
 

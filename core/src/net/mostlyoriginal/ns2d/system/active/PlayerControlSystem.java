@@ -7,6 +7,7 @@ import com.artemis.annotations.Wire;
 import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.math.Vector2;
 import net.mostlyoriginal.ns2d.component.Gravity;
 import net.mostlyoriginal.ns2d.component.Physics;
 import net.mostlyoriginal.ns2d.component.PlayerControlled;
@@ -18,7 +19,7 @@ import net.mostlyoriginal.ns2d.component.Pos;
 @Wire
 public class PlayerControlSystem extends EntityProcessingSystem {
 
-    public static final int MOVEMENT_FACTOR = 200;
+    public static final int MOVEMENT_FACTOR = 250;
     public static final int JUMP_FACTOR = 1000;
     private ComponentMapper<Physics> ym;
     private ComponentMapper<Pos> pm;
@@ -32,7 +33,8 @@ public class PlayerControlSystem extends EntityProcessingSystem {
 
     @Override
     protected void process(Entity e) {
-        Physics physics = ym.get(e);
+        final Physics physics = ym.get(e);
+        final Pos pos = pm.get(e);
 
         float dx = 0;
         float dy = 0;
@@ -52,10 +54,8 @@ public class PlayerControlSystem extends EntityProcessingSystem {
 
         if ( Gdx.input.isKeyPressed(Input.Keys.SPACE))
         {
-            Pos pos = pm.get(e);
             entitySpawnerSystem.spawnEntity(pos.x, pos.y, "bullet");
         }
-
 
         if ( dx != 0 ) physics.vx += dx * world.delta;
         if ( dy != 0 ) physics.vy += dy * world.delta;
