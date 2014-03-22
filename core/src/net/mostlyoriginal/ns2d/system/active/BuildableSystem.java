@@ -8,10 +8,7 @@ import com.artemis.managers.TagManager;
 import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import net.mostlyoriginal.ns2d.component.Anim;
-import net.mostlyoriginal.ns2d.component.Bounds;
-import net.mostlyoriginal.ns2d.component.Buildable;
-import net.mostlyoriginal.ns2d.component.Pos;
+import net.mostlyoriginal.ns2d.component.*;
 import net.mostlyoriginal.ns2d.system.passive.CollisionSystem;
 
 /**
@@ -49,7 +46,18 @@ public class BuildableSystem extends EntityProcessingSystem {
                 buildable.built = true;
                 Anim anim = am.get(e);
                 anim.id = buildable.builtAnimId;
+                e.addComponent(new Health(100)).changedInWorld();
             }
+        }
+    }
+
+    public void destroyBuildable(Entity victim) {
+        final Buildable buildable = bm.get(victim);
+        if ( buildable.built )
+        {
+            buildable.built = false;
+            Anim anim = am.get(victim);
+            anim.id = buildable.unbuiltAnimId;
         }
     }
 }

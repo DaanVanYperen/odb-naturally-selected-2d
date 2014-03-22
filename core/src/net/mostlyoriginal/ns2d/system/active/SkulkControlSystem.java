@@ -33,6 +33,9 @@ public class SkulkControlSystem extends EntityProcessingSystem {
 
     public Entity player;
     public Pos enemyPos;
+    private CombatSystem combatSystem;
+    private ComponentMapper<Buildable> bm;
+    private ComponentMapper<Health> hm;
 
     public SkulkControlSystem()
     {
@@ -56,20 +59,32 @@ public class SkulkControlSystem extends EntityProcessingSystem {
 
         if ( focus.entity != null )
         {
-            closestDistance = EntityUtil.distance2( skulk,focus.entity);
+            if ( !hm.has(focus.entity)) focus.entity = null;
+            if ( focus.entity != null )
+            {
+                closestDistance = EntityUtil.distance2( skulk,focus.entity);
+            }
         }
+
+
 
         ImmutableBag<Entity> entities = groupManager.getEntities("player-structure");
         for ( int i=0; entities.size() > i; i++ )
         {
             final Entity b = entities.get(i);
             final float distance = b != null ? EntityUtil.distance2( skulk, b) : -1;
+
+            // we don't care about targets without health.
+            if ( b != null && !hm.has(b))
+                continue;
+
             if ( distance != -1 && (closestDistance == -1 || distance < closestDistance) )
             {
                 focus.entity = b;
                 closestDistance = distance;
             }
         }
+
 
         return focus.entity;
     }
@@ -94,12 +109,19 @@ public class SkulkControlSystem extends EntityProcessingSystem {
         float enemyDirX =enemyPos.x- skulkPos.x;
         float enemyDirY = enemyPos.y- skulkPos.y;
 
-        float playerDistance = EntityUtil.distance2(skulk, focus);
-        if ( playerDistance < 300*300 && playerDistance > 50*50 && sensor.onAnySurface() && Math.abs(physics.vx) < 10 )
+        float enemyDistance = EntityUtil.distance2(skulk, focus);
+
+        if ( enemyDistance <= 50*50  )
+        {
+            // DAMAGE when near. just spam it, who cares! :D
+            combatSystem.damage(focus,skulk, 10);
+        }
+
+        if ( enemyDistance < 300*300 && enemyDistance > 50*50 && sensor.onAnySurface() && Math.abs(physics.vx) < 10 )
         {
             // aim and fire!
             float direction = EntityUtil.angle( skulk, focus );
-            physicsSystem.push(skulk, direction, MathUtils.clamp(playerDistance, 40, 600));
+            physicsSystem.push(skulk, direction, MathUtils.clamp(enemyDistance, 40, 600));
            //physicsSystem.push(skulk, 90, 200); // slight upforce each jump
         } else if ( sensor.onAnySurface() ) {
 

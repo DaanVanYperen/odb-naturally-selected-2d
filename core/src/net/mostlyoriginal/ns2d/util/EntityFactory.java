@@ -26,6 +26,7 @@ public class EntityFactory {
 
         return newPositioned(world, x, y)
                 .addComponent(new Anim("skulk", Anim.Layer.ENEMIES))
+                .addComponent(new Health(2))
                 .addComponent(new Focus())
                 .addComponent(new Physics())
                 .addComponent(new Gravity())
@@ -73,18 +74,21 @@ public class EntityFactory {
     public static Entity createResourceTower(World world, float x, float y) {
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(16*3,16*3))
+                .addComponent(new Health(100))
                 .addComponent(new Buildable("resourcetower", "resourcetower-unbuilt"))
                 .addComponent(new Anim("resourcetower-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
     }
 
     public static Entity createTechpoint(World world, float x, float y) {
         return newPositioned(world, x, y)
+                .addComponent(new Health(1000))
                 .addComponent(new Anim("techpoint", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
     }
 
     public static Entity createSpawner(final World world, final float x, final float y) {
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(16,16))
+                .addComponent(new Health(100))
                 .addComponent(new Buildable("spawner", "spawner-unbuilt"))
                 .addComponent(new Anim("spawner", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
 

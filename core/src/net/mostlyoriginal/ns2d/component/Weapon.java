@@ -13,4 +13,5 @@ public class Weapon extends Component {
     public float bulletSpeed = 500;
     public float fireCooldown = 1f/15f; // cooldown per bullet.
     public float spread = 10f; // spread in degrees
+    public boolean autofire = false;
 }

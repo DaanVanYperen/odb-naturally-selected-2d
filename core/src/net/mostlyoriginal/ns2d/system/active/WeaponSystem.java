@@ -33,9 +33,9 @@ public class WeaponSystem extends EntityProcessingSystem {
     @Override
     protected void process(Entity e) {
 
-        if (Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isButtonPressed(0)) {
+        final Weapon weapon = wm.get(e);
+        if ( weapon.autofire || Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isButtonPressed(0)) {
 
-            final Weapon weapon = wm.get(e);
 
             weapon.cooldown -= world.delta;
             if (weapon.cooldown <= 0) {
