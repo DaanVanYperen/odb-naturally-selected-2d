@@ -15,6 +15,7 @@ import net.mostlyoriginal.ns2d.component.Physics;
 public class GravitySystem extends EntityProcessingSystem {
 
     public static final int GRAVITY_FACTOR = 100;
+
     ComponentMapper<Physics> pm;
     ComponentMapper<Gravity> gm;
 
@@ -28,7 +29,7 @@ public class GravitySystem extends EntityProcessingSystem {
         final Physics physics = pm.get(e);
         final Gravity gravity = gm.get(e);
 
-        physics.vy += gravity.y * 100 * world.delta;
+        physics.vy += gravity.y * GRAVITY_FACTOR * world.delta;
         physics.vx += gravity.x * GRAVITY_FACTOR * world.delta;
     }
 }

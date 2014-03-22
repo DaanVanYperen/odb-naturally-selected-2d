@@ -7,6 +7,7 @@ import com.artemis.annotations.Wire;
 import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import net.mostlyoriginal.ns2d.component.Gravity;
 import net.mostlyoriginal.ns2d.component.Physics;
 import net.mostlyoriginal.ns2d.component.PlayerControlled;
 import net.mostlyoriginal.ns2d.component.Pos;
@@ -17,6 +18,8 @@ import net.mostlyoriginal.ns2d.component.Pos;
 @Wire
 public class PlayerControlSystem extends EntityProcessingSystem {
 
+    public static final int MOVEMENT_FACTOR = 200;
+    public static final int JUMP_FACTOR = 1000;
     private ComponentMapper<Physics> ym;
     private ComponentMapper<Pos> pm;
 
@@ -34,9 +37,18 @@ public class PlayerControlSystem extends EntityProcessingSystem {
         float dx = 0;
         float dy = 0;
 
-        if ( Gdx.input.isKeyPressed(Input.Keys.A)) dx = -1;
-        if ( Gdx.input.isKeyPressed(Input.Keys.D)) dx = 1;
-        if ( physics.onFloor && Gdx.input.isKeyPressed(Input.Keys.W)) dy = 1;
+        if ( Gdx.input.isKeyPressed(Input.Keys.A)) dx = -MOVEMENT_FACTOR;
+        if ( Gdx.input.isKeyPressed(Input.Keys.D)) dx = MOVEMENT_FACTOR;
+        if ( Gdx.input.isKeyPressed(Input.Keys.W))
+        {
+            if ( physics.onFloor )
+            {
+                // jump.
+                dy = JUMP_FACTOR * 10f;
+            } else {
+                dy = (-Gravity.DEFAULT_Y_GRAVITY + 1.5f) * GravitySystem.GRAVITY_FACTOR;
+            }
+        };
 
         if ( Gdx.input.isKeyPressed(Input.Keys.SPACE))
         {
@@ -45,7 +57,7 @@ public class PlayerControlSystem extends EntityProcessingSystem {
         }
 
 
-        if ( dx != 0 ) physics.vx = dx * 200;
-        if ( dy != 0 ) physics.vy = dy * 500;
+        if ( dx != 0 ) physics.vx += dx * world.delta;
+        if ( dy != 0 ) physics.vy += dy * world.delta;
     }
 }

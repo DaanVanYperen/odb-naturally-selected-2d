@@ -65,6 +65,7 @@ public class AssetSystem extends PassiveSystem {
         add("skulk", 0, 64, TILE_SIZE, TILE_SIZE, 1);
         add("debug-marker", 44, 51, 3, 3, 1);
         add("bullet", 44, 51, 7, 4, 1);
+        add("player-arm", 0, 32, TILE_SIZE, TILE_SIZE, 1);
     }
 
 

@@ -43,6 +43,7 @@ public class MainScreen implements Screen {
         // Active - Physics. Order is important! Alter velocity, then constrain.
         G.world.setSystem(new GravitySystem());
         G.world.setSystem(new MapCollisionSystem());
+        G.world.setSystem(new AttachmentSystem());
         G.world.setSystem(new AfterPhysicsSystem());
 
         G.world.setSystem(new BulletCollisionSystem());

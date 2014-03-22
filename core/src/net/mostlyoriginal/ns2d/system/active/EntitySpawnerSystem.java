@@ -39,7 +39,7 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
     public void spawnEntity(float x, float y, String entity) {
         switch (entity) {
             case "player":
-                EntityFactory.createPlayer(world, x, y).addToWorld();
+                assemblePlayer(x, y);
                 break;
             case "spawner":
                 EntityFactory.createSpawner(world, x, y).addToWorld();
@@ -60,6 +60,12 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
             default:
                 throw new RuntimeException("No idea how to spawn entity of type " + entity);
         }
+    }
+
+    private void assemblePlayer(float x, float y) {
+        Entity player = EntityFactory.createPlayer(world, x, y);
+        player.addToWorld();
+        EntityFactory.createPlayerArm(world, x, y, player).addToWorld();
     }
 
 

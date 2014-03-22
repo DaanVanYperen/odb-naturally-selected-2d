@@ -12,13 +12,14 @@ public class EntityFactory {
 
     public static Entity createPlayer(final World world, final float x, final float y) {
 
-        return newPositioned(world, x, y)
+        Entity player = newPositioned(world, x, y)
                 .addComponent(new Anim("player", Anim.Layer.PLAYER))
                 .addComponent(new Physics())
                 .addComponent(new Gravity())
                 .addComponent(new PlayerControlled())
                 .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE))
                 .addComponent(new CameraFocus());
+        return player;
     }
 
     public static Entity createSkulk(final World world, final float x, final float y) {
@@ -56,5 +57,12 @@ public class EntityFactory {
                 .addComponent(new Physics())
                 .addComponent(new Gravity())
                 .addComponent(new Bounds(7,4));
+    }
+
+    public static Entity createPlayerArm(World world, float x, float y, Entity player) {
+        return newPositioned(world, x, y)
+                .addComponent(new Anim("player-arm", Anim.Layer.PLAYER_ARM))
+                .addComponent(new Attached(player))
+                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
     }
 }

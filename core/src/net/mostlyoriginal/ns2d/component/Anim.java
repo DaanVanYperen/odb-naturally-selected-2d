@@ -14,6 +14,7 @@ public class Anim extends Component {
         BULLETS,
         ENEMIES,
         DIRECTLY_BEHIND_PLAYER,
+        PLAYER_ARM,
         PLAYER,
         DEFAULT_LAYER
     };
