@@ -36,7 +36,7 @@ public class WeaponSystem extends EntityProcessingSystem {
     @Override
     protected void process(Entity e) {
 
-        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isButtonPressed(0)) {
 
             final Weapon weapon = wm.get(e);
 
