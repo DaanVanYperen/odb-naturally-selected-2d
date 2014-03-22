@@ -11,6 +11,7 @@ public class Anim extends Component {
     public static enum Layer
     {
         ON_WALL,
+        ENEMIES,
         DIRECTLY_BEHIND_PLAYER,
         PLAYER,
         DEFAULT_LAYER

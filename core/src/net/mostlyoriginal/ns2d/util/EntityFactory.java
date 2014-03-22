@@ -21,6 +21,16 @@ public class EntityFactory {
                 .addComponent(new CameraFocus());
     }
 
+    public static Entity createSkulk(final World world, final float x, final float y) {
+
+        return newPositioned(world, x, y)
+                .addComponent(new Anim("skulk", Anim.Layer.ENEMIES))
+                .addComponent(new Physics())
+                .addComponent(new Gravity())
+                .addComponent(new SkulkControlled())
+                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
+    }
+
     public static Entity createSpawner(final World world, final float x, final float y) {
         return newPositioned(world, x, y)
                 .addComponent(new Anim("spawner", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
@@ -35,6 +45,8 @@ public class EntityFactory {
     public static Entity createDuct(World world, float x, float y) {
         return world.createEntity()
                 .addComponent(new Pos(x, y))
+                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE))
+                .addComponent(new EntitySpawner("skulk"))
                 .addComponent(new Anim("duct", Anim.Layer.ON_WALL));
     }
 }

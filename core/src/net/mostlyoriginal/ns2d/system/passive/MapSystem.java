@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.utils.Array;
 import net.mostlyoriginal.ns2d.G;
+import net.mostlyoriginal.ns2d.system.active.EntitySpawnerSystem;
 import net.mostlyoriginal.ns2d.util.MapMask;
 
 /**
@@ -24,7 +25,7 @@ public class MapSystem extends VoidEntitySystem {
     private Array<TiledMapTileLayer> layers;
     private boolean isSetup;
 
-    private EntitySpawnSystem entitySpawnSystem;
+    private EntitySpawnerSystem entitySpawnerSystem;
 
     @Override
     protected void initialize() {
@@ -55,7 +56,7 @@ public class MapSystem extends VoidEntitySystem {
                         final MapProperties properties = cell.getTile().getProperties();
 
                         if ( properties.containsKey("entity")) {
-                            entitySpawnSystem.spawnEntity(tx * G.CELL_SIZE, ty * G.CELL_SIZE, properties);
+                            entitySpawnerSystem.spawnEntity(tx * G.CELL_SIZE, ty * G.CELL_SIZE, properties);
                             layer.setCell(tx, ty, null);
                         }
                     }

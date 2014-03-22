@@ -23,4 +23,7 @@ public class Bounds extends Component {
         this.x2 = x2;
         this.y2 = y2;
     }
+
+    public int cx() { return x1 + (x2-x1); }
+    public int cy() { return y1 + (y2-y1); }
 }

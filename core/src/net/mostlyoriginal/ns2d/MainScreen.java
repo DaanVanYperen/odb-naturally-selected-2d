@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import net.mostlyoriginal.ns2d.system.active.*;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
-import net.mostlyoriginal.ns2d.system.passive.EntitySpawnSystem;
 import net.mostlyoriginal.ns2d.system.passive.MapSystem;
 import net.mostlyoriginal.ns2d.system.render.AnimRenderSystem;
 import net.mostlyoriginal.ns2d.system.render.MapRenderSystem;
@@ -27,15 +26,16 @@ public class MainScreen implements Screen {
 
         // Active - Cleanup
         G.world.setSystem(new TerminalSystem());
+        G.world.setSystem(new EntitySpawnerSystem());
 
         // Passive System, loader helpers.
         G.world.setSystem(new AssetSystem());
         G.world.setSystem(new MapSystem());
-        G.world.setSystem(new EntitySpawnSystem());
         G.world.setSystem(new CameraSystem());
 
         // Active - Input/Logic
         G.world.setSystem(new PlayerControlSystem());
+        G.world.setSystem(new SkulkControlSystem());
 
         // Active - Physics. Order is important! Alter velocity, then constrain.
         G.world.setSystem(new GravitySystem());
