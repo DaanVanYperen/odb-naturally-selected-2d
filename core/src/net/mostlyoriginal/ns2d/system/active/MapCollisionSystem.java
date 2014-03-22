@@ -63,9 +63,12 @@ public class MapCollisionSystem extends EntityProcessingSystem {
         float px = pos.x + physics.vx * world.delta;
         float py = pos.y + physics.vy * world.delta;
 
+        physics.onWall = physics.onFloor = false;
+
         if ( (physics.vx > 0 && collides(px + bounds.x2, py + bounds.y1 + (bounds.y2 - bounds.y1) * 0.5f)) ||
              (physics.vx < 0 && collides(px + bounds.x1, py + bounds.y1 + (bounds.y2 - bounds.y1) * 0.5f)) )
         {
+            physics.onWall = true;
             physics.vx = 0;
             px = pos.x;
         }
@@ -73,6 +76,8 @@ public class MapCollisionSystem extends EntityProcessingSystem {
         if ( (physics.vy > 0 && collides(px + bounds.x1 + (bounds.x2 - bounds.x1) * 0.5f, py + bounds.y2)) ||
              (physics.vy < 0 && collides(px + bounds.x1 + (bounds.x2 - bounds.x1) * 0.5f, py + bounds.y1)) )
         {
+            if ( physics.vy < 0 ) physics.onFloor = true;
+            physics.onWall = true;
             physics.vy = 0;
         }
 
