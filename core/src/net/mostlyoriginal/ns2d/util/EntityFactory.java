@@ -16,6 +16,7 @@ public class EntityFactory {
                 .addComponent(new Anim("player", Anim.Layer.PLAYER))
                 .addComponent(new Physics())
                 .addComponent(new Gravity())
+                .addComponent(new PlayerControlled())
                 .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE))
                 .addComponent(new CameraFocus());
     }

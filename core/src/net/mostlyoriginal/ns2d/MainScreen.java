@@ -5,10 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import net.mostlyoriginal.ns2d.system.active.AfterPhysicsSystem;
-import net.mostlyoriginal.ns2d.system.active.CameraFocusSystem;
-import net.mostlyoriginal.ns2d.system.active.GravitySystem;
-import net.mostlyoriginal.ns2d.system.active.MapCollisionSystem;
+import net.mostlyoriginal.ns2d.system.active.*;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 import net.mostlyoriginal.ns2d.system.passive.EntitySpawnSystem;
@@ -34,15 +31,18 @@ public class MainScreen implements Screen {
         G.world.setSystem(new EntitySpawnSystem());
         G.world.setSystem(new CameraSystem());
 
+        // Active - Input/Logic
+        G.world.setSystem(new PlayerControlSystem());
+
         // Active - Physics. Order is important! Alter velocity, then constrain.
         G.world.setSystem(new GravitySystem());
         G.world.setSystem(new MapCollisionSystem());
         G.world.setSystem(new AfterPhysicsSystem());
 
-        // Active
+        // Active - Camera
         G.world.setSystem(new CameraFocusSystem());
 
-        // Render
+        // Active - Render
         G.world.setSystem(new MapRenderSystem());
         G.world.setSystem(new AnimRenderSystem());
 
