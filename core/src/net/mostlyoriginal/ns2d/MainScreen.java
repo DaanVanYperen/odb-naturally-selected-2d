@@ -54,6 +54,7 @@ public class MainScreen implements Screen {
         G.world.setSystem(new AttachmentSystem());
         G.world.setSystem(new MouseCursorSystem());
         G.world.setSystem(new AimSystem());
+        G.world.setSystem(new InbetweenSystem());
 
         // Active - Post Movement Calculations.
         G.world.setSystem(new WallSensorSystem());

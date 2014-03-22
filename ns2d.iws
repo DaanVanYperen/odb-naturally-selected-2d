@@ -2,26 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a3431cf-d619-496e-8f5b-feccda2c4911" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PhysicsSystem.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/WallSensor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/WallSensorSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/AfterPhysicsSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/AfterPhysicsSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/AimSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/AimSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/AnimRenderSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/AnimRenderSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/CameraFocusSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/CameraFocusSystem.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Inbetween.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/InbetweenSystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Gravity.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Gravity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/GravitySystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/GravitySystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/MainScreen.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/MainScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/MapCollisionSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/MapCollisionSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Physics.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Physics.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/SkulkControlSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/SkulkControlSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/WeaponSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/WeaponSystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ns2d.iws" afterPath="$PROJECT_DIR$/ns2d.iws" />
-      <change type="MOVED" beforePath="E:\projects\games\ns0\ns2d\core\src\net\mostlyoriginal\ns2d\system\active\BulletCollisionSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/collide/BulletCollisionSystem.java" />
     </list>
     <ignored path="ns2d.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -86,42 +72,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SkulkControlSystem.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/SkulkControlSystem.java">
+      <file leaf-file-name="MainScreen.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/MainScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="13" selection-start="2190" selection-end="2190" vertical-scroll-proportion="0.36377245" vertical-offset="726" max-vertical-offset="1394">
+            <state line="56" column="37" selection-start="2008" selection-end="2008" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="1802">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AimSystem.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/AimSystem.java">
+      <file leaf-file-name="CameraFocus.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/CameraFocus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="624" selection-end="624" vertical-scroll-proportion="0.0" vertical-offset="267" max-vertical-offset="935">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EntitySpawnerSystem.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="87" column="58" selection-start="2814" selection-end="2814" vertical-scroll-proportion="0.0" vertical-offset="1151" max-vertical-offset="1819">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Physics.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Physics.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="31" selection-start="250" selection-end="250" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+            <state line="9" column="0" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Inbetween.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Inbetween.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="42" selection-start="299" selection-end="299" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -129,7 +104,7 @@
       <file leaf-file-name="EntityFactory.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="30" selection-start="2154" selection-end="2154" vertical-scroll-proportion="0.0" vertical-offset="590" max-vertical-offset="1428">
+            <state line="72" column="28" selection-start="2765" selection-end="2765" vertical-scroll-proportion="0.0" vertical-offset="722" max-vertical-offset="1411">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -137,10 +112,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AfterPhysicsSystem.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/AfterPhysicsSystem.java">
+      <file leaf-file-name="EntitySpawnerSystem.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="70" selection-start="1172" selection-end="1172" vertical-scroll-proportion="0.0" vertical-offset="199" max-vertical-offset="1071">
+            <state line="68" column="32" selection-start="2315" selection-end="2315" vertical-scroll-proportion="0.65312046" vertical-offset="706" max-vertical-offset="1921">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -148,41 +123,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EntityUtil.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityUtil.java">
+      <file leaf-file-name="InbetweenSystem.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/InbetweenSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="29" selection-start="483" selection-end="483" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CameraSystem.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/CameraSystem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="310" selection-end="310" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CameraFocusSystem.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/CameraFocusSystem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="46" selection-start="868" selection-end="868" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AnimRenderSystem.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/AnimRenderSystem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="36" selection-start="3020" selection-end="3020" vertical-scroll-proportion="0.0" vertical-offset="1372" max-vertical-offset="2108">
+            <state line="33" column="70" selection-start="923" selection-end="923" vertical-scroll-proportion="0.0" vertical-offset="93" max-vertical-offset="782">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -203,12 +147,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/CameraSystem.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/PhysicsSystem.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Size.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/G.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/MapMask.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Pos.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/PlayerControlled.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Terminal.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/TerminalSystem.java" />
@@ -240,20 +178,26 @@
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/WallSensorSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/MapCollisionSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/MainScreen.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/WeaponSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/WallSensor.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PhysicsSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/AimSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityUtil.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Friction.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Physics.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/CameraFocusSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/AnimRenderSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/AfterPhysicsSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/SkulkControlSystem.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/StayBetweenSystem.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/StayBetween.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Drone.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DroneSystem.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/MainScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/InbetweenSystem.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Inbetween.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java" />
       </list>
     </option>
   </component>
@@ -847,7 +791,7 @@
       <workItem from="1395490864611" duration="40000" />
       <workItem from="1395490946789" duration="850000" />
       <workItem from="1395491874854" duration="2494000" />
-      <workItem from="1395494595535" duration="23895000" />
+      <workItem from="1395494595535" duration="24980000" />
     </task>
     <task id="LOCAL-00001" summary="Basic map and rendering system.&#10;">
       <created>1395496963545</created>
@@ -905,11 +849,15 @@
       <created>1395515840818</created>
       <updated>1395515840818</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Skulk jumping, friction!&#10;Small fix to camera and sprite rendering.">
+      <created>1395520234966</created>
+      <updated>1395520234966</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27279000" />
+    <option name="totallyTimeSpent" value="28364000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1208" extended-state="0" />
@@ -978,7 +926,8 @@
     <MESSAGE value="Aim towards the mouse reticule!" />
     <MESSAGE value="Added weapon handling system." />
     <MESSAGE value="Mouse controlled firing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Mouse controlled firing." />
+    <MESSAGE value="Skulk jumping, friction!&#10;Small fix to camera and sprite rendering." />
+    <option name="LAST_COMMIT_MESSAGE" value="Skulk jumping, friction!&#10;Small fix to camera and sprite rendering." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -989,27 +938,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/MyMapRendererImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="55" selection-start="297" selection-end="297" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Pos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="11" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Terminal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="37" selection-start="217" selection-end="217" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="340">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/TerminalSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="54" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
@@ -1245,22 +1173,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/MainScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="47" selection-start="1633" selection-end="1633" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="1785">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/WeaponSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="1809" selection-end="1809" vertical-scroll-proportion="0.0" vertical-offset="471" max-vertical-offset="1139">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/GravitySystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="108" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0" vertical-offset="46" max-vertical-offset="714">
@@ -1291,7 +1203,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/AimSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="624" selection-end="624" vertical-scroll-proportion="0.0" vertical-offset="267" max-vertical-offset="935">
+        <state line="22" column="0" selection-start="624" selection-end="624" vertical-scroll-proportion="0.16017964" vertical-offset="267" max-vertical-offset="935">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1307,34 +1219,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="58" selection-start="2814" selection-end="2814" vertical-scroll-proportion="0.0" vertical-offset="1151" max-vertical-offset="1819">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Physics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="31" selection-start="250" selection-end="250" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+        <state line="10" column="31" selection-start="250" selection-end="250" vertical-scroll-proportion="0.25449103" vertical-offset="0" max-vertical-offset="668">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="30" selection-start="2154" selection-end="2154" vertical-scroll-proportion="0.0" vertical-offset="590" max-vertical-offset="1428">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="29" selection-start="483" selection-end="483" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+        <state line="18" column="29" selection-start="483" selection-end="483" vertical-scroll-proportion="0.44412193" vertical-offset="0" max-vertical-offset="689">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1343,14 +1237,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/CameraSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="310" selection-end="310" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+        <state line="12" column="0" selection-start="310" selection-end="310" vertical-scroll-proportion="0.2467344" vertical-offset="0" max-vertical-offset="689">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/AnimRenderSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="36" selection-start="3020" selection-end="3020" vertical-scroll-proportion="0.0" vertical-offset="1372" max-vertical-offset="2108">
+        <state line="99" column="36" selection-start="3020" selection-end="3020" vertical-scroll-proportion="0.3773585" vertical-offset="1372" max-vertical-offset="2108">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1359,7 +1253,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/CameraFocusSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="46" selection-start="868" selection-end="868" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+        <state line="28" column="46" selection-start="868" selection-end="868" vertical-scroll-proportion="0.69085634" vertical-offset="0" max-vertical-offset="689">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1368,7 +1262,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/AfterPhysicsSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="70" selection-start="1172" selection-end="1172" vertical-scroll-proportion="0.0" vertical-offset="199" max-vertical-offset="1071">
+        <state line="40" column="70" selection-start="1172" selection-end="1172" vertical-scroll-proportion="0.6981132" vertical-offset="199" max-vertical-offset="1071">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1377,8 +1271,67 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/SkulkControlSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="13" selection-start="2190" selection-end="2190" vertical-scroll-proportion="0.36377245" vertical-offset="726" max-vertical-offset="1394">
+        <state line="61" column="39" selection-start="1990" selection-end="1990" vertical-scroll-proportion="0.26197603" vertical-offset="726" max-vertical-offset="1394">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/CameraFocus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/WeaponSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="0" selection-start="1809" selection-end="1809" vertical-scroll-proportion="1.1727141" vertical-offset="93" max-vertical-offset="1139">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/MainScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="37" selection-start="2008" selection-end="2008" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="1802">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Inbetween.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="42" selection-start="299" selection-end="299" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/InbetweenSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="70" selection-start="923" selection-end="923" vertical-scroll-proportion="0.0" vertical-offset="93" max-vertical-offset="782">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="28" selection-start="2765" selection-end="2765" vertical-scroll-proportion="0.0" vertical-offset="724" max-vertical-offset="1411">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="32" selection-start="2315" selection-end="2315" vertical-scroll-proportion="0.65312046" vertical-offset="706" max-vertical-offset="1921">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

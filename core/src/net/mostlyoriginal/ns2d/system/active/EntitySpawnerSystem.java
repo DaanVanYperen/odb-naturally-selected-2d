@@ -9,10 +9,7 @@ import com.artemis.managers.TagManager;
 import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.MathUtils;
-import net.mostlyoriginal.ns2d.component.Aim;
-import net.mostlyoriginal.ns2d.component.Bounds;
-import net.mostlyoriginal.ns2d.component.EntitySpawner;
-import net.mostlyoriginal.ns2d.component.Pos;
+import net.mostlyoriginal.ns2d.component.*;
 import net.mostlyoriginal.ns2d.util.EntityFactory;
 
 /**
@@ -67,7 +64,16 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
         Entity mouseCursor = EntityFactory.createMouseCursor(world, x, y);
         mouseCursor.addToWorld();
 
-        EntityFactory.createRifle(world, x, y, player).addComponent(new Aim(mouseCursor)).addToWorld();
+        // create a tracker in between the player and the cursor that we will follow with the camera.
+        Inbetween inbetween = new Inbetween(player, mouseCursor);
+        inbetween.tween = 0.25f;
+        world.createEntity()
+                .addComponent(new Pos(0, 0))
+                .addComponent(new CameraFocus())
+                .addComponent(inbetween)
+                .addToWorld();
+
+                EntityFactory.createRifle(world, x, y, player).addComponent(new Aim(mouseCursor)).addToWorld();
         tagManager.register("player", player);
     }
 
