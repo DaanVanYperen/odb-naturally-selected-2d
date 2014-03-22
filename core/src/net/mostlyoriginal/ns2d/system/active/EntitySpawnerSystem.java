@@ -64,13 +64,20 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
         Entity mouseCursor = EntityFactory.createMouseCursor(world, x, y);
         mouseCursor.addToWorld();
 
-        // create a tracker in between the player and the cursor that we will follow with the camera.
+        // create an absolute tracker in between the player and the cursor that we will follow with the camera.
         Inbetween inbetween = new Inbetween(player, mouseCursor);
         inbetween.tween = 0.25f;
+        Entity midpoint = world.createEntity()
+                .addComponent(new Pos(0, 0))
+                .addComponent(inbetween);
+        midpoint.addToWorld();
+
+        // now create a drone that will swerve towards the tracker which contains the camera. this will create a smooth moving camera.
         world.createEntity()
                 .addComponent(new Pos(0, 0))
+                .addComponent(new Physics())
+                .addComponent(new Homing(midpoint))
                 .addComponent(new CameraFocus())
-                .addComponent(inbetween)
                 .addToWorld();
 
                 EntityFactory.createRifle(world, x, y, player).addComponent(new Aim(mouseCursor)).addToWorld();
