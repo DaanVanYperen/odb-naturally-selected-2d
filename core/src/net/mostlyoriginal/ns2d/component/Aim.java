@@ -14,4 +14,7 @@ public class Aim extends Component {
     public Aim(Entity at) {
         this.at = at;
     }
+
+    public Aim() {
+    }
 }

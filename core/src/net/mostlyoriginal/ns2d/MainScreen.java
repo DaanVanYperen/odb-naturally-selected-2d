@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import net.mostlyoriginal.ns2d.system.active.*;
 import net.mostlyoriginal.ns2d.system.collide.BulletCollisionSystem;
+import net.mostlyoriginal.ns2d.system.collide.EnemyBulletCollisionSystem;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 import net.mostlyoriginal.ns2d.system.passive.CollisionSystem;
@@ -67,6 +68,8 @@ public class MainScreen implements Screen {
         G.world.setSystem(new WallSensorSystem());
 
         G.world.setSystem(new BulletCollisionSystem());
+        G.world.setSystem(new EnemyBulletCollisionSystem());
+
 
         // Active - Camera
         G.world.setSystem(new CameraFocusSystem());

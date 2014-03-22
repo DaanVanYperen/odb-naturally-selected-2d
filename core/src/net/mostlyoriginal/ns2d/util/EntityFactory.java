@@ -22,9 +22,24 @@ public class EntityFactory {
         return player;
     }
 
+
+
+    public static Entity createSkulkHead(World world, float x, float y, Entity skulk) {
+        Weapon weapon = new Weapon();
+        weapon.autofire = true;
+        weapon.bulletLifetime = 0f;
+        weapon.fireCooldown = 0.4f;
+        weapon.bulletGroup = "enemy-bullet";
+        return newPositioned(world, x, y)
+                .addComponent(new Anim("player-arm", Anim.Layer.PLAYER_ARM))
+                .addComponent(new Attached(skulk))
+                .addComponent(weapon)
+                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
+    }
+
     public static Entity createSkulk(final World world, final float x, final float y) {
 
-        return newPositioned(world, x, y)
+        Entity skulk = newPositioned(world, x, y)
                 .addComponent(new Anim("skulk", Anim.Layer.ENEMIES))
                 .addComponent(new Health(2))
                 .addComponent(new Focus())
@@ -33,6 +48,16 @@ public class EntityFactory {
                 .addComponent(new WallSensor())
                 .addComponent(new SkulkControlled())
                 .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
+
+        Entity head = EntityFactory.createSkulkHead(world, x, y, skulk)
+                .addComponent(new Aim());
+
+        head.addToWorld();
+        Inventory inventory = new Inventory();
+        inventory.weapon = head;
+        skulk.addComponent(inventory);
+
+        return skulk;
     }
 
     private static Entity newPositioned(final World world, final float x, final float y) {
@@ -73,7 +98,7 @@ public class EntityFactory {
 
     public static Entity createResourceTower(World world, float x, float y) {
         return newPositioned(world, x, y)
-                .addComponent(new Bounds(16*3,16*3))
+                .addComponent(new Bounds(16 * 3, 16 * 3))
                 .addComponent(new Health(100))
                 .addComponent(new Buildable("resourcetower", "resourcetower-unbuilt"))
                 .addComponent(new Anim("resourcetower-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
@@ -87,7 +112,7 @@ public class EntityFactory {
 
     public static Entity createSpawner(final World world, final float x, final float y) {
         return newPositioned(world, x, y)
-                .addComponent(new Bounds(16,16))
+                .addComponent(new Bounds(16, 16))
                 .addComponent(new Health(100))
                 .addComponent(new Buildable("spawner", "spawner-unbuilt"))
                 .addComponent(new Anim("spawner", Anim.Layer.DIRECTLY_BEHIND_PLAYER));

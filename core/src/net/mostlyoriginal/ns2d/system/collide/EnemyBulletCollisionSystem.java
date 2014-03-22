@@ -10,20 +10,20 @@ import net.mostlyoriginal.ns2d.system.passive.CollisionSystem;
  * @author Daan van Yperen
  */
 @Wire
-public class BulletCollisionSystem extends DualEntityProcessSystem {
+public class EnemyBulletCollisionSystem extends DualEntityProcessSystem {
 
-    CollisionSystem collisionSystem;
-    CombatSystem combatSystem;
+    private CollisionSystem collisionSystem;
+    private CombatSystem combatSystem;
 
-    public BulletCollisionSystem() {
-        super("bullet", "enemy");
+    public EnemyBulletCollisionSystem() {
+        super("enemy-bullet", "player-friend");
     }
 
     @Override
     protected void processEntity(Entity entityA, Entity entityB) {
         if ( collisionSystem.overlaps(entityA, entityB) )
         {
-            combatSystem.damage(entityB,entityA , 1);
+            combatSystem.damage(entityB, entityA, 1);
             entityA.deleteFromWorld();
         }
     }

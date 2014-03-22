@@ -24,13 +24,17 @@ public class AttachmentSystem extends EntityProcessingSystem {
     @Override
     protected void process(Entity e) {
         final Attached attached = am.get(e);
-        if ( attached.parent != null && attached.parent.isActive() )
-        {
-            Pos pos = pm.get(e);
-            Pos parPos = pm.get(attached.parent);
+        if (attached.parent != null) {
+            if (attached.parent.isActive()) {
+                Pos pos = pm.get(e);
+                Pos parPos = pm.get(attached.parent);
 
-            pos.x = parPos.x;
-            pos.y = parPos.y;
+                pos.x = parPos.x;
+                pos.y = parPos.y;
+            } else {
+                // parent gone? we gone!
+                e.deleteFromWorld();
+            }
         }
     }
 }

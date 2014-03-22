@@ -44,16 +44,20 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
             case "resourcetower":
                 Entity resourceTower = EntityFactory.createResourceTower(world, x, y);
                 groupManager.add(resourceTower, "player-structure");
+                groupManager.add(resourceTower, "player-friend");
+
                 resourceTower.addToWorld();
                 break;
             case "techpoint":
                 final Entity techpoint = EntityFactory.createTechpoint(world, x, y);
                 groupManager.add(techpoint, "player-structure");
+                groupManager.add(techpoint, "player-friend");
                 techpoint.addToWorld();
                 break;
             case "spawner":
                 final Entity spawner = EntityFactory.createSpawner(world, x, y);
                 groupManager.add(spawner, "player-structure");
+                groupManager.add(spawner, "player-friend");
                 spawner.addToWorld();
                 break;
             case "duct":
@@ -72,6 +76,8 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
     private void assemblePlayer(float x, float y) {
         Entity player = EntityFactory.createPlayer(world, x, y);
         player.addToWorld();
+
+        groupManager.add(player, "player-friend");
 
         Entity mouseCursor = EntityFactory.createMouseCursor(world, x, y);
         mouseCursor.addToWorld();
@@ -92,7 +98,13 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
                 .addComponent(new CameraFocus())
                 .addToWorld();
 
-                EntityFactory.createRifle(world, x, y, player).addComponent(new Aim(mouseCursor)).addToWorld();
+        Entity rifle = EntityFactory.createRifle(world, x, y, player).addComponent(new Aim(mouseCursor));
+        rifle.addToWorld();
+
+        Inventory inventory = new Inventory();
+        inventory.weapon = rifle;
+        player.addComponent(inventory);
+
         tagManager.register("player", player);
     }
 

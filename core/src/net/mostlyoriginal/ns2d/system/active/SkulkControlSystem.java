@@ -26,6 +26,8 @@ public class SkulkControlSystem extends EntityProcessingSystem {
     private ComponentMapper<Pos> pm;
     private ComponentMapper<Anim> am;
     private ComponentMapper<Focus> fm;
+    private ComponentMapper<Aim> a2m;
+    private ComponentMapper<Inventory> im;
     private TagManager tagManager;
     private AimSystem aimSystem;
     private PhysicsSystem physicsSystem;
@@ -96,6 +98,9 @@ public class SkulkControlSystem extends EntityProcessingSystem {
         Entity focus = determineFocus(skulk);
         enemyPos = pm.get(focus);
 
+        aimHeadAtFocus(skulk, focus);
+
+
         WallSensor sensor = wm.get(skulk);
         Physics physics = ym.get(skulk);
         Pos skulkPos = pm.get(skulk);
@@ -122,9 +127,7 @@ public class SkulkControlSystem extends EntityProcessingSystem {
             // aim and fire!
             float direction = EntityUtil.angle( skulk, focus );
             physicsSystem.push(skulk, direction, MathUtils.clamp(enemyDistance, 40, 600));
-           //physicsSystem.push(skulk, 90, 200); // slight upforce each jump
         } else if ( sensor.onAnySurface() ) {
-
             float dx = 0;
             float dy = 0;
 
@@ -136,9 +139,17 @@ public class SkulkControlSystem extends EntityProcessingSystem {
             physics.vx = dx * 100;
             if ( dy != 0 ) physics.vy = dy * 100;
         }
-//        if ( sensor.onFloor && MathUtils.random(100) < 10f ) dy = 1;
 
 
+    }
+
+    private void aimHeadAtFocus(Entity skulk, Entity focus) {
+        Inventory inventory = im.get(skulk);
+        if ( inventory.weapon != null && inventory.weapon.isActive() )
+        {
+            Aim aim = a2m.get(inventory.weapon);
+            aim.at = focus;
+        }
     }
 
 }

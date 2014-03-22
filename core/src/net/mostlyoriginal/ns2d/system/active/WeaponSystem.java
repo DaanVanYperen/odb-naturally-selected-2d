@@ -45,7 +45,9 @@ public class WeaponSystem extends EntityProcessingSystem {
                 final Bounds bounds = om.get(e);
                 final Anim anim = am.get(e);
                 Entity bullet = EntityFactory.createBullet(world, pos.x + bounds.cy(), pos.y + bounds.cy());
-                groupManager.add(bullet, "bullet");
+                groupManager.add(bullet, weapon.bulletGroup);
+
+                bullet.addComponent(new Terminal(weapon.bulletLifetime));
 
                 // rotate bullet to player rotation
                 float rotation = anim.rotation + MathUtils.random(-weapon.spread, weapon.spread);
