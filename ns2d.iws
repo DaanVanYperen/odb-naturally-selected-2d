@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a3431cf-d619-496e-8f5b-feccda2c4911" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/desktop/src/net/mostlyoriginal/ns2d/desktop/DesktopLauncher.java" afterPath="$PROJECT_DIR$/desktop/src/net/mostlyoriginal/ns2d/desktop/DesktopLauncher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/MapCollisionSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/MapCollisionSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Physics.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Physics.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ns2d.iws" afterPath="$PROJECT_DIR$/ns2d.iws" />
     </list>
     <ignored path="ns2d.iws" />
@@ -106,10 +104,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MapCollisionSystem.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MapCollisionSystem.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/MapCollisionSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="29" selection-start="2380" selection-end="2380" vertical-scroll-proportion="0.35849056" vertical-offset="1079" max-vertical-offset="1768">
+            <state line="78" column="29" selection-start="2380" selection-end="2380" vertical-scroll-proportion="0.0" vertical-offset="1079" max-vertical-offset="1768">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -126,10 +124,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerControlSystem.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PlayerControlSystem.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="45" selection-start="1090" selection-end="1090" vertical-scroll-proportion="0.0" vertical-offset="110" max-vertical-offset="799">
+            <state line="36" column="45" selection-start="1049" selection-end="1049" vertical-scroll-proportion="0.7532656" vertical-offset="93" max-vertical-offset="782">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -200,11 +198,11 @@
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/TerminalSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/MainScreen.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/AfterPhysicsSystem.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/GravitySystem.java" />
         <option value="$PROJECT_DIR$/desktop/src/net/mostlyoriginal/ns2d/desktop/DesktopLauncher.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Physics.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/MapCollisionSystem.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java" />
       </list>
     </option>
   </component>
@@ -739,7 +737,7 @@
       <workItem from="1395490864611" duration="40000" />
       <workItem from="1395490946789" duration="850000" />
       <workItem from="1395491874854" duration="2494000" />
-      <workItem from="1395494595535" duration="9217000" />
+      <workItem from="1395494595535" duration="9325000" />
     </task>
     <task id="LOCAL-00001" summary="Basic map and rendering system.&#10;">
       <created>1395496963545</created>
@@ -765,11 +763,15 @@
       <created>1395502628880</created>
       <updated>1395502628880</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Detect if player is on floor or on wall.&#10;">
+      <created>1395504445732</created>
+      <updated>1395504445732</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12601000" />
+    <option name="totallyTimeSpent" value="12709000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1208" extended-state="0" />
@@ -830,7 +832,8 @@
     <MESSAGE value="Beginning of Gravity and physics. &#10;" />
     <MESSAGE value="Debug player controls." />
     <MESSAGE value="Fixed physics bug and introduced terminal system for entities with a lifetime." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed physics bug and introduced terminal system for entities with a lifetime." />
+    <MESSAGE value="Detect if player is on floor or on wall.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Detect if player is on floor or on wall.&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1170,15 +1173,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="45" selection-start="1090" selection-end="1090" vertical-scroll-proportion="0.0" vertical-offset="110" max-vertical-offset="799">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/GravitySystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="34" selection-start="882" selection-end="882" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
@@ -1213,7 +1207,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/MapCollisionSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="29" selection-start="2380" selection-end="2380" vertical-scroll-proportion="0.35849056" vertical-offset="1079" max-vertical-offset="1768">
+        <state line="78" column="29" selection-start="2380" selection-end="2380" vertical-scroll-proportion="0.0" vertical-offset="1079" max-vertical-offset="1768">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="45" selection-start="1049" selection-end="1049" vertical-scroll-proportion="0.7532656" vertical-offset="93" max-vertical-offset="782">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
