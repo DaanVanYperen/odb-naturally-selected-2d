@@ -8,5 +8,6 @@ import com.artemis.Component;
 public class Physics extends Component {
     public float vx; // velocityX
     public float vy; // velocityY
+    public float vr; // rotational velocity.
     public float friction = 4f;
 }

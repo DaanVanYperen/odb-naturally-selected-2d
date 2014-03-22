@@ -14,7 +14,7 @@ import net.mostlyoriginal.ns2d.component.Physics;
 @Wire
 public class GravitySystem extends EntityProcessingSystem {
 
-    public static final int GRAVITY_FACTOR = 100;
+    public static final int GRAVITY_FACTOR = 50;
 
     ComponentMapper<Physics> pm;
     ComponentMapper<Gravity> gm;
