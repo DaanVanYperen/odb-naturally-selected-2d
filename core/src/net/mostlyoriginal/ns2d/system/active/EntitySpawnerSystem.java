@@ -42,13 +42,19 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
                 assemblePlayer(x, y);
                 break;
             case "resourcetower":
-                EntityFactory.createResourceTower(world, x, y).addToWorld();
+                Entity resourceTower = EntityFactory.createResourceTower(world, x, y);
+                groupManager.add(resourceTower, "player-structure");
+                resourceTower.addToWorld();
                 break;
             case "techpoint":
-                EntityFactory.createTechpoint(world, x, y).addToWorld();
+                final Entity techpoint = EntityFactory.createTechpoint(world, x, y);
+                groupManager.add(techpoint, "player-structure");
+                techpoint.addToWorld();
                 break;
             case "spawner":
-                EntityFactory.createSpawner(world, x, y).addToWorld();
+                final Entity spawner = EntityFactory.createSpawner(world, x, y);
+                groupManager.add(spawner, "player-structure");
+                spawner.addToWorld();
                 break;
             case "duct":
                 EntityFactory.createDuct(world, x, y).addToWorld();

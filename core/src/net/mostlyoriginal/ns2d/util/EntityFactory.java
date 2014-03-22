@@ -26,6 +26,7 @@ public class EntityFactory {
 
         return newPositioned(world, x, y)
                 .addComponent(new Anim("skulk", Anim.Layer.ENEMIES))
+                .addComponent(new Focus())
                 .addComponent(new Physics())
                 .addComponent(new Gravity())
                 .addComponent(new WallSensor())
