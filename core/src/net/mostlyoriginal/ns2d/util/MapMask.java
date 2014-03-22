@@ -45,12 +45,17 @@ public class MapMask {
         return atGrid((int)(x / G.CELL_SIZE),(int)(y / G.CELL_SIZE));
     }
 
+    public boolean atScreen( final float x, final float y)
+    {
+        return atGrid((int)((int)x / G.CELL_SIZE),(int)((int)y / G.CELL_SIZE));
+    }
+
     private void generate(Array<TiledMapTileLayer> layers, String propertyKey) {
         for (TiledMapTileLayer layer : layers) {
             for (int ty = 0; ty < height; ty++) {
                 for (int tx = 0; tx < width; tx++) {
                     final TiledMapTileLayer.Cell cell = layer.getCell(tx, ty);
-                    if (cell.getTile().getProperties().containsKey(propertyKey)) {
+                    if ( cell != null && cell.getTile() != null && cell.getTile().getProperties().containsKey(propertyKey)) {
                         v[ty][tx] = true;
                     }
                 }

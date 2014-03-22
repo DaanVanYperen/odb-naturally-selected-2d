@@ -8,7 +8,7 @@ import com.artemis.World;
 public class G {
 
 
-    public static final float CELL_SIZE = 32;
+    public static final int CELL_SIZE = 32;
 
     public static MainScreen screen;
     public static World world;

@@ -6,8 +6,8 @@ import com.artemis.Component;
  * @author Daan van Yperen
  */
 public class Pos extends Component {
-    public final float x;
-    public final float y;
+    public float x;
+    public float y;
 
     public Pos(float x, float y) {
         this.x = x;

@@ -2,10 +2,8 @@ package net.mostlyoriginal.ns2d.util;
 
 import com.artemis.Entity;
 import com.artemis.World;
-import net.mostlyoriginal.ns2d.component.Anim;
-import net.mostlyoriginal.ns2d.component.CameraFocus;
-import net.mostlyoriginal.ns2d.component.Physics;
-import net.mostlyoriginal.ns2d.component.Pos;
+import net.mostlyoriginal.ns2d.G;
+import net.mostlyoriginal.ns2d.component.*;
 
 /**
  * @author Daan van Yperen
@@ -17,6 +15,8 @@ public class EntityFactory {
         return newPositioned(world, x, y)
                 .addComponent(new Anim("player", Anim.Layer.PLAYER))
                 .addComponent(new Physics())
+                .addComponent(new Gravity())
+                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE))
                 .addComponent(new CameraFocus());
     }
 
