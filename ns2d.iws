@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a3431cf-d619-496e-8f5b-feccda2c4911" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/ns2d_tileset.png" afterPath="$PROJECT_DIR$/android/assets/ns2d_tileset.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Anim.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Anim.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/AnimRenderSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/AnimRenderSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Attached.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Attached.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/AttachmentSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/AttachmentSystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Weapon.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Weapon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/WeaponSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/WeaponSystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ns2d.iws" afterPath="$PROJECT_DIR$/ns2d.iws" />
     </list>
     <ignored path="ns2d.iws" />
@@ -79,7 +71,7 @@
       <file leaf-file-name="EntityFactory.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="29" selection-start="1169" selection-end="1169" vertical-scroll-proportion="0.33236575" vertical-offset="366" max-vertical-offset="2958">
+            <state line="143" column="141" selection-start="5798" selection-end="5798" vertical-scroll-proportion="0.35849056" vertical-offset="2184" max-vertical-offset="3077">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -110,7 +102,7 @@
       <file leaf-file-name="AssetSystem.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="42" selection-start="2706" selection-end="2706" vertical-scroll-proportion="0.0" vertical-offset="858" max-vertical-offset="1768">
+            <state line="86" column="24" selection-start="2950" selection-end="2950" vertical-scroll-proportion="0.0" vertical-offset="1079" max-vertical-offset="1768">
               <folding />
             </state>
           </provider>
@@ -1013,7 +1005,7 @@
       <workItem from="1395490946789" duration="850000" />
       <workItem from="1395491874854" duration="2494000" />
       <workItem from="1395494595535" duration="43631000" />
-      <workItem from="1395569899264" duration="1730000" />
+      <workItem from="1395569899264" duration="2280000" />
     </task>
     <task id="LOCAL-00001" summary="Basic map and rendering system.&#10;">
       <created>1395496963545</created>
@@ -1139,11 +1131,15 @@
       <created>1395539698849</created>
       <updated>1395539698849</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Added rotational origin for animations, and attachment offsets.&#10;Fixed skulk head location.">
+      <created>1395571667658</created>
+      <updated>1395571667658</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48745000" />
+    <option name="totallyTimeSpent" value="49295000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1208" extended-state="0" />
@@ -1198,7 +1194,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Detect if player is on floor or on wall.&#10;" />
     <MESSAGE value="Only allow jujmping on floor." />
     <MESSAGE value="Added very basic entity spawner for skulks." />
     <MESSAGE value="Introduced basic bullet collision" />
@@ -1223,7 +1218,8 @@
     <MESSAGE value="Added armory (non functional)." />
     <MESSAGE value="Added shotty basic." />
     <MESSAGE value="Added slight pushback to weapons." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added slight pushback to weapons." />
+    <MESSAGE value="Added rotational origin for animations, and attachment offsets.&#10;Fixed skulk head location." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added rotational origin for animations, and attachment offsets.&#10;Fixed skulk head location." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1588,7 +1584,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="42" selection-start="2706" selection-end="2706" vertical-scroll-proportion="0.0" vertical-offset="858" max-vertical-offset="1768">
+        <state line="86" column="24" selection-start="2950" selection-end="2950" vertical-scroll-proportion="0.0" vertical-offset="1079" max-vertical-offset="1768">
           <folding />
         </state>
       </provider>
@@ -1602,7 +1598,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="29" selection-start="1169" selection-end="1169" vertical-scroll-proportion="0.33236575" vertical-offset="366" max-vertical-offset="2958">
+        <state line="143" column="141" selection-start="5798" selection-end="5798" vertical-scroll-proportion="0.35849056" vertical-offset="2184" max-vertical-offset="3077">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

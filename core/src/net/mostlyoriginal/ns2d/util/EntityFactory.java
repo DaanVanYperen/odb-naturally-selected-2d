@@ -10,6 +10,11 @@ import net.mostlyoriginal.ns2d.component.*;
  */
 public class EntityFactory {
 
+    private static final int PLAYER_WEAPON_MOUNT_X = 19;
+    private static final int PLAYER_WEAPON_MOUNT_Y = 13;
+    private static final int WEAPON_ROT_ORIGIN_X = 11;
+    private static final int WEAPON_ROT_ORIGIN_Y = 17;
+
     public static Entity createPlayer(final World world, final float x, final float y) {
 
         Entity player = newPositioned(world, x, y)
@@ -88,30 +93,6 @@ public class EntityFactory {
                 .addComponent(new Bounds(7,4));
     }
 
-    public static Entity createShotgun(World world, float x, float y, Entity player) {
-        Weapon weapon = new Weapon();
-        weapon.fireCooldown = 0.5f;
-        weapon.minBullets = 8;
-        weapon.maxBullets = 10;
-        weapon.spread = 20;
-        weapon.bulletSpeed *= 0.9f;
-        weapon.bulletAnimId = "slug";
-        return newPositioned(world, x, y)
-                .addComponent(new Anim("shotgun", Anim.Layer.PLAYER_ARM))
-                .addComponent(new Attached(player))
-                .addComponent(weapon)
-                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
-    }
-
-    public static Entity createRifle(World world, float x, float y, Entity player) {
-        Weapon weapon = new Weapon();
-        return newPositioned(world, x, y)
-                .addComponent(new Anim("rifle", Anim.Layer.PLAYER_ARM))
-                .addComponent(new Attached(player))
-                .addComponent(weapon)
-                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
-    }
-
     public static Entity createMouseCursor(World world, float x, float y) {
         return newPositioned(world, x, y)
                 .addComponent(new MouseCursor());
@@ -148,6 +129,32 @@ public class EntityFactory {
                 .addComponent(new Anim("armory-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
     }
 
+
+
+    public static Entity createShotgun(World world, float x, float y, Entity player) {
+        Weapon weapon = new Weapon();
+        weapon.fireCooldown = 0.5f;
+        weapon.minBullets = 8;
+        weapon.maxBullets = 10;
+        weapon.spread = 20;
+        weapon.bulletSpeed *= 0.9f;
+        weapon.bulletAnimId = "slug";
+        return newPositioned(world, x, y)
+                .addComponent(new Anim("shotgun", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+                .addComponent(new Attached(player, PLAYER_WEAPON_MOUNT_X - WEAPON_ROT_ORIGIN_X, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y))
+                .addComponent(weapon)
+                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
+    }
+
+    public static Entity createRifle(World world, float x, float y, Entity player) {
+        Weapon weapon = new Weapon();
+        return newPositioned(world, x, y)
+                .addComponent(new Anim("rifle", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+                .addComponent(new Attached(player, PLAYER_WEAPON_MOUNT_X - WEAPON_ROT_ORIGIN_X, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y))
+                .addComponent(weapon)
+                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
+    }
+
     public static Entity createGrenadeLauncher(World world, float x, float y, Entity player) {
         Weapon weapon = new Weapon();
         weapon.fireCooldown = 0.4f;
@@ -159,8 +166,8 @@ public class EntityFactory {
         weapon.bulletAnimId = "grenade";
         weapon.bulletFriction = 1f;
         return newPositioned(world, x, y)
-                .addComponent(new Anim("grenadelauncher", Anim.Layer.PLAYER_ARM))
-                .addComponent(new Attached(player))
+                .addComponent(new Anim("grenadelauncher", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+                .addComponent(new Attached(player, PLAYER_WEAPON_MOUNT_X - WEAPON_ROT_ORIGIN_X, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y))
                 .addComponent(weapon)
                 .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
     }
