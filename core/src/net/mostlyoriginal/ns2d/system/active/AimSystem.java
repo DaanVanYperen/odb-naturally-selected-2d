@@ -44,6 +44,6 @@ public class AimSystem extends EntityProcessingSystem {
     }
 
     public void aimAt(Entity e, Entity at) {
-        nm.get(e).rotation = EntityUtil.angle(e,at);
+        nm.get(e).rotation = EntityUtil.angle(e, at);
     }
 }

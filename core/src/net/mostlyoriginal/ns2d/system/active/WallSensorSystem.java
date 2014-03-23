@@ -58,17 +58,20 @@ public class WallSensorSystem extends EntityProcessingSystem {
 
         final WallSensor wallSensor = ws.get(e);
 
-        wallSensor.onVerticalSurface =
-                collides(px + bounds.x2 + 1, py + bounds.y1 + (bounds.y2 - bounds.y1) * 0.5f)
-                        || collides(px + bounds.x1 - 1, py + bounds.y1 + (bounds.y2 - bounds.y1) * 0.5f);
+        final boolean onFloor = collides(px + bounds.x1 + (bounds.x2 - bounds.x1) * 0.5f, py + bounds.y1 - 1);
+        final boolean onCeiling = collides(px + bounds.x1 + (bounds.x2 - bounds.x1) * 0.5f, py + bounds.y2 + 1);
+        final boolean onEastWall = collides(px + bounds.x2 + 1, py + bounds.y1 + (bounds.y2 - bounds.y1) * 0.5f);
+        final boolean onWestWall = collides(px + bounds.x1 - 1, py + bounds.y1 + (bounds.y2 - bounds.y1) * 0.5f);
 
-        wallSensor.onFloor =
-                collides(px + bounds.x1 + (bounds.x2 - bounds.x1) * 0.5f, py + bounds.y1 - 1);
+        wallSensor.onVerticalSurface = onEastWall || onWestWall;
+        wallSensor.onFloor = onFloor;
+        wallSensor.onHorizontalSurface = onCeiling || wallSensor.onFloor;
 
-        wallSensor.onHorizontalSurface =
-                collides(px + bounds.x1 + (bounds.x2 - bounds.x1) * 0.5f, py + bounds.y2 + 1)
-                        || wallSensor.onFloor;
-
+        wallSensor.wallAngle =
+                    onFloor ? 90 :
+                    onCeiling ? -90 :
+                    onEastWall ? 0  :
+                    onWestWall ? 180 : 90;
     }
 
     private boolean collides(final float x, final float y) {

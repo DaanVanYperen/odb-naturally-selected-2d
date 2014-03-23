@@ -10,6 +10,8 @@ public class WallSensor extends Component {
     public boolean onHorizontalSurface = false;
     public boolean onVerticalSurface = false;
 
+    public float wallAngle;
+
     public boolean onAnySurface() {
         return onHorizontalSurface || onVerticalSurface;
     }

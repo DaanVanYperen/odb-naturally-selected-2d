@@ -160,7 +160,7 @@ public class SkulkControlSystem extends EntityProcessingSystem {
         SkulkControlled controlled = com.get(skulk);
 
         if (sensor.onAnySurface() && controlled.leapCooldown <= 0) {
-            float direction = EntityUtil.angle(skulk, focus);
+            float direction = EntityUtil.angle(skulk, focus) + MathUtils.random(-10f,10f);
             leapTowards(skulk, direction, enemyDistance);
         } else if (sensor.onAnySurface()) {
             walkTowards(sensor, physics, enemyDirX, enemyDirY);
@@ -172,6 +172,9 @@ public class SkulkControlSystem extends EntityProcessingSystem {
         SkulkControlled controlled = com.get(skulk);
         controlled.leapCooldown = MathUtils.random(1f, 1.5f);
         physicsSystem.push(skulk, direction, 3*MathUtils.clamp(distance, 100, 250));
+
+        final WallSensor sensor = wm.get(skulk);
+        physicsSystem.push(skulk, sensor.wallAngle-180, 100);
     }
 
     private void walkTowards(WallSensor sensor, Physics physics, float enemyDirX, float enemyDirY) {
