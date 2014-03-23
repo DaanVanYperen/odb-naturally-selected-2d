@@ -75,7 +75,8 @@ public class AssetSystem extends PassiveSystem {
         add("techpoint", 0, 384, TILE_SIZE*2, TILE_SIZE*2, 1);
 
         add("duct", 32, 224, TILE_SIZE, TILE_SIZE, 1);
-        add("skulk", 0, 64, TILE_SIZE, TILE_SIZE, 1);
+        add("skulk", 0, 592, TILE_SIZE, 16, 3);
+        add("skulk-head", 105, 590, 15, 10, 1);
         add("debug-marker", 44, 51, 3, 3, 1);
 
         add("bullet", 43, 45, 9, 6, 1);

@@ -21,6 +21,7 @@ public class WeaponSystem extends EntityProcessingSystem {
     private ComponentMapper<Bounds> om;
     private ComponentMapper<Attached> atm;
     private ComponentMapper<Anim> am;
+    private ComponentMapper<Physics> ym;
     private GroupManager groupManager;
     private PhysicsSystem physicsSystems;
     private AfterPhysicsSystem afterPhysicsSystem;
@@ -65,6 +66,9 @@ public class WeaponSystem extends EntityProcessingSystem {
                             physicsSystems.push(attachedTo.parent, rotation - 180, weapon.recoil);
                         }
                     }
+
+                    ym.get(bullet).friction = weapon.bulletFriction;
+
 
                     physicsSystems.push(bullet, rotation, weapon.bulletSpeed);
 

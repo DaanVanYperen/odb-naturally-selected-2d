@@ -29,8 +29,8 @@ public class AttachmentSystem extends EntityProcessingSystem {
                 Pos pos = pm.get(e);
                 Pos parPos = pm.get(attached.parent);
 
-                pos.x = parPos.x;
-                pos.y = parPos.y;
+                pos.x = parPos.x + attached.xo;
+                pos.y = parPos.y + attached.yo;
             } else {
                 // parent gone? we gone!
                 e.deleteFromWorld();

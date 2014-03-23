@@ -31,9 +31,13 @@ public class EntityFactory {
         weapon.bulletLifetime = 0f;
         weapon.fireCooldown = 1f;
         weapon.bulletGroup = "enemy-bullet";
+        final int originX = 5;
+        final int originY = 3;
+        final int mountX = 23;
+        final int mountY = 13;
         return newPositioned(world, x, y)
-                .addComponent(new Anim("rifle", Anim.Layer.PLAYER_ARM))
-                .addComponent(new Attached(skulk))
+                .addComponent(new Anim("skulk-head", Anim.Layer.PLAYER_ARM, originX, originY))
+                .addComponent(new Attached(skulk, mountX - originX, mountY - originY))
                 .addComponent(weapon)
                 .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
     }
@@ -48,7 +52,7 @@ public class EntityFactory {
                 .addComponent(new Gravity())
                 .addComponent(new WallSensor())
                 .addComponent(new SkulkControlled())
-                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
+                .addComponent(new Bounds(32, 17));
 
         Entity head = EntityFactory.createSkulkHead(world, x, y, skulk)
                 .addComponent(new Aim());
@@ -143,4 +147,22 @@ public class EntityFactory {
                 .addComponent(new Buildable("armory", "armory-unbuilt"))
                 .addComponent(new Anim("armory-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
     }
+
+    public static Entity createGrenadeLauncher(World world, float x, float y, Entity player) {
+        Weapon weapon = new Weapon();
+        weapon.fireCooldown = 0.4f;
+        weapon.minBullets = 1;
+        weapon.maxBullets = 1;
+        weapon.spread = 5;
+        weapon.recoil *= 20;
+        weapon.bulletSpeed *= 0.7f;
+        weapon.bulletAnimId = "grenade";
+        weapon.bulletFriction = 1f;
+        return newPositioned(world, x, y)
+                .addComponent(new Anim("grenadelauncher", Anim.Layer.PLAYER_ARM))
+                .addComponent(new Attached(player))
+                .addComponent(weapon)
+                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
+    }
+
 }

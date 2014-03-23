@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.Color;
  */
 public class Anim extends Component {
 
+    public static final int ORIGIN_AUTO = -999999;
+
     public static enum Layer
     {
         ON_WALL,
@@ -25,6 +27,8 @@ public class Anim extends Component {
     public float age = 0;
     public float scale = 1;
     public float rotation = 0;
+    public int ox = ORIGIN_AUTO; // rotational origin X
+    public int oy = ORIGIN_AUTO; // rotational origin Y
     public final Color color = new Color(1,1,1,1);
 
     public Anim(String id) {
@@ -33,6 +37,12 @@ public class Anim extends Component {
     public Anim(String id, Layer layer ) {
         this.id = id;
         this.layer = layer;
+    }
+    public Anim(String id, Layer layer, int ox, int oy ) {
+        this.id = id;
+        this.layer = layer;
+        this.ox = ox;
+        this.oy = oy;
     }
 
 }

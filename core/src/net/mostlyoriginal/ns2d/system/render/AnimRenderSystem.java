@@ -91,8 +91,8 @@ public class AnimRenderSystem extends EntitySystem {
             batch.draw(frame,
                     (int)position.x,
                     (int)position.y,
-                    frame.getRegionWidth() * animation.scale * 0.5f ,
-                    frame.getRegionHeight() * animation.scale * 0.5f,
+                    animation.ox == Anim.ORIGIN_AUTO ? frame.getRegionWidth() * animation.scale * 0.5f : animation.ox,
+                    animation.oy == Anim.ORIGIN_AUTO ? frame.getRegionHeight() * animation.scale * 0.5f : animation.oy,
                     frame.getRegionWidth() * animation.scale,
                     frame.getRegionHeight() * animation.scale, 1, 1,
                     animation.rotation);
