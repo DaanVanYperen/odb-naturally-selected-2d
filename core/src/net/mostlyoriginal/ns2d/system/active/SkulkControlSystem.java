@@ -96,6 +96,7 @@ public class SkulkControlSystem extends EntityProcessingSystem {
 
 
         Entity focus = determineFocus(skulk);
+        if ( focus == null ) return;
         enemyPos = pm.get(focus);
 
         aimHeadAtFocus(skulk, focus);

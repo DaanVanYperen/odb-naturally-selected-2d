@@ -29,12 +29,14 @@ public class MainScreen implements Screen {
 
         G.world = new World();
 
+
         G.world.setManager(new GroupManager());
         G.world.setManager(new TagManager());
 
         // Active - Cleanup
         G.world.setSystem(new TerminalSystem());
         G.world.setSystem(new EntitySpawnerSystem());
+        G.world.setSystem(new ScriptSystem());
 
         // Passive System, loader helpers.
         G.world.setSystem(new AssetSystem());

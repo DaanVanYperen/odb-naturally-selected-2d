@@ -15,6 +15,8 @@ public class EntityFactory {
         Entity player = newPositioned(world, x, y)
                 .addComponent(new Anim("player", Anim.Layer.PLAYER))
                 .addComponent(new Physics())
+                .addComponent(new Health(10))
+                .addComponent(new RespawnOnDeath())
                 .addComponent(new Gravity())
                 .addComponent(new WallSensor())
                 .addComponent(new PlayerControlled())

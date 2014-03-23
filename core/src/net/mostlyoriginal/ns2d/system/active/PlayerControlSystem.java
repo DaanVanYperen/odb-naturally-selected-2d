@@ -28,6 +28,7 @@ public class PlayerControlSystem extends EntityProcessingSystem {
     private ComponentMapper<Pos> pm;
     private ComponentMapper<Gravity> gm;
     private ComponentMapper<Anim> am;
+    private ComponentMapper<Frozen> fm;
 
     private EntitySpawnerSystem entitySpawnerSystem;
     private PhysicsSystem physicsSystem;
@@ -42,8 +43,15 @@ public class PlayerControlSystem extends EntityProcessingSystem {
     @Override
     protected void process(Entity player) {
 
-
         final Physics physics = ym.get(player);
+
+        // frozen player does not act.
+        if ( fm.has(player))
+        {
+            physics.vr = physics.vx = physics.vy = 0;
+            return;
+        }
+
         final WallSensor wallSensor = wm.get(player);
         final Pos pos = pm.get(player);
         final Anim anim = am.get(player);

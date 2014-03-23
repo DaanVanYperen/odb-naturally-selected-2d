@@ -58,6 +58,7 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
                 final Entity spawner = EntityFactory.createSpawner(world, x, y);
                 groupManager.add(spawner, "player-structure");
                 groupManager.add(spawner, "player-friend");
+                groupManager.add(spawner, "spawner");
                 spawner.addToWorld();
                 break;
             case "duct":

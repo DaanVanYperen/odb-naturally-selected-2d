@@ -61,6 +61,8 @@ public class AssetSystem extends PassiveSystem {
 
         add("player", 0, 0, TILE_SIZE, TILE_SIZE, 1);
         add("player-jetpack", 192, 0, TILE_SIZE, TILE_SIZE, 1);
+        add("player-respawning", 224, 0, TILE_SIZE, TILE_SIZE, 1);
+
 
         add("spawner", 0, 464, 16,16, 1);
         add("resourcetower", 0, 336, 16*3, 16*3, 1);
