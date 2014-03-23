@@ -84,6 +84,8 @@ public class AssetSystem extends PassiveSystem {
         add("grenade", 42, 108, 12, 8, 1);
         add("flames", 32, 128, 16, 16, 6,2);
 
+        add("health-tick", 14, 526, 4, 5, 1);
+
         add("rifle", 0, 32, TILE_SIZE, TILE_SIZE, 1);
         add("shotgun", 0, 64, TILE_SIZE, TILE_SIZE, 1);
         add("grenadelauncher", 0, 96, TILE_SIZE, TILE_SIZE, 1);

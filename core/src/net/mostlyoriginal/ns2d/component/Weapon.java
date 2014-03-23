@@ -17,9 +17,10 @@ public class Weapon extends Component {
     public float spread = 10f; // spread in degrees
     public boolean firing = false;
 
-    public String bulletGroup = "bullet";
     public String bulletAnimId = "bullet";
     public float recoil = 20;
     public float bulletFriction = 0.01f;
     public float bulletBounce = 0;
+    public Payload bulletPayload = new Payload();
+    public String enemyGroup = "enemy";
 }

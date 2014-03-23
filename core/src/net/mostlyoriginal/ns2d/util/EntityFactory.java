@@ -38,9 +38,9 @@ public class EntityFactory {
 
     public static Entity createSkulkHead(World world, float x, float y, Entity skulk) {
         Weapon weapon = new Weapon();
-        weapon.bulletLifetime = 0f;
+        weapon.bulletLifetime = 1/30f;
         weapon.fireCooldown = 1f;
-        weapon.bulletGroup = "enemy-bullet";
+        weapon.enemyGroup = "player-friend";
         final int originX = 5;
         final int originY = 3;
         final int mountX = 23;
@@ -106,22 +106,24 @@ public class EntityFactory {
     public static Entity createResourceTower(World world, float x, float y) {
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(16 * 3, 16 * 3))
-                .addComponent(new Health(100))
                 .addComponent(new Harvester())
+                .addComponent(new HealthIndicator())
                 .addComponent(new Buildable("resourcetower", "resourcetower-unbuilt", COST_RESOURCETOWER))
                 .addComponent(new Anim("resourcetower-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
     }
 
     public static Entity createTechpoint(World world, float x, float y) {
         return newPositioned(world, x, y)
-                .addComponent(new Health(1000))
+                .addComponent(new Bounds(64,64))
+                .addComponent(new Health(100))
+                .addComponent(new HealthIndicator())
                 .addComponent(new Anim("techpoint", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
     }
 
     public static Entity createSpawner(final World world, final float x, final float y) {
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(16, 16))
-                .addComponent(new Health(100))
+                .addComponent(new HealthIndicator())
                 .addComponent(new Buildable("spawner", "spawner-unbuilt",COST_INFANTRY_PORTAL))
                 .addComponent(new Anim("spawner-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
 
@@ -130,7 +132,7 @@ public class EntityFactory {
     public static Entity createArmory(World world, float x, float y) {
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(16 * 3, 16 * 3))
-                .addComponent(new Health(100))
+                .addComponent(new HealthIndicator())
                 .addComponent(new Buildable("armory", "armory-unbuilt", COST_ARMORY))
                 .addComponent(new Anim("armory-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
     }
@@ -169,11 +171,13 @@ public class EntityFactory {
         weapon.minBullets = 1;
         weapon.maxBullets = 1;
         weapon.spread = 5;
-        weapon.recoil *= 20;
+        weapon.recoil *= 5;
         weapon.bulletSpeed *= 0.5f;
         weapon.bulletAnimId = "grenade";
         weapon.bulletFriction = 0.3f;
         weapon.bulletBounce = 0.8f;
+        weapon.bulletPayload.radius = 50;
+        weapon.bulletPayload.minDamage = weapon.bulletPayload.maxDamage = 5;
         return newPositioned(world, x, y)
                 .addComponent(new Anim("grenadelauncher", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
                 .addComponent(new Attached(player, PLAYER_WEAPON_MOUNT_X - WEAPON_ROT_ORIGIN_X, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y))

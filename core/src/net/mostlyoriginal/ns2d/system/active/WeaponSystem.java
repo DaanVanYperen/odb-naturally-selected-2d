@@ -50,7 +50,6 @@ public class WeaponSystem extends EntityProcessingSystem {
                 for (int c = 0, s = MathUtils.random(weapon.minBullets, weapon.maxBullets); c < s; c++) {
 
                     Entity bullet = EntityFactory.createBullet(world, pos.x + bounds.cy(), pos.y + bounds.cy());
-                    groupManager.add(bullet, weapon.bulletGroup);
 
                     bullet.addComponent(new Terminal(weapon.bulletLifetime));
 
@@ -72,8 +71,12 @@ public class WeaponSystem extends EntityProcessingSystem {
                     physics.friction = weapon.bulletFriction;
                     physics.bounce = weapon.bulletBounce;
 
+                    Payload payload = weapon.bulletPayload.clone();
+                    payload.triggerGroup = weapon.enemyGroup;
+                    bullet.addComponent(payload);
 
-                    attachmentSystem.push(gun, rotation-180, weapon.recoil / s);
+
+                    attachmentSystem.push(gun, rotation - 180, weapon.recoil / s);
                     physicsSystems.push(bullet, rotation, weapon.bulletSpeed);
 
                     bullet.addToWorld();

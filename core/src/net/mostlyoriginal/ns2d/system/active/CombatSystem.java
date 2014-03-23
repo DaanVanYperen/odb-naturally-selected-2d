@@ -18,11 +18,17 @@ public class CombatSystem extends PassiveSystem {
     private ComponentMapper<Health> hm;
     private ComponentMapper<Buildable> bm;
     private ComponentMapper<RespawnOnDeath> rm;
+    private ComponentMapper<Payload> pm;
 
     private BuildableSystem buildableSystem;
     private GroupManager groupManager;
 
-    public void damage(Entity victim, Entity attacker, int damage) {
+    @Override
+    protected void initialize() {
+        super.initialize();
+    }
+
+    public void damage(Entity victim, int damage) {
         if (hm.has(victim)) {
             Health health = hm.get(victim);
 
