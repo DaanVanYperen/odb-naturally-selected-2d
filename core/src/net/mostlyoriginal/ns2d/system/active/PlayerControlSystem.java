@@ -26,7 +26,9 @@ public class PlayerControlSystem extends EntityProcessingSystem {
     private ComponentMapper<Physics> ym;
     private ComponentMapper<WallSensor> wm;
     private ComponentMapper<Pos> pm;
+    private ComponentMapper<Weapon> wem;
     private ComponentMapper<Gravity> gm;
+    private ComponentMapper<Inventory> im;
     private ComponentMapper<Anim> am;
     private ComponentMapper<Frozen> fm;
 
@@ -50,6 +52,16 @@ public class PlayerControlSystem extends EntityProcessingSystem {
         {
             physics.vr = physics.vx = physics.vy = 0;
             return;
+        }
+
+        if ( Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isButtonPressed(0) )
+        {
+            Inventory inventory = im.get(player);
+            if ( inventory.weapon != null && inventory.weapon.isActive())
+            {
+                Weapon weapon = wem.get(inventory.weapon);
+                weapon.firing = true;
+            }
         }
 
         final WallSensor wallSensor = wm.get(player);

@@ -26,6 +26,7 @@ public class SkulkControlSystem extends EntityProcessingSystem {
     private ComponentMapper<Pos> pm;
     private ComponentMapper<Anim> am;
     private ComponentMapper<Focus> fm;
+    private ComponentMapper<Weapon> weam;
     private ComponentMapper<Aim> a2m;
     private ComponentMapper<Inventory> im;
     private TagManager tagManager;
@@ -101,7 +102,6 @@ public class SkulkControlSystem extends EntityProcessingSystem {
 
         aimHeadAtFocus(skulk, focus);
 
-
         WallSensor sensor = wm.get(skulk);
         Physics physics = ym.get(skulk);
         Pos skulkPos = pm.get(skulk);
@@ -150,6 +150,7 @@ public class SkulkControlSystem extends EntityProcessingSystem {
         {
             Aim aim = a2m.get(inventory.weapon);
             aim.at = focus;
+            weam.get(inventory.weapon).firing = true;
         }
     }
 

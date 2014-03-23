@@ -6,8 +6,6 @@ import com.artemis.Entity;
 import com.artemis.annotations.Wire;
 import com.artemis.managers.GroupManager;
 import com.artemis.systems.EntityProcessingSystem;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.MathUtils;
 import net.mostlyoriginal.ns2d.component.*;
 import net.mostlyoriginal.ns2d.util.EntityFactory;
@@ -34,7 +32,8 @@ public class WeaponSystem extends EntityProcessingSystem {
     protected void process(Entity e) {
 
         final Weapon weapon = wm.get(e);
-        if ( weapon.autofire || Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isButtonPressed(0)) {
+        if ( weapon.firing) {
+            weapon.firing=false;
 
 
             weapon.cooldown -= world.delta;

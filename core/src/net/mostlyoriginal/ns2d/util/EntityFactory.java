@@ -28,7 +28,6 @@ public class EntityFactory {
 
     public static Entity createSkulkHead(World world, float x, float y, Entity skulk) {
         Weapon weapon = new Weapon();
-        weapon.autofire = true;
         weapon.bulletLifetime = 0f;
         weapon.fireCooldown = 0.4f;
         weapon.bulletGroup = "enemy-bullet";

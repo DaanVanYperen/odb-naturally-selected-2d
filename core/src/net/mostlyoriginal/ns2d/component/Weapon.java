@@ -6,7 +6,6 @@ import com.artemis.Component;
  * @author Daan van Yperen
  */
 public class Weapon extends Component {
-    boolean firing;
 
     public float cooldown = 0;
 
@@ -14,7 +13,7 @@ public class Weapon extends Component {
     public float bulletSpeed = 500;
     public float fireCooldown = 1f/15f; // cooldown per bullet.
     public float spread = 10f; // spread in degrees
-    public boolean autofire = false;
+    public boolean firing = false;
 
     public String bulletGroup = "bullet";
 }
