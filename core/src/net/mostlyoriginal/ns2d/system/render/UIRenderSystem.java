@@ -6,6 +6,7 @@ import com.artemis.annotations.Wire;
 import com.artemis.managers.TagManager;
 import com.artemis.systems.VoidEntitySystem;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import net.mostlyoriginal.ns2d.component.Health;
 import net.mostlyoriginal.ns2d.component.Wallet;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
@@ -23,6 +24,7 @@ public class UIRenderSystem extends VoidEntitySystem {
     private TagManager tagManager;
 
     private ComponentMapper<Wallet> wm;
+    private ComponentMapper<Health> hm;
 
     @Override
     protected void processSystem() {
@@ -33,6 +35,11 @@ public class UIRenderSystem extends VoidEntitySystem {
         Entity player = tagManager.getEntity("player");
         assetSystem.font.setColor(1f,1f,1f,1f);
         assetSystem.font.draw(batch, "resources: " + wm.get(player).resources, 50, 50);
+        if ( hm.has(player))
+        {
+            Health health = hm.get(player);
+            assetSystem.font.draw(batch, "health: " + (health.health - health.damage), 200, 50);
+        }
 
         batch.end();
     }

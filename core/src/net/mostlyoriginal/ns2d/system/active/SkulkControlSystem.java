@@ -40,10 +40,16 @@ public class SkulkControlSystem extends EntityProcessingSystem {
     private CombatSystem combatSystem;
     private ComponentMapper<Buildable> bm;
     private ComponentMapper<Health> hm;
+    public ImmutableBag<Entity> playerFriends;
 
-    public SkulkControlSystem()
-    {
+    public SkulkControlSystem() {
         super(Aspect.getAspectForAll(SkulkControlled.class, WallSensor.class, Anim.class, Physics.class, Focus.class));
+    }
+
+    @Override
+    protected void initialize() {
+        super.initialize();
+        playerFriends = groupManager.getEntities("player-friend");
     }
 
     @Override
@@ -52,50 +58,35 @@ public class SkulkControlSystem extends EntityProcessingSystem {
     }
 
     private Entity determineFocus(Entity skulk) {
-        Focus focus = fm.get(skulk);
 
+        final Focus focus = fm.get(skulk);
         float closestDistance = -1;
 
-        if ( focus.entity == null || !focus.entity.isActive() )
-        {
-            Entity player = tagManager.getEntity("player");
-            if ( hm.has(player) )
-            {
-                focus.entity = player;
-            }
+        // lose interest in things without health.
+        if (focus.entity != null && !hm.has(focus.entity)) {
+            focus.entity = null;
         }
 
-        if ( focus.entity != null )
-        {
-            if ( !hm.has(focus.entity)) {
-                focus.entity = null;
-            }
-
-            if ( focus.entity != null )
-            {
-                closestDistance = EntityUtil.distance2( skulk,focus.entity);
-            }
+        if (focus.entity != null) {
+            closestDistance = EntityUtil.distance2(skulk, focus.entity);
         }
 
-
-
-        ImmutableBag<Entity> entities = groupManager.getEntities("player-structure");
-        for ( int i=0; entities.size() > i; i++ )
+        // check all valid victims.
+        for ( int i = 0; playerFriends.size() > i; i++)
         {
-            final Entity b = entities.get(i);
-            final float distance = b != null ? EntityUtil.distance2( skulk, b) : -1;
+            final Entity b = playerFriends.get(i);
 
             // we don't care about targets without health.
-            if ( b == null || !hm.has(b))
+            if (b == null || !hm.has(b))
                 continue;
 
-            if ( distance != -1 && (closestDistance == -1 || distance < closestDistance) )
-            {
+
+            final float distance = EntityUtil.distance2(skulk, b);
+            if (closestDistance == -1 || distance < closestDistance) {
                 focus.entity = b;
                 closestDistance = distance;
             }
         }
-
 
         return focus.entity;
     }
@@ -108,7 +99,7 @@ public class SkulkControlSystem extends EntityProcessingSystem {
 
 
         Entity focus = determineFocus(skulk);
-        if ( focus != null ) {
+        if (focus != null) {
             stalk(skulk, focus);
         } else {
             wander(skulk);
@@ -128,19 +119,17 @@ public class SkulkControlSystem extends EntityProcessingSystem {
 
         aimHeadAtFocus(skulk, null);
 
-        if ( sensor.onVerticalSurface )
-        {
+        if (sensor.onVerticalSurface) {
             ty += 100;
 
             // randomly leap
             SkulkControlled controlled = com.get(skulk);
-            if ( controlled.leapCooldown <= 0 ) {
+            if (controlled.leapCooldown <= 0) {
                 leapTowards(skulk, MathUtils.random(-360, 360), MathUtils.random(100, 600));
             }
         }
 
-        if ( sensor.onHorizontalSurface )
-        {
+        if (sensor.onHorizontalSurface) {
             tx += 100;
         }
 
@@ -163,18 +152,17 @@ public class SkulkControlSystem extends EntityProcessingSystem {
         Gravity gravity = gm.get(skulk);
         gravity.enabled = !sensor.onVerticalSurface && !sensor.onHorizontalSurface;
 
-        float enemyDirX =enemyPos.x- skulkPos.x;
-        float enemyDirY = enemyPos.y- skulkPos.y;
+        float enemyDirX = enemyPos.x - skulkPos.x;
+        float enemyDirY = enemyPos.y - skulkPos.y;
 
         float enemyDistance = EntityUtil.distance2(skulk, focus);
 
         SkulkControlled controlled = com.get(skulk);
 
-        if ( sensor.onAnySurface() && controlled.leapCooldown <= 0 )
-        {
+        if (sensor.onAnySurface() && controlled.leapCooldown <= 0) {
             float direction = EntityUtil.angle(skulk, focus);
             leapTowards(skulk, direction, enemyDistance);
-        } else if ( sensor.onAnySurface() ) {
+        } else if (sensor.onAnySurface()) {
             walkTowards(sensor, physics, enemyDirX, enemyDirY);
         }
     }
@@ -182,30 +170,29 @@ public class SkulkControlSystem extends EntityProcessingSystem {
     private void leapTowards(Entity skulk, float direction, float distance) {
         // aim and fire!
         SkulkControlled controlled = com.get(skulk);
-        controlled.leapCooldown = MathUtils.random(1f,1.5f);
-        physicsSystem.push(skulk, direction, MathUtils.clamp(distance, 100, 250));
+        controlled.leapCooldown = MathUtils.random(1f, 1.5f);
+        physicsSystem.push(skulk, direction, 3*MathUtils.clamp(distance, 100, 250));
     }
 
     private void walkTowards(WallSensor sensor, Physics physics, float enemyDirX, float enemyDirY) {
         float dx = 0;
         float dy = 0;
 
-        if ( enemyDirX < -APPROACH_RANGE && sensor.onHorizontalSurface ) dx = -1;
-        if ( enemyDirX > APPROACH_RANGE && sensor.onHorizontalSurface ) dx = 1;
-        if ( enemyDirY < 0 && sensor.onVerticalSurface ) dy = -1;
-        if ( enemyDirY > 0 && sensor.onVerticalSurface ) dy = 1;
+        if (enemyDirX < -APPROACH_RANGE && sensor.onHorizontalSurface) dx = -1;
+        if (enemyDirX > APPROACH_RANGE && sensor.onHorizontalSurface) dx = 1;
+        if (enemyDirY < 0 && sensor.onVerticalSurface) dy = -1;
+        if (enemyDirY > 0 && sensor.onVerticalSurface) dy = 1;
 
         physics.vx = dx * 100;
-        if ( dy != 0 ) physics.vy = dy * 100;
+        if (dy != 0) physics.vy = dy * 100;
     }
 
     private void aimHeadAtFocus(Entity skulk, Entity focus) {
         Inventory inventory = im.get(skulk);
-        if ( inventory.weapon != null && inventory.weapon.isActive() )
-        {
+        if (inventory.weapon != null && inventory.weapon.isActive()) {
             Aim aim = a2m.get(inventory.weapon);
             aim.at = focus;
-            weam.get(inventory.weapon).firing = ( focus != null );
+            weam.get(inventory.weapon).firing = (focus != null);
         }
     }
 
