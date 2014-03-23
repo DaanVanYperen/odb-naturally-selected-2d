@@ -41,6 +41,7 @@ public class EntityFactory {
         weapon.bulletLifetime = 1/30f;
         weapon.fireCooldown = 1f;
         weapon.enemyGroup = "player-friend";
+        weapon.muzzleFlare = false;
         final int originX = 5;
         final int originY = 3;
         final int mountX = 23;

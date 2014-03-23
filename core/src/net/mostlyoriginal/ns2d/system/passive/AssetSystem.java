@@ -93,6 +93,7 @@ public class AssetSystem extends PassiveSystem {
         add("health-tick", 14, 526, 4, 5, 1);
 
         add("particle-explosion", 128, 32, 64,64, 5, 1, tileset, ParticleSystem.EXPLOSION_FRAME_DURATION);
+        add("particle-muzzleflare", 99, 38, 26,19, 1, 1);
 
         add("rifle", 0, 32, TILE_SIZE, TILE_SIZE, 1);
         add("shotgun", 0, 64, TILE_SIZE, TILE_SIZE, 1);

@@ -23,4 +23,6 @@ public class Weapon extends Component {
     public float bulletBounce = 0;
     public Payload bulletPayload = new Payload();
     public String enemyGroup = "enemy";
+
+    public boolean muzzleFlare = true;
 }

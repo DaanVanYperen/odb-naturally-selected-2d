@@ -7,6 +7,7 @@ import com.artemis.annotations.Wire;
 import com.artemis.managers.GroupManager;
 import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
 import net.mostlyoriginal.ns2d.component.*;
 import net.mostlyoriginal.ns2d.util.EntityFactory;
 
@@ -26,10 +27,13 @@ public class WeaponSystem extends EntityProcessingSystem {
     private PhysicsSystem physicsSystems;
     private AfterPhysicsSystem afterPhysicsSystem;
     private AttachmentSystem attachmentSystem;
+    private ParticleSystem particleSystem;
 
     public WeaponSystem() {
         super(Aspect.getAspectForAll(Weapon.class, Pos.class, Bounds.class, Anim.class));
     }
+
+    private Vector2 vTmp = new Vector2();
 
     @Override
     protected void process(Entity gun) {
@@ -46,10 +50,18 @@ public class WeaponSystem extends EntityProcessingSystem {
                 final Bounds bounds = om.get(gun);
                 final Anim anim = am.get(gun);
 
+                if ( weapon.muzzleFlare ) {
+                    // determine muzzle location.
+                    vTmp.set(28,0).rotate(anim.rotation).add(pos.x-8, pos.y+2).add(bounds.cx(), bounds.cy());
+                    particleSystem.setRotation(anim.rotation);
+                    particleSystem.spawnParticle((int)vTmp.x, (int)vTmp.y, "muzzle-flare");
+                    particleSystem.setRotation(0);
+                }
+
                 // repeated bullets.
                 for (int c = 0, s = MathUtils.random(weapon.minBullets, weapon.maxBullets); c < s; c++) {
 
-                    Entity bullet = EntityFactory.createBullet(world, pos.x + bounds.cy(), pos.y + bounds.cy());
+                    Entity bullet = EntityFactory.createBullet(world, pos.x + bounds.cx(), pos.y + bounds.cy());
 
                     bullet.addComponent(new Terminal(weapon.bulletLifetime));
 
