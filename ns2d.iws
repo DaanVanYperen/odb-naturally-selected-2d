@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a3431cf-d619-496e-8f5b-feccda2c4911" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PhysicsSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PhysicsSystem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ns2d.iws" afterPath="$PROJECT_DIR$/ns2d.iws" />
     </list>
     <ignored path="ns2d.iws" />
@@ -68,10 +69,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AssetSystem.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AssetSystem.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="92" column="38" selection-start="3266" selection-end="3266" vertical-scroll-proportion="0.5558781" vertical-offset="1028" max-vertical-offset="1972">
+            <state line="86" column="57" selection-start="3060" selection-end="3060" vertical-scroll-proportion="0.0" vertical-offset="1028" max-vertical-offset="1972">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayerControlSystem.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="126" column="57" selection-start="4479" selection-end="4479" vertical-scroll-proportion="0.5805515" vertical-offset="1589" max-vertical-offset="2295">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PhysicsSystem.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PhysicsSystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="78" selection-start="828" selection-end="828" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
               <folding />
             </state>
           </provider>
@@ -99,8 +118,6 @@
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/ScriptSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/AfterPhysicsSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/GravitySystem.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PhysicsSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/AttachmentSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Attached.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Buildable.java" />
@@ -141,6 +158,8 @@
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/ParticleSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PhysicsSystem.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java" />
       </list>
     </option>
   </component>
@@ -927,7 +946,7 @@
       <workItem from="1395490946789" duration="850000" />
       <workItem from="1395491874854" duration="2494000" />
       <workItem from="1395494595535" duration="43631000" />
-      <workItem from="1395569899264" duration="22057000" />
+      <workItem from="1395569899264" duration="22855000" />
     </task>
     <task id="LOCAL-00001" summary="Basic map and rendering system.&#10;">
       <created>1395496963545</created>
@@ -1109,11 +1128,15 @@
       <created>1395599440783</created>
       <updated>1395599440783</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Applied new health tick.">
+      <created>1395599946447</created>
+      <updated>1395599946447</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69072000" />
+    <option name="totallyTimeSpent" value="69870000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1208" extended-state="0" />
@@ -1168,7 +1191,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Skulks 'attack' structures." />
     <MESSAGE value="Skulks 'attack' nearby structures really quickly." />
     <MESSAGE value="Skulks use melee range versions of weapons to deal damage." />
     <MESSAGE value="Added scripting system for timelined actions like respawning.&#10;" />
@@ -1193,7 +1215,8 @@
     <MESSAGE value="Added particle system and explosive particles to grenades." />
     <MESSAGE value="Added muzzle flare." />
     <MESSAGE value="Added rifle + shotgun shell discharging" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added rifle + shotgun shell discharging" />
+    <MESSAGE value="Applied new health tick." />
+    <option name="LAST_COMMIT_MESSAGE" value="Applied new health tick." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1243,15 +1266,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="0" selection-start="1728" selection-end="1728" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="2227">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/7bc4617288384db2ae2e0e0f28f7c686574cad31/gdx-1.0-SNAPSHOT-sources.jar!/com/badlogic/gdx/graphics/g2d/SpriteBatch.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="712" column="12" selection-start="19079" selection-end="19079" vertical-scroll-proportion="2.489645" vertical-offset="9962" max-vertical-offset="16745">
@@ -1271,13 +1285,6 @@
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/G.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="13" selection-start="109" selection-end="109" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PhysicsSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="9" selection-start="742" selection-end="742" vertical-scroll-proportion="0.616836" vertical-offset="0" max-vertical-offset="689">
           <folding />
         </state>
       </provider>
@@ -1599,7 +1606,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="38" selection-start="3266" selection-end="3266" vertical-scroll-proportion="0.5558781" vertical-offset="1028" max-vertical-offset="1972">
+        <state line="86" column="57" selection-start="3060" selection-end="3060" vertical-scroll-proportion="0.0" vertical-offset="1028" max-vertical-offset="1972">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PhysicsSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="78" selection-start="828" selection-end="828" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="126" column="57" selection-start="4479" selection-end="4479" vertical-scroll-proportion="0.5805515" vertical-offset="1589" max-vertical-offset="2295">
           <folding />
         </state>
       </provider>

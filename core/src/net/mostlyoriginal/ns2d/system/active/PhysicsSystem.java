@@ -26,4 +26,11 @@ public class PhysicsSystem extends PassiveSystem {
         }
     }
 
+    public void clampVelocity(Entity entity, float minSpeed, float maxSpeed) {
+        if (ym.has(entity)) {
+            final Physics physics = ym.get(entity);
+            vTmp.set(physics.vx, physics.vy).clamp(minSpeed,maxSpeed);
+        }
+    }
+
 }

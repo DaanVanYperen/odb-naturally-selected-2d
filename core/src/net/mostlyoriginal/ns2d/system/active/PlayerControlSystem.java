@@ -106,12 +106,25 @@ public class PlayerControlSystem extends EntityProcessingSystem {
 
             if ( rx != 0 ) {
                 physics.vr += rx * world.delta * 10f;
+            } else {
+
+                // not steering, not jetpack active? auto-straighten
+                if ( !jetPackActive )
+                {
+                    float rotationClamped = ((anim.rotation % 360 + 360) % 360);
+
+                    if ( rotationClamped < 180 ) physics.vr -= turningSpeed * world.delta * 1f;
+                    if ( rotationClamped > 180 ) physics.vr += turningSpeed * world.delta * 1f;
+                    if ( rotationClamped < 90 ) physics.vr -= turningSpeed * world.delta * 1f;
+                    if ( rotationClamped > 180+90 ) physics.vr += turningSpeed * world.delta * 1f;
+                }
             }
 
             if ( jetPackActive )
             {
                 gravity.enabled=false;
                 physicsSystem.push(player,anim.rotation  + THRUST_VECTOR, JETPACK_THRUST * world.delta );
+                physicsSystem.clampVelocity(player,0, 100);
                 physics.vr = MathUtils.clamp(physics.vr, -ROTATIONAL_SPEED_JETPACK_ON*2, ROTATIONAL_SPEED_JETPACK_ON*2); // clamp our rotation while accelerating.
             } else {
                 gravity.enabled=true;
