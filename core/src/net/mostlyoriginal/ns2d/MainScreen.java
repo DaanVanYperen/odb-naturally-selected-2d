@@ -16,6 +16,7 @@ import net.mostlyoriginal.ns2d.system.passive.CollisionSystem;
 import net.mostlyoriginal.ns2d.system.passive.MapSystem;
 import net.mostlyoriginal.ns2d.system.render.AnimRenderSystem;
 import net.mostlyoriginal.ns2d.system.render.MapRenderSystem;
+import net.mostlyoriginal.ns2d.system.render.UIRenderSystem;
 
 /**
  * @author Daan van Yperen
@@ -79,6 +80,7 @@ public class MainScreen implements Screen {
         // Active - Render
         G.world.setSystem(new MapRenderSystem());
         G.world.setSystem(new AnimRenderSystem());
+        G.world.setSystem(new UIRenderSystem());
 
         G.world.initialize();
     }

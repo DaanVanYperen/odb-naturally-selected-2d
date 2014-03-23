@@ -9,9 +9,11 @@ public class Buildable extends Component {
     public boolean built;
     public String builtAnimId;
     public String unbuiltAnimId;
+    public final int resourceCost;
 
-    public Buildable(String builtAnimId, String unbuiltAnimId) {
+    public Buildable(String builtAnimId, String unbuiltAnimId, int resourceCost) {
         this.builtAnimId = builtAnimId;
         this.unbuiltAnimId = unbuiltAnimId;
+        this.resourceCost = resourceCost;
     }
 }

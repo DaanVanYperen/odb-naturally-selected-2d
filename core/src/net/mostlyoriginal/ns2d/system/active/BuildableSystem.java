@@ -20,6 +20,7 @@ public class BuildableSystem extends EntityProcessingSystem {
     ComponentMapper<Buildable> bm;
     ComponentMapper<Pos> pm;
     ComponentMapper<Anim> am;
+    ComponentMapper<Wallet> wm;
 
     CollisionSystem collisionSystem;
 
@@ -43,6 +44,11 @@ public class BuildableSystem extends EntityProcessingSystem {
         {
             if (Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isKeyPressed(Input.Keys.E))
             {
+                Wallet wallet = wm.get(player);
+                if (wallet.resources >= buildable.resourceCost)
+                {
+                    wallet.resources -= buildable.resourceCost;
+                }
                 buildable.built = true;
                 Anim anim = am.get(e);
                 anim.id = buildable.builtAnimId;

@@ -15,6 +15,10 @@ public class EntityFactory {
     private static final int WEAPON_ROT_ORIGIN_X = 11;
     private static final int WEAPON_ROT_ORIGIN_Y = 17;
 
+    private static final int COST_INFANTRY_PORTAL = 25;
+    private static final int COST_ARMORY = 15;
+    private static final int COST_RESOURCETOWER = 10;
+
     public static Entity createPlayer(final World world, final float x, final float y) {
 
         Entity player = newPositioned(world, x, y)
@@ -24,6 +28,7 @@ public class EntityFactory {
                 .addComponent(new RespawnOnDeath())
                 .addComponent(new Gravity())
                 .addComponent(new WallSensor())
+                .addComponent(new Wallet(20))
                 .addComponent(new PlayerControlled())
                 .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
         return player;
@@ -102,7 +107,7 @@ public class EntityFactory {
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(16 * 3, 16 * 3))
                 .addComponent(new Health(100))
-                .addComponent(new Buildable("resourcetower", "resourcetower-unbuilt"))
+                .addComponent(new Buildable("resourcetower", "resourcetower-unbuilt", COST_RESOURCETOWER))
                 .addComponent(new Anim("resourcetower-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
     }
 
@@ -116,7 +121,7 @@ public class EntityFactory {
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(16, 16))
                 .addComponent(new Health(100))
-                .addComponent(new Buildable("spawner", "spawner-unbuilt"))
+                .addComponent(new Buildable("spawner", "spawner-unbuilt",COST_INFANTRY_PORTAL))
                 .addComponent(new Anim("spawner", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
 
     }
@@ -125,7 +130,7 @@ public class EntityFactory {
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(16 * 3, 16 * 3))
                 .addComponent(new Health(100))
-                .addComponent(new Buildable("armory", "armory-unbuilt"))
+                .addComponent(new Buildable("armory", "armory-unbuilt", COST_ARMORY))
                 .addComponent(new Anim("armory-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
     }
 
