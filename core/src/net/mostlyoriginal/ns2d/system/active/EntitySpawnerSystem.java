@@ -48,6 +48,13 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
 
                 resourceTower.addToWorld();
                 break;
+            case "armory":
+                Entity armory = EntityFactory.createArmory(world, x, y);
+                groupManager.add(armory, "player-structure");
+                groupManager.add(armory, "player-friend");
+
+                armory.addToWorld();
+                break;
             case "techpoint":
                 final Entity techpoint = EntityFactory.createTechpoint(world, x, y);
                 groupManager.add(techpoint, "player-structure");

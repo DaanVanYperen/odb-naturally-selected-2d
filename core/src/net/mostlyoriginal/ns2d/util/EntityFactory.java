@@ -119,4 +119,12 @@ public class EntityFactory {
                 .addComponent(new Anim("spawner", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
 
     }
+
+    public static Entity createArmory(World world, float x, float y) {
+        return newPositioned(world, x, y)
+                .addComponent(new Bounds(16 * 3, 16 * 3))
+                .addComponent(new Health(100))
+                .addComponent(new Buildable("armory", "armory-unbuilt"))
+                .addComponent(new Anim("armory-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
+    }
 }
