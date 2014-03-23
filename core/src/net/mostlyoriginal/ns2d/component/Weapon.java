@@ -19,4 +19,5 @@ public class Weapon extends Component {
 
     public String bulletGroup = "bullet";
     public String bulletAnimId = "bullet";
+    public float recoil = 20;
 }

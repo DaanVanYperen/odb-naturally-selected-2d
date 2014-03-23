@@ -18,9 +18,12 @@ public class PhysicsSystem extends PassiveSystem {
     private Vector2 vTmp = new Vector2();
 
     public void push(Entity entity, float rotation, float force) {
-        vTmp.set(force, 0).setAngle(rotation);
-        final Physics physics = ym.get(entity);
-        physics.vx += vTmp.x;
-        physics.vy += vTmp.y;
+        if (ym.has(entity)) {
+            vTmp.set(force, 0).setAngle(rotation);
+            final Physics physics = ym.get(entity);
+            physics.vx += vTmp.x;
+            physics.vy += vTmp.y;
+        }
     }
+
 }

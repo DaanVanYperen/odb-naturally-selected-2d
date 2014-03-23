@@ -19,6 +19,7 @@ public class WeaponSystem extends EntityProcessingSystem {
     private ComponentMapper<Weapon> wm;
     private ComponentMapper<Pos> pm;
     private ComponentMapper<Bounds> om;
+    private ComponentMapper<Attached> atm;
     private ComponentMapper<Anim> am;
     private GroupManager groupManager;
     private PhysicsSystem physicsSystems;
@@ -32,11 +33,10 @@ public class WeaponSystem extends EntityProcessingSystem {
     protected void process(Entity e) {
 
         final Weapon weapon = wm.get(e);
+
+        weapon.cooldown -= world.delta;
         if (weapon.firing) {
             weapon.firing = false;
-
-
-            weapon.cooldown -= world.delta;
             if (weapon.cooldown <= 0) {
                 weapon.cooldown = weapon.fireCooldown;
 
@@ -58,6 +58,13 @@ public class WeaponSystem extends EntityProcessingSystem {
                     bulletAnim.rotation = rotation;
                     bulletAnim.id = weapon.bulletAnimId;
 
+                    // push back the user.
+                    if (atm.has(e)) {
+                        Attached attachedTo = atm.get(e);
+                        if (attachedTo.parent != null && attachedTo.parent.isActive()) {
+                            physicsSystems.push(attachedTo.parent, rotation - 180, weapon.recoil);
+                        }
+                    }
 
                     physicsSystems.push(bullet, rotation, weapon.bulletSpeed);
 
