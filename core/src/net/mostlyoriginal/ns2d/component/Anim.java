@@ -22,6 +22,7 @@ public class Anim extends Component {
     public String id;
     public Layer layer = Layer.DEFAULT_LAYER;
 
+    public float age = 0;
     public float scale = 1;
     public float rotation = 0;
     public final Color color = new Color(1,1,1,1);

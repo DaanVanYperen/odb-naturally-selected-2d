@@ -75,6 +75,8 @@ public class AnimRenderSystem extends EntitySystem {
         final Anim anim = sm.get(entity);
         final Pos pos = pm.get(entity);
 
+        anim.age += world.delta;
+
         batch.setColor( anim.color );
         drawAnimation(anim, pos, anim.id);
     }
@@ -82,7 +84,7 @@ public class AnimRenderSystem extends EntitySystem {
     private void drawAnimation(final Anim animation, final Pos position, String id) {
 
         final com.badlogic.gdx.graphics.g2d.Animation gdxanim = assetSystem.get(id);
-        final TextureRegion frame = gdxanim.getKeyFrame(0, true);
+        final TextureRegion frame = gdxanim.getKeyFrame(animation.age, true);
 
         if ( animation.rotation != 0 )
         {

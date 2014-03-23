@@ -59,7 +59,7 @@ public class AssetSystem extends PassiveSystem {
 
         tileset = new Texture("ns2d_tileset.png");
 
-        add("player", 0, 0, TILE_SIZE, TILE_SIZE, 1);
+        add("player", 0, 0, TILE_SIZE, TILE_SIZE, 2);
         add("player-jetpack", 192, 0, TILE_SIZE, TILE_SIZE, 1);
         add("player-respawning", 224, 0, TILE_SIZE, TILE_SIZE, 1);
 
@@ -75,7 +75,7 @@ public class AssetSystem extends PassiveSystem {
         add("duct", 32, 224, TILE_SIZE, TILE_SIZE, 1);
         add("skulk", 0, 64, TILE_SIZE, TILE_SIZE, 1);
         add("debug-marker", 44, 51, 3, 3, 1);
-        add("bullet", 44, 51, 7, 4, 1);
+        add("bullet", 43, 45, 9, 6, 1);
         add("player-arm", 0, 32, TILE_SIZE, TILE_SIZE, 1);
     }
 
