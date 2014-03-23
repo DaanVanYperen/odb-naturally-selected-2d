@@ -75,7 +75,7 @@ public class AnimRenderSystem extends EntitySystem {
         final Anim anim = sm.get(entity);
         final Pos pos = pm.get(entity);
 
-        anim.age += world.delta;
+        anim.age += world.delta * anim.speed;
 
         batch.setColor( anim.color );
         drawAnimation(anim, pos, anim.id);

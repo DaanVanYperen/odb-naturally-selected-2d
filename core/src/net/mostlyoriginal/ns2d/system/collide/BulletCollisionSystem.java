@@ -8,9 +8,12 @@ import com.artemis.managers.GroupManager;
 import com.artemis.systems.EntityProcessingSystem;
 import com.artemis.utils.ImmutableBag;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
 import net.mostlyoriginal.ns2d.component.Payload;
+import net.mostlyoriginal.ns2d.component.Pos;
 import net.mostlyoriginal.ns2d.system.active.CameraShakeSystem;
 import net.mostlyoriginal.ns2d.system.active.CombatSystem;
+import net.mostlyoriginal.ns2d.system.active.ParticleSystem;
 import net.mostlyoriginal.ns2d.system.passive.CollisionSystem;
 import net.mostlyoriginal.ns2d.util.EntityUtil;
 
@@ -22,9 +25,12 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
 
     private CameraShakeSystem cameraShakeSystem;
     private ComponentMapper<Payload> pm;
+    private ComponentMapper<Pos> om;
     private GroupManager groupManager;
     private CollisionSystem collisionSystem;
     private CombatSystem combatSystem;
+    private ParticleSystem particleSystem;
+
 
     public BulletCollisionSystem() {
         super(Aspect.getAspectForAll(Payload.class));
@@ -53,15 +59,27 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
 
         if ( radius == 0 )
         {
-            cameraShakeSystem.shake(1);
+            //cameraShakeSystem.shake(1);
             combatSystem.damage(victim, damage);
         } else {
-            cameraShakeSystem.shake( 1 + radius / 20);
             damageArea(bullet, payload.triggerGroup, radius, damage);
         }
     }
 
+    Vector2 vTmp = new Vector2();
+
     private void damageArea(Entity bullet, String groupId, float radius, int damage) {
+
+        Payload payload = pm.get(bullet);
+        Pos pos = om.get(bullet);
+
+        cameraShakeSystem.shake( 1 + radius / 20);
+        particleSystem.spawnParticle((int) pos.x, (int) pos.y, "explosion"); 
+        for ( int i=0, s=MathUtils.random(3,5); i<s; i++ ) {
+            vTmp.set(MathUtils.random(0,radius),0).rotate(MathUtils.random(0,360)).add(pos.x,pos.y);
+            particleSystem.spawnParticle(
+                    (int)vTmp.x, (int)vTmp.y, "tiny-explosion");
+        }
 
         final ImmutableBag<Entity> targets = groupManager.getEntities(groupId);
         for (int i = 0, s = targets.size(); s > i; i++) {

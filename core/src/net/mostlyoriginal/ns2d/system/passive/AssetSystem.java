@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import net.mostlyoriginal.ns2d.api.PassiveSystem;
+import net.mostlyoriginal.ns2d.system.active.ParticleSystem;
 
 import java.util.HashMap;
 
@@ -40,6 +41,11 @@ public class AssetSystem extends PassiveSystem {
 
     public Animation add(final String identifier, int x1, int y1, int w, int h, int repeatX, int repeatY, Texture texture) {
 
+        return add(identifier, x1, y1, w, h, repeatX, repeatY, tileset, 0.5f);
+    }
+
+    public Animation add(final String identifier, int x1, int y1, int w, int h, int repeatX, int repeatY, Texture texture, float frameDuration) {
+
         TextureRegion[] regions = new TextureRegion[repeatX*repeatY];
 
         int count = 0;
@@ -49,7 +55,7 @@ public class AssetSystem extends PassiveSystem {
             }
         }
 
-        return sprites.put(identifier, new Animation(0.5f, regions));
+        return sprites.put(identifier, new Animation(frameDuration, regions));
     }
 
     public AssetSystem() {
@@ -85,6 +91,8 @@ public class AssetSystem extends PassiveSystem {
         add("flames", 32, 128, 16, 16, 6,2);
 
         add("health-tick", 14, 526, 4, 5, 1);
+
+        add("particle-explosion", 128, 32, 64,64, 5, 1, tileset, ParticleSystem.EXPLOSION_FRAME_DURATION);
 
         add("rifle", 0, 32, TILE_SIZE, TILE_SIZE, 1);
         add("shotgun", 0, 64, TILE_SIZE, TILE_SIZE, 1);

@@ -24,6 +24,7 @@ public class Anim extends Component {
     public String id;
     public Layer layer = Layer.DEFAULT_LAYER;
 
+    public float speed = 1;
     public float age = 0;
     public float scale = 1;
     public float rotation = 0;

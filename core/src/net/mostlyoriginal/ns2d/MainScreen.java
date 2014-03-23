@@ -41,6 +41,7 @@ public class MainScreen implements Screen {
         G.world.setSystem(new MapSystem());
         G.world.setSystem(new CameraSystem());
         G.world.setSystem(new CollisionSystem());
+        G.world.setSystem(new ParticleSystem());
 
         // Active - Input/Logic
         G.world.setSystem(new PlayerControlSystem());
