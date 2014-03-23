@@ -107,6 +107,7 @@ public class EntityFactory {
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(16 * 3, 16 * 3))
                 .addComponent(new Health(100))
+                .addComponent(new Harvester())
                 .addComponent(new Buildable("resourcetower", "resourcetower-unbuilt", COST_RESOURCETOWER))
                 .addComponent(new Anim("resourcetower-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
     }
@@ -138,7 +139,7 @@ public class EntityFactory {
 
     public static Entity createShotgun(World world, float x, float y, Entity player) {
         Weapon weapon = new Weapon();
-        weapon.fireCooldown = 0.5f;
+        weapon.fireCooldown = 0.25f;
         weapon.minBullets = 8;
         weapon.maxBullets = 10;
         weapon.spread = 20;
@@ -153,6 +154,8 @@ public class EntityFactory {
 
     public static Entity createRifle(World world, float x, float y, Entity player) {
         Weapon weapon = new Weapon();
+        weapon.recoil = 2;
+
         return newPositioned(world, x, y)
                 .addComponent(new Anim("rifle", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
                 .addComponent(new Attached(player, PLAYER_WEAPON_MOUNT_X - WEAPON_ROT_ORIGIN_X, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y))

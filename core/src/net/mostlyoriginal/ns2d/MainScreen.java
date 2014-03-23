@@ -54,6 +54,7 @@ public class MainScreen implements Screen {
         // Active - Interactions
         G.world.setSystem(new BuildableSystem());
         G.world.setSystem(new CombatSystem());
+        G.world.setSystem(new HarvesterSystem());
 
         // Active - Physics. Order is important! Alter velocity, then constrain.
         G.world.setSystem(new PhysicsSystem());
