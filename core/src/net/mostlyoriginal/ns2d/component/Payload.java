@@ -7,6 +7,7 @@ import com.artemis.Component;
  */
 public class Payload extends Component {
 
+
     public static enum DamageType {
         EXPLOSIVE
     }
@@ -16,6 +17,9 @@ public class Payload extends Component {
     public int minDamage = 1;
     public int maxDamage = 1;
     public String triggerGroup;
+    public float maxLifetime;
+
+    public float age;
 
     public Payload clone()
     {
@@ -25,6 +29,7 @@ public class Payload extends Component {
         p.minDamage = minDamage;
         p.maxDamage = maxDamage;
         p.triggerGroup = triggerGroup;
+        p.maxLifetime = maxLifetime;
         return p;
     }
 }

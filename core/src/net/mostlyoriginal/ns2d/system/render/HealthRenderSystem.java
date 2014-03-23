@@ -39,7 +39,7 @@ public class HealthRenderSystem extends EntityProcessingSystem {
     protected void initialize() {
         super.initialize();
         tick = assetSystem.get("health-tick").getKeyFrame(0);
-        tickWidth = tick.getRegionWidth()+1;
+        tickWidth = tick.getRegionWidth()-1;
     }
 
     @Override

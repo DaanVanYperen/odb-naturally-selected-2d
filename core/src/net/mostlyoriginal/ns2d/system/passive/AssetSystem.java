@@ -90,7 +90,7 @@ public class AssetSystem extends PassiveSystem {
         add("grenade", 42, 108, 12, 8, 1);
         add("flames", 32, 128, 16, 16, 6,2);
 
-        add("health-tick", 43, 523, 10, 10, 1);
+        add("health-tick", 14, 526, 4, 5, 1);
 
         add("particle-explosion", 128, 32, 64,64, 5, 1, tileset, ParticleSystem.EXPLOSION_FRAME_DURATION);
         add("particle-muzzleflare", 99, 38, 26,19, 1, 1);

@@ -38,7 +38,7 @@ public class EntityFactory {
 
     public static Entity createSkulkHead(World world, float x, float y, Entity skulk) {
         Weapon weapon = new Weapon();
-        weapon.bulletLifetime = 1/30f;
+        weapon.bulletPayload.maxLifetime = 1/30f;
         weapon.fireCooldown = 1f;
         weapon.enemyGroup = "player-friend";
         weapon.muzzleFlare = false;
@@ -173,8 +173,9 @@ public class EntityFactory {
         weapon.fireCooldown = 0.4f;
         weapon.minBullets = 1;
         weapon.maxBullets = 1;
+        weapon.bulletPayload.maxLifetime = 4f;
         weapon.spread = 5;
-        weapon.recoil *= 5;
+        weapon.recoil *= 10;
         weapon.bulletSpeed *= 0.5f;
         weapon.bulletAnimId = "grenade";
         weapon.bulletFriction = 0.01f;

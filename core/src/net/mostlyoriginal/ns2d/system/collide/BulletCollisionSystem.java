@@ -38,7 +38,21 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
 
     @Override
     protected void process(Entity bullet) {
+
+
         final Payload payload = pm.get(bullet);
+
+        payload.age += world.delta;
+        if ( payload.age >= payload.maxLifetime )
+        {
+            if ( payload.radius > 0 )
+            {
+                damageArea(bullet, payload.triggerGroup, payload.radius,MathUtils.random(payload.minDamage, payload.maxDamage) );
+            }
+            bullet.deleteFromWorld();
+            return;
+        }
+
         final ImmutableBag<Entity> targets = groupManager.getEntities(payload.triggerGroup);
         for (int i = 0, s = targets.size(); s > i; i++) {
             final Entity victim = targets.get(i);
