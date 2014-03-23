@@ -91,7 +91,7 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
         mouseCursor.addToWorld();
 
         // create an absolute tracker in between the player and the cursor that we will follow with the camera.
-        Inbetween inbetween = new Inbetween(player, mouseCursor);
+        final Inbetween inbetween = new Inbetween(player, mouseCursor);
         inbetween.tween = 0.4f;
         Entity midpoint = world.createEntity()
                 .addComponent(new Pos(0, 0))
