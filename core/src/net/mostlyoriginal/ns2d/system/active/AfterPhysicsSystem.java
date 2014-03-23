@@ -45,7 +45,7 @@ public class AfterPhysicsSystem extends EntityProcessingSystem {
         }
         
         if (physics.friction != 0) {
-            float adjustedFriction = physics.friction * (wm.has(e) && !wm.get(e).onAnySurface() ? 0.25f : 1 );
+            float adjustedFriction = physics.friction * (wm.has(e) && !wm.get(e).onFloor ? 0.25f : 1 );
 
             if (Math.abs(physics.vx) > 0.005f) {
                 physics.vx = physics.vx - (physics.vx * world.delta * adjustedFriction);
