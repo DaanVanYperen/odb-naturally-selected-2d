@@ -122,7 +122,7 @@ public class EntityFactory {
                 .addComponent(new Bounds(16, 16))
                 .addComponent(new Health(100))
                 .addComponent(new Buildable("spawner", "spawner-unbuilt",COST_INFANTRY_PORTAL))
-                .addComponent(new Anim("spawner", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
+                .addComponent(new Anim("spawner-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
 
     }
 
