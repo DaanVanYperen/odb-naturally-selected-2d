@@ -1,6 +1,7 @@
 package net.mostlyoriginal.ns2d.component;
 
 import com.artemis.Component;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /**
  * @author Daan van Yperen
@@ -22,6 +23,12 @@ public class Bounds extends Component {
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
+    }
+
+    public Bounds(TextureRegion region) {
+        this.x1 = this.x2 =0;
+        this.x2 = region.getRegionWidth();
+        this.y2 = region.getRegionHeight();
     }
 
     public int cx() { return x1 + (x2-x1)/2; }

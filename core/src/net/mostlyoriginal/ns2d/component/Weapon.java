@@ -25,4 +25,5 @@ public class Weapon extends Component {
     public String enemyGroup = "enemy";
 
     public boolean muzzleFlare = true;
+    public String shellParticle;
 }

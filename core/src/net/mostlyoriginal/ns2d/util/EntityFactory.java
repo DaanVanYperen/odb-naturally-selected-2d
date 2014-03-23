@@ -148,6 +148,7 @@ public class EntityFactory {
         weapon.spread = 20;
         weapon.bulletSpeed *= 0.9f;
         weapon.bulletAnimId = "slug";
+        weapon.shellParticle = "shellcasing";
         return newPositioned(world, x, y)
                 .addComponent(new Anim("shotgun", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
                 .addComponent(new Attached(player, PLAYER_WEAPON_MOUNT_X - WEAPON_ROT_ORIGIN_X, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y))
@@ -157,6 +158,7 @@ public class EntityFactory {
 
     public static Entity createRifle(World world, float x, float y, Entity player) {
         Weapon weapon = new Weapon();
+        weapon.shellParticle = "bulletcasing";
         weapon.recoil = 2;
 
         return newPositioned(world, x, y)

@@ -106,7 +106,7 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
                 .addComponent(new CameraFocus())
                 .addToWorld();
 
-        Entity rifle = EntityFactory.createGrenadeLauncher(world, x, y, player).addComponent(new Aim(mouseCursor));
+        Entity rifle = EntityFactory.createRifle(world, x, y, player).addComponent(new Aim(mouseCursor));
         rifle.addToWorld();
 
         Inventory inventory = new Inventory();

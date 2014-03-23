@@ -58,6 +58,12 @@ public class WeaponSystem extends EntityProcessingSystem {
                     particleSystem.setRotation(0);
                 }
 
+                if ( weapon.shellParticle != null )
+                {
+                    vTmp.set(18,0).rotate(anim.rotation).add(pos.x-8, pos.y+2).add(bounds.cx(), bounds.cy());
+                    particleSystem.spawnParticle((int)vTmp.x, (int)vTmp.y, weapon.shellParticle);
+                }
+
                 // repeated bullets.
                 for (int c = 0, s = MathUtils.random(weapon.minBullets, weapon.maxBullets); c < s; c++) {
 
