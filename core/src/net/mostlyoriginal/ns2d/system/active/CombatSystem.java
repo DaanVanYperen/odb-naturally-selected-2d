@@ -75,8 +75,8 @@ public class CombatSystem extends PassiveSystem {
             Entity spawner = spawners.get(MathUtils.random(0, spawners.size() - 1));
             Pos spawnerPos = spawner.getComponent(Pos.class);
             Pos playerPos = victim.getComponent(Pos.class);
-            playerPos.x = spawnerPos.x;
-            playerPos.y = spawnerPos.y;
+            playerPos.x = spawnerPos.x - 8;
+            playerPos.y = spawnerPos.y + 6;
         }
 
     }
