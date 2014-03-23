@@ -177,10 +177,11 @@ public class EntityFactory {
         weapon.recoil *= 5;
         weapon.bulletSpeed *= 0.5f;
         weapon.bulletAnimId = "grenade";
-        weapon.bulletFriction = 0.3f;
+        weapon.bulletFriction = 0.01f;
         weapon.bulletBounce = 0.8f;
         weapon.bulletPayload.radius = 50;
         weapon.bulletPayload.minDamage = weapon.bulletPayload.maxDamage = 5;
+        weapon.bulletGravityFactor = 2;
         return newPositioned(world, x, y)
                 .addComponent(new Anim("grenadelauncher", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
                 .addComponent(new Attached(player, PLAYER_WEAPON_MOUNT_X - WEAPON_ROT_ORIGIN_X, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y))

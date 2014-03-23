@@ -23,6 +23,7 @@ public class WeaponSystem extends EntityProcessingSystem {
     private ComponentMapper<Attached> atm;
     private ComponentMapper<Anim> am;
     private ComponentMapper<Physics> ym;
+    private ComponentMapper<Gravity> gm;
     private GroupManager groupManager;
     private PhysicsSystem physicsSystems;
     private AfterPhysicsSystem afterPhysicsSystem;
@@ -85,6 +86,8 @@ public class WeaponSystem extends EntityProcessingSystem {
                         }
                     }
 
+
+
                     Physics physics = ym.get(bullet);
                     physics.friction = weapon.bulletFriction;
                     physics.bounce = weapon.bulletBounce;
@@ -93,6 +96,9 @@ public class WeaponSystem extends EntityProcessingSystem {
                     payload.triggerGroup = weapon.enemyGroup;
                     bullet.addComponent(payload);
 
+                    Gravity gravity = gm.get(bullet);
+                    gravity.y *= weapon.bulletGravityFactor;
+                    gravity.x *= weapon.bulletGravityFactor;
 
                     attachmentSystem.push(gun, rotation - 180, weapon.recoil / s);
                     physicsSystems.push(bullet, rotation, weapon.bulletSpeed);
