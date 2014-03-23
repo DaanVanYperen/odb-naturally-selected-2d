@@ -10,4 +10,6 @@ public class Physics extends Component {
     public float vy; // velocityY
     public float vr; // rotational velocity.
     public float friction = 4f;
+
+    public float bounce = 0f;
 }

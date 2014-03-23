@@ -68,7 +68,9 @@ public class WeaponSystem extends EntityProcessingSystem {
                         }
                     }
 
-                    ym.get(bullet).friction = weapon.bulletFriction;
+                    Physics physics = ym.get(bullet);
+                    physics.friction = weapon.bulletFriction;
+                    physics.bounce = weapon.bulletBounce;
 
 
                     attachmentSystem.push(gun, rotation-180, weapon.recoil / s);

@@ -170,9 +170,10 @@ public class EntityFactory {
         weapon.maxBullets = 1;
         weapon.spread = 5;
         weapon.recoil *= 20;
-        weapon.bulletSpeed *= 0.7f;
+        weapon.bulletSpeed *= 0.5f;
         weapon.bulletAnimId = "grenade";
-        weapon.bulletFriction = 1f;
+        weapon.bulletFriction = 0.3f;
+        weapon.bulletBounce = 0.8f;
         return newPositioned(world, x, y)
                 .addComponent(new Anim("grenadelauncher", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
                 .addComponent(new Attached(player, PLAYER_WEAPON_MOUNT_X - WEAPON_ROT_ORIGIN_X, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y))

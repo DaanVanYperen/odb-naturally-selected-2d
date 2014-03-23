@@ -64,13 +64,13 @@ public class MapCollisionSystem extends EntityProcessingSystem {
 
             if ((physics.vx > 0 && collides(px + bounds.x2, py + bounds.y1 + (bounds.y2 - bounds.y1) * 0.5f)) ||
                     (physics.vx < 0 && collides(px + bounds.x1, py + bounds.y1 + (bounds.y2 - bounds.y1) * 0.5f))) {
-                physics.vx = 0;
+                physics.vx = physics.bounce > 0 ? -physics.vx * physics.bounce : 0;
                 px = pos.x;
             }
 
             if ((physics.vy > 0 && collides(px + bounds.x1 + (bounds.x2 - bounds.x1) * 0.5f, py + bounds.y2)) ||
                     (physics.vy < 0 && collides(px + bounds.x1 + (bounds.x2 - bounds.x1) * 0.5f, py + bounds.y1))) {
-                physics.vy = 0;
+                physics.vy = physics.bounce > 0 ? -physics.vy * physics.bounce : 0;
             }
 
         }
