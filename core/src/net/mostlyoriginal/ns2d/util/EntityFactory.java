@@ -32,7 +32,7 @@ public class EntityFactory {
         weapon.fireCooldown = 1f;
         weapon.bulletGroup = "enemy-bullet";
         return newPositioned(world, x, y)
-                .addComponent(new Anim("player-arm", Anim.Layer.PLAYER_ARM))
+                .addComponent(new Anim("rifle", Anim.Layer.PLAYER_ARM))
                 .addComponent(new Attached(skulk))
                 .addComponent(weapon)
                 .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
@@ -84,11 +84,27 @@ public class EntityFactory {
                 .addComponent(new Bounds(7,4));
     }
 
-    public static Entity createRifle(World world, float x, float y, Entity player) {
+    public static Entity createShotgun(World world, float x, float y, Entity player) {
+        Weapon weapon = new Weapon();
+        weapon.fireCooldown = 0.5f;
+        weapon.minBullets = 8;
+        weapon.maxBullets = 10;
+        weapon.spread = 20;
+        weapon.bulletSpeed *= 0.9f;
+        weapon.bulletAnimId = "slug";
         return newPositioned(world, x, y)
-                .addComponent(new Anim("player-arm", Anim.Layer.PLAYER_ARM))
+                .addComponent(new Anim("shotgun", Anim.Layer.PLAYER_ARM))
                 .addComponent(new Attached(player))
-                .addComponent(new Weapon())
+                .addComponent(weapon)
+                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
+    }
+
+    public static Entity createRifle(World world, float x, float y, Entity player) {
+        Weapon weapon = new Weapon();
+        return newPositioned(world, x, y)
+                .addComponent(new Anim("rifle", Anim.Layer.PLAYER_ARM))
+                .addComponent(new Attached(player))
+                .addComponent(weapon)
                 .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
     }
 

@@ -32,8 +32,8 @@ public class WeaponSystem extends EntityProcessingSystem {
     protected void process(Entity e) {
 
         final Weapon weapon = wm.get(e);
-        if ( weapon.firing) {
-            weapon.firing=false;
+        if (weapon.firing) {
+            weapon.firing = false;
 
 
             weapon.cooldown -= world.delta;
@@ -43,18 +43,26 @@ public class WeaponSystem extends EntityProcessingSystem {
                 final Pos pos = pm.get(e);
                 final Bounds bounds = om.get(e);
                 final Anim anim = am.get(e);
-                Entity bullet = EntityFactory.createBullet(world, pos.x + bounds.cy(), pos.y + bounds.cy());
-                groupManager.add(bullet, weapon.bulletGroup);
 
-                bullet.addComponent(new Terminal(weapon.bulletLifetime));
+                // repeated bullets.
+                for (int c = 0, s = MathUtils.random(weapon.minBullets, weapon.maxBullets); c < s; c++) {
 
-                // rotate bullet to player rotation
-                float rotation = anim.rotation + MathUtils.random(-weapon.spread, weapon.spread);
-                am.get(bullet).rotation = rotation;
+                    Entity bullet = EntityFactory.createBullet(world, pos.x + bounds.cy(), pos.y + bounds.cy());
+                    groupManager.add(bullet, weapon.bulletGroup);
 
-                physicsSystems.push(bullet, rotation, weapon.bulletSpeed);
+                    bullet.addComponent(new Terminal(weapon.bulletLifetime));
 
-                bullet.addToWorld();
+                    // rotate bullet to player rotation
+                    float rotation = anim.rotation + MathUtils.random(-weapon.spread, weapon.spread);
+                    Anim bulletAnim = am.get(bullet);
+                    bulletAnim.rotation = rotation;
+                    bulletAnim.id = weapon.bulletAnimId;
+
+
+                    physicsSystems.push(bullet, rotation, weapon.bulletSpeed);
+
+                    bullet.addToWorld();
+                }
             }
         }
 

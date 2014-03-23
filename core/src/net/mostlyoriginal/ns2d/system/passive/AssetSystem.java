@@ -77,8 +77,16 @@ public class AssetSystem extends PassiveSystem {
         add("duct", 32, 224, TILE_SIZE, TILE_SIZE, 1);
         add("skulk", 0, 64, TILE_SIZE, TILE_SIZE, 1);
         add("debug-marker", 44, 51, 3, 3, 1);
+
         add("bullet", 43, 45, 9, 6, 1);
-        add("player-arm", 0, 32, TILE_SIZE, TILE_SIZE, 1);
+        add("slug", 44, 76, 8, 8, 1);
+        add("grenade", 42, 108, 12, 8, 1);
+        add("flames", 32, 128, 16, 16, 6,2);
+
+        add("rifle", 0, 32, TILE_SIZE, TILE_SIZE, 1);
+        add("shotgun", 0, 64, TILE_SIZE, TILE_SIZE, 1);
+        add("grenadelauncher", 0, 96, TILE_SIZE, TILE_SIZE, 1);
+        add("flamethrower", 0, 128, TILE_SIZE, TILE_SIZE, 1);
     }
 
 
