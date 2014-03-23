@@ -25,15 +25,16 @@ public class WeaponSystem extends EntityProcessingSystem {
     private GroupManager groupManager;
     private PhysicsSystem physicsSystems;
     private AfterPhysicsSystem afterPhysicsSystem;
+    private AttachmentSystem attachmentSystem;
 
     public WeaponSystem() {
         super(Aspect.getAspectForAll(Weapon.class, Pos.class, Bounds.class, Anim.class));
     }
 
     @Override
-    protected void process(Entity e) {
+    protected void process(Entity gun) {
 
-        final Weapon weapon = wm.get(e);
+        final Weapon weapon = wm.get(gun);
 
         weapon.cooldown -= world.delta;
         if (weapon.firing) {
@@ -41,9 +42,9 @@ public class WeaponSystem extends EntityProcessingSystem {
             if (weapon.cooldown <= 0) {
                 weapon.cooldown = weapon.fireCooldown;
 
-                final Pos pos = pm.get(e);
-                final Bounds bounds = om.get(e);
-                final Anim anim = am.get(e);
+                final Pos pos = pm.get(gun);
+                final Bounds bounds = om.get(gun);
+                final Anim anim = am.get(gun);
 
                 // repeated bullets.
                 for (int c = 0, s = MathUtils.random(weapon.minBullets, weapon.maxBullets); c < s; c++) {
@@ -60,8 +61,8 @@ public class WeaponSystem extends EntityProcessingSystem {
                     bulletAnim.id = weapon.bulletAnimId;
 
                     // push back the user.
-                    if (atm.has(e)) {
-                        Attached attachedTo = atm.get(e);
+                    if (atm.has(gun)) {
+                        Attached attachedTo = atm.get(gun);
                         if (attachedTo.parent != null && attachedTo.parent.isActive()) {
                             physicsSystems.push(attachedTo.parent, rotation - 180, weapon.recoil);
                         }
@@ -70,6 +71,7 @@ public class WeaponSystem extends EntityProcessingSystem {
                     ym.get(bullet).friction = weapon.bulletFriction;
 
 
+                    attachmentSystem.push(gun, rotation-180, weapon.recoil / s);
                     physicsSystems.push(bullet, rotation, weapon.bulletSpeed);
 
                     bullet.addToWorld();
