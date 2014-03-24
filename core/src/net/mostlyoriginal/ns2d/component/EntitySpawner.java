@@ -14,6 +14,7 @@ public class EntitySpawner extends Component {
     public float maxInterval = 10;
     public int  minCount    = 1;
     public int maxCount    = 5;
+    public boolean enabled = false;
 
     public EntitySpawner(String entityId) {
         this.entityId = entityId;

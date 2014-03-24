@@ -105,35 +105,52 @@ public class EntityFactory {
     }
 
     public static Entity createResourceTower(World world, float x, float y) {
+
+        Entity structureSocket = createStructureSocket(world, x, y);
+        structureSocket.addToWorld();
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(16 * 3, 16 * 3))
                 .addComponent(new Harvester())
+                .addComponent(new Attached(structureSocket))
                 .addComponent(new HealthIndicator())
                 .addComponent(new Buildable("resourcetower", "resourcetower-unbuilt", COST_RESOURCETOWER))
                 .addComponent(new Anim("resourcetower-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
     }
 
+    private static Entity createStructureSocket(World world, float x, float y) {
+        return newPositioned(world,x,y);
+    }
+
     public static Entity createTechpoint(World world, float x, float y) {
+        Entity structureSocket = createStructureSocket(world, x, y);
+        structureSocket.addToWorld();
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(64,64))
                 .addComponent(new Health(100))
+                .addComponent(new Attached(structureSocket))
                 .addComponent(new HealthIndicator())
                 .addComponent(new Anim("techpoint", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
     }
 
     public static Entity createSpawner(final World world, final float x, final float y) {
+        Entity structureSocket = createStructureSocket(world, x, y);
+        structureSocket.addToWorld();
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(16, 16))
                 .addComponent(new HealthIndicator())
+                .addComponent(new Attached(structureSocket))
                 .addComponent(new Buildable("spawner", "spawner-unbuilt",COST_INFANTRY_PORTAL))
                 .addComponent(new Anim("spawner-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
 
     }
 
     public static Entity createArmory(World world, float x, float y) {
+        Entity structureSocket = createStructureSocket(world, x, y);
+        structureSocket.addToWorld();
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(16 * 3, 16 * 3))
                 .addComponent(new HealthIndicator())
+                .addComponent(new Attached(structureSocket))
                 .addComponent(new Buildable("armory", "armory-unbuilt", COST_ARMORY))
                 .addComponent(new Anim("armory-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
     }

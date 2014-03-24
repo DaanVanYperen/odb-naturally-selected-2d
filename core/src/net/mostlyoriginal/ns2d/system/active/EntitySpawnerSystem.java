@@ -69,7 +69,9 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
                 spawner.addToWorld();
                 break;
             case "duct":
-                EntityFactory.createDuct(world, x, y).addToWorld();
+                Entity duct = EntityFactory.createDuct(world, x, y);
+                groupManager.add(duct, "duct");
+                duct.addToWorld();
                 break;
             case "skulk":
                 Entity skulk = EntityFactory.createSkulk(world, x, y);
@@ -121,8 +123,12 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
     protected void process(Entity e) {
         final EntitySpawner spawner = sm.get(e);
 
-        if ( spawner.cooldown == -1 ) {
 
+        if ( !spawner.enabled ) {
+            return;
+        }
+
+        if ( spawner.cooldown == -1 ) {
             scheduleSpawn(spawner);
             spawner.cooldown /= 4;
         }

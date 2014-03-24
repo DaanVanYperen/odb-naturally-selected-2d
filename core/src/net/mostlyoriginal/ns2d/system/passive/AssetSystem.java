@@ -85,6 +85,11 @@ public class AssetSystem extends PassiveSystem {
         add("skulk-head", 105, 590, 15, 10, 1);
         add("debug-marker", 44, 51, 3, 3, 1);
 
+        add("alert-arrow", 64, 512, 32, 31, 1);
+        add("alert-skulk", 103, 524, 21, 11, 1);
+        add("alert-radar", 135, 519, 18, 18, 1);
+        add("alert-damage", 167, 519, 18, 18, 1);
+
         add("bullet", 43, 45, 9, 6, 1);
         add("slug", 44, 76, 8, 8, 1);
         add("grenade", 42, 108, 12, 8, 1);

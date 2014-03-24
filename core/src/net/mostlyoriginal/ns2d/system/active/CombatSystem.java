@@ -19,9 +19,11 @@ public class CombatSystem extends PassiveSystem {
     private ComponentMapper<Buildable> bm;
     private ComponentMapper<RespawnOnDeath> rm;
     private ComponentMapper<Payload> pm;
+    private ComponentMapper<Attached> am;
 
     private BuildableSystem buildableSystem;
     private GroupManager groupManager;
+    private AttachmentSystem attachmentSystem;
 
     @Override
     protected void initialize() {
@@ -33,11 +35,17 @@ public class CombatSystem extends PassiveSystem {
             Health health = hm.get(victim);
 
             health.damage += damage;
+            if (am.has(victim)) {
+                final Attached attached = am.get(victim);
+                if (attached != null) {
+                    attachmentSystem.push(attached, MathUtils.random(360), MathUtils.clamp(damage * 2, 1, 5));
+                }
+            }
+
 
             if (health.damage >= health.health) {
 
-                if ( rm.has(victim) )
-                {
+                if (rm.has(victim)) {
                     respawnEntity(victim, health);
                     return;
                 }
@@ -76,8 +84,7 @@ public class CombatSystem extends PassiveSystem {
 
         // move to spawner.
         ImmutableBag<Entity> spawners = groupManager.getEntities("spawner");
-        if ( spawners.size()  > 0 )
-        {
+        if (spawners.size() > 0) {
             Entity spawner = spawners.get(MathUtils.random(0, spawners.size() - 1));
             Pos spawnerPos = spawner.getComponent(Pos.class);
             Pos playerPos = victim.getComponent(Pos.class);

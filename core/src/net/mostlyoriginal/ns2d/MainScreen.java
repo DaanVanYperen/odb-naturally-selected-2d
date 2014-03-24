@@ -82,6 +82,10 @@ public class MainScreen implements Screen {
         G.world.setSystem(new HealthRenderSystem());
         G.world.setSystem(new AnimRenderSystem());
         G.world.setSystem(new UIRenderSystem());
+        G.world.setSystem(new UIAlertActiveSpawnerSystem());
+
+        G.world.setSystem(new DirectorSystem());
+
 
         G.world.initialize();
     }
