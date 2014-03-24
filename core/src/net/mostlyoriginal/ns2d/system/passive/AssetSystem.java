@@ -90,6 +90,7 @@ public class AssetSystem extends PassiveSystem {
         add("alert-radar", 135, 519, 18, 18, 1);
         add("alert-damage", 167, 519, 18, 18, 1);
 
+
         add("bullet", 43, 45, 9, 6, 1);
         add("slug", 44, 76, 8, 8, 1);
         add("grenade", 42, 108, 12, 8, 1);
@@ -101,6 +102,7 @@ public class AssetSystem extends PassiveSystem {
         add("particle-muzzleflare", 99, 38, 26,19, 1, 1);
         add("particle-bulletcasing", 75, 45, 10,5, 1, 1);
         add("particle-shellcasing", 72, 77, 15,7, 1, 1);
+        add("particle-debris", 256, 128, 16, 16, 10);
 
         add("rifle", 0, 32, TILE_SIZE, TILE_SIZE, 1);
         add("shotgun", 0, 64, TILE_SIZE, TILE_SIZE, 1);

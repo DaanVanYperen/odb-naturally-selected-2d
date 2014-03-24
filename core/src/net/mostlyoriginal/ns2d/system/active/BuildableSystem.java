@@ -56,7 +56,9 @@ public class BuildableSystem extends EntityProcessingSystem {
                 buildable.built = true;
                 Anim anim = am.get(e);
                 anim.id = buildable.builtAnimId;
-                e.addComponent(new Health(2)).changedInWorld();
+                Health health = new Health(30);
+                health.woundParticle = "debris";
+                e.addComponent(health).changedInWorld();
             }
         }
     }

@@ -5,6 +5,7 @@ import com.artemis.Entity;
 import com.artemis.annotations.Wire;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
 import net.mostlyoriginal.ns2d.api.PassiveSystem;
 import net.mostlyoriginal.ns2d.component.*;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
@@ -42,7 +43,37 @@ public class ParticleSystem extends PassiveSystem {
             case "shellcasing":
                 createShellCasing(x, y);
                 break;
+            case "debris":
+                createDebris(x, y);
+                break;
         }
+    }
+
+    Vector2 vTmp = new Vector2();
+    private void createDebris(int x, int y) {
+
+        vTmp.set(MathUtils.random(200,500), 0).rotate(rotation);
+
+        final Physics physics = new Physics();
+        physics.vr = MathUtils.random(-90, 90)*10f;
+        physics.vx = vTmp.x;
+        physics.vy = vTmp.y;
+        physics.friction = 0.02f;
+
+        final TextureRegion frame = assetSystem.get("particle-debris").getKeyFrame(0);
+
+        Entity entity = basicCenteredParticle(x, y, "particle-debris", 1, 1)
+                .addComponent(new Terminal(4f))
+                .addComponent(physics)
+                .addComponent(new Bounds(frame))
+                .addComponent(new Gravity());
+
+        Anim anim = am.get(entity);
+        anim.speed = 0;
+        anim.age = MathUtils.random(0,10f);
+
+        entity
+                .addToWorld();
     }
 
     private void createShellCasing(int x, int y) {

@@ -124,9 +124,11 @@ public class EntityFactory {
     public static Entity createTechpoint(World world, float x, float y) {
         Entity structureSocket = createStructureSocket(world, x, y);
         structureSocket.addToWorld();
+        Health health = new Health(100);
+        health.woundParticle = "debris";
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(64,64))
-                .addComponent(new Health(100))
+                .addComponent(health)
                 .addComponent(new Attached(structureSocket))
                 .addComponent(new HealthIndicator())
                 .addComponent(new Anim("techpoint", Anim.Layer.DIRECTLY_BEHIND_PLAYER));

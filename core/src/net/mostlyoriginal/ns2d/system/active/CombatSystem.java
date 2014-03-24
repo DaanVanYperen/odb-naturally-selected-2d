@@ -20,10 +20,13 @@ public class CombatSystem extends PassiveSystem {
     private ComponentMapper<RespawnOnDeath> rm;
     private ComponentMapper<Payload> pm;
     private ComponentMapper<Attached> am;
+    private ComponentMapper<Pos> pom;
+    private ComponentMapper<Bounds> bom;
 
     private BuildableSystem buildableSystem;
     private GroupManager groupManager;
     private AttachmentSystem attachmentSystem;
+    private ParticleSystem particleSystem;
 
     @Override
     protected void initialize() {
@@ -42,8 +45,22 @@ public class CombatSystem extends PassiveSystem {
                 }
             }
 
+            boolean dead = health.damage >= health.health;
 
-            if (health.damage >= health.health) {
+            if ( health.woundParticle != null )
+            {
+                for ( int i=0, s=MathUtils.random( dead ? 6 : 1, dead ? 10 : 2); s>i; i++ )
+                {
+                    final Pos pos = pom.get(victim);
+                    final Bounds bounds = bom.get(victim);
+                    particleSystem.setRotation(MathUtils.random(20,160));
+                    particleSystem.spawnParticle((int)(pos.x + bounds.cx()), (int)(pos.y + bounds.cy()), health.woundParticle );
+                    particleSystem.setRotation(0);
+                }
+            }
+
+
+            if (dead) {
 
                 if (rm.has(victim)) {
                     respawnEntity(victim, health);
