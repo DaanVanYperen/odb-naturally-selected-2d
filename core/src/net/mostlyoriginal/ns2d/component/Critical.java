@@ -6,4 +6,5 @@ import com.artemis.Component;
  * @author Daan van Yperen
  */
 public class Critical extends Component {
+    public float damageAge = 99999;
 }

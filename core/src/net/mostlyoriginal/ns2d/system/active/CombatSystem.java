@@ -48,6 +48,12 @@ public class CombatSystem extends PassiveSystem {
                 }
             }
 
+            // flag critical as recently damaged
+            if (cm.has(victim))
+            {
+                cm.get(victim).damageAge = 0;
+            }
+
             boolean dead = health.damage >= health.health;
 
             if ( health.woundParticle != null )
