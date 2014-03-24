@@ -22,6 +22,7 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
     private ComponentMapper<Pos> pm;
     private ComponentMapper<Bounds> bm;
     private ComponentMapper<Anim> am;
+    private ComponentMapper<Inventory> im;
 
     private GroupManager groupManager;
     private TagManager tagManager;
@@ -84,6 +85,39 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
         }
     }
 
+    public void giveWeapon(Entity entity, String type )
+    {
+        Inventory inventory = im.get(entity);
+
+        if ( inventory.weapon != null )
+        {
+            inventory.weapon.deleteFromWorld();
+            inventory.weapon = null;
+        }
+
+        Entity weapon = null;
+        switch ( type ) {
+            case "rifle":
+                weapon = EntityFactory.createRifle(world, 0, 0, entity);
+                break;
+            case "shotgun":
+                weapon = EntityFactory.createShotgun(world, 0, 0, entity);
+                break;
+            case "grenadelauncher":
+                weapon = EntityFactory.createGrenadeLauncher(world, 0, 0, entity);
+                break;
+            case "flamethrower":
+                weapon = EntityFactory.createFlamethrower(world, 0, 0, entity);
+                break;
+        }
+        if  (weapon != null )
+        {
+            inventory.weapon = weapon.addComponent(new Aim(tagManager.getEntity("cursor")));
+            weapon.addToWorld();
+        }
+    }
+
+
     private void assemblePlayer(float x, float y) {
         Entity player = EntityFactory.createPlayer(world, x, y);
         player.addToWorld();
@@ -92,6 +126,7 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
 
         Entity mouseCursor = EntityFactory.createMouseCursor(world, x, y);
         mouseCursor.addToWorld();
+        tagManager.register("cursor",mouseCursor);
 
         // create an absolute tracker in between the player and the cursor that we will follow with the camera.
         final Inbetween inbetween = new Inbetween(player, mouseCursor);
@@ -109,12 +144,10 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
                 .addComponent(new CameraFocus())
                 .addToWorld();
 
-        Entity rifle = EntityFactory.createRifle(world, x, y, player).addComponent(new Aim(mouseCursor));
-        rifle.addToWorld();
-
         Inventory inventory = new Inventory();
-        inventory.weapon = rifle;
         player.addComponent(inventory);
+
+        giveWeapon(player, "rifle");
 
         tagManager.register("player", player);
         groupManager.add(player, "player");

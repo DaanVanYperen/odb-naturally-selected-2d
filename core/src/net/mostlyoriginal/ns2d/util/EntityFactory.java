@@ -109,7 +109,7 @@ public class EntityFactory {
     public static Entity createResourceTower(World world, float x, float y) {
 
         Weapon weapon = new Weapon();
-        weapon.fireCooldown = 5;
+        weapon.cooldown = weapon.fireCooldown = 5;
         weapon.aimRotation = 90;
         weapon.minBullets = 2;
         weapon.maxBullets = 3;
@@ -167,10 +167,28 @@ public class EntityFactory {
     public static Entity createArmory(World world, float x, float y) {
         Entity structureSocket = createStructureSocket(world, x, y);
         structureSocket.addToWorld();
+
+        Weapon weapon = new Weapon();
+        weapon.cooldown = 5;
+        weapon.fireCooldown = 30;
+        weapon.aimRotation = 90;
+        weapon.minBullets = 1;
+        weapon.maxBullets = 1;
+        weapon.bulletPayload.type = Payload.DamageType.WEAPON_PICKUP;
+        weapon.bulletPayload.maxLifetime = 240f;
+        weapon.recoil = 3f;
+        weapon.spread = 40;
+        weapon.bulletSpeed = 140f;
+        weapon.firing = false;
+        weapon.bulletBounce = 1;
+        weapon.bulletAnimId = "shotgun";
+        weapon.enemyGroup = "player";
+
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(16 * 3, 16 * 3))
                 .addComponent(new HealthIndicator())
                 .addComponent(new Attached(structureSocket))
+                .addComponent(weapon)
                 .addComponent(new Buildable("armory", "armory-unbuilt", COST_ARMORY))
                 .addComponent(new Anim("armory-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
     }
@@ -229,4 +247,7 @@ public class EntityFactory {
                 .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
     }
 
+    public static Entity createFlamethrower(World world, float x, float y, Entity player) {
+        return createGrenadeLauncher(world,x,y, player);
+    }
 }

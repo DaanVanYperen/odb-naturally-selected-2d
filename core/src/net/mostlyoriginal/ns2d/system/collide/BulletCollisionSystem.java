@@ -10,11 +10,10 @@ import com.artemis.systems.EntityProcessingSystem;
 import com.artemis.utils.ImmutableBag;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import net.mostlyoriginal.ns2d.component.Payload;
-import net.mostlyoriginal.ns2d.component.Pos;
-import net.mostlyoriginal.ns2d.component.Wallet;
+import net.mostlyoriginal.ns2d.component.*;
 import net.mostlyoriginal.ns2d.system.active.CameraShakeSystem;
 import net.mostlyoriginal.ns2d.system.active.CombatSystem;
+import net.mostlyoriginal.ns2d.system.active.EntitySpawnerSystem;
 import net.mostlyoriginal.ns2d.system.active.ParticleSystem;
 import net.mostlyoriginal.ns2d.system.passive.CollisionSystem;
 import net.mostlyoriginal.ns2d.util.EntityUtil;
@@ -29,11 +28,14 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
     private ComponentMapper<Payload> pm;
     private ComponentMapper<Pos> om;
     private ComponentMapper<Wallet> wm;
+    private ComponentMapper<Inventory> im;
     private GroupManager groupManager;
     private CollisionSystem collisionSystem;
     private CombatSystem combatSystem;
     private ParticleSystem particleSystem;
     private TagManager tagManager;
+    private EntitySpawnerSystem entitySpawnerSystem;
+    private ComponentMapper<Anim> am;
 
 
     public BulletCollisionSystem() {
@@ -47,11 +49,9 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
         final Payload payload = pm.get(bullet);
 
         payload.age += world.delta;
-        if ( payload.age >= payload.maxLifetime )
-        {
-            if ( payload.radius > 0 )
-            {
-                damageArea(bullet, payload.triggerGroup, payload.radius,MathUtils.random(payload.minDamage, payload.maxDamage) );
+        if (payload.age >= payload.maxLifetime) {
+            if (payload.radius > 0) {
+                damageArea(bullet, payload.triggerGroup, payload.radius, MathUtils.random(payload.minDamage, payload.maxDamage));
             }
             bullet.deleteFromWorld();
             return;
@@ -60,7 +60,7 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
         final ImmutableBag<Entity> targets = groupManager.getEntities(payload.triggerGroup);
         for (int i = 0, s = targets.size(); s > i; i++) {
             final Entity victim = targets.get(i);
-            if ( victim != null && collisionSystem.overlaps(bullet, victim)) {
+            if (victim != null && collisionSystem.overlaps(bullet, victim)) {
                 triggerPayload(victim, bullet);
                 bullet.deleteFromWorld();
                 return;
@@ -75,16 +75,20 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
         int damage = MathUtils.random(payload.minDamage, payload.maxDamage);
         float radius = payload.radius;
 
-        switch ( payload.type )
-        {
+        switch (payload.type) {
 
-            case RESOURCE:
-                Entity player = tagManager.getEntity("player");
-                if ( wm.has(player) ) wm.get(player).resources += damage;
+            case WEAPON_PICKUP: {
+                final Entity player = tagManager.getEntity("player");
+                entitySpawnerSystem.giveWeapon(player, am.get(bullet).id);
                 break;
+            }
+            case RESOURCE: {
+                final Entity player = tagManager.getEntity("player");
+                if (wm.has(player)) wm.get(player).resources += damage;
+                break;
+            }
             case EXPLOSIVE:
-                if ( radius == 0 )
-                {
+                if (radius == 0) {
                     //cameraShakeSystem.shake(1);
                     combatSystem.damage(victim, damage);
                 } else {
@@ -102,18 +106,18 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
         Payload payload = pm.get(bullet);
         Pos pos = om.get(bullet);
 
-        cameraShakeSystem.shake( 1 + radius / 20);
-        particleSystem.spawnParticle((int) pos.x, (int) pos.y, "explosion"); 
-        for ( int i=0, s=MathUtils.random(3,5); i<s; i++ ) {
-            vTmp.set(MathUtils.random(0,radius),0).rotate(MathUtils.random(0,360)).add(pos.x,pos.y);
+        cameraShakeSystem.shake(1 + radius / 20);
+        particleSystem.spawnParticle((int) pos.x, (int) pos.y, "explosion");
+        for (int i = 0, s = MathUtils.random(3, 5); i < s; i++) {
+            vTmp.set(MathUtils.random(0, radius), 0).rotate(MathUtils.random(0, 360)).add(pos.x, pos.y);
             particleSystem.spawnParticle(
-                    (int)vTmp.x, (int)vTmp.y, "tiny-explosion");
+                    (int) vTmp.x, (int) vTmp.y, "tiny-explosion");
         }
 
         final ImmutableBag<Entity> targets = groupManager.getEntities(groupId);
         for (int i = 0, s = targets.size(); s > i; i++) {
             final Entity victim = targets.get(i);
-            if ( victim != null && EntityUtil.distance2(bullet, victim) <= radius*radius) {
+            if (victim != null && EntityUtil.distance2(bullet, victim) <= radius * radius) {
                 combatSystem.damage(victim, damage);
             }
         }

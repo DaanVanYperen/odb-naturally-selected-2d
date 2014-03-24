@@ -104,8 +104,27 @@ public class WeaponSystem extends EntityProcessingSystem {
 
                     bullet.addToWorld();
                 }
+
+                if ( weapon.bulletPayload.type == Payload.DamageType.WEAPON_PICKUP )
+                {
+                    cycleWeaponPickup(weapon);
+                }
+
             }
         }
+
+    }
+
+    private void cycleWeaponPickup(Weapon weapon) {
+
+        switch (weapon.bulletAnimId)
+        {
+            case "rifle": weapon.bulletAnimId="shotgun"; break;
+            case "shotgun": weapon.bulletAnimId="grenadelauncher"; break;
+            case "grenadelauncher": weapon.bulletAnimId="flamethrower"; break;
+            case "flamethrower": weapon.bulletAnimId="rifle"; break;
+        }
+
 
     }
 }
