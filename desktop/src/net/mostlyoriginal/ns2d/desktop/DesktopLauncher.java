@@ -22,6 +22,7 @@ public class DesktopLauncher {
         config.resizable = false;
         config.width  = 1280;
         config.height = 720;
+        config.audioDeviceSimultaneousSources=64;
 		new LwjglApplication(new NsGame(), config);
 	}
 }
