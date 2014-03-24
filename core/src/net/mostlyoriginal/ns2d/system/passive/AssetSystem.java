@@ -114,6 +114,11 @@ public class AssetSystem extends PassiveSystem {
         add("particle-shellcasing", 72, 77, 15,7, 1, 1);
         add("particle-debris", 256, 128, 16, 16, 10);
 
+        add("sentry-frame",64, 448, 32, 32, 2);
+        add("sentry-frame-unbuilt",128, 448, 32, 32, 1);
+        add("sentry",256, 448, 32, 32, 2);
+        add("sentry-unbuilt",256+32, 448, 32, 32, 1);
+
         add("rifle", 0, 32, TILE_SIZE, TILE_SIZE, 1);
         add("shotgun", 0, 64, TILE_SIZE, TILE_SIZE, 1);
         add("grenadelauncher", 0, 96, TILE_SIZE, TILE_SIZE, 1);

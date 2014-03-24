@@ -4,7 +4,6 @@ import com.artemis.Aspect;
 import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
-import com.artemis.managers.TagManager;
 import com.artemis.systems.EntityProcessingSystem;
 import net.mostlyoriginal.ns2d.component.Buildable;
 import net.mostlyoriginal.ns2d.component.Harvester;
@@ -22,7 +21,6 @@ public class HarvesterSystem extends EntityProcessingSystem {
     private ComponentMapper<Buildable> bm;
     private ComponentMapper<Wallet> wm;
 
-    private TagManager tagManager;
 
     public HarvesterSystem() {
         super(Aspect.getAspectForAll(Harvester.class, Buildable.class));
@@ -38,8 +36,8 @@ public class HarvesterSystem extends EntityProcessingSystem {
             harvester.cooldown -= world.delta;
             if (harvester.cooldown <= 0) {
                 harvester.cooldown = harvester.interval;
-                Entity player = tagManager.getEntity("player");
-                wm.get(player).resources += harvester.count;
+                //Entity player = tagManager.getEntity("player");
+                //wm.get(player).resources += harvester.count;
             }
         }
     }

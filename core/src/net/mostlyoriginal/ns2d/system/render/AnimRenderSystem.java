@@ -84,6 +84,8 @@ public class AnimRenderSystem extends EntitySystem {
     private void drawAnimation(final Anim animation, final Pos position, String id) {
 
         final com.badlogic.gdx.graphics.g2d.Animation gdxanim = assetSystem.get(id);
+        if ( gdxanim == null) return;
+
         final TextureRegion frame = gdxanim.getKeyFrame(animation.age, true);
 
         if ( animation.rotation != 0 )

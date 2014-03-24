@@ -75,6 +75,12 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
                 groupManager.add(duct, "duct");
                 duct.addToWorld();
                 break;
+            case "sentry":
+                final Entity sentry = EntityFactory.createSentry(world, x, y);
+                groupManager.add(sentry, "player-structure");
+                groupManager.add(sentry, "player-friend");
+                sentry.addToWorld();
+                break;
             case "skulk":
                 Entity skulk = EntityFactory.createSkulk(world, x, y);
                 groupManager.add(skulk, "enemy");

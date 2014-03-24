@@ -18,6 +18,7 @@ public class EntityFactory {
     private static final int COST_INFANTRY_PORTAL = 25;
     private static final int COST_ARMORY = 15;
     private static final int COST_RESOURCETOWER = 10;
+    private static final int COST_SENTRY = 15;
 
     public static Entity createPlayer(final World world, final float x, final float y) {
 
@@ -108,12 +109,25 @@ public class EntityFactory {
 
     public static Entity createResourceTower(World world, float x, float y) {
 
+        Entity structureSocket = createStructureSocket(world, x, y);
+        structureSocket.addToWorld();
+        return newPositioned(world, x, y)
+                .addComponent(new Bounds(16 * 3, 16 * 3))
+                .addComponent(new Harvester())
+                .addComponent(resourceDispenserWeapon(5, 2,3))
+                .addComponent(new Attached(structureSocket))
+                .addComponent(new HealthIndicator())
+                .addComponent(new Buildable("resourcetower", "resourcetower-unbuilt", COST_RESOURCETOWER))
+                .addComponent(new Anim("resourcetower-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
+    }
+
+    private static Weapon resourceDispenserWeapon( float cooldown, int min, int max ) {
         Weapon weapon = new Weapon();
-        weapon.cooldown = weapon.fireCooldown = 5;
+        weapon.cooldown = weapon.fireCooldown = cooldown;
         weapon.aimRotation = 90;
-        weapon.minBullets = 2;
+        weapon.minBullets = min;
         weapon.cooldownWhileNotFiring = false;
-        weapon.maxBullets = 3;
+        weapon.maxBullets = max;
         weapon.bulletPayload.type = Payload.DamageType.RESOURCE;
         weapon.bulletPayload.maxLifetime = 240f;
         weapon.recoil = 3f;
@@ -123,17 +137,7 @@ public class EntityFactory {
         weapon.bulletBounce = 1;
         weapon.bulletAnimId = "resource";
         weapon.enemyGroup = "player";
-
-        Entity structureSocket = createStructureSocket(world, x, y);
-        structureSocket.addToWorld();
-        return newPositioned(world, x, y)
-                .addComponent(new Bounds(16 * 3, 16 * 3))
-                .addComponent(new Harvester())
-                .addComponent(weapon)
-                .addComponent(new Attached(structureSocket))
-                .addComponent(new HealthIndicator())
-                .addComponent(new Buildable("resourcetower", "resourcetower-unbuilt", COST_RESOURCETOWER))
-                .addComponent(new Anim("resourcetower-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
+        return weapon;
     }
 
     private static Entity createStructureSocket(World world, float x, float y) {
@@ -145,9 +149,13 @@ public class EntityFactory {
         structureSocket.addToWorld();
         Health health = new Health(100);
         health.woundParticle = "debris";
+        Buildable buildable = new Buildable("techpoint", "techpoint-unbuilt", 999);
+        buildable.built=true;
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(64,64))
                 .addComponent(health)
+                .addComponent(buildable)
+                .addComponent(resourceDispenserWeapon(12, 1, 1))
                 .addComponent(new Critical())
                 .addComponent(new Attached(structureSocket))
                 .addComponent(new HealthIndicator())
@@ -194,6 +202,46 @@ public class EntityFactory {
                 .addComponent(weapon)
                 .addComponent(new Buildable("armory", "armory-unbuilt", COST_ARMORY))
                 .addComponent(new Anim("armory-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
+    }
+
+
+
+    public static Entity createSentryHead(World world, float x, float y, Entity player) {
+        Weapon weapon = new Weapon();
+        weapon.shellParticle = "bulletcasing";
+        weapon.recoil = 2;
+        weapon.bulletLifetime = 1.5f;
+        weapon.fireCooldown = 0.1f;
+        weapon.bulletPayload.maxLifetime = 1.5f;
+
+        return newPositioned(world, x, y)
+                .addComponent(new Anim("sentry-frame-unbuilt", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+                .addComponent(new Attached(player, WEAPON_ROT_ORIGIN_X - 10, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y + 4))
+                .addComponent(new Buildable("sentry", "sentry-frame-unbuilt", COST_SENTRY))
+                .addComponent(weapon)
+                .addComponent(new Bounds(32, 32));
+    }
+
+
+    public static Entity createSentry(World world, float x, float y) {
+        Entity structureSocket = createStructureSocket(world, x, y);
+        structureSocket.addToWorld();
+
+        Entity sentry = newPositioned(world, x, y)
+                .addComponent(new Bounds(32,32))
+                .addComponent(new HealthIndicator())
+                .addComponent(new Attached(structureSocket))
+                .addComponent(new Anim("sentry-frame", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
+
+        Entity head = EntityFactory.createSentryHead(world, 0, 0, sentry);
+
+        Inventory inventory = new Inventory();
+        sentry.addComponent(inventory);
+        inventory.weapon = head;
+
+        head.addToWorld();
+
+        return sentry;
     }
 
 
