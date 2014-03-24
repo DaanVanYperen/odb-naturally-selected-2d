@@ -18,6 +18,7 @@ public class Payload extends Component {
     public int maxDamage = 1;
     public String triggerGroup;
     public float maxLifetime;
+    public String explodeSfxId;
 
     public float age;
 
@@ -30,6 +31,7 @@ public class Payload extends Component {
         p.maxDamage = maxDamage;
         p.triggerGroup = triggerGroup;
         p.maxLifetime = maxLifetime;
+        p.explodeSfxId = explodeSfxId;
         return p;
     }
 }

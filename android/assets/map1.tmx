@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="ns2d_tileset" tilewidth="32" tileheight="32">
+  <properties>
+   <property name="entity" value="turret"/>
+  </properties>
+  <image source="ns2d_tileset.png" width="1024" height="1024"/>
+  <tile id="0">
+   <properties>
+    <property name="entity" value="player"/>
+   </properties>
+  </tile>
+  <tile id="256">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="257">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="258">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="259">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="260">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="261">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="262">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="263">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="289">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="290">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="291">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="292">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="293">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="390">
+   <properties>
+    <property name="entity" value="duct"/>
+   </properties>
+  </tile>
+  <tile id="450">
+   <properties>
+    <property name="entity" value="sentry"/>
+   </properties>
+  </tile>
+  <tile id="480">
+   <properties>
+    <property name="entity" value="resourcetower"/>
+   </properties>
+  </tile>
+  <tile id="481">
+   <properties>
+    <property name="entity" value="techpoint"/>
+   </properties>
+  </tile>
+  <tile id="482">
+   <properties>
+    <property name="entity" value="spawner"/>
+   </properties>
+  </tile>
+  <tile id="483">
+   <properties>
+    <property name="entity" value="armory"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Back" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzFmH9y2kAMhe38aHqMDgHO0fufoiQESuAQxZPdqfjyaddJp+QPDWa9a+tJT0+C1TgM67OtisXrZfm+DNd1zzp8X4b1JT7XeO4y7O+dixbPrPGcFe633hFxrPB8nuU9YqHfy8Y7uE4fGav4/eZsD1ewW/EtWvQ9w8H8RfyPZ9sM8+wQbO6Zagvknj4br+j/Ss7Wz3Ecfl0TBzli/DWfrabi2jVxtGoocsT4x9ric66dD/OTse1hM4xfgaPls9W05YHnr4ljjq4zP1ldU9+ujSPjkNW3aXHWc75Cr+hPrw6sjzCvH8HxLxZ5xdgb9zmPtOafr8LBfmi9L9Nm3jNe3b19v7D7se2fnbFzi/F9DDMdZU6yHEUslo/P8L93bjHmdWD4sj6Zad61cZBXGefpO3FQ466JI+tj9lvCajmbt7J593/mw2rbenurVoyTN+NlfVZ/uN6y2/ESh519EB/ILZubrB64l/dqbiZ/zu/+Yfw0nYnnNjib+cJ67s0iNncxVy0cfL9pzXTuOLxZxcH320zEtay3tPqM6bDhyDSFeXxBPswnM95nr7d5l3maLP4+P7//Z8XxMM63in8LXrVmDYtrNouQ/6Z3n9XdumdRcOzO109JfWT6Se608DFHLRy7wvHdJ3BMGPZnO4X64LusH5v+kjesadPviGPy7ffwxvW6FjW06uux+Bxx7MvZ3dD/L+lGckBNtRrPNGINHNviS7XNcKk9de+T4Jiun0ONtOwG3DH/TJts5rV5t/o++fkKrkcO7orPxHEK69H2wEc948xkNWL6FveyzrcBQ8wHcVS/I469YOCz+UzTL85X7I/Em83tG+Dg3m3Bsi845s4t7JM2v7JHZP2d/binu5UDsZZOhXsTh76N8/sL5xbOJpaP3lrGK8MR83EoOF6HefpMHeAzrbdlcxj5FnPUm2ujRlbMz0GbDgVPzdFv1EnFcSp7Ig72aMOQ8cl6k81orCPTq5fi92vBsCtrx6AVMR8xx+ZXq/bpi83A1h8tBszHpsS4ziSVa4fB+0uGgxisn1jPZ221ZmfT6Fo/k+934OH9eIkzw2EzrM3g7HvUOIu9/SaIe2I+Kr8qr45Bjw/D35lx0rPvST6sjluzWIanp9Fci9pWa/YZWObMyjEf9Jv+Wt83X1tzDOPD2bhi+ej/ErE+7LPFl9a6zck2b0aeH4o29WYRs8fxPZ/I66zGbWbJNC7j5Uf+Q+n1JOM05ymrIfM7y5PVHfVsjq5nz+/VtOFg7bDvWE1ZjKgTrZ5rWmd1yPhbnCyuWe8w3bVewv5k/liPynpz1rey654m9DSrxyfLces51qeyvmfcNo1qxd96Tea76ZvFK4tDT29aPGCMGEfjXIsPGTczveQ940imsS1eMC4tv3r6ZFphvLXrrO6ZC+OU6YHxqaXF2b6sRubUXSu2vfxYnFpa3dIMu2dcM7xZXf0BY2RptA==
+  </data>
+ </layer>
+ <layer name="Middle" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt1lEKgCAMgGE7Svc/lRbVMXpJEGGYmrbB/0EvNcRpbjoHoEV4GbcMGvcra+0EDTgK368ps+gn5RHfS3mU8p+tdT/IAy2O5LHAPzV4y2qxlEeM80m85jpubT8k5DHP23vQOWjckfbsrAbFZxcAAC0033WtYk110HA/7eH5jwAI8j5D3/lHqc9Y7UP0HwAAUOMG5dgnRQ==
+  </data>
+ </layer>
+ <layer name="Front" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt2FEOgjAQRVEaPwwocR1GXYm6LhfGxmxijE2tLYVMmeI9yXwVLS+FodA0HzezTB1snZ2q1UkoR2f/yxSoownnqHVNyKELOXSR6lelkWO6h8A8Na1HLP9SOYbEXKlxX03rEUMOXaRzxO7NX2Nj+pl/jGSO3Hs19/fuuOT7x9tG8HptA+8fpezsXPtE9TP6bimhvalflwp6ztWkvxvcFeXYmle1zjl1is4P333f7Z0S+2Dg38zd72BduB4ArMmU7xKQkfN84VkEAABCnkhDKlE=
+  </data>
+ </layer>
+</map>

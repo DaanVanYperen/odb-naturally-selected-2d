@@ -10,6 +10,7 @@ import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import net.mostlyoriginal.ns2d.component.*;
+import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.util.EntityFactory;
 
 /**
@@ -33,6 +34,7 @@ public class WeaponSystem extends EntityProcessingSystem {
     private ParticleSystem particleSystem;
     private TagManager tagManager;
     public Entity player;
+    private AssetSystem assetSystem;
 
     public WeaponSystem() {
         super(Aspect.getAspectForAll(Weapon.class, Pos.class, Bounds.class, Anim.class));
@@ -53,7 +55,13 @@ public class WeaponSystem extends EntityProcessingSystem {
         // avoid cooldown on unbuilt structures.
         if ( bm.has(gun) && !bm.get(gun).built ) return;
 
-        if (weapon.firing || !weapon.cooldownWhileNotFiring) weapon.cooldown -= world.delta;
+        if (weapon.firing || !weapon.cooldownWhileNotFiring)
+        {
+            weapon.cooldown -= world.delta;
+        }
+        weapon.sfxCooldown -= world.delta;
+
+
         if (weapon.firing) {
             weapon.firing = false;
             if (weapon.cooldown <= 0) {
@@ -76,6 +84,15 @@ public class WeaponSystem extends EntityProcessingSystem {
                 {
                     vTmp.set(18,0).rotate(aimRotation).add(pos.x-8, pos.y+2).add(bounds.cx(), bounds.cy());
                     particleSystem.spawnParticle((int)vTmp.x, (int)vTmp.y, weapon.shellParticle);
+                }
+
+                if ( weapon.fireSfxId != null )
+                {
+                    if ( weapon.sfxCooldown <= 0 )
+                    {
+                        weapon.sfxCooldown = 1/30f;
+                        assetSystem.playSfx(weapon.fireSfxId);
+                    }
                 }
 
                 // repeated bullets.

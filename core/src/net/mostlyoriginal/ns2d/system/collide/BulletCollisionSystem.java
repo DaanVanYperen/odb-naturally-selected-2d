@@ -15,6 +15,7 @@ import net.mostlyoriginal.ns2d.system.active.CameraShakeSystem;
 import net.mostlyoriginal.ns2d.system.active.CombatSystem;
 import net.mostlyoriginal.ns2d.system.active.EntitySpawnerSystem;
 import net.mostlyoriginal.ns2d.system.active.ParticleSystem;
+import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CollisionSystem;
 import net.mostlyoriginal.ns2d.util.EntityUtil;
 
@@ -36,6 +37,7 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
     private TagManager tagManager;
     private EntitySpawnerSystem entitySpawnerSystem;
     private ComponentMapper<Anim> am;
+    private AssetSystem assetSystem;
 
 
     public BulletCollisionSystem() {
@@ -74,6 +76,11 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
 
         int damage = MathUtils.random(payload.minDamage, payload.maxDamage);
         float radius = payload.radius;
+
+        if ( payload.explodeSfxId != null )
+        {
+            assetSystem.playSfx(payload.explodeSfxId);
+        }
 
         switch (payload.type) {
 

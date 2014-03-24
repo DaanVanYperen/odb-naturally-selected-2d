@@ -29,4 +29,6 @@ public class Weapon extends Component {
     public float bulletGravityFactor = 1;
     public float aimRotation = 0;
     public boolean cooldownWhileNotFiring=true;
+    public String fireSfxId;
+    public float sfxCooldown;
 }

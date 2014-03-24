@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import net.mostlyoriginal.ns2d.api.PassiveSystem;
 import net.mostlyoriginal.ns2d.system.active.ParticleSystem;
 
@@ -125,12 +126,32 @@ public class AssetSystem extends PassiveSystem {
         add("shotgun", 0, 64, TILE_SIZE, TILE_SIZE, 1);
         add("grenadelauncher", 0, 96, TILE_SIZE, TILE_SIZE, 1);
         add("flamethrower", 0, 128, TILE_SIZE, TILE_SIZE, 1);
+        
+        loadSounds(new String[] {
+                "ns2d_sfx_bullet_casing1",
+                "ns2d_sfx_bullet_casing2",
+                "ns2d_sfx_bullet_casing3",
+                "ns2d_sfx_gl_explode",
+                "ns2d_sfx_gl_fire",
+                "ns2d_sfx_lmg_fire",
+                "ns2d_sfx_shotgun_fire",
+        });
     }
 
 
     private void loadSounds(String[] soundnames) {
         for (String identifier : soundnames) {
             sounds.put(identifier, Gdx.audio.newSound(Gdx.files.internal("sfx/" + identifier + ".mp3")));
+        }
+    }
+
+    private float sfxVolume = 0.2f;
+    public void playSfx(String name) {
+        if (sfxVolume > 0 )
+        {
+            Sound sfx = getSfx(name);
+            sfx.stop();
+            sfx.play(sfxVolume, MathUtils.random(1f, 1.04f), 0);
         }
     }
 
