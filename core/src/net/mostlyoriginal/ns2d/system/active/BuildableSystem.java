@@ -26,13 +26,14 @@ public class BuildableSystem extends EntityProcessingSystem {
     ComponentMapper<Wallet> wm;
     ComponentMapper<Bounds> om;
     ComponentMapper<Weapon> wem;
-
+    ComponentMapper<Health> hm;
     ParticleSystem particleSystem;
     CollisionSystem collisionSystem;
 
     TagManager tagManager;
     public Entity player;
     private DialogRenderSystem dialogRenderSystem;
+    private CombatSystem combatSystem;
 
     public BuildableSystem()
     {
@@ -52,6 +53,16 @@ public class BuildableSystem extends EntityProcessingSystem {
         if ( buildable.built && wem.has(e) )
         {
             wem.get(e).firing = true;
+
+            if ( buildable.weaponUseCausesDamage )
+            {
+                buildable.weaponUseDamageCooldown -= world.delta;
+                if ( buildable.weaponUseDamageCooldown < 0 )
+                {
+                    buildable.weaponUseDamageCooldown=1;
+                    combatSystem.damage(e, 1);
+                }
+            }
         }
 
         if ( !buildable.built && collisionSystem.overlaps(player, e))

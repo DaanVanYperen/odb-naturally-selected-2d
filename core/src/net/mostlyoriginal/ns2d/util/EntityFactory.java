@@ -18,7 +18,7 @@ public class EntityFactory {
     private static final int COST_INFANTRY_PORTAL = 25;
     private static final int COST_ARMORY = 15;
     private static final int COST_RESOURCETOWER = 10;
-    private static final int COST_SENTRY = 15;
+    private static final int COST_SENTRY = 5;
 
     public static Entity createPlayer(final World world, final float x, final float y) {
 
@@ -217,10 +217,13 @@ public class EntityFactory {
         weapon.fireSfxId = "ns2d_sfx_sentry_fire";
         weapon.bulletPayload.maxLifetime = 1.5f;
 
+        Buildable sentry = new Buildable("sentry", "sentry-frame-unbuilt", COST_SENTRY);
+        sentry.weaponUseCausesDamage=true;
         return newPositioned(world, x, y)
                 .addComponent(new Anim("sentry-frame-unbuilt", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
                 .addComponent(new Attached(player, WEAPON_ROT_ORIGIN_X - 10, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y + 4))
-                .addComponent(new Buildable("sentry", "sentry-frame-unbuilt", COST_SENTRY))
+                .addComponent(new HealthIndicator())
+                .addComponent(sentry)
                 .addComponent(weapon)
                 .addComponent(new Bounds(32, 32));
     }
@@ -232,7 +235,6 @@ public class EntityFactory {
 
         Entity sentry = newPositioned(world, x, y)
                 .addComponent(new Bounds(32,32))
-                .addComponent(new HealthIndicator())
                 .addComponent(new Attached(structureSocket))
                 .addComponent(new Anim("sentry-frame", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
 
@@ -257,10 +259,13 @@ public class EntityFactory {
         weapon.bulletPayload.maxLifetime = 1.5f;
         weapon.aimRotation = 180;
 
+        Buildable sentry2 = new Buildable("sentry2", "sentry2-frame-unbuilt", COST_SENTRY);
+        sentry2.weaponUseCausesDamage=true;
         return newPositioned(world, x, y)
                 .addComponent(new Anim("sentry2-frame-unbuilt", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
                 .addComponent(new Attached(player, WEAPON_ROT_ORIGIN_X - 10, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y + 4))
-                .addComponent(new Buildable("sentry2", "sentry2-frame-unbuilt", COST_SENTRY))
+                .addComponent(sentry2)
+                .addComponent(new HealthIndicator())
                 .addComponent(weapon)
                 .addComponent(new Bounds(32, 32));
     }
@@ -272,7 +277,6 @@ public class EntityFactory {
 
         Entity sentry = newPositioned(world, x, y)
                 .addComponent(new Bounds(32,32))
-                .addComponent(new HealthIndicator())
                 .addComponent(new Attached(structureSocket))
                 .addComponent(new Anim("sentry2-frame", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
 
