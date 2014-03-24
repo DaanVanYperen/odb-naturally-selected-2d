@@ -12,6 +12,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import net.mostlyoriginal.ns2d.component.*;
 import net.mostlyoriginal.ns2d.system.passive.CollisionSystem;
+import net.mostlyoriginal.ns2d.system.render.DialogRenderSystem;
 
 /**
  * @author Daan van Yperen
@@ -31,6 +32,7 @@ public class BuildableSystem extends EntityProcessingSystem {
 
     TagManager tagManager;
     public Entity player;
+    private DialogRenderSystem dialogRenderSystem;
 
     public BuildableSystem()
     {
@@ -77,6 +79,8 @@ public class BuildableSystem extends EntityProcessingSystem {
         final Buildable buildable = bm.get(victim);
         if ( buildable.built )
         {
+            dialogRenderSystem.randomSay(DialogRenderSystem.BUILDING_DESTROYED_MESSAGES);
+
             Pos pos = pm.get(victim);
             Bounds bounds = om.get(victim);
 

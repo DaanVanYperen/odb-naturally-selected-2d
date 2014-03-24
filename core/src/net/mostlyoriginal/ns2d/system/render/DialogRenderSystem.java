@@ -49,19 +49,57 @@ public class DialogRenderSystem extends VoidEntitySystem {
         messages.add(queuedMessage);
     }
 
-    public String[] randomMessage = {
+    public final static String[] STAGE_ACTION_MESSAGES = {
             "Lock and load!",
-            "I found an outlet for my aggression!",
+            "Hey! I hear an outlet for my aggression!",
+            "Heh, time to strafe like a skulk!",
+            "Where are all my teammates!",
+            "I hope that isn't an onos!",
+    };
+
+    public final static String[] CRITICAL_ALERT_MESSAGES = {
+            "If that techpoint goes down, i'm fired!",
+            "Techpoint under attack!",
+            "Leave the commander alooooooone!",
+            "Techpoint! No!",
+    };
+
+    public final static String[] BUILD_MORE_HARVESTERS = {
+            "Better build some more extractors!",
+            "I'd farm more cash with some extra extractors!",
+            "Commander, we need more extractors!",
+            "Ho ho ho, extractoring we go!",
+            "Extractors equals cash. Cash equals weapons!"
+    };
+
+
+    public final static String[] BUILDING_DESTROYED_MESSAGES = {
+            "Crap! Something broke.",
+            "Why is nobody welding!",
+            "*sigh*",
+    };
+
+
+    public final static String[] WEAPON_READY_MESSAGES = {
+            "Did you hear the beep? Weapon's done!",
+            "Delivery!",
+            "Spanky!",
+    };
+
+    public final static String[] STAGE_COOLDOWN_MESSAGES = {
+            "Vents got quiet!",
+            "Calm before the storm.",
+            "Pfew!",
+            "Time for a spaceburger."
     };
 
     @Override
     protected void initialize() {
         super.initialize();
-        randomSay();
     }
 
-    private void randomSay() {
-        say(randomMessage[MathUtils.random(0, randomMessage.length - 1)]);
+    public void randomSay(final String[] messages) {
+        say(messages[MathUtils.random(0, messages.length - 1)]);
     }
 
     @Override

@@ -8,6 +8,7 @@ import com.artemis.utils.ImmutableBag;
 import com.badlogic.gdx.math.MathUtils;
 import net.mostlyoriginal.ns2d.api.PassiveSystem;
 import net.mostlyoriginal.ns2d.component.*;
+import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.render.UIStopwatchRenderSytem;
 
 /**
@@ -30,6 +31,7 @@ public class CombatSystem extends PassiveSystem {
     private AttachmentSystem attachmentSystem;
     private ParticleSystem particleSystem;
     private UIStopwatchRenderSytem uiStopwatchRenderSytem;
+    private AssetSystem assetSystem;
 
     @Override
     protected void initialize() {
@@ -74,6 +76,11 @@ public class CombatSystem extends PassiveSystem {
                 if (cm.has(victim))
                 {
                     uiStopwatchRenderSytem.gameOver = true;
+                }
+
+                if (health.deathSfxId!= null)
+                {
+                    assetSystem.playSfx(health.deathSfxId[MathUtils.random(0,health.deathSfxId.length-1)]);
                 }
 
                 if (rm.has(victim)) {

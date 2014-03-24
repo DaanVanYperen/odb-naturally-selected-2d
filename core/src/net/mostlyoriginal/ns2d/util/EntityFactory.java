@@ -58,6 +58,7 @@ public class EntityFactory {
 
         Health health = new Health(2);
         health.woundParticle = "alienblood";
+        health.deathSfxId = new String[] {"ns2d_sfx_skulk_die1","ns2d_sfx_skulk_die2","ns2d_sfx_skulk_die3"};
         Entity skulk = newPositioned(world, x, y)
                 .addComponent(new Anim("skulk", Anim.Layer.ENEMIES))
                 .addComponent(health)
@@ -212,7 +213,7 @@ public class EntityFactory {
         weapon.recoil = 2;
         weapon.bulletLifetime = 1.5f;
         weapon.fireCooldown = 0.1f;
-        weapon.fireSfxId = "ns2d_sfx_lmg_fire";
+        weapon.fireSfxId = "ns2d_sfx_sentry_fire";
         weapon.bulletPayload.maxLifetime = 1.5f;
 
         return newPositioned(world, x, y)
@@ -235,6 +236,46 @@ public class EntityFactory {
                 .addComponent(new Anim("sentry-frame", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
 
         Entity head = EntityFactory.createSentryHead(world, 0, 0, sentry);
+
+        Inventory inventory = new Inventory();
+        sentry.addComponent(inventory);
+        inventory.weapon = head;
+
+        head.addToWorld();
+
+        return sentry;
+    }
+
+    public static Entity createSentryHead2(World world, float x, float y, Entity player) {
+        Weapon weapon = new Weapon();
+        weapon.shellParticle = "bulletcasing";
+        weapon.recoil = 2;
+        weapon.bulletLifetime = 1.5f;
+        weapon.fireCooldown = 0.1f;
+        weapon.fireSfxId = "ns2d_sfx_sentry_fire";
+        weapon.bulletPayload.maxLifetime = 1.5f;
+        weapon.aimRotation = 180;
+
+        return newPositioned(world, x, y)
+                .addComponent(new Anim("sentry2-frame-unbuilt", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+                .addComponent(new Attached(player, WEAPON_ROT_ORIGIN_X - 10, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y + 4))
+                .addComponent(new Buildable("sentry2", "sentry2-frame-unbuilt", COST_SENTRY))
+                .addComponent(weapon)
+                .addComponent(new Bounds(32, 32));
+    }
+
+
+    public static Entity createSentry2(World world, float x, float y) {
+        Entity structureSocket = createStructureSocket(world, x, y);
+        structureSocket.addToWorld();
+
+        Entity sentry = newPositioned(world, x, y)
+                .addComponent(new Bounds(32,32))
+                .addComponent(new HealthIndicator())
+                .addComponent(new Attached(structureSocket))
+                .addComponent(new Anim("sentry2-frame", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
+
+        Entity head = EntityFactory.createSentryHead2(world, 0, 0, sentry);
 
         Inventory inventory = new Inventory();
         sentry.addComponent(inventory);
@@ -270,7 +311,7 @@ public class EntityFactory {
         weapon.shellParticle = "bulletcasing";
         weapon.recoil = 2;
         weapon.fireCooldown = 0.1f;
-        weapon.fireSfxId = "ns2d_sfx_lmg_fire";
+        weapon.fireSfxId = "ns2d_sfx_lmg_fire2";
 
         weapon.bulletPayload.maxLifetime = 1.5f;
 

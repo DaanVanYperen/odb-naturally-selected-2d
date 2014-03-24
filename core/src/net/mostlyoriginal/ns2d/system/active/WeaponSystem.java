@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import net.mostlyoriginal.ns2d.component.*;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
+import net.mostlyoriginal.ns2d.system.render.DialogRenderSystem;
 import net.mostlyoriginal.ns2d.util.EntityFactory;
 
 /**
@@ -35,6 +36,7 @@ public class WeaponSystem extends EntityProcessingSystem {
     private TagManager tagManager;
     public Entity player;
     private AssetSystem assetSystem;
+    private DialogRenderSystem dialogRenderSystem;
 
     public WeaponSystem() {
         super(Aspect.getAspectForAll(Weapon.class, Pos.class, Bounds.class, Anim.class));
@@ -154,7 +156,7 @@ public class WeaponSystem extends EntityProcessingSystem {
     }
 
     private void cycleWeaponPickup(Weapon weapon) {
-
+        dialogRenderSystem.randomSay(DialogRenderSystem.WEAPON_READY_MESSAGES);
         switch (weapon.bulletAnimId)
         {
             case "rifle": weapon.bulletAnimId="shotgun"; break;

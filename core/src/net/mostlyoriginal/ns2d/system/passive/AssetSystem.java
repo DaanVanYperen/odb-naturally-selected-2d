@@ -127,6 +127,11 @@ public class AssetSystem extends PassiveSystem {
         add("sentry",256, 448, 32, 32, 2);
         add("sentry-unbuilt",256+32, 448, 32, 32, 1);
 
+        add("sentry2-frame",64+256, 448, 32, 32, 2);
+        add("sentry2-frame-unbuilt",128+256, 448, 32, 32, 1);
+        add("sentry2",256+256, 448, 32, 32, 2);
+        add("sentry2-unbuilt",256+32+256, 448, 32, 32, 1);
+
         add("rifle", 0, 32, TILE_SIZE, TILE_SIZE, 1);
         add("shotgun", 0, 64, TILE_SIZE, TILE_SIZE, 1);
         add("grenadelauncher", 0, 96, TILE_SIZE, TILE_SIZE, 1);
@@ -138,8 +143,12 @@ public class AssetSystem extends PassiveSystem {
                 "ns2d_sfx_bullet_casing3",
                 "ns2d_sfx_gl_explode",
                 "ns2d_sfx_gl_fire",
-                "ns2d_sfx_lmg_fire",
+                "ns2d_sfx_lmg_fire2",
+                "ns2d_sfx_sentry_fire",
                 "ns2d_sfx_shotgun_fire",
+                "ns2d_sfx_skulk_die1",
+                "ns2d_sfx_skulk_die2",
+                "ns2d_sfx_skulk_die3",
         });
     }
 
