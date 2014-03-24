@@ -99,6 +99,8 @@ public class AssetSystem extends PassiveSystem {
         add("particle-alienblood", 256, 144, 16, 16, 18);
 
 
+        add("resource", 43, 523, 10, 10, 1);
+
         add("bullet", 43, 45, 9, 6, 1);
         add("slug", 44, 76, 8, 8, 1);
         add("grenade", 42, 108, 12, 8, 1);

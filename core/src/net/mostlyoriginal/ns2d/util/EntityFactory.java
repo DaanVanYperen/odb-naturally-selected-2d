@@ -108,11 +108,27 @@ public class EntityFactory {
 
     public static Entity createResourceTower(World world, float x, float y) {
 
+        Weapon weapon = new Weapon();
+        weapon.fireCooldown = 5;
+        weapon.aimRotation = 90;
+        weapon.minBullets = 2;
+        weapon.maxBullets = 3;
+        weapon.bulletPayload.type = Payload.DamageType.RESOURCE;
+        weapon.bulletPayload.maxLifetime = 240f;
+        weapon.recoil = 3f;
+        weapon.spread = 40;
+        weapon.bulletSpeed = 140f;
+        weapon.firing = false;
+        weapon.bulletBounce = 1;
+        weapon.bulletAnimId = "resource";
+        weapon.enemyGroup = "player";
+
         Entity structureSocket = createStructureSocket(world, x, y);
         structureSocket.addToWorld();
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(16 * 3, 16 * 3))
                 .addComponent(new Harvester())
+                .addComponent(weapon)
                 .addComponent(new Attached(structureSocket))
                 .addComponent(new HealthIndicator())
                 .addComponent(new Buildable("resourcetower", "resourcetower-unbuilt", COST_RESOURCETOWER))

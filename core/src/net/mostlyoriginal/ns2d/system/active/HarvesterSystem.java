@@ -26,6 +26,7 @@ public class HarvesterSystem extends EntityProcessingSystem {
 
     public HarvesterSystem() {
         super(Aspect.getAspectForAll(Harvester.class, Buildable.class));
+        setEnabled(false);
     }
 
     @Override

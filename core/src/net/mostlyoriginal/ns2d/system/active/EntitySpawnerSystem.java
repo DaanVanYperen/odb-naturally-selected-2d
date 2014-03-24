@@ -117,6 +117,7 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
         player.addComponent(inventory);
 
         tagManager.register("player", player);
+        groupManager.add(player, "player");
     }
 
 

@@ -27,4 +27,5 @@ public class Weapon extends Component {
     public boolean muzzleFlare = true;
     public String shellParticle;
     public float bulletGravityFactor = 1;
+    public float aimRotation = 0;
 }

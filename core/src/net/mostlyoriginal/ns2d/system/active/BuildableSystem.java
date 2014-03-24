@@ -24,6 +24,7 @@ public class BuildableSystem extends EntityProcessingSystem {
     ComponentMapper<Anim> am;
     ComponentMapper<Wallet> wm;
     ComponentMapper<Bounds> om;
+    ComponentMapper<Weapon> wem;
 
     ParticleSystem particleSystem;
     CollisionSystem collisionSystem;
@@ -44,6 +45,13 @@ public class BuildableSystem extends EntityProcessingSystem {
     @Override
     protected void process(Entity e) {
         final Buildable buildable = bm.get(e);
+
+        // fire resource towers and turrets
+        if ( buildable.built && wem.has(e) )
+        {
+            wem.get(e).firing = true;
+        }
+
         if ( !buildable.built && collisionSystem.overlaps(player, e))
         {
             if (Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isKeyPressed(Input.Keys.E))
@@ -52,13 +60,13 @@ public class BuildableSystem extends EntityProcessingSystem {
                 if (wallet.resources >= buildable.resourceCost)
                 {
                     wallet.resources -= buildable.resourceCost;
+                    buildable.built = true;
+                    Anim anim = am.get(e);
+                    anim.id = buildable.builtAnimId;
+                    Health health = new Health(30);
+                    health.woundParticle = "debris";
+                    e.addComponent(health).changedInWorld();
                 }
-                buildable.built = true;
-                Anim anim = am.get(e);
-                anim.id = buildable.builtAnimId;
-                Health health = new Health(30);
-                health.woundParticle = "debris";
-                e.addComponent(health).changedInWorld();
             }
         }
     }

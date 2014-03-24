@@ -5,12 +5,14 @@ import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
 import com.artemis.managers.GroupManager;
+import com.artemis.managers.TagManager;
 import com.artemis.systems.EntityProcessingSystem;
 import com.artemis.utils.ImmutableBag;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import net.mostlyoriginal.ns2d.component.Payload;
 import net.mostlyoriginal.ns2d.component.Pos;
+import net.mostlyoriginal.ns2d.component.Wallet;
 import net.mostlyoriginal.ns2d.system.active.CameraShakeSystem;
 import net.mostlyoriginal.ns2d.system.active.CombatSystem;
 import net.mostlyoriginal.ns2d.system.active.ParticleSystem;
@@ -26,10 +28,12 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
     private CameraShakeSystem cameraShakeSystem;
     private ComponentMapper<Payload> pm;
     private ComponentMapper<Pos> om;
+    private ComponentMapper<Wallet> wm;
     private GroupManager groupManager;
     private CollisionSystem collisionSystem;
     private CombatSystem combatSystem;
     private ParticleSystem particleSystem;
+    private TagManager tagManager;
 
 
     public BulletCollisionSystem() {
@@ -71,13 +75,24 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
         int damage = MathUtils.random(payload.minDamage, payload.maxDamage);
         float radius = payload.radius;
 
-        if ( radius == 0 )
+        switch ( payload.type )
         {
-            //cameraShakeSystem.shake(1);
-            combatSystem.damage(victim, damage);
-        } else {
-            damageArea(bullet, payload.triggerGroup, radius, damage);
+
+            case RESOURCE:
+                Entity player = tagManager.getEntity("player");
+                if ( wm.has(player) ) wm.get(player).resources += damage;
+                break;
+            case EXPLOSIVE:
+                if ( radius == 0 )
+                {
+                    //cameraShakeSystem.shake(1);
+                    combatSystem.damage(victim, damage);
+                } else {
+                    damageArea(bullet, payload.triggerGroup, radius, damage);
+                }
+                break;
         }
+
     }
 
     Vector2 vTmp = new Vector2();

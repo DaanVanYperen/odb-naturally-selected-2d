@@ -51,17 +51,18 @@ public class WeaponSystem extends EntityProcessingSystem {
                 final Bounds bounds = om.get(gun);
                 final Anim anim = am.get(gun);
 
+                float aimRotation = anim.rotation + weapon.aimRotation;
                 if ( weapon.muzzleFlare ) {
                     // determine muzzle location.
-                    vTmp.set(28,0).rotate(anim.rotation).add(pos.x-8, pos.y+2).add(bounds.cx(), bounds.cy());
-                    particleSystem.setRotation(anim.rotation);
+                    vTmp.set(28,0).rotate(aimRotation).add(pos.x-8, pos.y+2).add(bounds.cx(), bounds.cy());
+                    particleSystem.setRotation(aimRotation);
                     particleSystem.spawnParticle((int)vTmp.x, (int)vTmp.y, "muzzle-flare");
                     particleSystem.setRotation(0);
                 }
 
                 if ( weapon.shellParticle != null )
                 {
-                    vTmp.set(18,0).rotate(anim.rotation).add(pos.x-8, pos.y+2).add(bounds.cx(), bounds.cy());
+                    vTmp.set(18,0).rotate(aimRotation).add(pos.x-8, pos.y+2).add(bounds.cx(), bounds.cy());
                     particleSystem.spawnParticle((int)vTmp.x, (int)vTmp.y, weapon.shellParticle);
                 }
 
@@ -71,7 +72,7 @@ public class WeaponSystem extends EntityProcessingSystem {
                     Entity bullet = EntityFactory.createBullet(world, pos.x + bounds.cx(), pos.y + bounds.cy());
 
                     // rotate bullet to player rotation
-                    float rotation = anim.rotation + MathUtils.random(-weapon.spread, weapon.spread);
+                    float rotation = aimRotation + MathUtils.random(-weapon.spread, weapon.spread);
                     Anim bulletAnim = am.get(bullet);
                     bulletAnim.rotation = rotation;
                     bulletAnim.id = weapon.bulletAnimId;
