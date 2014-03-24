@@ -8,6 +8,7 @@ import com.artemis.systems.VoidEntitySystem;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import net.mostlyoriginal.ns2d.component.*;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
@@ -48,8 +49,24 @@ public class DialogRenderSystem extends VoidEntitySystem {
         messages.add(queuedMessage);
     }
 
+    public String[] randomMessage = {
+            "Lock and load!",
+            "I found an outlet for my aggression!",
+    };
+
+    @Override
+    protected void initialize() {
+        super.initialize();
+        randomSay();
+    }
+
+    private void randomSay() {
+        say(randomMessage[MathUtils.random(0, randomMessage.length - 1)]);
+    }
+
     @Override
     protected void processSystem() {
+
 
         activeMessageCooldown -= world.delta;
         if (activeMessageCooldown <= 0) {
@@ -57,7 +74,7 @@ public class DialogRenderSystem extends VoidEntitySystem {
             if (messages.size > 0) {
                 activeMessage = messages.first();
                 messages.removeIndex(0);
-                activeMessageCooldown = 0.5f + (activeMessage.length() * 0.05f);
+                activeMessageCooldown = 0.8f + (activeMessage.length() * 0.1f);
             } else activeMessage = null;
         }
 
@@ -70,6 +87,8 @@ public class DialogRenderSystem extends VoidEntitySystem {
             pos = pm.get(player);
             walletCash = wm.has(player) ? wm.get(player).resources : 0;
 
+            float alpha = MathUtils.clamp(activeMessageCooldown, 0, 1);
+
             west = assetSystem.get("speech-bubble-left").getKeyFrame(0);
             middle = assetSystem.get("speech-bubble-middle").getKeyFrame(0);
             east = assetSystem.get("speech-bubble-right").getKeyFrame(0);
@@ -78,12 +97,15 @@ public class DialogRenderSystem extends VoidEntitySystem {
             final int dialogY = (int) pos.y + 32;
             final int middleWidth = (int) assetSystem.font.getBounds(activeMessage).width + 1;
 
+            batch.getColor().a = alpha;
             batch.draw(west, dialogX, dialogY);
             batch.draw(middle, dialogX + 16, dialogY, middleWidth, 38);
             batch.draw(east, dialogX + 16 + middleWidth, dialogY, 16, 38);
             assetSystem.font.setColor(Color.BLACK);
+            assetSystem.font.getColor().a = alpha;
             assetSystem.font.draw(batch, activeMessage, dialogX + 17, dialogY + 31);
             assetSystem.font.setColor(Color.WHITE);
+            assetSystem.font.getColor().a = alpha;
             assetSystem.font.draw(batch, activeMessage, dialogX + 16, dialogY + 32);
 
             batch.end();

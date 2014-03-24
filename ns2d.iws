@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a3431cf-d619-496e-8f5b-feccda2c4911" name="Default" comment="Added basic sound effects.&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android/assets/sfx/ns2d_sfx_lmg_fire2.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android/assets/sfx/ns2d_sfx_sentry_fire.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android/assets/sfx/ns2d_sfx_skulk_die1.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android/assets/sfx/ns2d_sfx_skulk_die2.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android/assets/sfx/ns2d_sfx_skulk_die3.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/DialogRenderSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/ns2d_tileset.png" afterPath="$PROJECT_DIR$/android/assets/ns2d_tileset.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/MainScreen.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/MainScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/map1.tmx" afterPath="$PROJECT_DIR$/android/assets/map1.tmx" />
+    <list default="true" id="2a3431cf-d619-496e-8f5b-feccda2c4911" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/DialogRenderSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/DialogRenderSystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ns2d.iws" afterPath="$PROJECT_DIR$/ns2d.iws" />
     </list>
     <ignored path="ns2d.iws" />
@@ -89,9 +80,9 @@
       <file leaf-file-name="DialogRenderSystem.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/DialogRenderSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="617" selection-end="617" vertical-scroll-proportion="0.17271408" vertical-offset="17" max-vertical-offset="1479">
+            <state line="76" column="43" selection-start="2305" selection-end="2305" vertical-scroll-proportion="0.5181422" vertical-offset="731" max-vertical-offset="1836">
               <folding>
-                <element signature="e#922#930#0" expanded="true" />
+                <element signature="e#962#970#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1000,7 +991,7 @@
       <workItem from="1395494595535" duration="43631000" />
       <workItem from="1395569899264" duration="25511000" />
       <workItem from="1395617790514" duration="599000" />
-      <workItem from="1395657723188" duration="29273000" />
+      <workItem from="1395657723188" duration="29505000" />
     </task>
     <task id="LOCAL-00001" summary="Basic map and rendering system.&#10;">
       <created>1395496963545</created>
@@ -1266,11 +1257,15 @@
       <created>1395693932163</created>
       <updated>1395693932163</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="DialogRenderSystem.">
+      <created>1395696160733</created>
+      <updated>1395696160733</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102398000" />
+    <option name="totallyTimeSpent" value="102630000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1208" extended-state="6" />
@@ -1325,7 +1320,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Added payload system for weapons.&#10;" />
     <MESSAGE value="Added particle system and explosive particles to grenades." />
     <MESSAGE value="Added muzzle flare." />
     <MESSAGE value="Added rifle + shotgun shell discharging" />
@@ -1350,7 +1344,8 @@
     <MESSAGE value="Resources home in to the player." />
     <MESSAGE value="Added loud indicator for when a base is under attack." />
     <MESSAGE value="Added basic sound effects.&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added basic sound effects.&#10;" />
+    <MESSAGE value="DialogRenderSystem." />
+    <option name="LAST_COMMIT_MESSAGE" value="DialogRenderSystem." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1733,9 +1728,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/DialogRenderSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="617" selection-end="617" vertical-scroll-proportion="0.17271408" vertical-offset="17" max-vertical-offset="1479">
+        <state line="76" column="43" selection-start="2305" selection-end="2305" vertical-scroll-proportion="0.5181422" vertical-offset="731" max-vertical-offset="1836">
           <folding>
-            <element signature="e#922#930#0" expanded="true" />
+            <element signature="e#962#970#0" expanded="true" />
           </folding>
         </state>
       </provider>
