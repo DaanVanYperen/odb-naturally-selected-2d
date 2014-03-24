@@ -166,6 +166,7 @@ public class EntityFactory {
         weapon.fireCooldown = 0.25f;
         weapon.minBullets = 8;
         weapon.maxBullets = 10;
+        weapon.bulletPayload.maxLifetime = 0.5f;
         weapon.spread = 20;
         weapon.bulletSpeed *= 0.9f;
         weapon.bulletAnimId = "slug";
@@ -181,6 +182,7 @@ public class EntityFactory {
         Weapon weapon = new Weapon();
         weapon.shellParticle = "bulletcasing";
         weapon.recoil = 2;
+        weapon.bulletPayload.maxLifetime = 1.5f;
 
         return newPositioned(world, x, y)
                 .addComponent(new Anim("rifle", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))

@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a3431cf-d619-496e-8f5b-feccda2c4911" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/ns2d_tileset.png" afterPath="$PROJECT_DIR$/android/assets/ns2d_tileset.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ns2d.iws" afterPath="$PROJECT_DIR$/ns2d.iws" />
@@ -74,7 +72,7 @@
       <file leaf-file-name="EntityFactory.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="87" column="42" selection-start="3253" selection-end="3253" vertical-scroll-proportion="0.38171262" vertical-offset="1216" max-vertical-offset="3740">
+            <state line="184" column="44" selection-start="7666" selection-end="7666" vertical-scroll-proportion="0.40493467" vertical-offset="2849" max-vertical-offset="3774">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,7 +83,7 @@
       <file leaf-file-name="AssetSystem.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="87" column="46" selection-start="3150" selection-end="3150" vertical-scroll-proportion="0.0" vertical-offset="763" max-vertical-offset="2227">
+            <state line="102" column="12" selection-start="3624" selection-end="3630" vertical-scroll-proportion="0.0" vertical-offset="1273" max-vertical-offset="2227">
               <folding />
             </state>
           </provider>
@@ -94,7 +92,7 @@
       <file leaf-file-name="EntitySpawnerSystem.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="51" selection-start="2655" selection-end="2655" vertical-scroll-proportion="0.0" vertical-offset="825" max-vertical-offset="2618">
+            <state line="111" column="48" selection-start="4242" selection-end="4242" vertical-scroll-proportion="0.0" vertical-offset="1437" max-vertical-offset="2618">
               <folding />
             </state>
           </provider>
@@ -161,8 +159,8 @@
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/EntitySpawner.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/ParticleSystem.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" />
       </list>
     </option>
@@ -953,7 +951,7 @@
       <workItem from="1395494595535" duration="43631000" />
       <workItem from="1395569899264" duration="25511000" />
       <workItem from="1395617790514" duration="599000" />
-      <workItem from="1395657723188" duration="14675000" />
+      <workItem from="1395657723188" duration="14944000" />
     </task>
     <task id="LOCAL-00001" summary="Basic map and rendering system.&#10;">
       <created>1395496963545</created>
@@ -1175,22 +1173,26 @@
       <created>1395676365343</created>
       <updated>1395676365343</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Added indicator for active ducts.">
+      <created>1395677331496</created>
+      <updated>1395677331496</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87800000" />
+    <option name="totallyTimeSpent" value="88069000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1208" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32800752" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32800752" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.50070125" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1234,7 +1236,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Added slight pushback to weapons." />
     <MESSAGE value="Added rotational origin for animations, and attachment offsets.&#10;Fixed skulk head location." />
     <MESSAGE value="Tuned weapon location on marine." />
     <MESSAGE value="Added weapon recoil." />
@@ -1259,7 +1260,8 @@
     <MESSAGE value="Woundable structures spray debris." />
     <MESSAGE value="Stages are announced." />
     <MESSAGE value="Added alien blood." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added alien blood." />
+    <MESSAGE value="Added indicator for active ducts." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added indicator for active ducts." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1608,21 +1610,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="46" selection-start="3150" selection-end="3150" vertical-scroll-proportion="0.0" vertical-offset="967" max-vertical-offset="2227">
+        <state line="102" column="12" selection-start="3624" selection-end="3630" vertical-scroll-proportion="0.0" vertical-offset="1273" max-vertical-offset="2227">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="51" selection-start="2655" selection-end="2655" vertical-scroll-proportion="0.0" vertical-offset="825" max-vertical-offset="2618">
+        <state line="111" column="48" selection-start="4242" selection-end="4242" vertical-scroll-proportion="0.0" vertical-offset="1437" max-vertical-offset="2618">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="42" selection-start="3253" selection-end="3253" vertical-scroll-proportion="0.38171262" vertical-offset="1216" max-vertical-offset="3740">
+        <state line="184" column="44" selection-start="7666" selection-end="7666" vertical-scroll-proportion="0.40493467" vertical-offset="2849" max-vertical-offset="3774">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
