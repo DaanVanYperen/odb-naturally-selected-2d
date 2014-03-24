@@ -73,7 +73,7 @@ public class PlayerControlSystem extends EntityProcessingSystem {
         gravity.enabled = true;
         if ( wallSensor.onFloor )
         {
-            anim.id = "player";
+            anim.id = "player-idle";
 
             // handle player walking. move left and right, rotation always 0.
             anim.rotation = 0;
@@ -89,7 +89,11 @@ public class PlayerControlSystem extends EntityProcessingSystem {
                 dy = JUMP_FACTOR;
             };
 
-            if ( dx != 0 ) physics.vx += dx * world.delta;
+            if ( dx != 0 )
+            {
+                physics.vx += dx * world.delta;
+                anim.id = "player-walk";
+            }
             if ( dy != 0 ) physics.vy += dy * world.delta;
         } else {
             anim.id = "player-jetpack";

@@ -69,9 +69,10 @@ public class AssetSystem extends PassiveSystem {
 
         tileset = new Texture("ns2d_tileset.png");
 
-        add("player", 0, 0, TILE_SIZE, TILE_SIZE, 2);
-        add("player-jetpack", 192, 0, TILE_SIZE, TILE_SIZE, 1);
-        add("player-respawning", 224, 0, TILE_SIZE, TILE_SIZE, 1);
+        add("player-idle", 0, 0, TILE_SIZE, TILE_SIZE, 2);
+        add("player-jetpack", TILE_SIZE*2, 0, TILE_SIZE, TILE_SIZE, 1);
+        add("player-walk", TILE_SIZE*3, 0, TILE_SIZE, TILE_SIZE, 4,1,tileset,0.2f);
+        add("player-respawning", TILE_SIZE*7, 0, TILE_SIZE, TILE_SIZE, 1);
 
 
         add("spawner", 0, 464, 16,16, 1);

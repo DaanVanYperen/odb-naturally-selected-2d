@@ -23,7 +23,7 @@ public class EntityFactory {
     public static Entity createPlayer(final World world, final float x, final float y) {
 
         Entity player = newPositioned(world, x, y)
-                .addComponent(new Anim("player", Anim.Layer.PLAYER))
+                .addComponent(new Anim("player-idle", Anim.Layer.PLAYER))
                 .addComponent(new Physics())
                 .addComponent(new Health(10))
                 .addComponent(new RespawnOnDeath())
