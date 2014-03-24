@@ -8,6 +8,8 @@ import com.artemis.Component;
 public class EntitySpawner extends Component {
 
     public String entityId;
+    public String entityId2;
+    public int entityId2Chance = 10;
     public float cooldown = -1;
 
     public float minInterval = 2;
@@ -18,5 +20,10 @@ public class EntitySpawner extends Component {
 
     public EntitySpawner(String entityId) {
         this.entityId = entityId;
+    }
+
+    public EntitySpawner(String entityId, String entityId2) {
+        this.entityId = entityId;
+        this.entityId2 = entityId2;
     }
 }

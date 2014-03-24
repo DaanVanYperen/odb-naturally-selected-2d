@@ -76,7 +76,7 @@ public class BuildableSystem extends EntityProcessingSystem {
                     buildable.built = true;
                     Anim anim = am.get(e);
                     anim.id = buildable.builtAnimId;
-                    Health health = new Health(30);
+                    Health health = new Health(buildable.defaultHealth);
                     health.damageSfxId = new String[]{"ns2d_sfx_structure_damage1","ns2d_sfx_structure_damage2","ns2d_sfx_structure_damage1"};
                     health.woundParticle = "debris";
                     e.addComponent(health).changedInWorld();

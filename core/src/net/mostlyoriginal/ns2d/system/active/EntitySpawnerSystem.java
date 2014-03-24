@@ -92,6 +92,11 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
                 groupManager.add(skulk, "enemy");
                 skulk.addToWorld();
                 break;
+            case "gorge":
+                Entity gorge = EntityFactory.createGorge(world, x, y);
+                groupManager.add(gorge, "enemy");
+                gorge.addToWorld();
+                break;
             default:
                 throw new RuntimeException("No idea how to spawn entity of type " + entity);
         }
@@ -193,7 +198,7 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
             scheduleSpawn(spawner);
 
             for (int i = 0, s = MathUtils.random(spawner.minCount, spawner.maxCount); i < s; i++) {
-                spawnEntity(pos.x + bounds.cx(), pos.y + bounds.cy(), spawner.entityId);
+                spawnEntity(pos.x + bounds.cx(), pos.y + bounds.cy(), MathUtils.random(100) < spawner.entityId2Chance ? spawner.entityId2: spawner.entityId);
             }
         }
     }

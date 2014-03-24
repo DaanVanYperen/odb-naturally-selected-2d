@@ -80,6 +80,66 @@ public class EntityFactory {
         return skulk;
     }
 
+    public static Entity createGorgeHead(World world, float x, float y, Entity skulk) {
+
+        Weapon weapon = new Weapon();
+        weapon.fireCooldown = 4f;
+        weapon.minBullets = 1;
+        weapon.maxBullets = 1;
+        weapon.bulletPayload.maxLifetime = 8f;
+        weapon.spread = 5;
+        weapon.recoil *= 10;
+        weapon.bulletSpeed *= 0.5f;
+        weapon.bulletAnimId = "gorge-spit";
+        weapon.fireSfxId = null;
+        weapon.bulletFriction = 0.01f;
+        weapon.bulletBounce = 0.8f;
+        weapon.bulletPayload.radius = 20;
+        weapon.bulletPayload.minDamage = weapon.bulletPayload.maxDamage = 5;
+        weapon.bulletGravityFactor = 2;
+        weapon.bulletPayload.explodeSfxId = "ns2d_sfx_gl_explode";
+        weapon.bulletBounce = 0;
+        weapon.enemyGroup = "player-friend";
+        weapon.muzzleFlare = false;
+        final int originX = 5;
+        final int originY = 3;
+        final int mountX = 23;
+        final int mountY = 13;
+        return newPositioned(world, x, y)
+                .addComponent(new Anim("gorge-head", Anim.Layer.PLAYER_ARM, originX, originY))
+                .addComponent(new Attached(skulk, mountX - originX, mountY - originY))
+                .addComponent(weapon)
+                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
+    }
+
+    public static Entity createGorge(final World world, final float x, final float y) {
+
+        Health health = new Health(2);
+        health.woundParticle = "alienblood";
+        health.deathSfxId = new String[] {"ns2d_sfx_skulk_die1","ns2d_sfx_skulk_die2","ns2d_sfx_skulk_die3"};
+        SkulkControlled enemy = new SkulkControlled();
+        enemy.closestEnemyApproach = 100;
+        Entity skulk = newPositioned(world, x, y)
+                .addComponent(new Anim("gorge", Anim.Layer.ENEMIES))
+                .addComponent(health)
+                .addComponent(new Focus())
+                .addComponent(new Physics())
+                .addComponent(new Gravity())
+                .addComponent(new WallSensor())
+                .addComponent(enemy)
+                .addComponent(new Bounds(32, 17));
+
+        Entity head = EntityFactory.createGorgeHead(world, x, y, skulk)
+                .addComponent(new Aim());
+
+        head.addToWorld();
+        Inventory inventory = new Inventory();
+        inventory.weapon = head;
+        skulk.addComponent(inventory);
+
+        return skulk;
+    }
+
     private static Entity newPositioned(final World world, final float x, final float y) {
         return world.createEntity()
                 .addComponent(new Pos(x, y));
@@ -89,7 +149,7 @@ public class EntityFactory {
         return world.createEntity()
                 .addComponent(new Pos(x, y))
                 .addComponent(new Bounds(48, 48))
-                .addComponent(new EntitySpawner("skulk"))
+                .addComponent(new EntitySpawner("skulk","gorge"))
                 .addComponent(new Anim("duct", Anim.Layer.ON_WALL));
     }
 
@@ -261,6 +321,7 @@ public class EntityFactory {
 
         Buildable sentry2 = new Buildable("sentry2", "sentry2-frame-unbuilt", COST_SENTRY);
         sentry2.weaponUseCausesDamage=true;
+        sentry2.defaultHealth *= 2;
         return newPositioned(world, x, y)
                 .addComponent(new Anim("sentry2-frame-unbuilt", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
                 .addComponent(new Attached(player, WEAPON_ROT_ORIGIN_X - 10, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y + 4))
