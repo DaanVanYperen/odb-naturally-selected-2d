@@ -86,7 +86,7 @@ public class EntityFactory {
     public static Entity createDuct(World world, float x, float y) {
         return world.createEntity()
                 .addComponent(new Pos(x, y))
-                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE))
+                .addComponent(new Bounds(48, 48))
                 .addComponent(new EntitySpawner("skulk"))
                 .addComponent(new Anim("duct", Anim.Layer.ON_WALL));
     }

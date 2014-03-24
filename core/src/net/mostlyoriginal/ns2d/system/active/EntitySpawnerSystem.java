@@ -21,6 +21,7 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
     private ComponentMapper<EntitySpawner> sm;
     private ComponentMapper<Pos> pm;
     private ComponentMapper<Bounds> bm;
+    private ComponentMapper<Anim> am;
 
     private GroupManager groupManager;
     private TagManager tagManager;
@@ -123,6 +124,11 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
     protected void process(Entity e) {
         final EntitySpawner spawner = sm.get(e);
 
+        if ( am.has(e))
+        {
+            Anim anim = am.get(e);
+            anim.id = spawner.enabled ? "duct-hot" : "duct";
+        }
 
         if ( !spawner.enabled ) {
             return;
