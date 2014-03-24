@@ -10,8 +10,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import net.mostlyoriginal.ns2d.component.Anim;
 import net.mostlyoriginal.ns2d.component.Pos;
-import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
+import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -88,6 +88,26 @@ public class AnimRenderSystem extends EntitySystem {
 
         final TextureRegion frame = gdxanim.getKeyFrame(animation.age, true);
 
+        if ( animation.flippedX)
+        {
+            batch.draw(frame.getTexture(),
+                    (int)position.x,
+                    (int)position.y,
+                    animation.ox == Anim.ORIGIN_AUTO ? frame.getRegionWidth() * animation.scale * 0.5f : animation.ox,
+                    animation.oy == Anim.ORIGIN_AUTO ? frame.getRegionHeight() * animation.scale * 0.5f : animation.oy,
+                    frame.getRegionWidth() * animation.scale,
+                    frame.getRegionHeight() * animation.scale,
+                    1f,
+                    1f,
+                    animation.rotation,
+                    frame.getRegionX(),
+                    frame.getRegionY(),
+                    frame.getRegionWidth(),
+                    frame.getRegionHeight(),
+                    true,
+                    false);
+
+        } else
         if ( animation.rotation != 0 )
         {
             batch.draw(frame,

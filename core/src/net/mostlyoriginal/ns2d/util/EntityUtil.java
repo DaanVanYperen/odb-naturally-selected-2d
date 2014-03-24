@@ -30,4 +30,12 @@ public class EntityUtil{
         return tmp.set(pb.x, pb.y).sub(pa.x, pa.y).angle();
 
     }
+
+    public static float distance( final Entity a, final Entity b)
+    {
+        final Pos pa = (Pos)a.getComponent(posType);
+        final Pos pb = (Pos)b.getComponent(posType);
+
+        return tmp.set(pa.x, pa.y).dst(pb.x, pb.y);
+    }
 }

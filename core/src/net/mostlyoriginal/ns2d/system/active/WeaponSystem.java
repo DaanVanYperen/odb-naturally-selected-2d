@@ -5,6 +5,7 @@ import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
 import com.artemis.managers.GroupManager;
+import com.artemis.managers.TagManager;
 import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -30,12 +31,19 @@ public class WeaponSystem extends EntityProcessingSystem {
     private AfterPhysicsSystem afterPhysicsSystem;
     private AttachmentSystem attachmentSystem;
     private ParticleSystem particleSystem;
+    private TagManager tagManager;
+    public Entity player;
 
     public WeaponSystem() {
         super(Aspect.getAspectForAll(Weapon.class, Pos.class, Bounds.class, Anim.class));
     }
 
     private Vector2 vTmp = new Vector2();
+
+    @Override
+    protected void begin() {
+        player = tagManager.getEntity("player");
+    }
 
     @Override
     protected void process(Entity gun) {
@@ -89,6 +97,15 @@ public class WeaponSystem extends EntityProcessingSystem {
                         }
                     }
 
+
+                    if ( weapon.bulletPayload.type == Payload.DamageType.RESOURCE )
+                    {
+                        Homing homing = new Homing(player);
+                        homing.maxDistance = 100;
+                        homing.maxVelocity = 500;
+                        homing.speedFactor = 2;
+                        bullet.addComponent(homing);
+                    }
 
 
                     Physics physics = ym.get(bullet);

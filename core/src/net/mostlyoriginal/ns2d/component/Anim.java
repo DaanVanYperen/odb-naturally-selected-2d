@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Color;
 public class Anim extends Component {
 
     public static final int ORIGIN_AUTO = -999999;
+    public boolean flippedX; // flip animation, should not affect rotation.
 
     public static enum Layer
     {

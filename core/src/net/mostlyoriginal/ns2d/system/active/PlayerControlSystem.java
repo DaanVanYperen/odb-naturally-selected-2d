@@ -31,6 +31,7 @@ public class PlayerControlSystem extends EntityProcessingSystem {
     private ComponentMapper<Inventory> im;
     private ComponentMapper<Anim> am;
     private ComponentMapper<Frozen> fm;
+    private ComponentMapper<Attached> attm;
 
     private EntitySpawnerSystem entitySpawnerSystem;
     private PhysicsSystem physicsSystem;
@@ -82,8 +83,15 @@ public class PlayerControlSystem extends EntityProcessingSystem {
             float dx = 0;
             float dy = 0;
 
-            if ( Gdx.input.isKeyPressed(Input.Keys.A)) dx = -MOVEMENT_FACTOR;
-            if ( Gdx.input.isKeyPressed(Input.Keys.D)) dx = MOVEMENT_FACTOR;
+            if ( Gdx.input.isKeyPressed(Input.Keys.A)) {
+                dx = -MOVEMENT_FACTOR;
+                flip(player, true);
+
+            }
+            if ( Gdx.input.isKeyPressed(Input.Keys.D)) {
+                dx = MOVEMENT_FACTOR;
+                flip(player, false);
+            }
             if ( Gdx.input.isKeyPressed(Input.Keys.W)) // jump
             {
                 dy = JUMP_FACTOR;
@@ -138,5 +146,19 @@ public class PlayerControlSystem extends EntityProcessingSystem {
 
 
 
+    }
+
+    private void flip(Entity player, boolean flippedX) {
+        final Anim anim = am.get(player);
+        anim.flippedX=flippedX;
+
+/*        Inventory inventory = im.get(player);
+        if ( inventory.weapon != null && inventory.weapon.isActive() )
+        {
+            Attached weaponAttached = attm.get(inventory.weapon);
+            Anim weaponAnim = am.get(inventory.weapon);
+            weaponAnim.flippedX = flippedX;
+
+        } */
     }
 }

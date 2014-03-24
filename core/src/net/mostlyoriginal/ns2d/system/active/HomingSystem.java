@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import net.mostlyoriginal.ns2d.component.Homing;
 import net.mostlyoriginal.ns2d.component.Physics;
 import net.mostlyoriginal.ns2d.component.Pos;
+import net.mostlyoriginal.ns2d.util.EntityUtil;
 
 /**
  * @author Daan van Yperen
@@ -34,17 +35,20 @@ public class HomingSystem extends EntityProcessingSystem {
 
         Homing homing = hm.get(e);
 
-        if ( homing.target != null && homing.target.isActive() )
-        {
-            Pos myPos = pm.get(e);
-            Pos tPos = pm.get(homing.target);
+        if (homing.target != null && homing.target.isActive()) {
+            float distance = EntityUtil.distance(e, homing.target);
+            if (distance < homing.maxDistance) {
 
-            // vector of required traversal
-            tmp.set(tPos.x, tPos.y).sub(myPos.x,myPos.y).scl(homing.speedFactor).clamp(0, homing.maxVelocity);
+                Pos myPos = pm.get(e);
+                Pos tPos = pm.get(homing.target);
 
-            Physics physics = ym.get(e);
-            physics.vx = tmp.x;
-            physics.vy = tmp.y;
+                // vector of required traversal
+                tmp.set(tPos.x, tPos.y).sub(myPos.x, myPos.y).scl(homing.speedFactor).clamp(0, homing.maxVelocity);
+
+                Physics physics = ym.get(e);
+                physics.vx = tmp.x;
+                physics.vy = tmp.y;
+            }
 
         } else homing.target = null;
     }
