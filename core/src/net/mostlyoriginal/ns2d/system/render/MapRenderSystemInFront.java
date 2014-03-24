@@ -4,15 +4,15 @@ import com.artemis.annotations.Wire;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import net.mostlyoriginal.ns2d.MyMapRendererImpl;
+import net.mostlyoriginal.ns2d.api.PassiveSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 import net.mostlyoriginal.ns2d.system.passive.MapSystem;
-import net.mostlyoriginal.ns2d.api.PassiveSystem;
 
 /**
  * @author Daan van Yperen
  */
 @Wire
-public class MapRenderSystem extends PassiveSystem {
+public class MapRenderSystemInFront extends PassiveSystem {
 
     private MapSystem mapSystem;
     private CameraSystem cameraSystem;
@@ -29,7 +29,8 @@ public class MapRenderSystem extends PassiveSystem {
     protected void processSystem() {
         for (MapLayer layer : mapSystem.map.getLayers()) {
       			if (layer.isVisible()) {
-      				if (layer instanceof TiledMapTileLayer && !layer.getName().equals("infront")) {
+      				if (layer instanceof TiledMapTileLayer && layer.getName().equals("infront")) {
+
                         renderLayer((TiledMapTileLayer) layer);
                     }
                 }
