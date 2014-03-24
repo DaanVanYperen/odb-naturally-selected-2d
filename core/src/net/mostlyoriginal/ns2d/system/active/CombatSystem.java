@@ -97,6 +97,11 @@ public class CombatSystem extends PassiveSystem {
                     // kill
                     victim.deleteFromWorld();
                 }
+            } else {
+                if (health.damageSfxId!= null)
+                {
+                    assetSystem.playSfx(health.damageSfxId[MathUtils.random(0,health.damageSfxId.length-1)]);
+                }
             }
         }
     }

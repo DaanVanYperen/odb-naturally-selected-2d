@@ -29,7 +29,7 @@ public class EntityFactory {
                 .addComponent(new RespawnOnDeath())
                 .addComponent(new Gravity())
                 .addComponent(new WallSensor())
-                .addComponent(new Wallet(20))
+                .addComponent(new Wallet(12))
                 .addComponent(new PlayerControlled())
                 .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
         return player;
@@ -150,6 +150,7 @@ public class EntityFactory {
         structureSocket.addToWorld();
         Health health = new Health(100);
         health.woundParticle = "debris";
+        health.damageSfxId = new String[]{"ns2d_sfx_structure_damage1","ns2d_sfx_structure_damage2","ns2d_sfx_structure_damage1"};
         Buildable buildable = new Buildable("techpoint", "techpoint-unbuilt", 999);
         buildable.built=true;
         return newPositioned(world, x, y)

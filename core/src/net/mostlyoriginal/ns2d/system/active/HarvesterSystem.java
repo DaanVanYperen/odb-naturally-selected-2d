@@ -4,6 +4,7 @@ import com.artemis.Aspect;
 import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
+import com.artemis.managers.GroupManager;
 import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.math.MathUtils;
 import net.mostlyoriginal.ns2d.component.Buildable;
@@ -26,6 +27,7 @@ public class HarvesterSystem extends EntityProcessingSystem {
     private int unbuiltCount;
     private float notBuiltCooldown = 8;
     private DialogRenderSystem dialogRenderSystem;
+    private GroupManager groupManager;
 
 
     public HarvesterSystem() {
@@ -41,9 +43,10 @@ public class HarvesterSystem extends EntityProcessingSystem {
     @Override
     protected void end() {
         notBuiltCooldown -= world.delta;
+        // check if more than 50% of harvesters is built.
         if (notBuiltCooldown <= 0) {
-            notBuiltCooldown = MathUtils.random(10,20);
-            if (builtCount == 0) {
+            notBuiltCooldown = MathUtils.random(20,40);
+            if (builtCount < 3 && (builtCount == 0 || (builtCount < unbuiltCount*0.5f))) {
                 dialogRenderSystem.randomSay(DialogRenderSystem.BUILD_MORE_HARVESTERS);
             }
         }
