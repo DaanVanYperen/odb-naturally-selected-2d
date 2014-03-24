@@ -4,13 +4,11 @@ import com.artemis.Aspect;
 import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
+import com.artemis.managers.TagManager;
 import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import net.mostlyoriginal.ns2d.component.Anim;
-import net.mostlyoriginal.ns2d.component.Bounds;
-import net.mostlyoriginal.ns2d.component.Buildable;
-import net.mostlyoriginal.ns2d.component.Pos;
+import net.mostlyoriginal.ns2d.component.*;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 
@@ -24,13 +22,17 @@ public class CostRenderSystem extends EntityProcessingSystem {
     private ComponentMapper<Anim> sm;
     private ComponentMapper<Buildable> bm;
     private ComponentMapper<Bounds> om;
+    private ComponentMapper<Wallet> wm;
 
     private static final Color HOLO_COLOR = Color.valueOf("73BCC9");
+    private static final Color HOLO_COLOR_RED = Color.valueOf("FF7799");
 
     private CameraSystem cameraSystem;
     private AssetSystem assetSystem;
+    private TagManager tagManager;
 
     private SpriteBatch batch = new SpriteBatch();
+    private int walletCash;
 
     public CostRenderSystem() {
         super(Aspect.getAspectForAll(Pos.class, Anim.class, Bounds.class, Buildable.class));
@@ -41,6 +43,10 @@ public class CostRenderSystem extends EntityProcessingSystem {
         batch.setProjectionMatrix(cameraSystem.camera.combined);
         batch.begin();
         batch.setColor(1f, 1f, 1f, 1f);
+
+        final Entity player = tagManager.getEntity("player");
+        walletCash = wm.has(player) ? wm.get(player).resources : 0;
+
     }
 
     @Override
@@ -56,8 +62,7 @@ public class CostRenderSystem extends EntityProcessingSystem {
             final Bounds bounds = om.get(e);
             final Pos pos = pm.get(e);
 
-
-            assetSystem.font.setColor(HOLO_COLOR);
+            assetSystem.font.setColor(buildable.resourceCost > walletCash ? HOLO_COLOR_RED : HOLO_COLOR);
             String cost = "" + buildable.resourceCost + "$";
             assetSystem.font.draw(batch, cost, pos.x + bounds.cx() - assetSystem.font.getBounds(cost).width/2, pos.y +  bounds.y2 + 20);
         }

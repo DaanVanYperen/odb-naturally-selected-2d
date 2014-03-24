@@ -34,7 +34,7 @@ public class UIRenderSystem extends VoidEntitySystem {
 
         Entity player = tagManager.getEntity("player");
         assetSystem.font.setColor(1f,1f,1f,1f);
-        assetSystem.font.draw(batch, "resources: " + wm.get(player).resources, 50, 50);
+        assetSystem.font.draw(batch, "resources: " + wm.get(player).resources + "$", 50, 50);
         if ( hm.has(player))
         {
             Health health = hm.get(player);
