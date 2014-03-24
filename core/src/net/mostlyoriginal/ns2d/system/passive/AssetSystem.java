@@ -18,6 +18,7 @@ public class AssetSystem extends PassiveSystem {
 
     public static final int TILE_SIZE = 32;
     public final BitmapFont font;
+    public final BitmapFont fontLarge;
 
     public Texture tileset;
     public HashMap<String, Animation> sprites = new HashMap<String, Animation>();
@@ -62,6 +63,9 @@ public class AssetSystem extends PassiveSystem {
 
         font = new BitmapFont(Gdx.files.internal("font/tahoma-10.fnt"), false);
         font.setColor(0, 0, 0, 0.9f);
+        fontLarge = new BitmapFont(Gdx.files.internal("font/tahoma-10.fnt"), false);
+        fontLarge.setScale(3);
+        fontLarge.setColor(0, 0, 0, 0.9f);
 
         tileset = new Texture("ns2d_tileset.png");
 
