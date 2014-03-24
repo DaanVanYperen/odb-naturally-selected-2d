@@ -55,9 +55,11 @@ public class EntityFactory {
 
     public static Entity createSkulk(final World world, final float x, final float y) {
 
+        Health health = new Health(2);
+        health.woundParticle = "alienblood";
         Entity skulk = newPositioned(world, x, y)
                 .addComponent(new Anim("skulk", Anim.Layer.ENEMIES))
-                .addComponent(new Health(2))
+                .addComponent(health)
                 .addComponent(new Focus())
                 .addComponent(new Physics())
                 .addComponent(new Gravity())

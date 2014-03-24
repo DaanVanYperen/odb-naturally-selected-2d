@@ -94,6 +94,8 @@ public class AssetSystem extends PassiveSystem {
         add("alert-radar", 135, 519, 18, 18, 1);
         add("alert-damage", 167, 519, 18, 18, 1);
 
+        add("particle-alienblood", 256, 144, 16, 16, 18);
+
 
         add("bullet", 43, 45, 9, 6, 1);
         add("slug", 44, 76, 8, 8, 1);

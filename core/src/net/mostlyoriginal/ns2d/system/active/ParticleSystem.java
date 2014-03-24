@@ -46,13 +46,24 @@ public class ParticleSystem extends PassiveSystem {
             case "debris":
                 createDebris(x, y);
                 break;
+            case "alienblood":
+                createAlienBlood(x, y);
+                break;
         }
+    }
+
+    private void createAlienBlood(int x, int y) {
+        createWoundParticle(x, y, "particle-alienblood");
     }
 
     Vector2 vTmp = new Vector2();
     private void createDebris(int x, int y) {
 
-        vTmp.set(MathUtils.random(200,500), 0).rotate(rotation);
+        createWoundParticle(x, y, "particle-debris");
+    }
+
+    private void createWoundParticle(int x, int y, String animId) {
+        vTmp.set(MathUtils.random(200, 500), 0).rotate(rotation);
 
         final Physics physics = new Physics();
         physics.vr = MathUtils.random(-90, 90)*10f;
@@ -60,9 +71,9 @@ public class ParticleSystem extends PassiveSystem {
         physics.vy = vTmp.y;
         physics.friction = 0.02f;
 
-        final TextureRegion frame = assetSystem.get("particle-debris").getKeyFrame(0);
+        final TextureRegion frame = assetSystem.get(animId).getKeyFrame(0);
 
-        Entity entity = basicCenteredParticle(x, y, "particle-debris", 1, 1)
+        Entity entity = basicCenteredParticle(x, y, animId, 1, 1)
                 .addComponent(new Terminal(4f))
                 .addComponent(physics)
                 .addComponent(new Bounds(frame))
