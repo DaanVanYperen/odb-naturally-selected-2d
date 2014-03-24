@@ -28,4 +28,5 @@ public class Weapon extends Component {
     public String shellParticle;
     public float bulletGravityFactor = 1;
     public float aimRotation = 0;
+    public boolean cooldownWhileNotFiring=true;
 }

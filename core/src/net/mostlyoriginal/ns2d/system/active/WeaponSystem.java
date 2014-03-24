@@ -24,6 +24,7 @@ public class WeaponSystem extends EntityProcessingSystem {
     private ComponentMapper<Anim> am;
     private ComponentMapper<Physics> ym;
     private ComponentMapper<Gravity> gm;
+    private ComponentMapper<Buildable> bm;
     private GroupManager groupManager;
     private PhysicsSystem physicsSystems;
     private AfterPhysicsSystem afterPhysicsSystem;
@@ -41,7 +42,10 @@ public class WeaponSystem extends EntityProcessingSystem {
 
         final Weapon weapon = wm.get(gun);
 
-        weapon.cooldown -= world.delta;
+        // avoid cooldown on unbuilt structures.
+        if ( bm.has(gun) && !bm.get(gun).built ) return;
+
+        if (weapon.firing || !weapon.cooldownWhileNotFiring) weapon.cooldown -= world.delta;
         if (weapon.firing) {
             weapon.firing = false;
             if (weapon.cooldown <= 0) {

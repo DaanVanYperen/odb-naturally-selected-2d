@@ -112,6 +112,7 @@ public class EntityFactory {
         weapon.cooldown = weapon.fireCooldown = 5;
         weapon.aimRotation = 90;
         weapon.minBullets = 2;
+        weapon.cooldownWhileNotFiring = false;
         weapon.maxBullets = 3;
         weapon.bulletPayload.type = Payload.DamageType.RESOURCE;
         weapon.bulletPayload.maxLifetime = 240f;
@@ -147,6 +148,7 @@ public class EntityFactory {
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(64,64))
                 .addComponent(health)
+                .addComponent(new Critical())
                 .addComponent(new Attached(structureSocket))
                 .addComponent(new HealthIndicator())
                 .addComponent(new Anim("techpoint", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
@@ -172,6 +174,7 @@ public class EntityFactory {
         weapon.cooldown = 5;
         weapon.fireCooldown = 30;
         weapon.aimRotation = 90;
+        weapon.cooldownWhileNotFiring = false;
         weapon.minBullets = 1;
         weapon.maxBullets = 1;
         weapon.bulletPayload.type = Payload.DamageType.WEAPON_PICKUP;

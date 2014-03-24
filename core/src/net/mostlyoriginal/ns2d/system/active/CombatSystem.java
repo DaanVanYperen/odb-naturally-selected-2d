@@ -8,6 +8,7 @@ import com.artemis.utils.ImmutableBag;
 import com.badlogic.gdx.math.MathUtils;
 import net.mostlyoriginal.ns2d.api.PassiveSystem;
 import net.mostlyoriginal.ns2d.component.*;
+import net.mostlyoriginal.ns2d.system.render.UIStopwatchRenderSytem;
 
 /**
  * @author Daan van Yperen
@@ -22,11 +23,13 @@ public class CombatSystem extends PassiveSystem {
     private ComponentMapper<Attached> am;
     private ComponentMapper<Pos> pom;
     private ComponentMapper<Bounds> bom;
+    private ComponentMapper<Critical> cm;
 
     private BuildableSystem buildableSystem;
     private GroupManager groupManager;
     private AttachmentSystem attachmentSystem;
     private ParticleSystem particleSystem;
+    private UIStopwatchRenderSytem uiStopwatchRenderSytem;
 
     @Override
     protected void initialize() {
@@ -61,6 +64,11 @@ public class CombatSystem extends PassiveSystem {
 
 
             if (dead) {
+
+                if (cm.has(victim))
+                {
+                    uiStopwatchRenderSytem.gameOver = true;
+                }
 
                 if (rm.has(victim)) {
                     respawnEntity(victim, health);

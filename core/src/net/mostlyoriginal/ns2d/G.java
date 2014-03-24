@@ -12,4 +12,5 @@ public class G {
 
     public static MainScreen screen;
     public static World world;
+    public static NsGame game;
 }
