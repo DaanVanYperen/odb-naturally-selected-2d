@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a3431cf-d619-496e-8f5b-feccda2c4911" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/BuildableSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/BuildableSystem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/collide/BulletCollisionSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/collide/BulletCollisionSystem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIAlertBuildableUnderAttack.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIAlertBuildableUnderAttack.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ns2d.iws" afterPath="$PROJECT_DIR$/ns2d.iws" />
     </list>
     <ignored path="ns2d.iws" />
@@ -71,7 +74,7 @@
       <file leaf-file-name="EntityFactory.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="152" column="27" selection-start="6163" selection-end="6163" vertical-scroll-proportion="0.0" vertical-offset="2278" max-vertical-offset="7786">
+            <state line="314" column="36" selection-start="12918" selection-end="12918" vertical-scroll-proportion="0.0" vertical-offset="4926" max-vertical-offset="7786">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -79,10 +82,28 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="UIAlertBuildableUnderAttack.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIAlertBuildableUnderAttack.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="71" column="51" selection-start="2136" selection-end="2136" vertical-scroll-proportion="0.62023216" vertical-offset="612" max-vertical-offset="1904">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="AssetSystem.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="27" selection-start="3579" selection-end="3579" vertical-scroll-proportion="0.0" vertical-offset="1203" max-vertical-offset="3247">
+            <state line="168" column="35" selection-start="6516" selection-end="6516" vertical-scroll-proportion="0.0" vertical-offset="2427" max-vertical-offset="3281">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BuildableSystem.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/BuildableSystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="77" column="62" selection-start="2481" selection-end="2481" vertical-scroll-proportion="0.0" vertical-offset="863" max-vertical-offset="1819">
               <folding />
             </state>
           </provider>
@@ -106,10 +127,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DirectorSystem.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DirectorSystem.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="67" selection-start="1546" selection-end="1546" vertical-scroll-proportion="0.4551282" vertical-offset="379" max-vertical-offset="2635">
+            <state line="32" column="73" selection-start="1038" selection-end="1038" vertical-scroll-proportion="0.0" vertical-offset="379" max-vertical-offset="2635">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -120,7 +141,7 @@
       <file leaf-file-name="BulletCollisionSystem.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/collide/BulletCollisionSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="141" selection-start="2014" selection-end="2014" vertical-scroll-proportion="0.0" vertical-offset="380" max-vertical-offset="2227">
+            <state line="87" column="74" selection-start="3076" selection-end="3076" vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="2312">
               <folding />
             </state>
           </provider>
@@ -177,7 +198,6 @@
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Health.java" />
         <option value="$PROJECT_DIR$/desktop/src/net/mostlyoriginal/ns2d/desktop/DesktopLauncher.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/WeaponSystem.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/BuildableSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/EntitySpawner.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/Settings.java" />
@@ -192,15 +212,16 @@
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/DialogRenderSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/MainScreen.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIAlertTechpointUnderAttack.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIAlertBuildableUnderAttack.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Buildable.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/ParticleSystem.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/collide/BulletCollisionSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/SkulkControlled.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/SkulkControlSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/BuildableSystem.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/collide/BulletCollisionSystem.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIAlertBuildableUnderAttack.java" />
       </list>
     </option>
   </component>
@@ -1040,7 +1061,7 @@
       <workItem from="1395494595535" duration="43631000" />
       <workItem from="1395569899264" duration="25511000" />
       <workItem from="1395617790514" duration="599000" />
-      <workItem from="1395657723188" duration="46374000" />
+      <workItem from="1395657723188" duration="46821000" />
     </task>
     <task id="LOCAL-00001" summary="Basic map and rendering system.&#10;">
       <created>1395496963545</created>
@@ -1386,11 +1407,15 @@
       <created>1395714994195</created>
       <updated>1395714994195</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Added more stages.&#10;">
+      <created>1395715178412</created>
+      <updated>1395715178412</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119499000" />
+    <option name="totallyTimeSpent" value="119946000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="1" width="1928" height="1143" extended-state="0" />
@@ -1445,7 +1470,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Added auto-firing sentry. Does not aim, YET.&#10;Every 12 seconds the techpoint spawns some res." />
     <MESSAGE value="Added all player animations." />
     <MESSAGE value="Resources home in to the player." />
     <MESSAGE value="Added loud indicator for when a base is under attack." />
@@ -1470,7 +1494,8 @@
     <MESSAGE value="Make the damage blink less invasive.&#10;" />
     <MESSAGE value="Alert indicator for structures under attack.&#10;" />
     <MESSAGE value="All sorts of small fixes." />
-    <option name="LAST_COMMIT_MESSAGE" value="All sorts of small fixes." />
+    <MESSAGE value="Added more stages.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more stages.&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1731,13 +1756,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/BuildableSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="0" selection-start="1937" selection-end="1937" vertical-scroll-proportion="0.43589744" vertical-offset="663" max-vertical-offset="1785">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/CostRenderSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="75" column="136" selection-start="2637" selection-end="2637" vertical-scroll-proportion="1.363782" vertical-offset="424" max-vertical-offset="1462">
@@ -1788,13 +1806,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIAlertBuildableUnderAttack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="21" selection-start="2062" selection-end="2062" vertical-scroll-proportion="0.36698717" vertical-offset="723" max-vertical-offset="1836">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Buildable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="142" selection-start="647" selection-end="647" vertical-scroll-proportion="0.6266026" vertical-offset="0" max-vertical-offset="624">
@@ -1808,20 +1819,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/collide/BulletCollisionSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="141" selection-start="2014" selection-end="2014" vertical-scroll-proportion="0.0" vertical-offset="380" max-vertical-offset="2227">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="27" selection-start="3579" selection-end="3579" vertical-scroll-proportion="0.0" vertical-offset="1203" max-vertical-offset="3247">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1839,15 +1836,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="152" column="27" selection-start="6163" selection-end="6163" vertical-scroll-proportion="0.0" vertical-offset="2278" max-vertical-offset="7786">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/SkulkControlSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="143" column="49" selection-start="4049" selection-end="4049" vertical-scroll-proportion="0.0" vertical-offset="2114" max-vertical-offset="3706">
@@ -1857,10 +1845,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="67" selection-start="1546" selection-end="1546" vertical-scroll-proportion="0.4551282" vertical-offset="379" max-vertical-offset="2635">
+        <state line="32" column="73" selection-start="1038" selection-end="1038" vertical-scroll-proportion="0.0" vertical-offset="379" max-vertical-offset="2635">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="168" column="35" selection-start="6516" selection-end="6516" vertical-scroll-proportion="0.0" vertical-offset="2427" max-vertical-offset="3281">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/BuildableSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="62" selection-start="2481" selection-end="2481" vertical-scroll-proportion="0.0" vertical-offset="863" max-vertical-offset="1819">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/collide/BulletCollisionSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="74" selection-start="3076" selection-end="3076" vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="2312">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="314" column="36" selection-start="12918" selection-end="12918" vertical-scroll-proportion="0.0" vertical-offset="4926" max-vertical-offset="7786">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIAlertBuildableUnderAttack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="51" selection-start="2136" selection-end="2136" vertical-scroll-proportion="0.62023216" vertical-offset="612" max-vertical-offset="1904">
+          <folding />
         </state>
       </provider>
     </entry>

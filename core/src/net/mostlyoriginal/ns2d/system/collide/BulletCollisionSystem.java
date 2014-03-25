@@ -86,11 +86,16 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
             case WEAPON_PICKUP: {
                 final Entity player = tagManager.getEntity("player");
                 entitySpawnerSystem.giveWeapon(player, am.get(bullet).id);
+                assetSystem.playSfx("ns2d_sfx_pickup");
                 break;
             }
             case RESOURCE: {
                 final Entity player = tagManager.getEntity("player");
-                if (wm.has(player)) wm.get(player).resources += damage;
+                if (wm.has(player))
+                {
+                    wm.get(player).resources += damage;
+                    assetSystem.playSfx("ns2d_sfx_pickup");
+                }
                 break;
             }
             case EXPLOSIVE:

@@ -11,6 +11,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import net.mostlyoriginal.ns2d.component.*;
+import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CollisionSystem;
 import net.mostlyoriginal.ns2d.system.render.DialogRenderSystem;
 
@@ -34,6 +35,7 @@ public class BuildableSystem extends EntityProcessingSystem {
     public Entity player;
     private DialogRenderSystem dialogRenderSystem;
     private CombatSystem combatSystem;
+    private AssetSystem assetSystem;
 
     public BuildableSystem()
     {
@@ -73,6 +75,7 @@ public class BuildableSystem extends EntityProcessingSystem {
                 if (wallet.resources >= buildable.resourceCost)
                 {
                     wallet.resources -= buildable.resourceCost;
+                    assetSystem.playSfx("ns2d_sfx_construct");
                     buildable.built = true;
                     Anim anim = am.get(e);
                     anim.id = buildable.builtAnimId;

@@ -166,6 +166,8 @@ public class AssetSystem extends PassiveSystem {
                 "ns2d_sfx_jetpack_loop",
                 "ns2d_sfx_jetpack_start",
                 "ns2d_sfx_gorge_bile",
+                "ns2d_sfx_construct",
+                "ns2d_sfx_pickup",
         });
     }
 

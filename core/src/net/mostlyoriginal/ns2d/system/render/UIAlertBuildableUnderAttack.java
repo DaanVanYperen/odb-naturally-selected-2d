@@ -68,6 +68,10 @@ public class UIAlertBuildableUnderAttack extends EntityProcessingSystem {
         lastAlertCooldown -= world.delta;
         Buildable critical = bum.get(spawner);
         critical.damageAge += world.delta;
+
+        // we don't need to announce turret damage.
+        if ( critical.weaponUseCausesDamage ) return;
+
         age += world.delta;
         if ( critical.damageAge > 1 || (age % 2 < 1f) )
             return;
