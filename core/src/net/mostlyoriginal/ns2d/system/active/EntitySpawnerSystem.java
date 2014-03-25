@@ -93,6 +93,11 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
                 groupManager.add(skulk, "enemy");
                 skulk.addToWorld();
                 break;
+            case "babbler":
+                Entity babbler = EntityFactory.createBabbler(world, x, y, tagManager.getEntity("player"));
+                groupManager.add(babbler, "enemy");
+                babbler.addToWorld();
+                break;
             case "gorge":
                 Entity gorge = EntityFactory.createGorge(world, x, y);
                 groupManager.add(gorge, "enemy");

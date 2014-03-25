@@ -35,7 +35,38 @@ public class EntityFactory {
         return player;
     }
 
+    public static Entity createBabbler(World world, float x, float y, Entity target) {
+        Weapon weapon = new Weapon();
+        weapon.bulletPayload.maxLifetime = 1/30f;
+        weapon.fireCooldown = 1f;
+        weapon.enemyGroup = "player-friend";
+        weapon.muzzleFlare = false;
+        final int originX = 5;
+        final int originY = 3;
+        final int mountX = 23;
+        final int mountY = 13;
 
+        Homing homing = new Homing(target);
+        homing.maxDistance = 300;
+        homing.maxVelocity = 1000;
+        homing.speedFactor = 4;
+
+        Health health = new Health(1);
+        health.woundParticle = "alienblood";
+        health.deathSfxId = new String[] {"ns2d_sfx_skulk_die1","ns2d_sfx_skulk_die2","ns2d_sfx_skulk_die3"};
+        return newPositioned(world, x, y)
+                .addComponent(new Anim("babbler", Anim.Layer.PLAYER_ARM, originX, originY))
+                .addComponent(weapon)
+                .addComponent(health)
+                .addComponent(new Focus())
+                .addComponent(new Physics())
+                .addComponent(new Gravity())
+                .addComponent(new WallSensor())
+                .addComponent(new Aim())
+                .addComponent(homing)
+                .addComponent(new SkulkControlled())
+                .addComponent(new Bounds(32, 17));
+    }
 
     public static Entity createSkulkHead(World world, float x, float y, Entity skulk) {
         Weapon weapon = new Weapon();

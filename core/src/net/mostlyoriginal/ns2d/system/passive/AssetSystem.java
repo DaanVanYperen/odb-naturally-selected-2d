@@ -94,6 +94,7 @@ public class AssetSystem extends PassiveSystem {
         add("gorge", 32, 621, 32, 19, 2);
         add("gorge-head", 106,623, 12,12, 1);
         add("gorge-spit", 168,620, 13,8, 1);
+        add("babbler", 0, 654, 32, 18, 2);
 
         add("debug-marker", 44, 51, 3, 3, 1);
 

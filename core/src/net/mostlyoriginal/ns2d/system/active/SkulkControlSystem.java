@@ -72,8 +72,7 @@ public class SkulkControlSystem extends EntityProcessingSystem {
         }
 
         // check all valid victims.
-        for ( int i = 0; playerFriends.size() > i; i++)
-        {
+        for (int i = 0; playerFriends.size() > i; i++) {
             final Entity b = playerFriends.get(i);
 
             // we don't care about targets without health.
@@ -160,7 +159,7 @@ public class SkulkControlSystem extends EntityProcessingSystem {
         SkulkControlled controlled = com.get(skulk);
 
         if (sensor.onAnySurface() && controlled.leapCooldown <= 0) {
-            float direction = EntityUtil.angle(skulk, focus) + MathUtils.random(-10f,10f);
+            float direction = EntityUtil.angle(skulk, focus) + MathUtils.random(-10f, 10f);
             leapTowards(skulk, direction, enemyDistance);
         } else if (sensor.onAnySurface()) {
             walkTowards(sensor, physics, enemyDirX, enemyDirY);
@@ -171,10 +170,10 @@ public class SkulkControlSystem extends EntityProcessingSystem {
         // aim and fire!
         SkulkControlled controlled = com.get(skulk);
         controlled.leapCooldown = MathUtils.random(1f, 1.5f);
-        physicsSystem.push(skulk, direction, 3*MathUtils.clamp(distance, 100, 250));
+        physicsSystem.push(skulk, direction, 3 * MathUtils.clamp(distance, 100, 250));
 
         final WallSensor sensor = wm.get(skulk);
-        physicsSystem.push(skulk, sensor.wallAngle-180, 100);
+        physicsSystem.push(skulk, sensor.wallAngle - 180, 100);
     }
 
     private void walkTowards(WallSensor sensor, Physics physics, float enemyDirX, float enemyDirY) {
@@ -190,12 +189,18 @@ public class SkulkControlSystem extends EntityProcessingSystem {
         if (dy != 0) physics.vy = dy * 100;
     }
 
-    private void aimHeadAtFocus(Entity skulk, Entity focus) {
-        Inventory inventory = im.get(skulk);
-        if (inventory.weapon != null && inventory.weapon.isActive()) {
-            Aim aim = a2m.get(inventory.weapon);
+    private void aimHeadAtFocus(Entity creature, Entity focus) {
+        if (im.has(creature)) {
+            Inventory inventory = im.get(creature);
+            if (inventory.weapon != null && inventory.weapon.isActive()) {
+                Aim aim = a2m.get(inventory.weapon);
+                aim.at = focus;
+                weam.get(inventory.weapon).firing = (focus != null);
+            }
+        } else if ( weam.has(creature)) {
+            Aim aim = a2m.get(creature);
             aim.at = focus;
-            weam.get(inventory.weapon).firing = (focus != null);
+            weam.get(creature).firing = (focus != null);
         }
     }
 
