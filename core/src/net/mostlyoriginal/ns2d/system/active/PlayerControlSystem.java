@@ -42,6 +42,9 @@ public class PlayerControlSystem extends EntityProcessingSystem {
     private ParticleSystem particleSystem;
     private float jetpackGasCooldown;
     private Vector2 vTmp = new Vector2();
+    private Vector2 vTmp2 = new Vector2();
+    private float lastPuffX;
+    private float lastPuffY;
 
     public PlayerControlSystem()
     {
@@ -149,12 +152,19 @@ public class PlayerControlSystem extends EntityProcessingSystem {
             {
                 startJetpackLooping();
                 jetpackGasCooldown -= world.delta;
-                if ( jetpackGasCooldown <= 0 )
+
+                if ( jetpackGasCooldown <= 0 || vTmp.set(lastPuffX, lastPuffY).dst(pos.x,pos.y) >= 4f )
                 {
+                    lastPuffX = pos.x;
+                    lastPuffY = pos.y;
                     jetpackGasCooldown = 1/15f;
-                    final Bounds bounds = bm.get(player);
-                    particleSystem.setRotation(anim.rotation - 10f);
-                    vTmp.set(anim.flippedX ? 8 : -8,-13).rotate(anim.rotation).add(pos.x+16,pos.y+16);
+
+                    vTmp.set(anim.flippedX ? 8 : -8,0).rotate(anim.rotation).add(pos.x+16,pos.y+16);
+                    particleSystem.setRotation(anim.rotation - (10f + MathUtils.random(-10f,10f)*(anim.flippedX?-1f:1f)));
+                    particleSystem.spawnParticle((int)(vTmp.x),(int)(vTmp.y), "puff");
+
+                    particleSystem.setRotation(anim.rotation - 10f*(anim.flippedX?-1f:1f));
+                    vTmp.set(anim.flippedX ? 8 : -8,-13).rotate(anim.rotation).add(pos.x + 16, pos.y + 16);
                     particleSystem.spawnParticle((int)(vTmp.x),(int)(vTmp.y), "gasburn");
                     particleSystem.setRotation(0);
                 }

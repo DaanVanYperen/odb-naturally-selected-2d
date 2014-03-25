@@ -16,10 +16,11 @@ public class Anim extends Component {
         ON_WALL,
         BULLETS,
         ENEMIES,
+        DIRECTLY_BEHIND_BEHIND_PLAYER,
         DIRECTLY_BEHIND_PLAYER,
         PLAYER_ARM,
         PLAYER,
-        DEFAULT_LAYER
+        DEFAULT_LAYER;
     };
 
     public String id;

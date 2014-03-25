@@ -53,6 +53,9 @@ public class ParticleSystem extends PassiveSystem {
             case "gasburn":
                 createGasBurn(x, y);
                 break;
+            case "puff":
+                createPuff(x, y);
+                break;
         }
     }
 
@@ -118,10 +121,33 @@ public class ParticleSystem extends PassiveSystem {
         final TextureRegion frame = animation.getKeyFrame(0);
 
         Entity entity = basicCenteredParticle(x, y, "particle-jetpack", 1, 1)
-                .addComponent(new Terminal(animation.animationDuration))
+                .addComponent(new Terminal(animation.animationDuration, 0.1f))
                 .addComponent(physics)
                 .addComponent(new Bounds(frame));
         am.get(entity).layer = Anim.Layer.DIRECTLY_BEHIND_PLAYER;
+        entity
+                .addToWorld();
+    }
+
+    private void createPuff(int x, int y) {
+        vTmp.set(100, 0).rotate(rotation-90);
+        final Physics physics = new Physics();
+        physics.friction = 0.1f;
+        physics.vx = vTmp.x;
+        physics.vy = vTmp.y;
+        physics.friction = 0.1f;
+
+        Animation animation = assetSystem.get("particle-puff");
+        final TextureRegion frame = animation.getKeyFrame(0);
+
+        Entity entity = basicCenteredParticle(x, y, "particle-puff", 1, 1)
+                .addComponent(new Terminal(3,3))
+                .addComponent(physics)
+                .addComponent(new Bounds(frame));
+        Anim anim = am.get(entity);
+        anim.layer = Anim.Layer.DIRECTLY_BEHIND_BEHIND_PLAYER;
+        anim.age = MathUtils.random(999f);
+        anim.speed = 0;
         entity
                 .addToWorld();
     }

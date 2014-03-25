@@ -122,6 +122,7 @@ public class AssetSystem extends PassiveSystem {
         add("particle-shellcasing", 72, 77, 15,7, 1, 1);
         add("particle-debris", 256, 128, 16, 16, 10);
         add("particle-jetpack", 128, 128, 16, 16, 4, 1, tileset, 0.1f);
+        add("particle-puff", 192, 144, 16, 16, 4, 1);
 
         add("speech-bubble-left", 0, 544, 16, 38, 1);
         add("speech-bubble-middle", 16, 544, 16, 38, 1);

@@ -7,8 +7,13 @@ import com.artemis.Component;
  */
 public class Terminal extends Component {
     public float lifetime;
+    public float alphaFadeout=0;
 
     public Terminal(float lifetime) {
         this.lifetime = lifetime;
+    }
+    public Terminal(float lifetime, float alphaFadeout) {
+        this.lifetime = lifetime;
+        this.alphaFadeout = alphaFadeout;
     }
 }
