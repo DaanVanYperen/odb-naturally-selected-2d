@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import net.mostlyoriginal.ns2d.component.*;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
+import net.mostlyoriginal.ns2d.system.passive.CollisionSystem;
 
 /**
  * @author Daan van Yperen
@@ -33,6 +34,8 @@ public class CostRenderSystem extends EntityProcessingSystem {
 
     private SpriteBatch batch = new SpriteBatch();
     private int walletCash;
+    private CollisionSystem collisionSystem;
+    public Entity player;
 
     public CostRenderSystem() {
         super(Aspect.getAspectForAll(Pos.class, Anim.class, Bounds.class, Buildable.class));
@@ -44,7 +47,7 @@ public class CostRenderSystem extends EntityProcessingSystem {
         batch.begin();
         batch.setColor(1f, 1f, 1f, 1f);
 
-        final Entity player = tagManager.getEntity("player");
+        player = tagManager.getEntity("player");
         walletCash = wm.has(player) ? wm.get(player).resources : 0;
 
     }
@@ -62,9 +65,16 @@ public class CostRenderSystem extends EntityProcessingSystem {
             final Bounds bounds = om.get(e);
             final Pos pos = pm.get(e);
 
-            assetSystem.font.setColor(buildable.resourceCost > walletCash ? HOLO_COLOR_RED : HOLO_COLOR);
+            boolean affordable = buildable.resourceCost <= walletCash;
+            assetSystem.font.setColor(affordable ? HOLO_COLOR : HOLO_COLOR_RED );
             String cost = "" + buildable.resourceCost + "$";
             assetSystem.font.draw(batch, cost, pos.x + bounds.cx() - assetSystem.font.getBounds(cost).width/2, pos.y +  bounds.y2 + 20);
+
+            if ( collisionSystem.overlaps(player, e) && affordable )
+            {
+                String msg = "'e' to purchase";
+                assetSystem.font.draw(batch, msg, pos.x + bounds.cx() - assetSystem.font.getBounds(msg).width/2, pos.y +  bounds.y2 + 32);
+            }
         }
     }
 }
