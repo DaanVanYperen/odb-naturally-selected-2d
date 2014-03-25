@@ -44,23 +44,54 @@ public class DialogRenderSystem extends VoidEntitySystem {
     public TextureRegion east;
     public Pos pos;
 
-    public void say( String queuedMessage )
-    {
+    public void say(String queuedMessage) {
         messages.add(queuedMessage);
     }
 
     public final static String[] STAGE_ACTION_MESSAGES = {
             "Lock and load!",
-            "Hey! I hear an outlet for my aggression!",
             "Heh, time to strafe like a skulk!",
             "Where are all my teammates!",
             "I hope that isn't an onos!",
+            "Something in the vents!",
+            "What's that rumbling!",
     };
+
+    public static final String[] SLOW_KILL_BEAST =
+            {
+                    "*Splat!* *Splat!*",
+                    "*Splat!*",
+                    "*Splat!* *Splat!* *Splat!*",
+                    "Gooey sounds are the best!",
+                    "Dieeeeeeeeeeeeeeeeeeeeeeeee!",
+                    "For Mommyyyyyyyyyyyyy!",
+                    "Meet painless!",
+                    "I found an outlet for my aggression!",
+            };
+
+    public static final String[] JETPACK_ROLLING =
+            {
+                    "I puked in my mouth.",
+                    "I'm getting dizzy.",
+                    "*Wooooooooosh*",
+                    "Whooaaaaaahhoaaahaoah stooooop.",
+            };
+
+    public static final String[] JETPACK_USAGE =
+            {
+                    "*Wheeeeeeeeeeeeeeeeeeeeeeeeeee*",
+                    "Fasterrrrrrrrrrrr!",
+                    "Up up and awayyyyyyyyyyy.",
+                    "I can see my house from here!",
+                    "I just got a speeding ticket.",
+                    "Flyyy like a biiiiiiird"
+            };
 
     public static final String[] NON_CRITICAL_ALERT_MESSAGES =
             {
-                "Something's gnawing on the merchendise",
-                    "Sharp teeth make idle work!"
+                    "Something's gnawing on the merchendise",
+                    "Sharp teeth make idle work!",
+                    "I hear the nibblies!"
             };
 
 
@@ -69,6 +100,7 @@ public class DialogRenderSystem extends VoidEntitySystem {
             "Techpoint under attack!",
             "Leave the commander alooooooone!",
             "Techpoint! No!",
+            "If I build some of these turrets they can help defend."
     };
 
     public final static String[] BUILD_MORE_HARVESTERS = {
@@ -76,7 +108,7 @@ public class DialogRenderSystem extends VoidEntitySystem {
             "I'd farm more cash with some extra extractors!",
             "Commander, we need more extractors!",
             "Ho ho ho, extractoring we go!",
-            "Extractors equals cash. Cash equals weapons!"
+            "Extractors equals cash. Cash equals weapons!",
     };
 
 

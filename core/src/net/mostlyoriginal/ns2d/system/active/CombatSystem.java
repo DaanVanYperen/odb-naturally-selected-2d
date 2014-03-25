@@ -4,18 +4,19 @@ import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
 import com.artemis.managers.GroupManager;
+import com.artemis.systems.VoidEntitySystem;
 import com.artemis.utils.ImmutableBag;
 import com.badlogic.gdx.math.MathUtils;
-import net.mostlyoriginal.ns2d.api.PassiveSystem;
 import net.mostlyoriginal.ns2d.component.*;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
+import net.mostlyoriginal.ns2d.system.render.DialogRenderSystem;
 import net.mostlyoriginal.ns2d.system.render.UIStopwatchRenderSytem;
 
 /**
  * @author Daan van Yperen
  */
 @Wire
-public class CombatSystem extends PassiveSystem {
+public class CombatSystem extends VoidEntitySystem {
 
     private ComponentMapper<Health> hm;
     private ComponentMapper<Buildable> bm;
@@ -33,6 +34,8 @@ public class CombatSystem extends PassiveSystem {
     private UIStopwatchRenderSytem uiStopwatchRenderSytem;
     private AssetSystem assetSystem;
     private EntitySpawnerSystem entitySpawnerSystem;
+    private int killsPerSecond;
+    private DialogRenderSystem dialogRenderSystem;
 
     @Override
     protected void initialize() {
@@ -99,6 +102,7 @@ public class CombatSystem extends PassiveSystem {
                     buildableSystem.destroyBuildable(victim);
                 } else {
                     // kill
+                    killsPerSecond++;
                     victim.deleteFromWorld();
                 }
             } else {
@@ -140,5 +144,29 @@ public class CombatSystem extends PassiveSystem {
             playerPos.y = spawnerPos.y + 6;
         }
 
+    }
+
+    float funnyCooldown;
+    float age;
+
+    @Override
+    protected void processSystem() {
+
+        age += world.delta;
+        funnyCooldown -= world.delta;
+
+        if ( age > 1 )
+        {
+            age = 0;
+            if ( killsPerSecond > 3)
+            {
+                if ( funnyCooldown <= 0)
+                {
+                    funnyCooldown = 30f;
+                    dialogRenderSystem.randomSay(DialogRenderSystem.SLOW_KILL_BEAST);
+                }
+            }
+            killsPerSecond = 0;
+        }
     }
 }

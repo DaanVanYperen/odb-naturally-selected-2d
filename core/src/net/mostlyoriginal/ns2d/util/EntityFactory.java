@@ -18,7 +18,7 @@ public class EntityFactory {
     private static final int COST_INFANTRY_PORTAL = 25;
     private static final int COST_ARMORY = 15;
     private static final int COST_RESOURCETOWER = 10;
-    private static final int COST_SENTRY = 5;
+    private static final int COST_SENTRY = 10;
 
     public static Entity createPlayer(final World world, final float x, final float y) {
 
@@ -223,7 +223,7 @@ public class EntityFactory {
         weapon.cooldownWhileNotFiring = false;
         weapon.maxBullets = max;
         weapon.bulletPayload.type = Payload.DamageType.RESOURCE;
-        weapon.bulletPayload.maxLifetime = 240f;
+        weapon.bulletPayload.maxLifetime = 60f;
         weapon.recoil = 3f;
         weapon.spread = 40;
         weapon.bulletSpeed = 140f;
@@ -276,7 +276,7 @@ public class EntityFactory {
 
         Weapon weapon = new Weapon();
         weapon.cooldown = 5;
-        weapon.fireCooldown = 30;
+        weapon.fireCooldown = 80;
         weapon.aimRotation = 90;
         weapon.cooldownWhileNotFiring = false;
         weapon.minBullets = 1;
