@@ -32,12 +32,16 @@ public class PlayerControlSystem extends EntityProcessingSystem {
     private ComponentMapper<Inventory> im;
     private ComponentMapper<Anim> am;
     private ComponentMapper<Frozen> fm;
+    private ComponentMapper<Bounds> bm;
     private ComponentMapper<Attached> attm;
 
     private EntitySpawnerSystem entitySpawnerSystem;
     private PhysicsSystem physicsSystem;
     private AssetSystem assetSystem;
     private boolean jetpackLooping;
+    private ParticleSystem particleSystem;
+    private float jetpackGasCooldown;
+    private Vector2 vTmp = new Vector2();
 
     public PlayerControlSystem()
     {
@@ -55,6 +59,7 @@ public class PlayerControlSystem extends EntityProcessingSystem {
         // frozen player does not act.
         if ( fm.has(player))
         {
+            stopJetpackLooping();
             player.getComponent(Anim.class).id = "player-respawning";
             gravity.enabled=false;
             physics.vr = physics.vx = physics.vy = 0;
@@ -78,11 +83,7 @@ public class PlayerControlSystem extends EntityProcessingSystem {
         gravity.enabled = true;
         if ( wallSensor.onFloor )
         {
-            if ( jetpackLooping )
-            {
-                jetpackLooping=false;
-                assetSystem.getSfx("ns2d_sfx_jetpack_loop").stop();
-            }
+            stopJetpackLooping();
 
             anim.id = "player-idle";
 
@@ -115,12 +116,6 @@ public class PlayerControlSystem extends EntityProcessingSystem {
             if ( dy != 0 ) physics.vy += dy * world.delta;
         } else {
 
-            if ( !jetpackLooping )
-            {
-                jetpackLooping = true;
-                assetSystem.getSfx("ns2d_sfx_jetpack_loop").loop(0.15f);
-                assetSystem.getSfx("ns2d_sfx_jetpack_start").play(0.15f);
-            }
 
             anim.id = "player-jetpack";
             // handle player flying! :D
@@ -152,11 +147,23 @@ public class PlayerControlSystem extends EntityProcessingSystem {
 
             if ( jetPackActive )
             {
+                startJetpackLooping();
+                jetpackGasCooldown -= world.delta;
+                if ( jetpackGasCooldown <= 0 )
+                {
+                    jetpackGasCooldown = 1/15f;
+                    final Bounds bounds = bm.get(player);
+                    particleSystem.setRotation(anim.rotation - 10f);
+                    vTmp.set(anim.flippedX ? 8 : -8,-13).rotate(anim.rotation).add(pos.x+16,pos.y+16);
+                    particleSystem.spawnParticle((int)(vTmp.x),(int)(vTmp.y), "gasburn");
+                    particleSystem.setRotation(0);
+                }
                 gravity.enabled=false;
                 physicsSystem.push(player,anim.rotation  + THRUST_VECTOR, JETPACK_THRUST * world.delta );
                 physicsSystem.clampVelocity(player,0, 100);
                 physics.vr = MathUtils.clamp(physics.vr, -ROTATIONAL_SPEED_JETPACK_ON*2, ROTATIONAL_SPEED_JETPACK_ON*2); // clamp our rotation while accelerating.
             } else {
+                stopJetpackLooping();
                 gravity.enabled=true;
                 physics.vr = MathUtils.clamp(physics.vr, -ROTATIONAL_SPEED_JETPACK_OFF * 2, ROTATIONAL_SPEED_JETPACK_OFF * 2);
             }
@@ -164,6 +171,23 @@ public class PlayerControlSystem extends EntityProcessingSystem {
 
 
 
+    }
+
+    private void startJetpackLooping() {
+        if ( !jetpackLooping )
+        {
+            jetpackLooping = true;
+            assetSystem.getSfx("ns2d_sfx_jetpack_loop").loop(0.09f);
+            assetSystem.getSfx("ns2d_sfx_jetpack_start").play(0.05f);
+        }
+    }
+
+    private void stopJetpackLooping() {
+        if ( jetpackLooping )
+        {
+            jetpackLooping=false;
+            assetSystem.getSfx("ns2d_sfx_jetpack_loop").stop();
+        }
     }
 
     private void flip(Entity player, boolean flippedX) {

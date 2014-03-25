@@ -3,6 +3,7 @@ package net.mostlyoriginal.ns2d.system.active;
 import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -48,6 +49,9 @@ public class ParticleSystem extends PassiveSystem {
                 break;
             case "alienblood":
                 createAlienBlood(x, y);
+                break;
+            case "gasburn":
+                createGasBurn(x, y);
                 break;
         }
     }
@@ -97,6 +101,27 @@ public class ParticleSystem extends PassiveSystem {
     private void createBulletCasing(int x, int y) {
         Entity entity = basicGravityParticle(x, y, "particle-bulletcasing");
         am.get(entity).layer= Anim.Layer.DIRECTLY_BEHIND_PLAYER;
+        entity
+                .addToWorld();
+    }
+
+
+    private void createGasBurn(int x, int y) {
+        vTmp.set(50, 0).rotate(rotation-90);
+        final Physics physics = new Physics();
+        physics.friction = 0.1f;
+        physics.vx = vTmp.x;
+        physics.vy = vTmp.y;
+        physics.friction = 0.1f;
+
+        Animation animation = assetSystem.get("particle-jetpack");
+        final TextureRegion frame = animation.getKeyFrame(0);
+
+        Entity entity = basicCenteredParticle(x, y, "particle-jetpack", 1, 1)
+                .addComponent(new Terminal(animation.animationDuration))
+                .addComponent(physics)
+                .addComponent(new Bounds(frame));
+        am.get(entity).layer = Anim.Layer.DIRECTLY_BEHIND_PLAYER;
         entity
                 .addToWorld();
     }
