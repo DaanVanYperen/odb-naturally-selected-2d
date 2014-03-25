@@ -147,7 +147,7 @@ public class EntityFactory {
 
         Health health = new Health(2);
         health.woundParticle = "alienblood";
-        health.deathSfxId = new String[] {"ns2d_sfx_skulk_die1","ns2d_sfx_skulk_die2","ns2d_sfx_skulk_die3"};
+        health.deathSfxId = new String[] {"ns2d_sfx_gorge_die1","ns2d_sfx_gorge_die2","ns2d_sfx_gorge_die3"};
         SkulkControlled enemy = new SkulkControlled();
         enemy.closestEnemyApproach = 100;
         Entity skulk = newPositioned(world, x, y)

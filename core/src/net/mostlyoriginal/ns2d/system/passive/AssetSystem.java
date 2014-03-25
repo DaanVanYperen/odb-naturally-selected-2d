@@ -157,6 +157,9 @@ public class AssetSystem extends PassiveSystem {
                 "ns2d_sfx_structure_damage1",
                 "ns2d_sfx_structure_damage2",
                 "ns2d_sfx_structure_damage3",
+                "ns2d_sfx_gorge_die1",
+                "ns2d_sfx_gorge_die2",
+                "ns2d_sfx_gorge_die3",
         });
     }
 

@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a3431cf-d619-496e-8f5b-feccda2c4911" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/ns2d_tileset.png" afterPath="$PROJECT_DIR$/android/assets/ns2d_tileset.png" />
+    <list default="true" id="2a3431cf-d619-496e-8f5b-feccda2c4911" name="Default" comment="Added babblers.&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/SkulkControlSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/SkulkControlSystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ns2d.iws" afterPath="$PROJECT_DIR$/ns2d.iws" />
     </list>
     <ignored path="ns2d.iws" />
@@ -76,19 +72,10 @@
       <file leaf-file-name="EntityFactory.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="33" selection-start="1807" selection-end="1807" vertical-scroll-proportion="0.53120464" vertical-offset="467" max-vertical-offset="7752">
+            <state line="90" column="108" selection-start="3576" selection-end="3576" vertical-scroll-proportion="0.19738752" vertical-offset="1394" max-vertical-offset="7752">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SkulkControlSystem.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/SkulkControlSystem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="200" column="23" selection-start="6339" selection-end="6339" vertical-scroll-proportion="0.0" vertical-offset="2762" max-vertical-offset="3451">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -96,28 +83,8 @@
       <file leaf-file-name="AssetSystem.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="39" selection-start="3593" selection-end="3593" vertical-scroll-proportion="0.0" vertical-offset="1130" max-vertical-offset="3094">
+            <state line="159" column="36" selection-start="6071" selection-end="6090" vertical-scroll-proportion="0.0" vertical-offset="2099" max-vertical-offset="3145">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WeaponSystem.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/WeaponSystem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="125" column="0" selection-start="4710" selection-end="4710" vertical-scroll-proportion="0.0" vertical-offset="1590" max-vertical-offset="2788">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DirectorSystem.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="36" selection-start="732" selection-end="732" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="2431">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -190,10 +157,10 @@
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/SkulkControlled.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/CombatSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/SkulkControlSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" />
       </list>
     </option>
@@ -1034,7 +1001,7 @@
       <workItem from="1395494595535" duration="43631000" />
       <workItem from="1395569899264" duration="25511000" />
       <workItem from="1395617790514" duration="599000" />
-      <workItem from="1395657723188" duration="38013000" />
+      <workItem from="1395657723188" duration="38672000" />
     </task>
     <task id="LOCAL-00001" summary="Basic map and rendering system.&#10;">
       <created>1395496963545</created>
@@ -1336,11 +1303,15 @@
       <created>1395705767736</created>
       <updated>1395705767736</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Added babblers.">
+      <created>1395706808273</created>
+      <updated>1395706808273</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111138000" />
+    <option name="totallyTimeSpent" value="111797000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1208" extended-state="6" />
@@ -1395,7 +1366,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Small explosion when structures die." />
     <MESSAGE value="Radar indicators.&#10;Director that enables vents as needed.&#10;" />
     <MESSAGE value="Woundable structures spray debris." />
     <MESSAGE value="Stages are announced." />
@@ -1420,7 +1390,8 @@
     <MESSAGE value="Weapon use causes damage." />
     <MESSAGE value="Spawners can spawn two types of enemies." />
     <MESSAGE value="Different enemies per wave.&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Different enemies per wave.&#10;" />
+    <MESSAGE value="Added babblers." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added babblers." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1768,7 +1739,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="36" selection-start="732" selection-end="732" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="2431">
+        <state line="23" column="36" selection-start="732" selection-end="732" vertical-scroll-proportion="0.09869376" vertical-offset="323" max-vertical-offset="2431">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1777,21 +1748,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/WeaponSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="0" selection-start="4710" selection-end="4710" vertical-scroll-proportion="0.0" vertical-offset="1590" max-vertical-offset="2788">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="39" selection-start="3593" selection-end="3593" vertical-scroll-proportion="0.0" vertical-offset="1130" max-vertical-offset="3094">
+        <state line="125" column="0" selection-start="4710" selection-end="4710" vertical-scroll-proportion="0.48040637" vertical-offset="1590" max-vertical-offset="2788">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/SkulkControlSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="200" column="23" selection-start="6339" selection-end="6339" vertical-scroll-proportion="0.0" vertical-offset="2762" max-vertical-offset="3451">
+        <state line="200" column="23" selection-start="6339" selection-end="6339" vertical-scroll-proportion="0.6792453" vertical-offset="2762" max-vertical-offset="3451">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="159" column="36" selection-start="6071" selection-end="6090" vertical-scroll-proportion="0.0" vertical-offset="2099" max-vertical-offset="3145">
           <folding />
         </state>
       </provider>
@@ -1805,7 +1776,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="33" selection-start="1807" selection-end="1807" vertical-scroll-proportion="0.53120464" vertical-offset="467" max-vertical-offset="7752">
+        <state line="90" column="108" selection-start="3576" selection-end="3576" vertical-scroll-proportion="0.19738752" vertical-offset="1394" max-vertical-offset="7752">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
