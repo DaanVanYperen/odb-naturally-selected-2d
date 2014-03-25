@@ -160,6 +160,8 @@ public class AssetSystem extends PassiveSystem {
                 "ns2d_sfx_gorge_die1",
                 "ns2d_sfx_gorge_die2",
                 "ns2d_sfx_gorge_die3",
+                "ns2d_sfx_jetpack_loop",
+                "ns2d_sfx_jetpack_start",
         });
     }
 

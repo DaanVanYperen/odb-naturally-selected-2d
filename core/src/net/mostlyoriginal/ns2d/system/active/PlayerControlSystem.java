@@ -10,6 +10,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import net.mostlyoriginal.ns2d.component.*;
+import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 
 /**
  * @author Daan van Yperen
@@ -35,6 +36,8 @@ public class PlayerControlSystem extends EntityProcessingSystem {
 
     private EntitySpawnerSystem entitySpawnerSystem;
     private PhysicsSystem physicsSystem;
+    private AssetSystem assetSystem;
+    private boolean jetpackLooping;
 
     public PlayerControlSystem()
     {
@@ -75,6 +78,12 @@ public class PlayerControlSystem extends EntityProcessingSystem {
         gravity.enabled = true;
         if ( wallSensor.onFloor )
         {
+            if ( jetpackLooping )
+            {
+                jetpackLooping=false;
+                assetSystem.getSfx("ns2d_sfx_jetpack_loop").stop();
+            }
+
             anim.id = "player-idle";
 
             // handle player walking. move left and right, rotation always 0.
@@ -105,6 +114,14 @@ public class PlayerControlSystem extends EntityProcessingSystem {
             }
             if ( dy != 0 ) physics.vy += dy * world.delta;
         } else {
+
+            if ( !jetpackLooping )
+            {
+                jetpackLooping = true;
+                assetSystem.getSfx("ns2d_sfx_jetpack_loop").loop(0.15f);
+                assetSystem.getSfx("ns2d_sfx_jetpack_start").play(0.15f);
+            }
+
             anim.id = "player-jetpack";
             // handle player flying! :D
 
