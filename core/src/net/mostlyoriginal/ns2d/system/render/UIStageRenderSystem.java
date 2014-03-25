@@ -4,6 +4,7 @@ import com.artemis.annotations.Wire;
 import com.artemis.systems.VoidEntitySystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import net.mostlyoriginal.ns2d.system.active.DirectorSystem;
@@ -34,17 +35,19 @@ public class UIStageRenderSystem extends VoidEntitySystem {
             cooldown = DISPLAY_DURATION;
         }
 
+        String cost = "Stage " + (directorSystem.activeStage + 1);
         cooldown -= world.delta;
-        if ( cooldown >= 0 ) {
+        batch.begin();
+        batch.setColor(1f, 1f, 1f, 1f);
+
+        if (cooldown >= 0) {
             batch.setProjectionMatrix(cameraSystem.guiCamera.combined);
-            batch.begin();
-            batch.setColor(1f, 1f, 1f, 1f);
-
-            assetSystem.fontLarge.setColor(1f,1f,1f, MathUtils.clamp(cooldown, 0,1));
-
-            String cost = "Stage " + (directorSystem.activeStage + 1);
+            assetSystem.fontLarge.setColor(1f, 1f, 1f, MathUtils.clamp(cooldown, 0, 1));
             assetSystem.fontLarge.draw(batch, cost, Gdx.graphics.getWidth() / 4 - assetSystem.fontLarge.getBounds(cost).width / 2, Gdx.graphics.getHeight() / 3 + 2);
-            batch.end();
+        } else {
+            BitmapFont.TextBounds bounds = assetSystem.font.getBounds(cost);
+            assetSystem.font.draw(batch, cost, Gdx.graphics.getWidth() / 2 - bounds.width - 12, Gdx.graphics.getHeight() / 2 - 30);
         }
+        batch.end();
     }
 }

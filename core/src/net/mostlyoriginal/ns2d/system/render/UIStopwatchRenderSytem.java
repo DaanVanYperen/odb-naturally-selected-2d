@@ -82,6 +82,7 @@ public class UIStopwatchRenderSytem extends VoidEntitySystem {
         } else {
             age += world.delta;
             assetSystem.fontLarge.draw(batch, cost, Gdx.graphics.getWidth() / 2 - bounds.width - 10, Gdx.graphics.getHeight() / 2 + 10);
+            String message = "Stage " + (directorSystem.activeStage + 1);
         }
         batch.end();
     }

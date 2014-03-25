@@ -84,7 +84,7 @@ public class ParticleSystem extends PassiveSystem {
         final TextureRegion frame = assetSystem.get(animId).getKeyFrame(0);
 
         Entity entity = basicCenteredParticle(x, y, animId, 1, 1)
-                .addComponent(new Terminal(4f))
+                .addComponent(new Terminal(4f, 3.5f))
                 .addComponent(physics)
                 .addComponent(new Bounds(frame))
                 .addComponent(new Gravity());
@@ -98,14 +98,14 @@ public class ParticleSystem extends PassiveSystem {
     }
 
     private void createShellCasing(int x, int y) {
-        Entity entity = basicGravityParticle(x, y, "particle-shellcasing");
+        Entity entity = basicShellParticle(x, y, "particle-shellcasing");
         am.get(entity).layer= Anim.Layer.DIRECTLY_BEHIND_PLAYER;
         entity
                 .addToWorld();
     }
 
     private void createBulletCasing(int x, int y) {
-        Entity entity = basicGravityParticle(x, y, "particle-bulletcasing");
+        Entity entity = basicShellParticle(x, y, "particle-bulletcasing");
         am.get(entity).layer= Anim.Layer.DIRECTLY_BEHIND_PLAYER;
         entity
                 .addToWorld();
@@ -155,7 +155,7 @@ public class ParticleSystem extends PassiveSystem {
                 .addToWorld();
     }
 
-    private Entity basicGravityParticle(int x, int y, String animId) {
+    private Entity basicShellParticle(int x, int y, String animId) {
         final Physics physics = new Physics();
         physics.vr = MathUtils.random(-90, -80)*10f;
         physics.vx = MathUtils.random(-90, -80)*1.5f;
@@ -165,7 +165,7 @@ public class ParticleSystem extends PassiveSystem {
         final TextureRegion frame = assetSystem.get(animId).getKeyFrame(0);
 
         return basicCenteredParticle(x, y, animId, 1, 1)
-                .addComponent(new Terminal(4f))
+                .addComponent(new Terminal(1.5f,0.5f))
                 .addComponent(physics)
                 .addComponent(new Bounds(frame))
                 .addComponent(new Gravity());
@@ -181,7 +181,7 @@ public class ParticleSystem extends PassiveSystem {
         final TextureRegion frame = assetSystem.get("bile-droplet").getKeyFrame(0);
 
         Entity entity = basicCenteredParticle(x, y, "bile-droplet", 1, 1)
-                .addComponent(new Terminal(4f))
+                .addComponent(new Terminal(4f, 3.5f))
                 .addComponent(physics)
                 .addComponent(new Bounds(frame))
                 .addComponent(new Gravity());

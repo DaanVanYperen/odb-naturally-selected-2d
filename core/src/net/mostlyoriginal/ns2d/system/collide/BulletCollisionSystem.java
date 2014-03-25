@@ -51,6 +51,13 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
         final Payload payload = pm.get(bullet);
 
         payload.age += world.delta;
+        if (payload.age >= payload.maxLifetime - 0.25f) {
+            if ( am.has(bullet) )
+            {
+                // fade out bullets.
+                am.get(bullet).color.a = (payload.maxLifetime - payload.age) *4f;
+            }
+        }
         if (payload.age >= payload.maxLifetime) {
             if (payload.radius > 0) {
                 damageArea(bullet, payload.triggerGroup, payload.radius, MathUtils.random(payload.minDamage, payload.maxDamage), payload.type);
