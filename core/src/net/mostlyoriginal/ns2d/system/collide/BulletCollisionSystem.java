@@ -78,7 +78,7 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
         float radius = payload.radius;
 
         if (payload.explodeSfxId != null) {
-            assetSystem.playSfx(payload.explodeSfxId);
+            assetSystem.playSfx(payload.explodeSfxId, bullet);
         }
 
         switch (payload.type) {
@@ -86,7 +86,7 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
             case WEAPON_PICKUP: {
                 final Entity player = tagManager.getEntity("player");
                 entitySpawnerSystem.giveWeapon(player, am.get(bullet).id);
-                assetSystem.playSfx("ns2d_sfx_pickup");
+                assetSystem.playSfx("ns2d_sfx_pickup",bullet);
                 break;
             }
             case RESOURCE: {
@@ -94,7 +94,7 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
                 if (wm.has(player))
                 {
                     wm.get(player).resources += damage;
-                    assetSystem.playSfx("ns2d_sfx_pickup");
+                    assetSystem.playSfx("ns2d_sfx_pickup",bullet);
                 }
                 break;
             }

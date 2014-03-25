@@ -93,7 +93,7 @@ public class WeaponSystem extends EntityProcessingSystem {
                     if ( weapon.sfxCooldown <= 0 )
                     {
                         weapon.sfxCooldown = 1/30f;
-                        assetSystem.playSfx(weapon.fireSfxId);
+                        assetSystem.playSfx(weapon.fireSfxId,gun);
                     }
                 }
 

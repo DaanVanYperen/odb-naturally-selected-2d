@@ -84,7 +84,7 @@ public class CombatSystem extends PassiveSystem {
 
                 if (health.deathSfxId!= null)
                 {
-                    assetSystem.playSfx(health.deathSfxId[MathUtils.random(0,health.deathSfxId.length-1)]);
+                    assetSystem.playSfx(health.deathSfxId[MathUtils.random(0,health.deathSfxId.length-1)],victim);
                 }
 
                 if (rm.has(victim)) {
@@ -104,7 +104,7 @@ public class CombatSystem extends PassiveSystem {
             } else {
                 if (health.damageSfxId!= null)
                 {
-                    assetSystem.playSfx(health.damageSfxId[MathUtils.random(0,health.damageSfxId.length-1)]);
+                    assetSystem.playSfx(health.damageSfxId[MathUtils.random(0,health.damageSfxId.length-1)],victim);
                 }
             }
         }

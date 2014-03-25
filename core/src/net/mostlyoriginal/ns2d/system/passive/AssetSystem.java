@@ -1,5 +1,9 @@
 package net.mostlyoriginal.ns2d.system.passive;
 
+import com.artemis.ComponentMapper;
+import com.artemis.Entity;
+import com.artemis.annotations.Wire;
+import com.artemis.managers.TagManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
@@ -8,13 +12,16 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import net.mostlyoriginal.ns2d.api.PassiveSystem;
+import net.mostlyoriginal.ns2d.component.Pos;
 import net.mostlyoriginal.ns2d.system.active.ParticleSystem;
+import net.mostlyoriginal.ns2d.util.EntityUtil;
 
 import java.util.HashMap;
 
 /**
  * @author Daan van Yperen
  */
+@Wire
 public class AssetSystem extends PassiveSystem {
 
     public static final int TILE_SIZE = 32;
@@ -24,6 +31,9 @@ public class AssetSystem extends PassiveSystem {
     public Texture tileset;
     public HashMap<String, Animation> sprites = new HashMap<String, Animation>();
     public HashMap<String, Sound> sounds = new HashMap<String, Sound>();
+    private TagManager tagManager;
+
+    ComponentMapper<Pos> pm;
 
     public Animation get(final String identifier) {
         return sprites.get(identifier);
@@ -185,6 +195,23 @@ public class AssetSystem extends PassiveSystem {
             Sound sfx = getSfx(name);
             sfx.stop();
             sfx.play(sfxVolume, MathUtils.random(1f, 1.04f), 0);
+        }
+    }
+
+    public void playSfx(String name, Entity origin) {
+        if (sfxVolume > 0 )
+        {
+            Entity player = tagManager.getEntity("player");
+            float distance = EntityUtil.distance(origin, player);
+
+            float volume = sfxVolume - (distance / 2000f);
+            if ( volume > 0.01f )
+            {
+                float balanceX = pm.has(origin) && pm.has(player) ? MathUtils.clamp((pm.get(origin).x - pm.get(player).x)/100f, -1f,1f) : 0;
+                Sound sfx = getSfx(name);
+                sfx.stop();
+                sfx.play(volume, MathUtils.random(1f, 1.04f), balanceX);
+            }
         }
     }
 

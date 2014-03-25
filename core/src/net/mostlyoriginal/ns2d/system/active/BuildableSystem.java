@@ -75,7 +75,7 @@ public class BuildableSystem extends EntityProcessingSystem {
                 if (wallet.resources >= buildable.resourceCost)
                 {
                     wallet.resources -= buildable.resourceCost;
-                    assetSystem.playSfx("ns2d_sfx_construct");
+                    assetSystem.playSfx("ns2d_sfx_construct", e);
                     buildable.built = true;
                     Anim anim = am.get(e);
                     anim.id = buildable.builtAnimId;
