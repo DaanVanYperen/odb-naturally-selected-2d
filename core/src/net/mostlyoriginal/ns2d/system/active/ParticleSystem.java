@@ -56,6 +56,9 @@ public class ParticleSystem extends PassiveSystem {
             case "puff":
                 createPuff(x, y);
                 break;
+            case "bile":
+                createBile(x, y);
+                break;
         }
     }
 
@@ -166,6 +169,24 @@ public class ParticleSystem extends PassiveSystem {
                 .addComponent(physics)
                 .addComponent(new Bounds(frame))
                 .addComponent(new Gravity());
+    }
+
+    private void createBile(int x, int y) {
+        final Physics physics = new Physics();
+        physics.vr = MathUtils.random(-90, 90)*10f;
+        physics.vx = MathUtils.random(-90, 90)*1.5f;
+        physics.vy = MathUtils.random(100, 110)*1.5f;
+        physics.friction = 0.1f;
+
+        final TextureRegion frame = assetSystem.get("bile-droplet").getKeyFrame(0);
+
+        Entity entity = basicCenteredParticle(x, y, "bile-droplet", 1, 1)
+                .addComponent(new Terminal(4f))
+                .addComponent(physics)
+                .addComponent(new Bounds(frame))
+                .addComponent(new Gravity());
+        am.get(entity).layer = Anim.Layer.DIRECTLY_BEHIND_PLAYER;
+        entity.addToWorld();
     }
 
     private void createMuzzleFlare(int x, int y) {

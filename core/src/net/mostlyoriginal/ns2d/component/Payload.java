@@ -9,7 +9,7 @@ public class Payload extends Component {
 
 
     public static enum DamageType {
-        RESOURCE, WEAPON_PICKUP, EXPLOSIVE
+        RESOURCE, WEAPON_PICKUP, BILE, EXPLOSIVE
     }
 
     public DamageType type =  DamageType.EXPLOSIVE;

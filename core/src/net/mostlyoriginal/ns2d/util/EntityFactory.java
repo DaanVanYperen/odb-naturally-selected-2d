@@ -126,9 +126,10 @@ public class EntityFactory {
         weapon.bulletFriction = 0.01f;
         weapon.bulletBounce = 0.8f;
         weapon.bulletPayload.radius = 20;
+        weapon.bulletPayload.type = Payload.DamageType.BILE;
         weapon.bulletPayload.minDamage = weapon.bulletPayload.maxDamage = 2;
         weapon.bulletGravityFactor = 2;
-        weapon.bulletPayload.explodeSfxId = "ns2d_sfx_gl_explode";
+        weapon.bulletPayload.explodeSfxId = "ns2d_sfx_gorge_bile";
         weapon.bulletBounce = 0;
         weapon.enemyGroup = "player-friend";
         weapon.muzzleFlare = false;
@@ -145,11 +146,12 @@ public class EntityFactory {
 
     public static Entity createGorge(final World world, final float x, final float y) {
 
-        Health health = new Health(2);
+        Health health = new Health(5);
         health.woundParticle = "alienblood";
         health.deathSfxId = new String[] {"ns2d_sfx_gorge_die1","ns2d_sfx_gorge_die2","ns2d_sfx_gorge_die3"};
         SkulkControlled enemy = new SkulkControlled();
         enemy.closestEnemyApproach = 100;
+        enemy.canLeap = false;
         Entity skulk = newPositioned(world, x, y)
                 .addComponent(new Anim("gorge", Anim.Layer.ENEMIES))
                 .addComponent(health)

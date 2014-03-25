@@ -151,14 +151,29 @@ public class SkulkControlSystem extends EntityProcessingSystem {
         Gravity gravity = gm.get(skulk);
         gravity.enabled = !sensor.onVerticalSurface && !sensor.onHorizontalSurface;
 
+        float closestEnemyApproach = com.get(skulk).closestEnemyApproach;
         float enemyDirX = enemyPos.x - skulkPos.x;
         float enemyDirY = enemyPos.y - skulkPos.y;
+        float enemyDistance = EntityUtil.distance(skulk, focus);
+        boolean tooClose = false;
 
-        float enemyDistance = EntityUtil.distance2(skulk, focus);
+
+        if ( enemyDistance <= closestEnemyApproach * 0.8f  )
+        {
+            // run away!
+            enemyDirX = -enemyDirX;
+            enemyDirY = -enemyDirY;
+            tooClose = true;
+        } else if ( enemyDistance <= closestEnemyApproach  )
+        {
+            // nice distance, we're fine.
+            return;
+        }
+
 
         SkulkControlled controlled = com.get(skulk);
 
-        if (sensor.onAnySurface() && controlled.leapCooldown <= 0) {
+        if ( !tooClose && com.get(skulk).canLeap &&  (sensor.onAnySurface() && controlled.leapCooldown <= 0)) {
             float direction = EntityUtil.angle(skulk, focus) + MathUtils.random(-10f, 10f);
             leapTowards(skulk, direction, enemyDistance);
         } else if (sensor.onAnySurface()) {

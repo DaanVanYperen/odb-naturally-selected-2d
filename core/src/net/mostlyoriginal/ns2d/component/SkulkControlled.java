@@ -9,4 +9,5 @@ public class SkulkControlled extends Component {
 
     public float leapCooldown;
     public float closestEnemyApproach= 0;
+    public boolean canLeap = true;
 }

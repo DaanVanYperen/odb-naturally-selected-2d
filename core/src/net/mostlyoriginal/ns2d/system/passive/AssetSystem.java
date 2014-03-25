@@ -93,7 +93,8 @@ public class AssetSystem extends PassiveSystem {
         add("skulk-head", 105, 590, 15, 10, 1);
         add("gorge", 32, 621, 32, 19, 2);
         add("gorge-head", 106,623, 12,12, 1);
-        add("gorge-spit", 168,620, 13,8, 1);
+        add("gorge-spit",171,619,10,10,1);
+        add("bile-droplet",200,620,13,8,1);
         add("babbler", 0, 654, 32, 18, 2);
 
         add("debug-marker", 44, 51, 3, 3, 1);
@@ -164,6 +165,7 @@ public class AssetSystem extends PassiveSystem {
                 "ns2d_sfx_gorge_die3",
                 "ns2d_sfx_jetpack_loop",
                 "ns2d_sfx_jetpack_start",
+                "ns2d_sfx_gorge_bile",
         });
     }
 

@@ -31,6 +31,7 @@ public class DirectorSystem extends VoidEntitySystem {
     private Stage[] stages = new Stage[] {
 
             // stage duration, cooldown, active vents, skulks per wave per vent, wave interval
+            new Stage(20, STAGE_WARMUP, 1, 1, 9.5f, "gorge", "gorge"),
             new Stage(20, 1, 1, 1, 5f, "skulk", "skulk"),
             new Stage(20, STAGE_WARMUP, 1, 1, 1.0f, "babbler", "babbler"),
             new Stage(20, STAGE_WARMUP, 1, 1, 1.0f, "skulk", "skulk"),
