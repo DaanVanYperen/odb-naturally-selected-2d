@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a3431cf-d619-496e-8f5b-feccda2c4911" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/CostRenderSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/CostRenderSystem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/CombatSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/CombatSystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ns2d.iws" afterPath="$PROJECT_DIR$/ns2d.iws" />
     </list>
     <ignored path="ns2d.iws" />
@@ -80,10 +79,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AssetSystem.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AssetSystem.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="126" column="45" selection-start="4748" selection-end="4748" vertical-scroll-proportion="0.5558781" vertical-offset="1589" max-vertical-offset="3213">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3213">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CombatSystem.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/CombatSystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="124" column="80" selection-start="4055" selection-end="4055" vertical-scroll-proportion="0.41467065" vertical-offset="1678" max-vertical-offset="2346">
               <folding />
             </state>
           </provider>
@@ -205,7 +213,6 @@
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Buildable.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/EntitySpawner.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/SkulkControlled.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/CombatSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/SkulkControlSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java" />
@@ -220,6 +227,7 @@
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/PlayerControlSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/CostRenderSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/CombatSystem.java" />
       </list>
     </option>
   </component>
@@ -1059,7 +1067,7 @@
       <workItem from="1395494595535" duration="43631000" />
       <workItem from="1395569899264" duration="25511000" />
       <workItem from="1395617790514" duration="599000" />
-      <workItem from="1395657723188" duration="43276000" />
+      <workItem from="1395657723188" duration="43585000" />
     </task>
     <task id="LOCAL-00001" summary="Basic map and rendering system.&#10;">
       <created>1395496963545</created>
@@ -1385,11 +1393,15 @@
       <created>1395711803388</created>
       <updated>1395711803388</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="replaced jetpack with fire particles.">
+      <created>1395712080559</created>
+      <updated>1395712080559</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116401000" />
+    <option name="totallyTimeSpent" value="116710000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1208" extended-state="6" />
@@ -1444,7 +1456,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Fixed small bug with the weapons not loading." />
     <MESSAGE value="Added stopwatch.&#10;Added red indicator on too expensive items.&#10;Replaced $ character with 'resource'.&#10;" />
     <MESSAGE value="Resources are expelled by the harvesters periodically, which can be picked up." />
     <MESSAGE value="Armory poops out weapons cyclicly." />
@@ -1469,7 +1480,8 @@
     <MESSAGE value="Added jetpack sounds." />
     <MESSAGE value="Added gassburn effect to jetpack." />
     <MESSAGE value="Smoke and burningssssssss.&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Smoke and burningssssssss.&#10;" />
+    <MESSAGE value="replaced jetpack with fire particles." />
+    <option name="LAST_COMMIT_MESSAGE" value="replaced jetpack with fire particles." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1713,13 +1725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/CombatSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="0" selection-start="4020" selection-end="4020" vertical-scroll-proportion="0.0" vertical-offset="1607" max-vertical-offset="2295">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="36" selection-start="732" selection-end="732" vertical-scroll-proportion="0.09869376" vertical-offset="323" max-vertical-offset="2431">
@@ -1856,7 +1861,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="45" selection-start="4748" selection-end="4748" vertical-scroll-proportion="0.5558781" vertical-offset="1589" max-vertical-offset="3213">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3213">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/CombatSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="124" column="80" selection-start="4055" selection-end="4055" vertical-scroll-proportion="0.41467065" vertical-offset="1678" max-vertical-offset="2346">
           <folding />
         </state>
       </provider>

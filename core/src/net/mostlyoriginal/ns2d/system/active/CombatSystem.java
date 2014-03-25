@@ -32,6 +32,7 @@ public class CombatSystem extends PassiveSystem {
     private ParticleSystem particleSystem;
     private UIStopwatchRenderSytem uiStopwatchRenderSytem;
     private AssetSystem assetSystem;
+    private EntitySpawnerSystem entitySpawnerSystem;
 
     @Override
     protected void initialize() {
@@ -112,6 +113,8 @@ public class CombatSystem extends PassiveSystem {
 
         Health health = hm.get(victim);
         health.damage = 0;
+
+        entitySpawnerSystem.giveWeapon(victim, "rifle");
 
         // freeze in place for X seconds.
 
