@@ -27,6 +27,7 @@ public class UIAlertTechpointUnderAttack extends EntityProcessingSystem {
     public Entity player;
     public TextureRegion radarImage;
     public TextureRegion arrowImage;
+    private DialogRenderSystem dialogSystem;
 
     public UIAlertTechpointUnderAttack() {
         super(Aspect.getAspectForAll(Critical.class, Pos.class, Bounds.class));
@@ -60,15 +61,23 @@ public class UIAlertTechpointUnderAttack extends EntityProcessingSystem {
 
     Vector2 vTmp = new Vector2();
     float age;
+    float lastAlertCooldown = 0;
 
     @Override
     protected void process(Entity spawner) {
 
+        lastAlertCooldown -= world.delta;
         Critical critical = cm.get(spawner);
         critical.damageAge += world.delta;
         age += world.delta;
-        if ( critical.damageAge > 3 || (age % 2 < 1f) )
+        if ( critical.damageAge > 1 || (age % 2 < 1f) )
             return;
+
+        if ( lastAlertCooldown < 0 )
+        {
+            lastAlertCooldown = 40;
+            dialogSystem.randomSay(DialogRenderSystem.CRITICAL_ALERT_MESSAGES);
+        }
 
         final Pos pPos = pm.get(player);
         final Bounds pBounds = bm.get(player);
