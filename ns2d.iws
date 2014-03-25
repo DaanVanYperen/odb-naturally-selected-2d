@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a3431cf-d619-496e-8f5b-feccda2c4911" name="Default" comment="Added babblers.&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" />
+    <list default="true" id="2a3431cf-d619-496e-8f5b-feccda2c4911" name="Default" comment="`">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/Settings.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/G.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/G.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIStopwatchRenderSytem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIStopwatchRenderSytem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ns2d.iws" afterPath="$PROJECT_DIR$/ns2d.iws" />
     </list>
     <ignored path="ns2d.iws" />
@@ -69,13 +70,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="EntityFactory.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="EntityFactory.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="108" selection-start="3576" selection-end="3576" vertical-scroll-proportion="0.19738752" vertical-offset="1394" max-vertical-offset="7752">
+            <state line="90" column="108" selection-start="3576" selection-end="3576" vertical-scroll-proportion="0.0" vertical-offset="1394" max-vertical-offset="7752">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Settings.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/Settings.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="32" selection-start="686" selection-end="703" vertical-scroll-proportion="0.0" vertical-offset="246" max-vertical-offset="935">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UIStopwatchRenderSytem.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIStopwatchRenderSytem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="26" selection-start="1220" selection-end="1220" vertical-scroll-proportion="0.3701016" vertical-offset="102" max-vertical-offset="1530">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="G.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/G.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="52" selection-start="311" selection-end="311" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -111,7 +139,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Damage.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/DamageType.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Explosive.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Warhead.java" />
@@ -129,9 +156,7 @@
         <option value="$PROJECT_DIR$/android/assets/font/tahoma-10.fnt" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIRenderSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/CostRenderSystem.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/G.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/NsGame.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIStopwatchRenderSytem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Anim.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/AnimRenderSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Homing.java" />
@@ -162,6 +187,9 @@
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/Settings.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/G.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIStopwatchRenderSytem.java" />
       </list>
     </option>
   </component>
@@ -1001,7 +1029,7 @@
       <workItem from="1395494595535" duration="43631000" />
       <workItem from="1395569899264" duration="25511000" />
       <workItem from="1395617790514" duration="599000" />
-      <workItem from="1395657723188" duration="38672000" />
+      <workItem from="1395657723188" duration="39669000" />
     </task>
     <task id="LOCAL-00001" summary="Basic map and rendering system.&#10;">
       <created>1395496963545</created>
@@ -1307,11 +1335,15 @@
       <created>1395706808273</created>
       <updated>1395706808273</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Added gorge sounds.">
+      <created>1395707475300</created>
+      <updated>1395707475300</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111797000" />
+    <option name="totallyTimeSpent" value="112794000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1208" extended-state="6" />
@@ -1366,7 +1398,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Radar indicators.&#10;Director that enables vents as needed.&#10;" />
     <MESSAGE value="Woundable structures spray debris." />
     <MESSAGE value="Stages are announced." />
     <MESSAGE value="Added alien blood." />
@@ -1391,7 +1422,8 @@
     <MESSAGE value="Spawners can spawn two types of enemies." />
     <MESSAGE value="Different enemies per wave.&#10;" />
     <MESSAGE value="Added babblers." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added babblers." />
+    <MESSAGE value="Added gorge sounds." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added gorge sounds." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1406,20 +1438,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/7bc4617288384db2ae2e0e0f28f7c686574cad31/gdx-1.0-SNAPSHOT-sources.jar!/com/badlogic/gdx/math/collision/Ray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="11" selection-start="1401" selection-end="1401" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1802">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/7bc4617288384db2ae2e0e0f28f7c686574cad31/gdx-1.0-SNAPSHOT-sources.jar!/com/badlogic/gdx/math/Plane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="11" selection-start="1564" selection-end="1564" vertical-scroll-proportion="-0.8142235" vertical-offset="1020" max-vertical-offset="2822">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/7bc4617288384db2ae2e0e0f28f7c686574cad31/gdx-1.0-SNAPSHOT-sources.jar!/com/badlogic/gdx/math/Vector2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="104" column="19" selection-start="2680" selection-end="2680" vertical-scroll-proportion="0.40638608" vertical-offset="1216" max-vertical-offset="6953">
@@ -1494,23 +1512,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/G.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="30" selection-start="258" selection-end="258" vertical-scroll-proportion="0.34948605" vertical-offset="0" max-vertical-offset="681">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/NsGame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="8" selection-start="168" selection-end="168" vertical-scroll-proportion="0.2246696" vertical-offset="0" max-vertical-offset="681">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIStopwatchRenderSytem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="50" selection-start="1729" selection-end="1729" vertical-scroll-proportion="0.4992658" vertical-offset="306" max-vertical-offset="1309">
           <folding />
         </state>
       </provider>
@@ -1760,9 +1764,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="108" selection-start="3576" selection-end="3576" vertical-scroll-proportion="0.0" vertical-offset="1394" max-vertical-offset="7752">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/G.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="52" selection-start="311" selection-end="311" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/7bc4617288384db2ae2e0e0f28f7c686574cad31/gdx-1.0-SNAPSHOT-sources.jar!/com/badlogic/gdx/graphics/g2d/BitmapFont.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="538" column="32" selection-start="22665" selection-end="22665" vertical-scroll-proportion="-0.08563135" vertical-offset="8610" max-vertical-offset="16422">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="159" column="36" selection-start="6071" selection-end="6090" vertical-scroll-proportion="0.0" vertical-offset="2099" max-vertical-offset="3145">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/Settings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="32" selection-start="686" selection-end="703" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
           <folding />
         </state>
       </provider>
@@ -1774,12 +1808,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java">
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIStopwatchRenderSytem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="108" selection-start="3576" selection-end="3576" vertical-scroll-proportion="0.19738752" vertical-offset="1394" max-vertical-offset="7752">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="33" column="26" selection-start="1220" selection-end="1220" vertical-scroll-proportion="0.3701016" vertical-offset="102" max-vertical-offset="1530">
+          <folding />
         </state>
       </provider>
     </entry>

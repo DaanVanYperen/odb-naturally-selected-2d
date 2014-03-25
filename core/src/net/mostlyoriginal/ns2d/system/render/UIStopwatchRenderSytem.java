@@ -7,6 +7,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Interpolation;
 import net.mostlyoriginal.ns2d.G;
 import net.mostlyoriginal.ns2d.system.active.DirectorSystem;
 import net.mostlyoriginal.ns2d.system.active.PlayerControlSystem;
@@ -31,11 +32,14 @@ public class UIStopwatchRenderSytem extends VoidEntitySystem {
     private SpriteBatch batch = new SpriteBatch();
     private float retryCooldown = 1;
     private float age = 0;
-    public boolean gameOver = false;
+    public boolean gameOver =false;
+    private float improvement=0;
+    float bounce;
 
     @Override
     protected void processSystem() {
 
+        bounce += world.delta;
         batch.setProjectionMatrix(cameraSystem.guiCamera.combined);
         batch.begin();
         batch.setColor(1f, 1f, 1f, 1f);
@@ -45,13 +49,23 @@ public class UIStopwatchRenderSytem extends VoidEntitySystem {
         BitmapFont.TextBounds bounds = assetSystem.fontLarge.getBounds(cost);
         if (gameOver) {
 
+            if ( G.settings.personalHighscore < (int)age )
+            {
+                improvement = (int)age - G.settings.personalHighscore;
+                G.settings.personalHighscore = (int)age;
+                G.settings.save();
+            }
+
             // disable these systems
             stageRenderSystem.setEnabled(false);
             playerControlSystem.setEnabled(false);
 
-            assetSystem.fontLarge.draw(batch, cost, Gdx.graphics.getWidth() / 4 - bounds.width / 2, Gdx.graphics.getHeight() / 4 + 24);
+            assetSystem.fontLarge.setScale(Interpolation.elastic.apply(3,( improvement > 0 ? 4 : 3),Math.abs((bounce%2)-1)));
+            BitmapFont.TextBounds bounds2 = assetSystem.fontLarge.getBounds(cost);
+            assetSystem.fontLarge.draw(batch, cost, Gdx.graphics.getWidth() / 4 - bounds2.width / 2, Gdx.graphics.getHeight() / 4 + bounds2.height/2 + 5);
+            assetSystem.fontLarge.setScale(3);
 
-            String message = "Game Over! You survived for:";
+            String message = improvement > 0 ? "Game over! Personal highscore! You survived for:" : "Game Over! You survived for:";
             bounds = assetSystem.font.getBounds(message);
             assetSystem.font.draw(batch, message, Gdx.graphics.getWidth() / 4 - bounds.width / 2, Gdx.graphics.getHeight() / 4 + 40);
 
