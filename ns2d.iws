@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a3431cf-d619-496e-8f5b-feccda2c4911" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/ns2d_tileset.png" afterPath="$PROJECT_DIR$/android/assets/ns2d_tileset.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/collide/BulletCollisionSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/collide/BulletCollisionSystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/ParticleSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/ParticleSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Payload.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Payload.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/SkulkControlSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/SkulkControlSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/SkulkControlled.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/SkulkControlled.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ns2d.iws" afterPath="$PROJECT_DIR$/ns2d.iws" />
     </list>
     <ignored path="ns2d.iws" />
@@ -96,10 +88,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SkulkControlSystem.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="SkulkControlSystem.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/SkulkControlSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="156" column="64" selection-start="4614" selection-end="4614" vertical-scroll-proportion="0.5897436" vertical-offset="2114" max-vertical-offset="3706">
+            <state line="143" column="49" selection-start="4049" selection-end="4049" vertical-scroll-proportion="0.0" vertical-offset="2114" max-vertical-offset="3706">
               <folding />
             </state>
           </provider>
@@ -114,10 +106,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DirectorSystem.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DirectorSystem.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="0" selection-start="1131" selection-end="1131" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="2448">
+            <state line="39" column="67" selection-start="1546" selection-end="1546" vertical-scroll-proportion="0.4551282" vertical-offset="379" max-vertical-offset="2635">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -202,13 +194,13 @@
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIAlertTechpointUnderAttack.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIAlertBuildableUnderAttack.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Buildable.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/ParticleSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/collide/BulletCollisionSystem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/SkulkControlled.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/SkulkControlSystem.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java" />
       </list>
     </option>
   </component>
@@ -1048,7 +1040,7 @@
       <workItem from="1395494595535" duration="43631000" />
       <workItem from="1395569899264" duration="25511000" />
       <workItem from="1395617790514" duration="599000" />
-      <workItem from="1395657723188" duration="46189000" />
+      <workItem from="1395657723188" duration="46374000" />
     </task>
     <task id="LOCAL-00001" summary="Basic map and rendering system.&#10;">
       <created>1395496963545</created>
@@ -1390,11 +1382,15 @@
       <created>1395713622963</created>
       <updated>1395713622963</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="All sorts of small fixes.">
+      <created>1395714994195</created>
+      <updated>1395714994195</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119314000" />
+    <option name="totallyTimeSpent" value="119499000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="1" width="1928" height="1143" extended-state="0" />
@@ -1449,7 +1445,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Added game over state :D" />
     <MESSAGE value="Added auto-firing sentry. Does not aim, YET.&#10;Every 12 seconds the techpoint spawns some res." />
     <MESSAGE value="Added all player animations." />
     <MESSAGE value="Resources home in to the player." />
@@ -1474,7 +1469,8 @@
     <MESSAGE value="Lose weapon when you die.&#10;" />
     <MESSAGE value="Make the damage blink less invasive.&#10;" />
     <MESSAGE value="Alert indicator for structures under attack.&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alert indicator for structures under attack.&#10;" />
+    <MESSAGE value="All sorts of small fixes." />
+    <option name="LAST_COMMIT_MESSAGE" value="All sorts of small fixes." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1822,15 +1818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="1131" selection-end="1131" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="2448">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/AssetSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="96" column="27" selection-start="3579" selection-end="3579" vertical-scroll-proportion="0.0" vertical-offset="1203" max-vertical-offset="3247">
@@ -1863,8 +1850,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/SkulkControlSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="64" selection-start="4614" selection-end="4614" vertical-scroll-proportion="0.5897436" vertical-offset="2114" max-vertical-offset="3706">
+        <state line="143" column="49" selection-start="4049" selection-end="4049" vertical-scroll-proportion="0.0" vertical-offset="2114" max-vertical-offset="3706">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="67" selection-start="1546" selection-end="1546" vertical-scroll-proportion="0.4551282" vertical-offset="379" max-vertical-offset="2635">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
