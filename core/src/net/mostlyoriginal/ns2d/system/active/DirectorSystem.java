@@ -19,6 +19,7 @@ import net.mostlyoriginal.ns2d.system.render.DialogRenderSystem;
 public class DirectorSystem extends VoidEntitySystem {
 
     public static final int WARMUP_SECONDS = 5;
+    public static final int STAGE_WARMUP = 15;
     private ComponentMapper<EntitySpawner> sm;
 
     GroupManager groupManager;
@@ -29,20 +30,20 @@ public class DirectorSystem extends VoidEntitySystem {
     public int activeStage = -1;
     private Stage[] stages = new Stage[] {
 
-            // stage duration, active vents, skulks per wave per vent, wave interval
-            new Stage(20, 1, 1, 1, 1.5f),
-            new Stage(20, 9, 1, 1, 1.0f),
-            new Stage(20, 9, 1, 1, 0.9f),
-            new Stage(20, 9, 1, 1, 0.8f),
-            new Stage(20, 9, 1, 1, 0.7f),
-            new Stage(20, 9, 2, 1, 0.6f),
-            new Stage(20, 9, 2, 1, 0.5f),
-            new Stage(20, 9, 2, 1, 0.45f),
-            new Stage(20, 9, 2, 1, 0.4f),
-            new Stage(20, 9, 3, 1, 0.35f),
-            new Stage(20, 9, 4, 1, 0.3f),
-            new Stage(20, 9, 4, 1, 0.2f),
-            new Stage(20, 9, 4, 1, 0.1f),
+            // stage duration, cooldown, active vents, skulks per wave per vent, wave interval
+            new Stage(20, 1, 1, 1, 1.5f, "skulk", "skulk"),
+            new Stage(20, STAGE_WARMUP, 1, 1, 1.0f, "skulk", "skulk"),
+            new Stage(20, STAGE_WARMUP, 1, 1, 9.5f, "gorge", "gorge"),
+            new Stage(20, STAGE_WARMUP, 1, 1, 0.8f, "skulk", "gorge"),
+            new Stage(20, STAGE_WARMUP, 1, 1, 0.7f, "skulk", "gorge"),
+            new Stage(20, STAGE_WARMUP, 2, 1, 0.6f, "skulk", "gorge"),
+            new Stage(20, STAGE_WARMUP, 2, 1, 0.5f, "skulk", "gorge"),
+            new Stage(20, STAGE_WARMUP, 2, 1, 0.45f, "skulk", "gorge"),
+            new Stage(20, STAGE_WARMUP, 2, 1, 0.4f, "skulk", "gorge"),
+            new Stage(20, STAGE_WARMUP, 3, 1, 0.35f, "skulk", "gorge"),
+            new Stage(20, STAGE_WARMUP, 4, 1, 0.3f, "skulk", "gorge"),
+            new Stage(20, STAGE_WARMUP, 4, 1, 0.2f, "skulk", "gorge"),
+            new Stage(20, STAGE_WARMUP, 4, 1, 0.1f, "skulk", "gorge"),
     };
     private DialogRenderSystem dialogRenderSystem;
 
@@ -76,13 +77,15 @@ public class DirectorSystem extends VoidEntitySystem {
                     active.activeVents,
                     active.skulksPerWave,
                     active.waveInterval,
-                    active.stageWarmup);
+                    active.stageWarmup,
+                    active.id1,
+                    active.id2);
 
             dialogRenderSystem.randomSay(DialogRenderSystem.STAGE_COOLDOWN_MESSAGES);
         }
     }
 
-    private void activateRandomSpawners(int activeVents, int skulksPerWave, float waveInterval, float stageWarmup) {
+    private void activateRandomSpawners(int activeVents, int skulksPerWave, float waveInterval, float stageWarmup, String id1, String id2) {
 
         // disable all spawners.
         for (int i = 0; ducts.size() > i; i++) {
@@ -103,6 +106,9 @@ public class DirectorSystem extends VoidEntitySystem {
                 entitySpawner.maxCount = skulksPerWave;
                 entitySpawner.minInterval = waveInterval * 0.8f;
                 entitySpawner.maxInterval = waveInterval;
+                entitySpawner.entityId = id1;
+                entitySpawner.entityId2 = id2;
+                entitySpawner.entityId2Chance = 30;
             }
         }
     }
@@ -113,13 +119,17 @@ public class DirectorSystem extends VoidEntitySystem {
         public int activeVents;
         public int skulksPerWave;
         public float waveInterval;
+        public final String id1;
+        public final String id2;
 
-        private Stage(int stageDuration, float stageWarmup, int activeVents, int skulksPerWave, float waveInterval) {
+        private Stage(int stageDuration, float stageWarmup, int activeVents, int skulksPerWave, float waveInterval, String id1, String id2) {
             this.stageDuration = stageDuration;
             this.stageWarmup = stageWarmup;
             this.activeVents = activeVents;
             this.skulksPerWave = skulksPerWave;
             this.waveInterval = waveInterval;
+            this.id1 = id1;
+            this.id2 = id2;
         }
     }
 

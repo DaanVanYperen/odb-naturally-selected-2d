@@ -56,7 +56,7 @@ public class EntityFactory {
 
     public static Entity createSkulk(final World world, final float x, final float y) {
 
-        Health health = new Health(2);
+        Health health = new Health(1);
         health.woundParticle = "alienblood";
         health.deathSfxId = new String[] {"ns2d_sfx_skulk_die1","ns2d_sfx_skulk_die2","ns2d_sfx_skulk_die3"};
         Entity skulk = newPositioned(world, x, y)
@@ -89,13 +89,13 @@ public class EntityFactory {
         weapon.bulletPayload.maxLifetime = 8f;
         weapon.spread = 5;
         weapon.recoil *= 10;
-        weapon.bulletSpeed *= 0.5f;
+        weapon.bulletSpeed *= 0.2f;
         weapon.bulletAnimId = "gorge-spit";
         weapon.fireSfxId = null;
         weapon.bulletFriction = 0.01f;
         weapon.bulletBounce = 0.8f;
         weapon.bulletPayload.radius = 20;
-        weapon.bulletPayload.minDamage = weapon.bulletPayload.maxDamage = 5;
+        weapon.bulletPayload.minDamage = weapon.bulletPayload.maxDamage = 2;
         weapon.bulletGravityFactor = 2;
         weapon.bulletPayload.explodeSfxId = "ns2d_sfx_gl_explode";
         weapon.bulletBounce = 0;
@@ -227,12 +227,13 @@ public class EntityFactory {
     public static Entity createSpawner(final World world, final float x, final float y) {
         Entity structureSocket = createStructureSocket(world, x, y);
         structureSocket.addToWorld();
+        Buildable buildable = new Buildable("spawner", "spawner-unbuilt", COST_INFANTRY_PORTAL);
+        buildable.built = true;
         return newPositioned(world, x, y)
                 .addComponent(new Bounds(16, 16))
-                .addComponent(new HealthIndicator())
                 .addComponent(new Attached(structureSocket))
-                .addComponent(new Buildable("spawner", "spawner-unbuilt",COST_INFANTRY_PORTAL))
-                .addComponent(new Anim("spawner-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
+                .addComponent(buildable)
+                .addComponent(new Anim("spawner", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
 
     }
 

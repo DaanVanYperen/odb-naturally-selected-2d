@@ -52,6 +52,7 @@ public class PlayerControlSystem extends EntityProcessingSystem {
         // frozen player does not act.
         if ( fm.has(player))
         {
+            player.getComponent(Anim.class).id = "player-respawning";
             gravity.enabled=false;
             physics.vr = physics.vx = physics.vy = 0;
             return;

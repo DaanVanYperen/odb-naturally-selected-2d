@@ -84,7 +84,7 @@ public class CombatSystem extends PassiveSystem {
                 }
 
                 if (rm.has(victim)) {
-                    respawnEntity(victim, health);
+                    respawnEntity(victim);
                     return;
                 }
 
@@ -106,10 +106,11 @@ public class CombatSystem extends PassiveSystem {
         }
     }
 
-    private void respawnEntity(Entity victim, Health health) {
+    public void respawnEntity(Entity victim) {
 
         final RespawnOnDeath respawnOnDeath = rm.get(victim);
 
+        Health health = hm.get(victim);
         health.damage = 0;
 
         // freeze in place for X seconds.
@@ -122,8 +123,6 @@ public class CombatSystem extends PassiveSystem {
                 .add(new Health(10)))
                 .changedInWorld();
 
-
-        victim.getComponent(Anim.class).id = "player-respawning";
 
         // move to spawner.
         ImmutableBag<Entity> spawners = groupManager.getEntities("spawner");

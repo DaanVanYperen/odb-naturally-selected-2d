@@ -26,6 +26,7 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
 
     private GroupManager groupManager;
     private TagManager tagManager;
+    private CombatSystem combatSystem;
 
     public EntitySpawnerSystem() {
         super(Aspect.getAspectForAll(EntitySpawner.class, Pos.class, Bounds.class));
@@ -168,6 +169,8 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
 
         tagManager.register("player", player);
         groupManager.add(player, "player");
+
+        combatSystem.respawnEntity(player);
     }
 
 
