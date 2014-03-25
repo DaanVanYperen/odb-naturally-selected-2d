@@ -15,27 +15,26 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import net.mostlyoriginal.ns2d.component.Bounds;
-import net.mostlyoriginal.ns2d.component.Critical;
-import net.mostlyoriginal.ns2d.component.Pos;
+import net.mostlyoriginal.ns2d.component.*;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 
 @Wire
-public class UIAlertTechpointUnderAttack extends EntityProcessingSystem {
+public class UIAlertBuildableUnderAttack extends EntityProcessingSystem {
 
     public Entity player;
     public TextureRegion radarImage;
     public TextureRegion arrowImage;
     private DialogRenderSystem dialogSystem;
 
-    public UIAlertTechpointUnderAttack() {
-        super(Aspect.getAspectForAll(Critical.class, Pos.class, Bounds.class));
+    public UIAlertBuildableUnderAttack() {
+        super(Aspect.getAspectForAll(Buildable.class, Health.class, Pos.class, Bounds.class));
     }
 
     private ComponentMapper<Pos> pm;
     private ComponentMapper<Bounds> bm;
-    private ComponentMapper<Critical> bum;
+    private ComponentMapper<Critical> cm;
+    private ComponentMapper<Buildable> bum;
 
     private CameraSystem cameraSystem;
     private AssetSystem assetSystem;
@@ -51,7 +50,7 @@ public class UIAlertTechpointUnderAttack extends EntityProcessingSystem {
 
         player = tagManager.getEntity("player");
         arrowImage = assetSystem.get("alert-arrow").getKeyFrame(0);
-        radarImage = assetSystem.get("techpoint-alert").getKeyFrame(0);
+        radarImage = assetSystem.get("alert-damage").getKeyFrame(0);
     }
 
     @Override
@@ -67,7 +66,7 @@ public class UIAlertTechpointUnderAttack extends EntityProcessingSystem {
     protected void process(Entity spawner) {
 
         lastAlertCooldown -= world.delta;
-        Critical critical = bum.get(spawner);
+        Buildable critical = bum.get(spawner);
         critical.damageAge += world.delta;
         age += world.delta;
         if ( critical.damageAge > 1 || (age % 2 < 1f) )
@@ -76,7 +75,7 @@ public class UIAlertTechpointUnderAttack extends EntityProcessingSystem {
         if ( lastAlertCooldown < 0 )
         {
             lastAlertCooldown = 40;
-            dialogSystem.randomSay(DialogRenderSystem.CRITICAL_ALERT_MESSAGES);
+            dialogSystem.randomSay(DialogRenderSystem.NON_CRITICAL_ALERT_MESSAGES);
         }
 
         final Pos pPos = pm.get(player);

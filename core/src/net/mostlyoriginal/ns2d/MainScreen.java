@@ -85,6 +85,8 @@ public class MainScreen implements Screen {
         G.world.setSystem(new DialogRenderSystem());
         G.world.setSystem(new UIRenderSystem());
         G.world.setSystem(new UIAlertActiveSpawnerSystem());
+        G.world.setSystem(new UIAlertBuildableUnderAttack());
+
         G.world.setSystem(new UIAlertTechpointUnderAttack());
         G.world.setSystem(new UIStageRenderSystem());
         G.world.setSystem(new UIStopwatchRenderSytem());

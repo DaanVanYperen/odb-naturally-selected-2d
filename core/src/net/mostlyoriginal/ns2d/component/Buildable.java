@@ -13,6 +13,7 @@ public class Buildable extends Component {
     public boolean weaponUseCausesDamage;
     public float weaponUseDamageCooldown;
     public int defaultHealth = 30;
+    public float damageAge=999;
 
     public Buildable(String builtAnimId, String unbuiltAnimId, int resourceCost) {
         this.builtAnimId = builtAnimId;

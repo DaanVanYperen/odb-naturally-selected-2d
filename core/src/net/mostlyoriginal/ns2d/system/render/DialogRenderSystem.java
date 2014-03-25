@@ -57,6 +57,13 @@ public class DialogRenderSystem extends VoidEntitySystem {
             "I hope that isn't an onos!",
     };
 
+    public static final String[] NON_CRITICAL_ALERT_MESSAGES =
+            {
+                "Something's gnawing on the merchendise",
+                    "Sharp teeth make idle work!"
+            };
+
+
     public final static String[] CRITICAL_ALERT_MESSAGES = {
             "If that techpoint goes down, i'm fired!",
             "Techpoint under attack!",
@@ -77,6 +84,7 @@ public class DialogRenderSystem extends VoidEntitySystem {
             "Crap! Something broke.",
             "Why is nobody welding!",
             "*sigh*",
+            "I was nowhere near that!"
     };
 
 
@@ -90,7 +98,8 @@ public class DialogRenderSystem extends VoidEntitySystem {
             "Vents got quiet!",
             "Calm before the storm.",
             "Pfew!",
-            "Time for a spaceburger."
+            "Time for a spaceburger.",
+            "This suit sure is tight!",
     };
 
     @Override

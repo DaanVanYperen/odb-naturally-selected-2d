@@ -55,6 +55,9 @@ public class CombatSystem extends PassiveSystem {
             if (cm.has(victim))
             {
                 cm.get(victim).damageAge = 0;
+            } else if (bm.has(victim))
+            {
+                bm.get(victim).damageAge = 0;
             }
 
             boolean dead = health.damage >= health.health;
