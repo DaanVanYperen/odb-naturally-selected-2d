@@ -88,10 +88,11 @@ public class UIStopwatchRenderSytem extends VoidEntitySystem {
     }
 
     private String formatAge() {
-        return String.format("%02d:%02d:%02d",
-                (int) (age / 60),
-                (int) (age % 60),
-                (int) ((age * 100) % 100)
-        );
+        return
+                format((int) (age / 60)) + ":" +format((int) (age % 60)) + ":" +format((int) ((age * 100) % 100));
+    }
+
+    private String format(int value) {
+        return value < 10 ? "0" + value : ""+value;
     }
 }

@@ -10,6 +10,9 @@ public class RemoveStep extends Step {
 
     public Class<? extends Component> componentClass;
 
+    public RemoveStep() {
+    }
+
     @Override
     public boolean act(float delta, Entity e) {
         e.removeComponent(componentClass);

@@ -46,10 +46,10 @@ project(":core") {
     }
 }
 
+
 project(":desktop") {
     apply plugin: "java"
-    apply plugin: "application"
-    
+
     dependencies {
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
@@ -70,6 +70,7 @@ project(":android") {
     }
 }
 
+
 project(":gwt") {
     apply plugin: "gwt"
     apply plugin: "war"
@@ -80,25 +81,12 @@ project(":gwt") {
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
-    }
 
-    gwt {
-        gwtVersion='2.5.0' // Should match the gwt version used for building the gwt backend
-        maxHeapSize="1G" // Default 256m is not enough for gwt compiler. GWT is HUNGRY
-        minHeapSize="1G"
-
-        src = files(file("src/")) // Needs to be in front of "modules" below.
-        modules 'net.mostlyoriginal.ns2d.GdxDefinition'
-
-        compiler {
-            strict = true;
-            enableClosureCompiler = true;
-            disableClassMetadata = true;
-            disableCastChecking = true;
-        }
+        compile files("e:/GitHub/artemis-odb/artemis-gwt/target/artemis-odb-gwt-0.5.1-SNAPSHOT.jar")
+        compile files("e:/GitHub/artemis-odb/artemis-gwt/target/artemis-odb-gwt-0.5.1-SNAPSHOT-sources.jar")
+        compile files("e:/GitHub/artemis-odb/artemis/target/artemis-odb-0.5.1-SNAPSHOT-sources.jar")
     }
 }
-
 project(":ios") {
     apply plugin: 'java'
     apply plugin: 'robovm'

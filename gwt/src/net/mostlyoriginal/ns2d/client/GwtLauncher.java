@@ -9,7 +9,7 @@ public class GwtLauncher extends GwtApplication {
 
         @Override
         public GwtApplicationConfiguration getConfig () {
-                return new GwtApplicationConfiguration(480, 320);
+                return new GwtApplicationConfiguration(1280, 720);
         }
 
         @Override

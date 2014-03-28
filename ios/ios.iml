@@ -34,7 +34,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-robovm/1.0-SNAPSHOT/124687ca30a92080567fa1cc756027a10d69bea8/gdx-backend-robovm-1.0-SNAPSHOT.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-robovm/1.0-SNAPSHOT/4baa241bdf41ad6ea8732ecd7ed8284c409c26bf/gdx-backend-robovm-1.0-SNAPSHOT.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -43,7 +43,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-platform/1.0-SNAPSHOT/2b32ec99d12599c42f9cec571b7c72498d912070/gdx-platform-1.0-SNAPSHOT-natives-ios.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-platform/1.0-SNAPSHOT/fa792b16fbc62aa297d4ca15466a466f6befb2cf/gdx-platform-1.0-SNAPSHOT-natives-ios.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -63,11 +63,11 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/c3893946802734a04d57db7cafe2eb50693e8314/gdx-1.0-SNAPSHOT.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/22fbdb1f9076fd26a3b92539e9664e43f7170097/gdx-1.0-SNAPSHOT.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/7bc4617288384db2ae2e0e0f28f7c686574cad31/gdx-1.0-SNAPSHOT-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/bd2d6ac3e804c1fc0ecc8636f6c775cb9e80b140/gdx-1.0-SNAPSHOT-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>

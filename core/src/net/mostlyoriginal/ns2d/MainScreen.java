@@ -7,6 +7,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.badlogic.gdx.math.MathUtils;
 import net.mostlyoriginal.ns2d.system.active.*;
 import net.mostlyoriginal.ns2d.system.collide.BulletCollisionSystem;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
@@ -26,7 +29,6 @@ public class MainScreen implements Screen {
         G.screen = this;
 
         G.world = new World();
-
 
         G.world.setManager(new GroupManager());
         G.world.setManager(new TagManager());
@@ -105,7 +107,7 @@ public class MainScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
   		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        G.world.setDelta(delta);
+        G.world.setDelta(MathUtils.clamp(delta,0, 1/15f));
         G.world.process();
     }
 

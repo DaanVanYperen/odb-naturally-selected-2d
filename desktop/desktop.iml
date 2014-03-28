@@ -12,18 +12,18 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-lwjgl/1.0-SNAPSHOT/a9c368db2a523facbdf70733a02c3408308c6672/gdx-backend-lwjgl-1.0-SNAPSHOT.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-lwjgl/1.0-SNAPSHOT/1104d797efaf16542bab0ad0cc3bcc8ebbba2589/gdx-backend-lwjgl-1.0-SNAPSHOT.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-lwjgl/1.0-SNAPSHOT/9ed58903f6c54cbd0a3d5ed70f2436757fdea8eb/gdx-backend-lwjgl-1.0-SNAPSHOT-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-lwjgl/1.0-SNAPSHOT/d8be73374c0ac537ccd9b74af9c546f6ca464424/gdx-backend-lwjgl-1.0-SNAPSHOT-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-platform/1.0-SNAPSHOT/bf66a5898ee2ae7a0124ce9a13674301e13cec50/gdx-platform-1.0-SNAPSHOT-natives-desktop.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-platform/1.0-SNAPSHOT/a2ec22b1dc85d074923f352dbf3ec9f255db083b/gdx-platform-1.0-SNAPSHOT-natives-desktop.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -32,11 +32,11 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/c3893946802734a04d57db7cafe2eb50693e8314/gdx-1.0-SNAPSHOT.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/22fbdb1f9076fd26a3b92539e9664e43f7170097/gdx-1.0-SNAPSHOT.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/7bc4617288384db2ae2e0e0f28f7c686574cad31/gdx-1.0-SNAPSHOT-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/bd2d6ac3e804c1fc0ecc8636f6c775cb9e80b140/gdx-1.0-SNAPSHOT-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -125,11 +125,11 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-openal/1.0-SNAPSHOT/2e7b87b1047cecf0408d84370fc2ed3f99536ebb/gdx-openal-1.0-SNAPSHOT.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-openal/1.0-SNAPSHOT/8518e4412ad293542e14de5009b285461d0ff551/gdx-openal-1.0-SNAPSHOT.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-openal/1.0-SNAPSHOT/6e4c9af303a1ffcdf3910c2953c484d14489de06/gdx-openal-1.0-SNAPSHOT-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-openal/1.0-SNAPSHOT/19fa0919a2a04c54198356855071af3127fbe70a/gdx-openal-1.0-SNAPSHOT-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>

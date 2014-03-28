@@ -7,6 +7,8 @@ import com.artemis.Entity;
  */
 public class DeleteFromWorldStep extends Step {
 
+    public DeleteFromWorldStep() {}
+
     @Override
     public boolean act(float delta, Entity e) {
         e.deleteFromWorld();

@@ -11,6 +11,8 @@ public abstract class Step implements Pool.Poolable {
     public float atAge;
     private Pool pool;
 
+    protected Step() {}
+
     abstract public boolean act(float delta, Entity e);
 
     public void release() {

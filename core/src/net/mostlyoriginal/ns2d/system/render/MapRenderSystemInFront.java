@@ -29,7 +29,7 @@ public class MapRenderSystemInFront extends PassiveSystem {
     protected void processSystem() {
         for (MapLayer layer : mapSystem.map.getLayers()) {
       			if (layer.isVisible()) {
-      				if (layer instanceof TiledMapTileLayer && layer.getName().equals("infront")) {
+      				if (layer.getName().equals("infront")) {
 
                         renderLayer((TiledMapTileLayer) layer);
                     }

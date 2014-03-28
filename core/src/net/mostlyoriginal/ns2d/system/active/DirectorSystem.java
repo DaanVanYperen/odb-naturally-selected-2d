@@ -50,13 +50,16 @@ public class DirectorSystem extends VoidEntitySystem {
             new Stage(20, STAGE_WARMUP, 4, 1, 0.1f, "skulk", "skulk"),
             new Stage(20, STAGE_WARMUP, 4, 1, 0.1f, "skulk", "gorge"),
             new Stage(20, STAGE_WARMUP, 6, 3, 0.1f, "babbler","babbler"),
-            new Stage(100, STAGE_WARMUP, 4, 1, 0.1f, "skulk", "skulk"),
-            new Stage(100, STAGE_WARMUP, 4, 1, 0.1f, "babbler", "babbler"),
-            new Stage(100, STAGE_WARMUP, 4, 1, 0.1f, "gorge", "gorge"),
-            new Stage(100, STAGE_WARMUP, 4, 2, 0.1f, "skulk", "skulk"),
-            new Stage(100, STAGE_WARMUP, 4, 3, 0.1f, "skulk", "skulk"),
-            new Stage(100, STAGE_WARMUP, 4, 4, 0.1f, "skulk", "skulk"),
-            new Stage(100, STAGE_WARMUP, 4, 5, 0.1f, "skulk", "skulk"),
+            new Stage(60, STAGE_WARMUP, 4, 1, 0.1f, "skulk", "skulk"),
+            new Stage(60, STAGE_WARMUP, 4, 1, 0.1f, "babbler", "babbler"),
+            new Stage(60, STAGE_WARMUP, 4, 1, 0.1f, "gorge", "gorge"),
+            new Stage(120, STAGE_WARMUP, 4, 2, 0.1f, "skulk", "skulk"),
+            new Stage(120, STAGE_WARMUP, 4, 3, 0.1f, "skulk", "skulk"),
+            new Stage(120, STAGE_WARMUP, 4, 4, 0.1f, "skulk", "skulk"),
+            new Stage(240, STAGE_WARMUP, 4, 5, 0.1f, "gorge", "skulk"),
+            new Stage(240, STAGE_WARMUP, 4, 5, 0.1f, "babbler", "babbler"),
+            new Stage(240, STAGE_WARMUP, 4, 4, 0.1f, "skulk", "skulk"),
+            new Stage(240, STAGE_WARMUP, 4, 10, 0.1f, "skulk", "gorge"),
     };
     private DialogRenderSystem dialogRenderSystem;
 

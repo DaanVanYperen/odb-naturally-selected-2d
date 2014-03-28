@@ -30,7 +30,7 @@ public class MapMask {
      */
     public boolean atGrid( final int x, final int y )
     {
-        if ( x > width || x < 0 || y < 0 || y > height  ) return false;
+        if ( x >= width || x < 0 || y < 0 || y >= height  ) return false;
         return v[y][x];
     }
 

@@ -2,6 +2,7 @@ package net.mostlyoriginal.ns2d.system.passive;
 
 import com.artemis.annotations.Wire;
 import com.artemis.systems.VoidEntitySystem;
+import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -30,7 +31,12 @@ public class MapSystem extends VoidEntitySystem {
     @Override
     protected void initialize() {
         map = new TmxMapLoader().load("map1.tmx");
-        layers = map.getLayers().getByType(TiledMapTileLayer.class);
+
+        layers = new Array<TiledMapTileLayer>();
+        for ( MapLayer rawLayer : map.getLayers() )
+        {
+            layers.add((TiledMapTileLayer) rawLayer);
+        }
         width = layers.get(0).getWidth();
         height = layers.get(0).getHeight();
     }

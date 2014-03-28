@@ -1,36 +1,67 @@
+
 <!doctype html>
 <html>
-       <head>
-              <title>ns2d</title>
-              <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-              <style>
-                     canvas {
-                            cursor: default;
-                            outline: none;
-                     }
-              </style>
-       </head>
-       
-       <body>
-              <h1>Test page for Libgdx with GWT</h1>
-              Project loading shortly:<br>
-              <div align="center" id="embed-net.mostlyoriginal.ns2d.GdxDefinition"></div>
-              <script type="text/javascript" src="net.mostlyoriginal.ns2d.GdxDefinition/net.mostlyoriginal.ns2d.GdxDefinition.nocache.js"></script>
-       </body>
-       
-       <script>
-              function handleMouseDown(evt) {
-                evt.preventDefault();
-                evt.stopPropagation();
-                evt.target.style.cursor = 'default';
-              }
-              
-              function handleMouseUp(evt) {
-                evt.preventDefault();
-                evt.stopPropagation();
-                evt.target.style.cursor = '';
-              }
-              document.getElementById('embed-net.mostlyoriginal.ns2d.GdxDefinition').addEventListener('mousedown', handleMouseDown, false);
-              document.getElementById('embed-net.mostlyoriginal.ns2d.GdxDefinition').addEventListener('mouseup', handleMouseUp, false);
-       </script>
+<head>
+    <title>ns2d</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <style>
+        body {
+            background-color: #181810;
+            color: #fff;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        span.split {
+            color: #656C5A;
+        }
+
+        canvas {
+            cursor: default;
+            outline: none;
+        }
+
+        div.view {
+            width: 1280px;
+            height: 720px;
+        }
+
+        hr {
+            width: 200px;
+            color: #aaa;
+        }
+
+        a {
+            color: #366B8A;
+        }
+    </style>
+
+    <script src="soundmanager2-setup.js"></script>
+    <script src="soundmanager2-jsmin.js"></script>
+</head>
+
+<body>
+<div style="text-align: center; font-weight: bold;">Naturally Selected 2D: MLD50 entry</div>
+<div style="text-align: center;">Please give it a moment to load.</div>
+       <div align="center"><div align="center" id="embed-html" style="border: 10px solid #353221; width: 1280px; height: 720px; margin: 8px;" class="view"></div></div>
+       <script type="text/javascript" src="html/html.nocache.js"></script>
+<div style="text-align: center;">Coded in 72 hours for <a href="http://www.ludumdare.com/compo/2014/03/07/mini-ludum-dare-50-announcement/">MLD50</a> using <a href="http://libgdx.badlogicgames.com/">LibGDX</a> and <a href="https://github.com/junkdog/artemis-odb">artemis-odb</a> <span class="split">|</span> Talk about NS2D on <a href="http://www.reddit.com/r/ns2/comments/21fq6u/naturally_selected_2d_a_ns2_demake/">Reddit</a></div>
+<div style="text-align: center;"> Code: <a href="http://www.mostlyoriginal.net">Daan van Yperen</a> <span class="split">|</span> Graphics & Sound: <a href="http://www.flaterectomy.com">Flaterectomy</a></div>
+
+</body>
+
+<script>
+    function handleMouseDown(evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
+        evt.target.style.cursor = 'default';
+    }
+
+    function handleMouseUp(evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
+        evt.target.style.cursor = '';
+    }
+    document.getElementById('embed-html').addEventListener('mousedown', handleMouseDown, false);
+    document.getElementById('embed-html').addEventListener('mouseup', handleMouseUp, false);
+</script>
 </html>

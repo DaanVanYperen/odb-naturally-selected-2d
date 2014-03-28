@@ -241,7 +241,7 @@ public class EntityFactory {
     public static Entity createTechpoint(World world, float x, float y) {
         Entity structureSocket = createStructureSocket(world, x, y);
         structureSocket.addToWorld();
-        Health health = new Health(100);
+        Health health = new Health(200);
         health.woundParticle = "debris";
         health.damageSfxId = new String[]{"ns2d_sfx_structure_damage1","ns2d_sfx_structure_damage2","ns2d_sfx_structure_damage1"};
         Buildable buildable = new Buildable("techpoint", "techpoint-unbuilt", 999);
