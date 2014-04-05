@@ -1,3 +1,11 @@
 /gwt/build
 /gwt/war
 /core/build
+/out
+/launch4j.xml
+/ns2d.iml
+/ns2d.ipr
+/ns2d.iws
+/package_desktop.bat
+
+/gradle_intellij.bat
