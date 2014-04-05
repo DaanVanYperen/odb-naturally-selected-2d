@@ -2,34 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a3431cf-d619-496e-8f5b-feccda2c4911" name="Default" comment="Particles cleanly melt away.&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gwt/src/net/mostlyoriginal/ns2d/GdxDefinitionSuperdev.gwt.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android/assets/shader/test.fragment" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android/assets/shader/test.vertex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/step/AddStep.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/step/AddStep.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/step/DeleteFromWorldStep.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/step/DeleteFromWorldStep.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gwt/src/net/mostlyoriginal/ns2d/GdxDefinition.gwt.xml" afterPath="$PROJECT_DIR$/gwt/src/net/mostlyoriginal/ns2d/GdxDefinition.gwt.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gwt/src/net/mostlyoriginal/ns2d/client/GwtLauncher.java" afterPath="$PROJECT_DIR$/gwt/src/net/mostlyoriginal/ns2d/client/GwtLauncher.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android/assets/shader/shimmer.fragment" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android/assets/shader/shimmer.vertex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/AnimRenderSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/AnimRenderSystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/MainScreen.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/MainScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/MapMask.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/MapMask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/MapRenderSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/MapRenderSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/MapRenderSystemInFront.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/MapRenderSystemInFront.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/MapSystem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/MapSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/step/RemoveStep.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/step/RemoveStep.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/step/Step.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/step/Step.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIStopwatchRenderSytem.java" afterPath="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIStopwatchRenderSytem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/android.iml" afterPath="$PROJECT_DIR$/android/android.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build.gradle" afterPath="$PROJECT_DIR$/core/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/desktop/build.gradle" afterPath="$PROJECT_DIR$/desktop/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gwt/build.gradle" afterPath="$PROJECT_DIR$/gwt/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/core.iml" afterPath="$PROJECT_DIR$/core/core.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/desktop/desktop.iml" afterPath="$PROJECT_DIR$/desktop/desktop.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gwt/gwt.iml" afterPath="$PROJECT_DIR$/gwt/gwt.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gwt/webapp/index.html" afterPath="$PROJECT_DIR$/gwt/webapp/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/ios.iml" afterPath="$PROJECT_DIR$/ios/ios.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/map1.tmx" afterPath="$PROJECT_DIR$/android/assets/map1.tmx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ns2d.iws" afterPath="$PROJECT_DIR$/ns2d.iws" />
     </list>
     <ignored path="ns2d.iws" />
@@ -98,12 +74,8 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gwt/webapp/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="78" selection-start="441" selection-end="441" vertical-scroll-proportion="-5.423077" vertical-offset="233" max-vertical-offset="1241">
-              <folding>
-                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="22" column="18" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0" vertical-offset="233" max-vertical-offset="1241">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -111,19 +83,26 @@
       <file leaf-file-name="UIStopwatchRenderSytem.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIStopwatchRenderSytem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="23" selection-start="3870" selection-end="3870" vertical-scroll-proportion="0.0" vertical-offset="863" max-vertical-offset="1564">
+            <state line="95" column="8" selection-start="3855" selection-end="3855" vertical-scroll-proportion="0.0" vertical-offset="1615" max-vertical-offset="1768">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShaderProgram.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/bd2d6ac3e804c1fc0ecc8636f6c775cb9e80b140/gdx-1.0-SNAPSHOT-sources.jar!/com/badlogic/gdx/graphics/glutils/ShaderProgram.java">
+      <file leaf-file-name="shimmer.vertex" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/android/assets/shader/shimmer.vertex">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="156" column="31" selection-start="5696" selection-end="5714" vertical-scroll-proportion="0.0" vertical-offset="2029" max-vertical-offset="16116">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state line="10" column="17" selection-start="207" selection-end="207" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="323">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default.vertex.glsl" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gwt/war/assets/com/badlogic/gdx/graphics/g3d/shaders/default.vertex.glsl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="28" selection-start="484" selection-end="484" vertical-scroll-proportion="0.0" vertical-offset="245" max-vertical-offset="5593">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -131,27 +110,16 @@
       <file leaf-file-name="SpriteBatch.java" pinned="false" current="false" current-in-tab="false">
         <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/bd2d6ac3e804c1fc0ecc8636f6c775cb9e80b140/gdx-1.0-SNAPSHOT-sources.jar!/com/badlogic/gdx/graphics/g2d/SpriteBatch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="149" column="42" selection-start="6029" selection-end="6029" vertical-scroll-proportion="0.0" vertical-offset="2012" max-vertical-offset="16983">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.vertex" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/android/assets/shader/test.vertex">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+            <state line="94" column="93" selection-start="4157" selection-end="4175" vertical-scroll-proportion="0.0" vertical-offset="1598" max-vertical-offset="17374">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.fragment" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/android/assets/shader/test.fragment">
+      <file leaf-file-name="shimmer.fragment" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/android/assets/shader/shimmer.fragment">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="66" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+            <state line="14" column="45" selection-start="436" selection-end="436" vertical-scroll-proportion="0.2370518" vertical-offset="0" max-vertical-offset="1004">
               <folding />
             </state>
           </provider>
@@ -160,36 +128,34 @@
       <file leaf-file-name="NsGame.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/NsGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="25" selection-start="239" selection-end="239" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+            <state line="13" column="24" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="374">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainScreen.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MainScreen.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/MainScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="0" selection-start="1042" selection-end="1042" vertical-scroll-proportion="0.32233882" vertical-offset="57" max-vertical-offset="2261">
+            <state line="38" column="42" selection-start="1252" selection-end="1252" vertical-scroll-proportion="0.0" vertical-offset="646" max-vertical-offset="2499">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MapMask.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/MapMask.java">
+      <file leaf-file-name="AnimRenderSystem.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/AnimRenderSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="17" selection-start="878" selection-end="878" vertical-scroll-proportion="0.0" vertical-offset="305" max-vertical-offset="1190">
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+            <state line="53" column="120" selection-start="1800" selection-end="1800" vertical-scroll-proportion="0.0" vertical-offset="901" max-vertical-offset="2805">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GdxDefinitionSuperdev.gwt.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gwt/src/net/mostlyoriginal/ns2d/GdxDefinitionSuperdev.gwt.xml">
+      <file leaf-file-name="ShaderProgram.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/bd2d6ac3e804c1fc0ecc8636f6c775cb9e80b140/gdx-1.0-SNAPSHOT-sources.jar!/com/badlogic/gdx/graphics/glutils/ShaderProgram.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="4" selection-start="4" selection-end="4" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+            <state line="250" column="24" selection-start="8320" selection-end="8326" vertical-scroll-proportion="0.0" vertical-offset="4250" max-vertical-offset="16626">
               <folding />
             </state>
           </provider>
@@ -208,8 +174,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/HarvesterSystem.java" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Health.java" />
         <option value="$PROJECT_DIR$/desktop/src/net/mostlyoriginal/ns2d/desktop/DesktopLauncher.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/EntitySpawner.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java" />
@@ -256,9 +220,11 @@
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/MapMask.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIStopwatchRenderSytem.java" />
         <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/NsGame.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/MainScreen.java" />
         <option value="$PROJECT_DIR$/android/assets/shader/test.vertex" />
         <option value="$PROJECT_DIR$/android/assets/shader/test.fragment" />
-        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/MainScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/AnimRenderSystem.java" />
+        <option value="$PROJECT_DIR$/android/assets/shader/shimmer.fragment" />
       </list>
     </option>
   </component>
@@ -303,8 +269,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -897,6 +861,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -906,20 +872,20 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../dubiouslittlerestaurant" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="dynamic.classpath" value="false" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
-    <property name="options.lastSelected" value="editor.preferences.import" />
+    <property name="options.lastSelected" value="project.propCompiler" />
     <property name="LayoutCode.rearrangeEntriesJava" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="SearchEverywhereHistory" value="" />
@@ -1238,7 +1204,11 @@
       <workItem from="1395935426976" duration="17782000" />
       <workItem from="1395966940275" duration="3882000" />
       <workItem from="1395973333360" duration="308000" />
-      <workItem from="1396012491026" duration="6588000" />
+      <workItem from="1396012491026" duration="12249000" />
+      <workItem from="1396105598373" duration="22000" />
+      <workItem from="1396176573562" duration="49000" />
+      <workItem from="1396178920501" duration="51000" />
+      <workItem from="1396696259138" duration="4000" />
     </task>
     <task id="LOCAL-00001" summary="Basic map and rendering system.&#10;">
       <created>1395496963545</created>
@@ -1604,15 +1574,19 @@
       <created>1395718951835</created>
       <updated>1395718951835</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Stuff&#10;">
+      <created>1396043414322</created>
+      <updated>1396043414323</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162777000" />
+    <option name="totallyTimeSpent" value="168564000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1208" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1624,12 +1598,11 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993994" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973376" sideWeight="0.1991342" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973376" sideWeight="0.19924812" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32800752" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.50070125" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32800752" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298872" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1637,15 +1610,17 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973376" sideWeight="0.8008658" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34868422" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973376" sideWeight="0.80075186" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34868422" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="96" y="96" width="1728" height="1008" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973376" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32800752" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32800752" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette " active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32800752" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1663,7 +1638,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="DialogRenderSystem." />
     <MESSAGE value="Added dialog queue.&#10;" />
     <MESSAGE value="Added an increasing stage cooldown.&#10;Added extra messages for several situations.&#10;" />
     <MESSAGE value="Map layer rendering working." />
@@ -1688,7 +1662,8 @@
     <MESSAGE value="Various small fixes.&#10;" />
     <MESSAGE value="Decreased armory dispensing rate." />
     <MESSAGE value="Particles cleanly melt away.&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Particles cleanly melt away.&#10;" />
+    <MESSAGE value="Stuff&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stuff&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1704,20 +1679,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/DirectorSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="58" selection-start="3197" selection-end="3197" vertical-scroll-proportion="0.0" vertical-offset="884" max-vertical-offset="2686">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/util/EntityUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="76" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="731" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/CurrencySystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="24" selection-start="115" selection-end="115" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221" />
@@ -1735,9 +1696,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/AttachmentSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="416" selection-end="416" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
-          <folding />
-        </state>
+        <state line="15" column="13" selection-start="416" selection-end="416" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/AimSystem.java">
@@ -1772,9 +1731,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/EntitySpawnerSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="18" selection-start="614" selection-end="614" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3621">
-          <folding />
-        </state>
+        <state line="20" column="18" selection-start="614" selection-end="614" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3621" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/AfterPhysicsSystem.java">
@@ -1819,16 +1776,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/MapRenderSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="24" selection-start="875" selection-end="875" vertical-scroll-proportion="0.0" vertical-offset="42" max-vertical-offset="731">
-          <folding />
-        </state>
+        <state line="31" column="24" selection-start="875" selection-end="875" vertical-scroll-proportion="0.0" vertical-offset="42" max-vertical-offset="731" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/MapRenderSystemInFront.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="22" selection-start="797" selection-end="797" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
-          <folding />
-        </state>
+        <state line="29" column="22" selection-start="797" selection-end="797" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748" />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/bd2d6ac3e804c1fc0ecc8636f6c775cb9e80b140/gdx-1.0-SNAPSHOT-sources.jar!/com/badlogic/gdx/maps/Map.java">
@@ -1857,9 +1810,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/gwt/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1156">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1156" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/passive/MapSystem.java">
@@ -1869,9 +1820,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/desktop/src/net/mostlyoriginal/ns2d/desktop/DesktopLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="29" selection-start="663" selection-end="663" vertical-scroll-proportion="0.3603083" vertical-offset="0" max-vertical-offset="1038">
-          <folding />
-        </state>
+        <state line="22" column="29" selection-start="663" selection-end="663" vertical-scroll-proportion="0.3603083" vertical-offset="0" max-vertical-offset="1038" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/step/DeleteFromWorldStep.java">
@@ -1897,37 +1846,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/active/CombatSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="22" selection-start="4238" selection-end="4238" vertical-scroll-proportion="0.18111753" vertical-offset="1988" max-vertical-offset="3026">
-          <folding />
-        </state>
+        <state line="128" column="22" selection-start="4238" selection-end="4238" vertical-scroll-proportion="0.18111753" vertical-offset="1988" max-vertical-offset="3026" />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/bd2d6ac3e804c1fc0ecc8636f6c775cb9e80b140/gdx-1.0-SNAPSHOT-sources.jar!/com/badlogic/gdx/utils/ReflectionPool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="11" selection-start="1499" selection-end="1499" vertical-scroll-proportion="0.32755297" vertical-offset="0" max-vertical-offset="1038">
-          <folding />
-        </state>
+        <state line="36" column="11" selection-start="1499" selection-end="1499" vertical-scroll-proportion="0.32755297" vertical-offset="0" max-vertical-offset="1038" />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/bd2d6ac3e804c1fc0ecc8636f6c775cb9e80b140/gdx-1.0-SNAPSHOT-sources.jar!/com/badlogic/gdx/utils/Pool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="28" selection-start="3262" selection-end="3262" vertical-scroll-proportion="0.81984586" vertical-offset="356" max-vertical-offset="1394">
-          <folding />
-        </state>
+        <state line="87" column="28" selection-start="3262" selection-end="3262" vertical-scroll-proportion="0.81984586" vertical-offset="356" max-vertical-offset="1394" />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/bd2d6ac3e804c1fc0ecc8636f6c775cb9e80b140/gdx-1.0-SNAPSHOT-sources.jar!/com/badlogic/gdx/utils/Pools.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="39" selection-start="1373" selection-end="1373" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
-          <folding />
-        </state>
+        <state line="32" column="39" selection-start="1373" selection-end="1373" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/component/Script.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1003">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1003" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/step/RemoveStep.java">
@@ -1935,7 +1874,6 @@
         <state line="18" column="33" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
           <folding>
             <element signature="imports" expanded="false" />
-            <marker date="1396014338690" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -1976,66 +1914,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/bd2d6ac3e804c1fc0ecc8636f6c775cb9e80b140/gdx-1.0-SNAPSHOT-sources.jar!/com/badlogic/gdx/graphics/glutils/ShaderProgram.java">
+    <entry file="file://$PROJECT_DIR$/gwt/webapp/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="31" selection-start="5696" selection-end="5714" vertical-scroll-proportion="0.0" vertical-offset="2029" max-vertical-offset="16116">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state line="22" column="18" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0" vertical-offset="233" max-vertical-offset="1241">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/UIStopwatchRenderSytem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="23" selection-start="3870" selection-end="3870" vertical-scroll-proportion="0.0" vertical-offset="863" max-vertical-offset="1564">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gwt/webapp/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="78" selection-start="441" selection-end="441" vertical-scroll-proportion="-5.423077" vertical-offset="233" max-vertical-offset="1241">
-          <folding>
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/NsGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="25" selection-start="239" selection-end="239" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/android/assets/shader/test.vertex">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/android/assets/shader/test.fragment">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="66" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+        <state line="95" column="8" selection-start="3855" selection-end="3855" vertical-scroll-proportion="0.0" vertical-offset="863" max-vertical-offset="1564">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/bd2d6ac3e804c1fc0ecc8636f6c775cb9e80b140/gdx-1.0-SNAPSHOT-sources.jar!/com/badlogic/gdx/graphics/g2d/SpriteBatch.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="149" column="42" selection-start="6029" selection-end="6029" vertical-scroll-proportion="0.0" vertical-offset="2012" max-vertical-offset="16983">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state line="94" column="93" selection-start="4157" selection-end="4175" vertical-scroll-proportion="0.0" vertical-offset="1369" max-vertical-offset="17170">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/NsGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="24" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gwt/war/assets/com/badlogic/gdx/graphics/g3d/shaders/default.vertex.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="28" selection-start="484" selection-end="484" vertical-scroll-proportion="0.0" vertical-offset="245" max-vertical-offset="5593">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/bd2d6ac3e804c1fc0ecc8636f6c775cb9e80b140/gdx-1.0-SNAPSHOT-sources.jar!/com/badlogic/gdx/graphics/glutils/ShaderProgram.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="250" column="24" selection-start="8320" selection-end="8326" vertical-scroll-proportion="0.0" vertical-offset="4018" max-vertical-offset="16490">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/MainScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="1042" selection-end="1042" vertical-scroll-proportion="0.32233882" vertical-offset="57" max-vertical-offset="2261">
+        <state line="38" column="42" selection-start="1252" selection-end="1252" vertical-scroll-proportion="0.0" vertical-offset="57" max-vertical-offset="2261">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/net/mostlyoriginal/ns2d/system/render/AnimRenderSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="120" selection-start="1800" selection-end="1800" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="2448">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android/assets/shader/shimmer.vertex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="17" selection-start="207" selection-end="207" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android/assets/shader/shimmer.fragment">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="45" selection-start="436" selection-end="436" vertical-scroll-proportion="0.2370518" vertical-offset="0" max-vertical-offset="1004">
           <folding />
         </state>
       </provider>
@@ -2082,7 +2026,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.6</last-edited>
+          <last-edited>Android API 18 Platform</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

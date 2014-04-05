@@ -6,8 +6,10 @@ import com.artemis.Entity;
 import com.artemis.EntitySystem;
 import com.artemis.annotations.Wire;
 import com.artemis.utils.ImmutableBag;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import net.mostlyoriginal.ns2d.component.Anim;
 import net.mostlyoriginal.ns2d.component.Pos;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
@@ -29,7 +31,8 @@ public class AnimRenderSystem extends EntitySystem {
     private CameraSystem cameraSystem;
     private AssetSystem assetSystem;
 
-    private SpriteBatch batch = new SpriteBatch();
+    private SpriteBatch batch;
+
 
     private List<Entity> sortedEntities = new ArrayList<Entity>();
     private boolean sortedDirty = false;
@@ -41,14 +44,25 @@ public class AnimRenderSystem extends EntitySystem {
         }
     };
 
+    private float age;
+    public final ShaderProgram shimmerProgram;
+
     public AnimRenderSystem() {
         super(Aspect.getAspectForAll(Pos.class, Anim.class));
+
+        shimmerProgram = new ShaderProgram(Gdx.files.internal("shader/shimmer.vertex"), Gdx.files.internal("shader/shimmer.fragment"));
+        if ( !shimmerProgram.isCompiled() ) throw new RuntimeException("Compilation failed." + shimmerProgram.getLog());
+        batch  = new SpriteBatch(2000, shimmerProgram);
     }
 
     @Override
     protected void begin() {
+
+        age += world.delta;
+
         batch.setProjectionMatrix(cameraSystem.camera.combined);
         batch.begin();
+        shimmerProgram.setUniformf("iGlobalTime", age);
         batch.setColor(1f, 1f, 1f, 1f);
     }
 
