@@ -81,10 +81,9 @@ project(":gwt") {
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
-
-        compile files("e:/GitHub/artemis-odb/artemis-gwt/target/artemis-odb-gwt-0.5.1-SNAPSHOT.jar")
-        compile files("e:/GitHub/artemis-odb/artemis-gwt/target/artemis-odb-gwt-0.5.1-SNAPSHOT-sources.jar")
-        compile files("e:/GitHub/artemis-odb/artemis/target/artemis-odb-0.5.1-SNAPSHOT-sources.jar")
+        compile "net.onedaybeard.artemis:artemis-odb-gwt:0.5.1-SNAPSHOT"
+        compile "net.onedaybeard.artemis:artemis-odb-gwt:0.5.1-SNAPSHOT:sources"
+        compile "net.onedaybeard.artemis:artemis-odb:0.5.1-SNAPSHOT:sources"
     }
 }
 project(":ios") {
