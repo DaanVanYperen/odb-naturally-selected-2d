@@ -1,6 +1,6 @@
 buildscript {
 
-    ext.gdxVersion = "1.0-SNAPSHOT"
+    ext.gdxVersion = "1.2.0"
 
     repositories {
         maven {
@@ -81,9 +81,9 @@ project(":gwt") {
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
-        compile "net.onedaybeard.artemis:artemis-odb-gwt:0.5.1-SNAPSHOT"
-        compile "net.onedaybeard.artemis:artemis-odb-gwt:0.5.1-SNAPSHOT:sources"
-        compile "net.onedaybeard.artemis:artemis-odb:0.5.1-SNAPSHOT:sources"
+        compile "net.onedaybeard.artemis:artemis-odb-gwt:0.6.5"
+        compile "net.onedaybeard.artemis:artemis-odb-gwt:0.6.5:sources"
+        compile "net.onedaybeard.artemis:artemis-odb:0.6.5:sources"
     }
 }
 project(":ios") {

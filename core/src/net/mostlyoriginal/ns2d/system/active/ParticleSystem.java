@@ -123,8 +123,8 @@ public class ParticleSystem extends PassiveSystem {
         Animation animation = assetSystem.get("particle-jetpack");
         final TextureRegion frame = animation.getKeyFrame(0);
 
-        Entity entity = basicCenteredParticle(x, y, "particle-jetpack", 1, 1)
-                .addComponent(new Terminal(animation.animationDuration, 0.1f))
+        Entity entity = basicCenteredParticle(x, y, "particle-jetpack", 1,  1)
+                .addComponent(new Terminal(animation.getAnimationDuration(), 0.1f))
                 .addComponent(physics)
                 .addComponent(new Bounds(frame));
         am.get(entity).layer = Anim.Layer.DIRECTLY_BEHIND_PLAYER;

@@ -4,8 +4,8 @@ sourceCompatibility = 1.7
 
 dependencies {
     compile "com.badlogicgames.gdx:gdx:$gdxVersion"
-    compile "net.onedaybeard.artemis:artemis-odb:0.5.1-SNAPSHOT"
-    compile "net.onedaybeard.artemis:artemis-odb:0.5.1-SNAPSHOT:sources"
+    compile "net.onedaybeard.artemis:artemis-odb:0.6.5"
+    compile "net.onedaybeard.artemis:artemis-odb:0.6.5:sources"
 }
 
 sourceSets.main.java.srcDirs = [ "src/" ]
