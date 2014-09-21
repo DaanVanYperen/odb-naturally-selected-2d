@@ -12,8 +12,8 @@ buildscript {
 
     dependencies {
         classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.3'
-        classpath 'com.android.tools.build:gradle:0.7.3+'
-        classpath 'com.github.jtakakura:gradle-robovm-plugin:0.0.5'
+//      classpath 'com.android.tools.build:gradle:0.7.3+'
+//		classpath 'com.github.jtakakura:gradle-robovm-plugin:0.0.5'
         classpath "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
     }
 }
@@ -23,7 +23,10 @@ allprojects {
     apply plugin: "idea"
     
     version = "1.0"
-    ext.appName = "ns2d"
+    ext {
+        appName = "ns2d"
+        artemisVersion = '0.6.6-SNAPSHOT'
+    }
 
     // Uncomment line below with proper parameters to pass to TexturePacker
     // and TexturePacker will be invoked automagically whenever the target
@@ -57,6 +60,7 @@ project(":desktop") {
     }
 }
 
+/*
 project(":android") {
     apply plugin: "android"
 
@@ -68,7 +72,7 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
     }
-}
+}*/
 
 
 project(":gwt") {
@@ -81,11 +85,15 @@ project(":gwt") {
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
-        compile "net.onedaybeard.artemis:artemis-odb-gwt:0.6.5"
-        compile "net.onedaybeard.artemis:artemis-odb-gwt:0.6.5:sources"
-        compile "net.onedaybeard.artemis:artemis-odb:0.6.5:sources"
+		
+        // Support for artemis-odb
+        compile "net.onedaybeard.artemis:artemis-odb-gwt:$artemisVersion"
+        compile "net.onedaybeard.artemis:artemis-odb-gwt:$artemisVersion:sources"
+        compile "net.onedaybeard.artemis:artemis-odb:$artemisVersion:sources"
     }
 }
+
+/*
 project(":ios") {
     apply plugin: 'java'
     apply plugin: 'robovm'
@@ -109,7 +117,7 @@ project(":ios") {
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-ios"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-ios"
     }
-}
+} */
 
 
 tasks.eclipse.doLast {

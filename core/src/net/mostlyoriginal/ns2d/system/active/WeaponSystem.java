@@ -123,7 +123,7 @@ public class WeaponSystem extends EntityProcessingSystem {
                         homing.maxDistance = 100;
                         homing.maxVelocity = 500;
                         homing.speedFactor = 2;
-                        bullet.addComponent(homing);
+                        bullet.edit().add(homing);
                     }
 
 
@@ -133,7 +133,7 @@ public class WeaponSystem extends EntityProcessingSystem {
 
                     Payload payload = weapon.bulletPayload.clone();
                     payload.triggerGroup = weapon.enemyGroup;
-                    bullet.addComponent(payload);
+                    bullet.edit().add(payload);
 
                     Gravity gravity = gm.get(bullet);
                     gravity.y *= weapon.bulletGravityFactor;
@@ -141,8 +141,6 @@ public class WeaponSystem extends EntityProcessingSystem {
 
                     attachmentSystem.push(gun, rotation - 180, weapon.recoil / s);
                     physicsSystems.push(bullet, rotation, weapon.bulletSpeed);
-
-                    bullet.addToWorld();
                 }
 
                 if ( weapon.bulletPayload.type == Payload.DamageType.WEAPON_PICKUP )

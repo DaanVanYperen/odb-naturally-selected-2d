@@ -48,60 +48,48 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
                 Entity resourceTower = EntityFactory.createResourceTower(world, x, y);
                 groupManager.add(resourceTower, "player-structure");
                 groupManager.add(resourceTower, "player-friend");
-
-                resourceTower.addToWorld();
                 break;
             case "armory":
                 Entity armory = EntityFactory.createArmory(world, x, y);
                 groupManager.add(armory, "player-structure");
                 groupManager.add(armory, "player-friend");
-
-                armory.addToWorld();
                 break;
             case "techpoint":
                 final Entity techpoint = EntityFactory.createTechpoint(world, x, y);
                 groupManager.add(techpoint, "player-structure");
                 groupManager.add(techpoint, "player-friend");
-                techpoint.addToWorld();
                 break;
             case "spawner":
                 final Entity spawner = EntityFactory.createSpawner(world, x, y);
                 groupManager.add(spawner, "player-structure");
                 groupManager.add(spawner, "player-friend");
                 groupManager.add(spawner, "spawner");
-                spawner.addToWorld();
                 break;
             case "duct":
                 Entity duct = EntityFactory.createDuct(world, x, y);
                 groupManager.add(duct, "duct");
-                duct.addToWorld();
                 break;
             case "sentry":
                 final Entity sentry = EntityFactory.createSentry(world, x, y);
                 groupManager.add(sentry, "player-structure");
                 groupManager.add(sentry, "player-friend");
-                sentry.addToWorld();
                 break;
             case "sentry2":
                 final Entity sentry2 = EntityFactory.createSentry2(world, x, y);
                 groupManager.add(sentry2, "player-structure");
                 groupManager.add(sentry2, "player-friend");
-                sentry2.addToWorld();
                 break;
             case "skulk":
                 Entity skulk = EntityFactory.createSkulk(world, x, y);
                 groupManager.add(skulk, "enemy");
-                skulk.addToWorld();
                 break;
             case "babbler":
                 Entity babbler = EntityFactory.createBabbler(world, x, y, tagManager.getEntity("player"));
                 groupManager.add(babbler, "enemy");
-                babbler.addToWorld();
                 break;
             case "gorge":
                 Entity gorge = EntityFactory.createGorge(world, x, y);
                 groupManager.add(gorge, "enemy");
-                gorge.addToWorld();
                 break;
             default:
                 throw new RuntimeException("No idea how to spawn entity of type " + entity);
@@ -135,40 +123,39 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
         }
         if  (weapon != null )
         {
-            inventory.weapon = weapon.addComponent(new Aim(tagManager.getEntity("cursor")));
-            weapon.addToWorld();
+            inventory.weapon = weapon.edit().add(new Aim(tagManager.getEntity("cursor"))).getEntity();
         }
     }
 
 
     private void assemblePlayer(float x, float y) {
         Entity player = EntityFactory.createPlayer(world, x, y);
-        player.addToWorld();
 
         groupManager.add(player, "player-friend");
 
         Entity mouseCursor = EntityFactory.createMouseCursor(world, x, y);
-        mouseCursor.addToWorld();
         tagManager.register("cursor",mouseCursor);
 
         // create an absolute tracker in between the player and the cursor that we will follow with the camera.
         final Inbetween inbetween = new Inbetween(player, mouseCursor);
         inbetween.tween = 0.4f;
         Entity midpoint = world.createEntity()
-                .addComponent(new Pos(0, 0))
-                .addComponent(inbetween);
-        midpoint.addToWorld();
+		        .edit()
+                .add(new Pos(0, 0))
+                .add(inbetween)
+		        .getEntity();
 
         // now create a drone that will swerve towards the tracker which contains the camera. this will create a smooth moving camera.
         world.createEntity()
-                .addComponent(new Pos(0, 0))
-                .addComponent(new Physics())
-                .addComponent(new Homing(midpoint))
-                .addComponent(new CameraFocus())
-                .addToWorld();
+		        .edit()
+                .add(new Pos(0, 0))
+                .add(new Physics())
+                .add(new Homing(midpoint))
+                .add(new CameraFocus()).getEntity()
+                ;
 
         Inventory inventory = new Inventory();
-        player.addComponent(inventory);
+        player.edit().add(inventory);
 
         giveWeapon(player, "rifle");
 

@@ -95,7 +95,7 @@ public class CombatSystem extends VoidEntitySystem {
                     return;
                 }
 
-                victim.removeComponent(Health.class).changedInWorld();
+                victim.edit().remove(Health.class);
 
                 if (bm.has(victim)) {
                     // unbuild.
@@ -125,13 +125,12 @@ public class CombatSystem extends VoidEntitySystem {
 
         // freeze in place for X seconds.
 
-        victim.addComponent(new Script()
+        victim.edit().add(new Script()
                 .remove(Health.class)
                 .add(new Frozen())
                 .wait(2f)
                 .remove(Frozen.class)
-                .add(new Health(10)))
-                .changedInWorld();
+                .add(new Health(10)));
 
 
         // move to spawner.

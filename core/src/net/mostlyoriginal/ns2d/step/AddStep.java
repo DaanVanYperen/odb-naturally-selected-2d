@@ -13,7 +13,7 @@ public class AddStep extends Step {
 
     @Override
     public boolean act(float delta, Entity e) {
-        e.addComponent(component);
+        e.edit().add(component);
         return true;
     }
 

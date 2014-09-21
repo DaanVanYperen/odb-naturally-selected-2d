@@ -80,10 +80,11 @@ public class MapCollisionSystem extends EntityProcessingSystem {
     private boolean collides(final float x, final float y) {
         if (DEBUG) {
             world.createEntity()
-                    .addComponent(new Pos(x - 1, y - 1))
-                    .addComponent(new Anim("debug-marker"))
-                    .addComponent(new Terminal(1))
-                    .addToWorld();
+                    .edit()
+		            .add(new Pos(x - 1, y - 1))
+                    .add(new Anim("debug-marker"))
+                    .add(new Terminal(1))
+                    ;
         }
 
         return solidMask.atScreen(x, y);

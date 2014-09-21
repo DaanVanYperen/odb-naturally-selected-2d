@@ -82,7 +82,7 @@ public class BuildableSystem extends EntityProcessingSystem {
                     Health health = new Health(buildable.defaultHealth);
                     health.damageSfxId = new String[]{"ns2d_sfx_structure_damage1","ns2d_sfx_structure_damage2","ns2d_sfx_structure_damage1"};
                     health.woundParticle = "debris";
-                    e.addComponent(health).changedInWorld();
+                    e.edit().add(health);
                 }
             }
         }

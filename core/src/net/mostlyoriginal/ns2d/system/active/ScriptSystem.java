@@ -38,7 +38,7 @@ public class ScriptSystem extends EntityProcessingSystem {
         }
 
         if (script.steps.size == 0) {
-            e.removeComponent(Script.class).changedInWorld();
+            e.edit().remove(Script.class);
         }
     }
 }

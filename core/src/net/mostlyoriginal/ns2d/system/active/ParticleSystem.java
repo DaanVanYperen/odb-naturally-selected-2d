@@ -84,31 +84,25 @@ public class ParticleSystem extends PassiveSystem {
         final TextureRegion frame = assetSystem.get(animId).getKeyFrame(0);
 
         Entity entity = basicCenteredParticle(x, y, animId, 1, 1)
-                .addComponent(new Terminal(4f, 3.5f))
-                .addComponent(physics)
-                .addComponent(new Bounds(frame))
-                .addComponent(new Gravity());
+		        .edit()
+                .add(new Terminal(4f, 3.5f))
+                .add(physics)
+                .add(new Bounds(frame))
+                .add(new Gravity()).getEntity();
 
         Anim anim = am.get(entity);
         anim.speed = 0;
         anim.age = MathUtils.random(0,10f);
-
-        entity
-                .addToWorld();
     }
 
     private void createShellCasing(int x, int y) {
         Entity entity = basicShellParticle(x, y, "particle-shellcasing");
         am.get(entity).layer= Anim.Layer.DIRECTLY_BEHIND_PLAYER;
-        entity
-                .addToWorld();
     }
 
     private void createBulletCasing(int x, int y) {
         Entity entity = basicShellParticle(x, y, "particle-bulletcasing");
         am.get(entity).layer= Anim.Layer.DIRECTLY_BEHIND_PLAYER;
-        entity
-                .addToWorld();
     }
 
 
@@ -124,12 +118,11 @@ public class ParticleSystem extends PassiveSystem {
         final TextureRegion frame = animation.getKeyFrame(0);
 
         Entity entity = basicCenteredParticle(x, y, "particle-jetpack", 1,  1)
-                .addComponent(new Terminal(animation.getAnimationDuration(), 0.1f))
-                .addComponent(physics)
-                .addComponent(new Bounds(frame));
+		        .edit()
+                .add(new Terminal(animation.getAnimationDuration(), 0.1f))
+                .add(physics)
+                .add(new Bounds(frame)).getEntity();
         am.get(entity).layer = Anim.Layer.DIRECTLY_BEHIND_PLAYER;
-        entity
-                .addToWorld();
     }
 
     private void createPuff(int x, int y) {
@@ -144,15 +137,14 @@ public class ParticleSystem extends PassiveSystem {
         final TextureRegion frame = animation.getKeyFrame(0);
 
         Entity entity = basicCenteredParticle(x, y, "particle-puff", 1, 1)
-                .addComponent(new Terminal(3,3))
-                .addComponent(physics)
-                .addComponent(new Bounds(frame));
+		        .edit()
+                .add(new Terminal(3,3))
+                .add(physics)
+                .add(new Bounds(frame)).getEntity();
         Anim anim = am.get(entity);
         anim.layer = Anim.Layer.DIRECTLY_BEHIND_BEHIND_PLAYER;
         anim.age = MathUtils.random(999f);
         anim.speed = 0;
-        entity
-                .addToWorld();
     }
 
     private Entity basicShellParticle(int x, int y, String animId) {
@@ -165,10 +157,11 @@ public class ParticleSystem extends PassiveSystem {
         final TextureRegion frame = assetSystem.get(animId).getKeyFrame(0);
 
         return basicCenteredParticle(x, y, animId, 1, 1)
-                .addComponent(new Terminal(1.5f,0.5f))
-                .addComponent(physics)
-                .addComponent(new Bounds(frame))
-                .addComponent(new Gravity());
+		        .edit()
+                .add(new Terminal(1.5f,0.5f))
+                .add(physics)
+                .add(new Bounds(frame))
+                .add(new Gravity()).getEntity();
     }
 
     private void createBile(int x, int y) {
@@ -181,25 +174,26 @@ public class ParticleSystem extends PassiveSystem {
         final TextureRegion frame = assetSystem.get("bile-droplet").getKeyFrame(0);
 
         Entity entity = basicCenteredParticle(x, y, "bile-droplet", 1, 1)
-                .addComponent(new Terminal(4f, 3.5f))
-                .addComponent(physics)
-                .addComponent(new Bounds(frame))
-                .addComponent(new Gravity());
+		        .edit()
+                .add(new Terminal(4f, 3.5f))
+                .add(physics)
+                .add(new Bounds(frame))
+                .add(new Gravity()).getEntity();
         am.get(entity).layer = Anim.Layer.DIRECTLY_BEHIND_PLAYER;
-        entity.addToWorld();
     }
 
     private void createMuzzleFlare(int x, int y) {
         basicCenteredParticle(x, y, "particle-muzzleflare", 1, 1)
-                .addComponent(new Terminal(1 / 15f))
-                .addToWorld();
+		        .edit()
+                .add(new Terminal(1 / 15f))
+                ;
     }
 
     private void createExplosion(int x, int y, float scale) {
         float speed = MathUtils.random(0.8f,1f);
         basicCenteredParticle(x, y, "particle-explosion", scale, speed)
-                .addComponent(new Terminal(EXPLOSION_FRAME_DURATION * 5 * (1 / speed)))
-                .addToWorld();
+                .edit().add(new Terminal(EXPLOSION_FRAME_DURATION * 5 * (1 / speed)))
+                ;
 
     }
 
@@ -221,8 +215,9 @@ public class ParticleSystem extends PassiveSystem {
         TextureRegion frame = assetSystem.get(animId).getKeyFrame(0);
 
         return world.createEntity()
-                .addComponent(new Pos(x - ((frame.getRegionWidth() * anim.scale) / 2), y - (frame.getRegionHeight() * anim.scale) / 2))
-                .addComponent(anim);
+		        .edit()
+                .add(new Pos(x - ((frame.getRegionWidth() * anim.scale) / 2), y - (frame.getRegionHeight() * anim.scale) / 2))
+                .add(anim).getEntity();
     }
 
     public void setRotation(float rotation) {

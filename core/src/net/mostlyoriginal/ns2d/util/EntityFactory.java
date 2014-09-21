@@ -1,6 +1,7 @@
 package net.mostlyoriginal.ns2d.util;
 
 import com.artemis.Entity;
+import com.artemis.EntityEdit;
 import com.artemis.World;
 import net.mostlyoriginal.ns2d.G;
 import net.mostlyoriginal.ns2d.component.*;
@@ -23,15 +24,15 @@ public class EntityFactory {
     public static Entity createPlayer(final World world, final float x, final float y) {
 
         Entity player = newPositioned(world, x, y)
-                .addComponent(new Anim("player-idle", Anim.Layer.PLAYER))
-                .addComponent(new Physics())
-                .addComponent(new Health(10))
-                .addComponent(new RespawnOnDeath())
-                .addComponent(new Gravity())
-                .addComponent(new WallSensor())
-                .addComponent(new Wallet(12))
-                .addComponent(new PlayerControlled())
-                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
+                .add(new Anim("player-idle", Anim.Layer.PLAYER))
+                .add(new Physics())
+                .add(new Health(10))
+                .add(new RespawnOnDeath())
+                .add(new Gravity())
+                .add(new WallSensor())
+                .add(new Wallet(12))
+                .add(new PlayerControlled())
+                .add(new Bounds(G.CELL_SIZE, G.CELL_SIZE)).getEntity();
         return player;
     }
 
@@ -55,17 +56,17 @@ public class EntityFactory {
         health.woundParticle = "alienblood";
         health.deathSfxId = new String[] {"ns2d_sfx_skulk_die1","ns2d_sfx_skulk_die2","ns2d_sfx_skulk_die3"};
         return newPositioned(world, x, y)
-                .addComponent(new Anim("babbler", Anim.Layer.PLAYER_ARM, originX, originY))
-                .addComponent(weapon)
-                .addComponent(health)
-                .addComponent(new Focus())
-                .addComponent(new Physics())
-                .addComponent(new Gravity())
-                .addComponent(new WallSensor())
-                .addComponent(new Aim())
-                .addComponent(homing)
-                .addComponent(new SkulkControlled())
-                .addComponent(new Bounds(32, 17));
+                .add(new Anim("babbler", Anim.Layer.PLAYER_ARM, originX, originY))
+                .add(weapon)
+                .add(health)
+                .add(new Focus())
+                .add(new Physics())
+                .add(new Gravity())
+                .add(new WallSensor())
+                .add(new Aim())
+                .add(homing)
+                .add(new SkulkControlled())
+                .add(new Bounds(32, 17)).getEntity();
     }
 
     public static Entity createSkulkHead(World world, float x, float y, Entity skulk) {
@@ -79,10 +80,10 @@ public class EntityFactory {
         final int mountX = 23;
         final int mountY = 13;
         return newPositioned(world, x, y)
-                .addComponent(new Anim("skulk-head", Anim.Layer.PLAYER_ARM, originX, originY))
-                .addComponent(new Attached(skulk, mountX - originX, mountY - originY))
-                .addComponent(weapon)
-                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
+                .add(new Anim("skulk-head", Anim.Layer.PLAYER_ARM, originX, originY))
+                .add(new Attached(skulk, mountX - originX, mountY - originY))
+                .add(weapon)
+                .add(new Bounds(G.CELL_SIZE, G.CELL_SIZE)).getEntity();
     }
 
     public static Entity createSkulk(final World world, final float x, final float y) {
@@ -91,22 +92,21 @@ public class EntityFactory {
         health.woundParticle = "alienblood";
         health.deathSfxId = new String[] {"ns2d_sfx_skulk_die1","ns2d_sfx_skulk_die2","ns2d_sfx_skulk_die3"};
         Entity skulk = newPositioned(world, x, y)
-                .addComponent(new Anim("skulk", Anim.Layer.ENEMIES))
-                .addComponent(health)
-                .addComponent(new Focus())
-                .addComponent(new Physics())
-                .addComponent(new Gravity())
-                .addComponent(new WallSensor())
-                .addComponent(new SkulkControlled())
-                .addComponent(new Bounds(32, 17));
+                .add(new Anim("skulk", Anim.Layer.ENEMIES))
+                .add(health)
+                .add(new Focus())
+                .add(new Physics())
+                .add(new Gravity())
+                .add(new WallSensor())
+                .add(new SkulkControlled())
+                .add(new Bounds(32, 17)).getEntity();
 
         Entity head = EntityFactory.createSkulkHead(world, x, y, skulk)
-                .addComponent(new Aim());
+                .edit().add(new Aim()).getEntity();
 
-        head.addToWorld();
         Inventory inventory = new Inventory();
         inventory.weapon = head;
-        skulk.addComponent(inventory);
+        skulk.edit().add(inventory);
 
         return skulk;
     }
@@ -138,10 +138,10 @@ public class EntityFactory {
         final int mountX = 23;
         final int mountY = 13;
         return newPositioned(world, x, y)
-                .addComponent(new Anim("gorge-head", Anim.Layer.PLAYER_ARM, originX, originY))
-                .addComponent(new Attached(skulk, mountX - originX, mountY - originY))
-                .addComponent(weapon)
-                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
+                .add(new Anim("gorge-head", Anim.Layer.PLAYER_ARM, originX, originY))
+                .add(new Attached(skulk, mountX - originX, mountY - originY))
+                .add(weapon)
+                .add(new Bounds(G.CELL_SIZE, G.CELL_SIZE)).getEntity();
     }
 
     public static Entity createGorge(final World world, final float x, final float y) {
@@ -153,66 +153,67 @@ public class EntityFactory {
         enemy.closestEnemyApproach = 100;
         enemy.canLeap = false;
         Entity skulk = newPositioned(world, x, y)
-                .addComponent(new Anim("gorge", Anim.Layer.ENEMIES))
-                .addComponent(health)
-                .addComponent(new Focus())
-                .addComponent(new Physics())
-                .addComponent(new Gravity())
-                .addComponent(new WallSensor())
-                .addComponent(enemy)
-                .addComponent(new Bounds(32, 17));
+                .add(new Anim("gorge", Anim.Layer.ENEMIES))
+                .add(health)
+                .add(new Focus())
+                .add(new Physics())
+                .add(new Gravity())
+                .add(new WallSensor())
+                .add(enemy)
+                .add(new Bounds(32, 17)).getEntity();
 
         Entity head = EntityFactory.createGorgeHead(world, x, y, skulk)
-                .addComponent(new Aim());
+                .edit().add(new Aim()).getEntity();
 
-        head.addToWorld();
         Inventory inventory = new Inventory();
         inventory.weapon = head;
-        skulk.addComponent(inventory);
+        skulk.edit().add(inventory).getEntity();
 
         return skulk;
     }
 
-    private static Entity newPositioned(final World world, final float x, final float y) {
+    private static EntityEdit newPositioned(final World world, final float x, final float y) {
         return world.createEntity()
-                .addComponent(new Pos(x, y));
+		        .edit()
+                .add(new Pos(x, y));
     }
 
     public static Entity createDuct(World world, float x, float y) {
         return world.createEntity()
-                .addComponent(new Pos(x, y))
-                .addComponent(new Bounds(48, 48))
-                .addComponent(new EntitySpawner("skulk","gorge"))
-                .addComponent(new Anim("duct", Anim.Layer.ON_WALL));
+		        .edit()
+                .add(new Pos(x, y))
+                .add(new Bounds(48, 48))
+                .add(new EntitySpawner("skulk", "gorge"))
+                .add(new Anim("duct", Anim.Layer.ON_WALL)).getEntity();
     }
 
     public static Entity createBullet(World world, float x, float y) {
         Physics physics = new Physics();
         physics.friction=0.01f;
         return newPositioned(world, x, y)
-                .addComponent(new Anim("bullet", Anim.Layer.BULLETS))
-                .addComponent(physics)
-                .addComponent(new Gravity(-4f))
-                .addComponent(new Bounds(7,4));
+                .add(new Anim("bullet", Anim.Layer.BULLETS))
+                .add(physics)
+                .add(new Gravity(-4f))
+                .add(new Bounds(7, 4)).getEntity();
     }
 
     public static Entity createMouseCursor(World world, float x, float y) {
         return newPositioned(world, x, y)
-                .addComponent(new MouseCursor());
+                .add(new MouseCursor()).getEntity();
     }
 
     public static Entity createResourceTower(World world, float x, float y) {
 
         Entity structureSocket = createStructureSocket(world, x, y);
-        structureSocket.addToWorld();
         return newPositioned(world, x, y)
-                .addComponent(new Bounds(16 * 3, 16 * 3))
-                .addComponent(new Harvester())
-                .addComponent(resourceDispenserWeapon(5, 2,3))
-                .addComponent(new Attached(structureSocket))
-                .addComponent(new HealthIndicator())
-                .addComponent(new Buildable("resourcetower", "resourcetower-unbuilt", COST_RESOURCETOWER))
-                .addComponent(new Anim("resourcetower-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
+                .add(new Bounds(16 * 3, 16 * 3))
+                .add(new Harvester())
+                .add(resourceDispenserWeapon(5, 2, 3))
+                .add(new Attached(structureSocket))
+                .add(new HealthIndicator())
+                .add(new Buildable("resourcetower", "resourcetower-unbuilt", COST_RESOURCETOWER))
+                .add(new Anim("resourcetower-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER))
+		        .getEntity();
     }
 
     private static Weapon resourceDispenserWeapon( float cooldown, int min, int max ) {
@@ -235,44 +236,43 @@ public class EntityFactory {
     }
 
     private static Entity createStructureSocket(World world, float x, float y) {
-        return newPositioned(world,x,y);
+        return newPositioned(world,x,y).getEntity();
     }
 
     public static Entity createTechpoint(World world, float x, float y) {
         Entity structureSocket = createStructureSocket(world, x, y);
-        structureSocket.addToWorld();
         Health health = new Health(200);
         health.woundParticle = "debris";
         health.damageSfxId = new String[]{"ns2d_sfx_structure_damage1","ns2d_sfx_structure_damage2","ns2d_sfx_structure_damage1"};
         Buildable buildable = new Buildable("techpoint", "techpoint-unbuilt", 999);
         buildable.built=true;
         return newPositioned(world, x, y)
-                .addComponent(new Bounds(64,64))
-                .addComponent(health)
-                .addComponent(buildable)
-                .addComponent(resourceDispenserWeapon(12, 1, 1))
-                .addComponent(new Critical())
-                .addComponent(new Attached(structureSocket))
-                .addComponent(new HealthIndicator())
-                .addComponent(new Anim("techpoint", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
+                .add(new Bounds(64, 64))
+                .add(health)
+                .add(buildable)
+                .add(resourceDispenserWeapon(12, 1, 1))
+                .add(new Critical())
+                .add(new Attached(structureSocket))
+                .add(new HealthIndicator())
+                .add(new Anim("techpoint", Anim.Layer.DIRECTLY_BEHIND_PLAYER))
+		        .getEntity();
     }
 
     public static Entity createSpawner(final World world, final float x, final float y) {
         Entity structureSocket = createStructureSocket(world, x, y);
-        structureSocket.addToWorld();
         Buildable buildable = new Buildable("spawner", "spawner-unbuilt", COST_INFANTRY_PORTAL);
         buildable.built = true;
         return newPositioned(world, x, y)
-                .addComponent(new Bounds(16, 16))
-                .addComponent(new Attached(structureSocket))
-                .addComponent(buildable)
-                .addComponent(new Anim("spawner", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
+                .add(new Bounds(16, 16))
+                .add(new Attached(structureSocket))
+                .add(buildable)
+                .add(new Anim("spawner", Anim.Layer.DIRECTLY_BEHIND_PLAYER))
+		        .getEntity();
 
     }
 
     public static Entity createArmory(World world, float x, float y) {
         Entity structureSocket = createStructureSocket(world, x, y);
-        structureSocket.addToWorld();
 
         Weapon weapon = new Weapon();
         weapon.cooldown = 5;
@@ -292,12 +292,13 @@ public class EntityFactory {
         weapon.enemyGroup = "player";
 
         return newPositioned(world, x, y)
-                .addComponent(new Bounds(16 * 3, 16 * 3))
-                .addComponent(new HealthIndicator())
-                .addComponent(new Attached(structureSocket))
-                .addComponent(weapon)
-                .addComponent(new Buildable("armory", "armory-unbuilt", COST_ARMORY))
-                .addComponent(new Anim("armory-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
+                .add(new Bounds(16 * 3, 16 * 3))
+                .add(new HealthIndicator())
+                .add(new Attached(structureSocket))
+                .add(weapon)
+                .add(new Buildable("armory", "armory-unbuilt", COST_ARMORY))
+                .add(new Anim("armory-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER))
+		        .getEntity();
     }
 
 
@@ -314,31 +315,30 @@ public class EntityFactory {
         Buildable sentry = new Buildable("sentry", "sentry-frame-unbuilt", COST_SENTRY);
         sentry.weaponUseCausesDamage=true;
         return newPositioned(world, x, y)
-                .addComponent(new Anim("sentry-frame-unbuilt", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
-                .addComponent(new Attached(player, WEAPON_ROT_ORIGIN_X - 10, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y + 4))
-                .addComponent(new HealthIndicator())
-                .addComponent(sentry)
-                .addComponent(weapon)
-                .addComponent(new Bounds(32, 32));
+                .add(new Anim("sentry-frame-unbuilt", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+                .add(new Attached(player, WEAPON_ROT_ORIGIN_X - 10, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y + 4))
+                .add(new HealthIndicator())
+                .add(sentry)
+                .add(weapon)
+                .add(new Bounds(32, 32))
+		        .getEntity();
     }
 
 
     public static Entity createSentry(World world, float x, float y) {
         Entity structureSocket = createStructureSocket(world, x, y);
-        structureSocket.addToWorld();
 
         Entity sentry = newPositioned(world, x, y)
-                .addComponent(new Bounds(32,32))
-                .addComponent(new Attached(structureSocket))
-                .addComponent(new Anim("sentry-frame", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
+                .add(new Bounds(32, 32))
+                .add(new Attached(structureSocket))
+                .add(new Anim("sentry-frame", Anim.Layer.DIRECTLY_BEHIND_PLAYER))
+		        .getEntity();
 
         Entity head = EntityFactory.createSentryHead(world, 0, 0, sentry);
 
         Inventory inventory = new Inventory();
-        sentry.addComponent(inventory);
+        sentry.edit().add(inventory);
         inventory.weapon = head;
-
-        head.addToWorld();
 
         return sentry;
     }
@@ -357,31 +357,29 @@ public class EntityFactory {
         sentry2.weaponUseCausesDamage=true;
         sentry2.defaultHealth *= 2;
         return newPositioned(world, x, y)
-                .addComponent(new Anim("sentry2-frame-unbuilt", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
-                .addComponent(new Attached(player, WEAPON_ROT_ORIGIN_X - 10, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y + 4))
-                .addComponent(sentry2)
-                .addComponent(new HealthIndicator())
-                .addComponent(weapon)
-                .addComponent(new Bounds(32, 32));
+                .add(new Anim("sentry2-frame-unbuilt", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+                .add(new Attached(player, WEAPON_ROT_ORIGIN_X - 10, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y + 4))
+                .add(sentry2)
+                .add(new HealthIndicator())
+                .add(weapon)
+                .add(new Bounds(32, 32)).getEntity();
     }
 
 
     public static Entity createSentry2(World world, float x, float y) {
         Entity structureSocket = createStructureSocket(world, x, y);
-        structureSocket.addToWorld();
 
         Entity sentry = newPositioned(world, x, y)
-                .addComponent(new Bounds(32,32))
-                .addComponent(new Attached(structureSocket))
-                .addComponent(new Anim("sentry2-frame", Anim.Layer.DIRECTLY_BEHIND_PLAYER));
+                .add(new Bounds(32, 32))
+                .add(new Attached(structureSocket))
+                .add(new Anim("sentry2-frame", Anim.Layer.DIRECTLY_BEHIND_PLAYER))
+		        .getEntity();
 
         Entity head = EntityFactory.createSentryHead2(world, 0, 0, sentry);
 
         Inventory inventory = new Inventory();
-        sentry.addComponent(inventory);
+        sentry.edit().add(inventory);
         inventory.weapon = head;
-
-        head.addToWorld();
 
         return sentry;
     }
@@ -400,10 +398,10 @@ public class EntityFactory {
         weapon.bulletAnimId = "slug";
         weapon.shellParticle = "shellcasing";
         return newPositioned(world, x, y)
-                .addComponent(new Anim("shotgun", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
-                .addComponent(new Attached(player, PLAYER_WEAPON_MOUNT_X - WEAPON_ROT_ORIGIN_X, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y))
-                .addComponent(weapon)
-                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
+                .add(new Anim("shotgun", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+                .add(new Attached(player, PLAYER_WEAPON_MOUNT_X - WEAPON_ROT_ORIGIN_X, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y))
+                .add(weapon)
+                .add(new Bounds(G.CELL_SIZE, G.CELL_SIZE)).getEntity();
     }
 
     public static Entity createRifle(World world, float x, float y, Entity player) {
@@ -416,10 +414,10 @@ public class EntityFactory {
         weapon.bulletPayload.maxLifetime = 1.5f;
 
         return newPositioned(world, x, y)
-                .addComponent(new Anim("rifle", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
-                .addComponent(new Attached(player, PLAYER_WEAPON_MOUNT_X - WEAPON_ROT_ORIGIN_X, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y))
-                .addComponent(weapon)
-                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
+                .add(new Anim("rifle", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+                .add(new Attached(player, PLAYER_WEAPON_MOUNT_X - WEAPON_ROT_ORIGIN_X, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y))
+                .add(weapon)
+                .add(new Bounds(G.CELL_SIZE, G.CELL_SIZE)).getEntity();
     }
 
     public static Entity createGrenadeLauncher(World world, float x, float y, Entity player) {
@@ -440,10 +438,10 @@ public class EntityFactory {
         weapon.bulletGravityFactor = 2;
         weapon.bulletPayload.explodeSfxId = "ns2d_sfx_gl_explode";
         return newPositioned(world, x, y)
-                .addComponent(new Anim("grenadelauncher", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
-                .addComponent(new Attached(player, PLAYER_WEAPON_MOUNT_X - WEAPON_ROT_ORIGIN_X, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y))
-                .addComponent(weapon)
-                .addComponent(new Bounds(G.CELL_SIZE, G.CELL_SIZE));
+                .add(new Anim("grenadelauncher", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+                .add(new Attached(player, PLAYER_WEAPON_MOUNT_X - WEAPON_ROT_ORIGIN_X, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y))
+                .add(weapon)
+                .add(new Bounds(G.CELL_SIZE, G.CELL_SIZE)).getEntity();
     }
 
     public static Entity createFlamethrower(World world, float x, float y, Entity player) {
