@@ -25,15 +25,9 @@ allprojects {
     version = "1.0"
     ext {
         appName = "ns2d"
-        artemisVersion = '0.6.6-SNAPSHOT'
+        artemisVersion = '0.7.1'
     }
 
-    // Uncomment line below with proper parameters to pass to TexturePacker
-    // and TexturePacker will be invoked automagically whenever the target
-    // "texurePacker" is invoked, e.g. "./gradlew texturePacker desktop:run"
-
-    // ext.texturePacker = ['images', 'android/assets/data', 'gamegdx']
-    
     repositories {
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
