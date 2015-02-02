@@ -28,7 +28,9 @@ public class AssetSystem extends PassiveSystem {
     public final BitmapFont font;
     public final BitmapFont fontLarge;
 
-    public Texture tileset;
+	public Texture tileset;
+	public Texture tilesetNormal;
+
     public HashMap<String, Animation> sprites = new HashMap<String, Animation>();
     public HashMap<String, Sound> sounds = new HashMap<String, Sound>();
     private TagManager tagManager;
@@ -78,7 +80,8 @@ public class AssetSystem extends PassiveSystem {
         fontLarge.setScale(3);
         fontLarge.setColor(0, 0, 0, 0.9f);
 
-        tileset = new Texture("ns2d_tileset.png");
+	    tileset = new Texture("ns2d_tileset.png");
+	    tilesetNormal = new Texture("ns2d_tileset_normal.png");
 
         add("player-idle", 0, 0, TILE_SIZE, TILE_SIZE, 2);
         add("player-jetpack", TILE_SIZE*2, 0, TILE_SIZE, TILE_SIZE, 1);
