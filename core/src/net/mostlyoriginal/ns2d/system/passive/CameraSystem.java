@@ -12,7 +12,7 @@ public class CameraSystem extends VoidEntitySystem {
     public final OrthographicCamera camera;
     public final OrthographicCamera guiCamera;
 
-    private static final float ZOOM = 0.5f;
+    public static final float ZOOM = 0.5f;
 
     public CameraSystem() {
         camera = new OrthographicCamera(Gdx.graphics.getWidth() * ZOOM, Gdx.graphics.getHeight() * ZOOM);
