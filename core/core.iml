@@ -15,7 +15,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="Gradle: com.badlogicgames.gdx:gdx:1.5.3" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: net.onedaybeard.artemis:artemis-odb:0.7.1" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: net.onedaybeard.artemis:artemis-odb:0.7.1:sources" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: net.onedaybeard.artemis:artemis-odb:0.8.2-SNAPSHOT" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: net.onedaybeard.artemis:artemis-odb:0.8.2-SNAPSHOT:sources" level="project" />
   </component>
 </module>

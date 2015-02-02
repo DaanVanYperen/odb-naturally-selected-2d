@@ -24,7 +24,7 @@ allprojects {
     ext {
         appName = "ns2d"
         gdxVersion = "1.5.3"
-        artemisVersion = '0.7.1'
+        artemisVersion = '0.8.2-SNAPSHOT'
     }
 
     repositories {
