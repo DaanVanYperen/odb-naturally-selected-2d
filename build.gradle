@@ -25,6 +25,7 @@ allprojects {
         appName = "ns2d"
         gdxVersion = "1.5.3"
         artemisVersion = '0.8.2-SNAPSHOT'
+        artemisContribVersion = '0.8.1-SNAPSHOT'
     }
 
     repositories {
@@ -39,6 +40,11 @@ project(":core") {
     
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+
+        compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion:sources"
+        compile "net.mostlyoriginal.artemis-odb:contrib-components:$artemisContribVersion:sources"
+        compile "net.mostlyoriginal.artemis-odb:contrib-components-libgdx:$artemisContribVersion:sources"
+        compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion:sources"
     }
 }
 
@@ -68,6 +74,11 @@ project(":gwt") {
         compile "net.onedaybeard.artemis:artemis-odb-gwt:$artemisVersion"
         compile "net.onedaybeard.artemis:artemis-odb-gwt:$artemisVersion:sources"
         compile "net.onedaybeard.artemis:artemis-odb:$artemisVersion:sources"
+
+        compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion:sources"
+        compile "net.mostlyoriginal.artemis-odb:contrib-components:$artemisContribVersion:sources"
+        compile "net.mostlyoriginal.artemis-odb:contrib-components-libgdx:$artemisContribVersion:sources"
+        compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion:sources"
     }
 }
 

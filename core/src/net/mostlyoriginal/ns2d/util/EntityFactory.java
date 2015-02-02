@@ -3,6 +3,7 @@ package net.mostlyoriginal.ns2d.util;
 import com.artemis.Entity;
 import com.artemis.EntityEdit;
 import com.artemis.World;
+import net.mostlyoriginal.api.component.graphics.Renderable;
 import net.mostlyoriginal.ns2d.G;
 import net.mostlyoriginal.ns2d.component.*;
 
@@ -24,7 +25,8 @@ public class EntityFactory {
     public static Entity createPlayer(final World world, final float x, final float y) {
 
         Entity player = newPositioned(world, x, y)
-                .add(new Anim("player-idle", Anim.Layer.PLAYER))
+                .add(new Anim("player-idle"))
+		        .add(new Renderable(Anim.Layer.PLAYER))
                 .add(new Physics())
                 .add(new Health(10))
                 .add(new RespawnOnDeath())
@@ -56,7 +58,8 @@ public class EntityFactory {
         health.woundParticle = "alienblood";
         health.deathSfxId = new String[] {"ns2d_sfx_skulk_die1","ns2d_sfx_skulk_die2","ns2d_sfx_skulk_die3"};
         return newPositioned(world, x, y)
-                .add(new Anim("babbler", Anim.Layer.PLAYER_ARM, originX, originY))
+                .add(new Anim("babbler", originX, originY))
+		        .add(new Renderable(Anim.Layer.PLAYER_ARM))
                 .add(weapon)
                 .add(health)
                 .add(new Focus())
@@ -80,7 +83,8 @@ public class EntityFactory {
         final int mountX = 23;
         final int mountY = 13;
         return newPositioned(world, x, y)
-                .add(new Anim("skulk-head", Anim.Layer.PLAYER_ARM, originX, originY))
+                .add(new Anim("skulk-head", originX, originY))
+		        .add(new Renderable(Anim.Layer.PLAYER_ARM))
                 .add(new Attached(skulk, mountX - originX, mountY - originY))
                 .add(weapon)
                 .add(new Bounds(G.CELL_SIZE, G.CELL_SIZE)).getEntity();
@@ -92,7 +96,8 @@ public class EntityFactory {
         health.woundParticle = "alienblood";
         health.deathSfxId = new String[] {"ns2d_sfx_skulk_die1","ns2d_sfx_skulk_die2","ns2d_sfx_skulk_die3"};
         Entity skulk = newPositioned(world, x, y)
-                .add(new Anim("skulk", Anim.Layer.ENEMIES))
+                .add(new Anim("skulk"))
+		        .add(new Renderable(Anim.Layer.ENEMIES))
                 .add(health)
                 .add(new Focus())
                 .add(new Physics())
@@ -138,7 +143,8 @@ public class EntityFactory {
         final int mountX = 23;
         final int mountY = 13;
         return newPositioned(world, x, y)
-                .add(new Anim("gorge-head", Anim.Layer.PLAYER_ARM, originX, originY))
+                .add(new Anim("gorge-head", originX, originY))
+		        .add(new Renderable(Anim.Layer.PLAYER_ARM))
                 .add(new Attached(skulk, mountX - originX, mountY - originY))
                 .add(weapon)
                 .add(new Bounds(G.CELL_SIZE, G.CELL_SIZE)).getEntity();
@@ -153,8 +159,9 @@ public class EntityFactory {
         enemy.closestEnemyApproach = 100;
         enemy.canLeap = false;
         Entity skulk = newPositioned(world, x, y)
-                .add(new Anim("gorge", Anim.Layer.ENEMIES))
+                .add(new Anim("gorge"))
                 .add(health)
+		        .add(new Renderable(Anim.Layer.ENEMIES))
                 .add(new Focus())
                 .add(new Physics())
                 .add(new Gravity())
@@ -184,14 +191,16 @@ public class EntityFactory {
                 .add(new Pos(x, y))
                 .add(new Bounds(48, 48))
                 .add(new EntitySpawner("skulk", "gorge"))
-                .add(new Anim("duct", Anim.Layer.ON_WALL)).getEntity();
+		        .add(new Renderable(Anim.Layer.ON_WALL))
+                .add(new Anim("duct")).getEntity();
     }
 
     public static Entity createBullet(World world, float x, float y) {
         Physics physics = new Physics();
         physics.friction=0.01f;
         return newPositioned(world, x, y)
-                .add(new Anim("bullet", Anim.Layer.BULLETS))
+                .add(new Anim("bullet"))
+		        .add(new Renderable(Anim.Layer.BULLETS))
                 .add(physics)
                 .add(new Gravity(-4f))
                 .add(new Bounds(7, 4)).getEntity();
@@ -212,7 +221,8 @@ public class EntityFactory {
                 .add(new Attached(structureSocket))
                 .add(new HealthIndicator())
                 .add(new Buildable("resourcetower", "resourcetower-unbuilt", COST_RESOURCETOWER))
-                .add(new Anim("resourcetower-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER))
+                .add(new Anim("resourcetower-unbuilt"))
+		        .add(new Renderable(Anim.Layer.DIRECTLY_BEHIND_PLAYER))
 		        .getEntity();
     }
 
@@ -254,7 +264,8 @@ public class EntityFactory {
                 .add(new Critical())
                 .add(new Attached(structureSocket))
                 .add(new HealthIndicator())
-                .add(new Anim("techpoint", Anim.Layer.DIRECTLY_BEHIND_PLAYER))
+		        .add(new Renderable(Anim.Layer.DIRECTLY_BEHIND_PLAYER))
+                .add(new Anim("techpoint"))
 		        .getEntity();
     }
 
@@ -266,7 +277,8 @@ public class EntityFactory {
                 .add(new Bounds(16, 16))
                 .add(new Attached(structureSocket))
                 .add(buildable)
-                .add(new Anim("spawner", Anim.Layer.DIRECTLY_BEHIND_PLAYER))
+		        .add(new Renderable(Anim.Layer.DIRECTLY_BEHIND_PLAYER))
+                .add(new Anim("spawner"))
 		        .getEntity();
 
     }
@@ -297,7 +309,8 @@ public class EntityFactory {
                 .add(new Attached(structureSocket))
                 .add(weapon)
                 .add(new Buildable("armory", "armory-unbuilt", COST_ARMORY))
-                .add(new Anim("armory-unbuilt", Anim.Layer.DIRECTLY_BEHIND_PLAYER))
+		        .add(new Renderable(Anim.Layer.DIRECTLY_BEHIND_PLAYER))
+		        .add(new Anim("armory-unbuilt"))
 		        .getEntity();
     }
 
@@ -315,7 +328,8 @@ public class EntityFactory {
         Buildable sentry = new Buildable("sentry", "sentry-frame-unbuilt", COST_SENTRY);
         sentry.weaponUseCausesDamage=true;
         return newPositioned(world, x, y)
-                .add(new Anim("sentry-frame-unbuilt", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+                .add(new Anim("sentry-frame-unbuilt", WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+		        .add(new Renderable(Anim.Layer.PLAYER_ARM))
                 .add(new Attached(player, WEAPON_ROT_ORIGIN_X - 10, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y + 4))
                 .add(new HealthIndicator())
                 .add(sentry)
@@ -331,7 +345,8 @@ public class EntityFactory {
         Entity sentry = newPositioned(world, x, y)
                 .add(new Bounds(32, 32))
                 .add(new Attached(structureSocket))
-                .add(new Anim("sentry-frame", Anim.Layer.DIRECTLY_BEHIND_PLAYER))
+		        .add(new Renderable(Anim.Layer.DIRECTLY_BEHIND_PLAYER))
+                .add(new Anim("sentry-frame"))
 		        .getEntity();
 
         Entity head = EntityFactory.createSentryHead(world, 0, 0, sentry);
@@ -357,7 +372,8 @@ public class EntityFactory {
         sentry2.weaponUseCausesDamage=true;
         sentry2.defaultHealth *= 2;
         return newPositioned(world, x, y)
-                .add(new Anim("sentry2-frame-unbuilt", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+                .add(new Anim("sentry2-frame-unbuilt", WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+		        .add(new Renderable(Anim.Layer.PLAYER_ARM))
                 .add(new Attached(player, WEAPON_ROT_ORIGIN_X - 10, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y + 4))
                 .add(sentry2)
                 .add(new HealthIndicator())
@@ -372,7 +388,8 @@ public class EntityFactory {
         Entity sentry = newPositioned(world, x, y)
                 .add(new Bounds(32, 32))
                 .add(new Attached(structureSocket))
-                .add(new Anim("sentry2-frame", Anim.Layer.DIRECTLY_BEHIND_PLAYER))
+                .add(new Anim("sentry2-frame"))
+		        .add(new Renderable(Anim.Layer.DIRECTLY_BEHIND_PLAYER))
 		        .getEntity();
 
         Entity head = EntityFactory.createSentryHead2(world, 0, 0, sentry);
@@ -398,7 +415,8 @@ public class EntityFactory {
         weapon.bulletAnimId = "slug";
         weapon.shellParticle = "shellcasing";
         return newPositioned(world, x, y)
-                .add(new Anim("shotgun", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+                .add(new Anim("shotgun", WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+		        .add(new Renderable(Anim.Layer.PLAYER_ARM))
                 .add(new Attached(player, PLAYER_WEAPON_MOUNT_X - WEAPON_ROT_ORIGIN_X, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y))
                 .add(weapon)
                 .add(new Bounds(G.CELL_SIZE, G.CELL_SIZE)).getEntity();
@@ -414,7 +432,8 @@ public class EntityFactory {
         weapon.bulletPayload.maxLifetime = 1.5f;
 
         return newPositioned(world, x, y)
-                .add(new Anim("rifle", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+                .add(new Anim("rifle", WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+		        .add(new Renderable(Anim.Layer.PLAYER_ARM))
                 .add(new Attached(player, PLAYER_WEAPON_MOUNT_X - WEAPON_ROT_ORIGIN_X, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y))
                 .add(weapon)
                 .add(new Bounds(G.CELL_SIZE, G.CELL_SIZE)).getEntity();
@@ -438,7 +457,8 @@ public class EntityFactory {
         weapon.bulletGravityFactor = 2;
         weapon.bulletPayload.explodeSfxId = "ns2d_sfx_gl_explode";
         return newPositioned(world, x, y)
-                .add(new Anim("grenadelauncher", Anim.Layer.PLAYER_ARM, WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+                .add(new Anim("grenadelauncher", WEAPON_ROT_ORIGIN_X, WEAPON_ROT_ORIGIN_Y))
+		        .add(new Renderable(Anim.Layer.PLAYER_ARM))
                 .add(new Attached(player, PLAYER_WEAPON_MOUNT_X - WEAPON_ROT_ORIGIN_X, PLAYER_WEAPON_MOUNT_Y - WEAPON_ROT_ORIGIN_Y))
                 .add(weapon)
                 .add(new Bounds(G.CELL_SIZE, G.CELL_SIZE)).getEntity();

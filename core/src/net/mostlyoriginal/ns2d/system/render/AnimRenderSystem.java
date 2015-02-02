@@ -3,28 +3,23 @@ package net.mostlyoriginal.ns2d.system.render;
 import com.artemis.Aspect;
 import com.artemis.ComponentMapper;
 import com.artemis.Entity;
-import com.artemis.EntitySystem;
 import com.artemis.annotations.Wire;
-import com.artemis.utils.ImmutableBag;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import net.mostlyoriginal.api.system.delegate.DeferredEntityProcessingSystem;
+import net.mostlyoriginal.api.system.delegate.EntityProcessPrincipal;
 import net.mostlyoriginal.ns2d.component.Anim;
 import net.mostlyoriginal.ns2d.component.Pos;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 /**
  * @author Daan van Yperen
  */
 @Wire
-public class AnimRenderSystem extends EntitySystem {
+public class AnimRenderSystem extends DeferredEntityProcessingSystem {
 
     private ComponentMapper<Pos> pm;
     private ComponentMapper<Anim> sm;
@@ -33,22 +28,11 @@ public class AnimRenderSystem extends EntitySystem {
 
     private SpriteBatch batch;
 
-
-    private List<Entity> sortedEntities = new ArrayList<Entity>();
-    private boolean sortedDirty = false;
-
-    public Comparator<Entity> layerSortComperator = new Comparator<Entity>() {
-        @Override
-        public int compare(Entity e1, Entity e2) {
-            return sm.get(e1).layer.compareTo(sm.get(e2).layer);
-        }
-    };
-
     private float age;
     public final ShaderProgram shimmerProgram;
 
-    public AnimRenderSystem() {
-        super(Aspect.getAspectForAll(Pos.class, Anim.class));
+    public AnimRenderSystem(EntityProcessPrincipal principal) {
+        super(Aspect.getAspectForAll(Pos.class, Anim.class), principal);
 
         shimmerProgram = new ShaderProgram(Gdx.files.internal("shader/shimmer.vertex"), Gdx.files.internal("shader/shimmer.fragment"));
         if ( !shimmerProgram.isCompiled() ) throw new RuntimeException("Compilation failed." + shimmerProgram.getLog());
@@ -69,19 +53,6 @@ public class AnimRenderSystem extends EntitySystem {
     @Override
     protected void end() {
         batch.end();
-    }
-
-    @Override
-    protected void processEntities(ImmutableBag<Entity> entities) {
-
-        if (sortedDirty) {
-            sortedDirty = false;
-            Collections.sort(sortedEntities, layerSortComperator);
-        }
-
-        for (Entity entity : sortedEntities) {
-            process(entity);
-        }
     }
 
     protected void process(final Entity entity) {
@@ -144,16 +115,5 @@ public class AnimRenderSystem extends EntitySystem {
     @Override
     protected boolean checkProcessing() {
         return true;
-    }
-
-    @Override
-    protected void inserted(Entity e) {
-        sortedEntities.add(e);
-        sortedDirty = true;
-    }
-
-    @Override
-    protected void removed(Entity e) {
-        sortedEntities.remove(e);
     }
 }

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import net.mostlyoriginal.api.component.graphics.Renderable;
 import net.mostlyoriginal.ns2d.api.PassiveSystem;
 import net.mostlyoriginal.ns2d.component.*;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
@@ -22,6 +23,7 @@ public class ParticleSystem extends PassiveSystem {
     public static final float EXPLOSION_FRAME_DURATION = 1/15f;
 
     ComponentMapper<Anim> am;
+	protected ComponentMapper<Renderable> mRenderable;
     AssetSystem assetSystem;
     private float rotation;
 
@@ -97,12 +99,12 @@ public class ParticleSystem extends PassiveSystem {
 
     private void createShellCasing(int x, int y) {
         Entity entity = basicShellParticle(x, y, "particle-shellcasing");
-        am.get(entity).layer= Anim.Layer.DIRECTLY_BEHIND_PLAYER;
+	    mRenderable.get(entity).layer= Anim.Layer.DIRECTLY_BEHIND_PLAYER;
     }
 
     private void createBulletCasing(int x, int y) {
         Entity entity = basicShellParticle(x, y, "particle-bulletcasing");
-        am.get(entity).layer= Anim.Layer.DIRECTLY_BEHIND_PLAYER;
+	    mRenderable.get(entity).layer= Anim.Layer.DIRECTLY_BEHIND_PLAYER;
     }
 
 
@@ -122,7 +124,7 @@ public class ParticleSystem extends PassiveSystem {
                 .add(new Terminal(animation.getAnimationDuration(), 0.1f))
                 .add(physics)
                 .add(new Bounds(frame)).getEntity();
-        am.get(entity).layer = Anim.Layer.DIRECTLY_BEHIND_PLAYER;
+	    mRenderable.get(entity).layer = Anim.Layer.DIRECTLY_BEHIND_PLAYER;
     }
 
     private void createPuff(int x, int y) {
@@ -142,7 +144,7 @@ public class ParticleSystem extends PassiveSystem {
                 .add(physics)
                 .add(new Bounds(frame)).getEntity();
         Anim anim = am.get(entity);
-        anim.layer = Anim.Layer.DIRECTLY_BEHIND_BEHIND_PLAYER;
+	    mRenderable.get(entity).layer = Anim.Layer.DIRECTLY_BEHIND_BEHIND_PLAYER;
         anim.age = MathUtils.random(999f);
         anim.speed = 0;
     }
@@ -161,6 +163,7 @@ public class ParticleSystem extends PassiveSystem {
                 .add(new Terminal(1.5f,0.5f))
                 .add(physics)
                 .add(new Bounds(frame))
+		        .add(new Renderable())
                 .add(new Gravity()).getEntity();
     }
 
@@ -179,7 +182,7 @@ public class ParticleSystem extends PassiveSystem {
                 .add(physics)
                 .add(new Bounds(frame))
                 .add(new Gravity()).getEntity();
-        am.get(entity).layer = Anim.Layer.DIRECTLY_BEHIND_PLAYER;
+        mRenderable.get(entity).layer = Anim.Layer.DIRECTLY_BEHIND_PLAYER;
     }
 
     private void createMuzzleFlare(int x, int y) {
@@ -217,7 +220,8 @@ public class ParticleSystem extends PassiveSystem {
         return world.createEntity()
 		        .edit()
                 .add(new Pos(x - ((frame.getRegionWidth() * anim.scale) / 2), y - (frame.getRegionHeight() * anim.scale) / 2))
-                .add(anim).getEntity();
+		        .add(new Renderable())
+		        .add(anim).getEntity();
     }
 
     public void setRotation(float rotation) {

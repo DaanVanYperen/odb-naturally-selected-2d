@@ -11,20 +11,19 @@ public class Anim extends Component {
     public static final int ORIGIN_AUTO = -999999;
     public boolean flippedX; // flip animation, should not affect rotation.
 
-    public static enum Layer
+    public static class Layer
     {
-        ON_WALL,
-        BULLETS,
-        ENEMIES,
-        DIRECTLY_BEHIND_BEHIND_PLAYER,
-        DIRECTLY_BEHIND_PLAYER,
-        PLAYER_ARM,
-        PLAYER,
-        DEFAULT_LAYER;
+	    public static final int ON_WALL = 50;
+	    public static final int BULLETS = 100;
+	    public static final int ENEMIES = 200;
+	    public static final int DIRECTLY_BEHIND_BEHIND_PLAYER = 300;
+	    public static final int DIRECTLY_BEHIND_PLAYER = 400;
+	    public static final int PLAYER_ARM = 500;
+        public static final int PLAYER = 600;
+	    public static final int DEFAULT_LAYER = 700;
     };
 
     public String id;
-    public Layer layer = Layer.DEFAULT_LAYER;
 
     public float speed = 1;
     public float age = 0;
@@ -37,13 +36,8 @@ public class Anim extends Component {
     public Anim(String id) {
         this.id = id;
     }
-    public Anim(String id, Layer layer ) {
+    public Anim(String id, int ox, int oy ) {
         this.id = id;
-        this.layer = layer;
-    }
-    public Anim(String id, Layer layer, int ox, int oy ) {
-        this.id = id;
-        this.layer = layer;
         this.ox = ox;
         this.oy = oy;
     }

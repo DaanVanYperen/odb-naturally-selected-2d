@@ -8,6 +8,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;
+import net.mostlyoriginal.api.system.graphics.RenderBatchingSystem;
 import net.mostlyoriginal.ns2d.system.active.*;
 import net.mostlyoriginal.ns2d.system.collide.BulletCollisionSystem;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
@@ -71,7 +72,6 @@ public class MainScreen implements Screen {
 
         G.world.setSystem(new BulletCollisionSystem());
 
-
         // Active - Camera
         G.world.setSystem(new CameraFocusSystem());
         G.world.setSystem(new CameraShakeSystem());
@@ -80,7 +80,11 @@ public class MainScreen implements Screen {
 	    G.world.setSystem(new MapRenderSystem());
         G.world.setSystem(new CostRenderSystem());
         G.world.setSystem(new HealthRenderSystem());
-        G.world.setSystem(new AnimRenderSystem());
+
+	    RenderBatchingSystem renderBatchingSystem = new RenderBatchingSystem();
+	    G.world.setSystem(renderBatchingSystem);
+	    G.world.setSystem(new AnimRenderSystem(renderBatchingSystem), false);
+
         G.world.setSystem(new MapRenderSystemInFront());
 
         G.world.setSystem(new DialogRenderSystem());
