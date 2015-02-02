@@ -36,7 +36,7 @@ public class AnimRenderSystem extends DeferredEntityProcessingSystem {
 
         shimmerProgram = new ShaderProgram(Gdx.files.internal("shader/shimmer.vertex"), Gdx.files.internal("shader/shimmer.fragment"));
         if ( !shimmerProgram.isCompiled() ) throw new RuntimeException("Compilation failed." + shimmerProgram.getLog());
-        batch  = new SpriteBatch(2000, shimmerProgram);
+        batch  = new SpriteBatch(2000);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class AnimRenderSystem extends DeferredEntityProcessingSystem {
 
         batch.setProjectionMatrix(cameraSystem.camera.combined);
         batch.begin();
-        shimmerProgram.setUniformf("iGlobalTime", age);
+        //shimmerProgram.setUniformf("iGlobalTime", age);
         batch.setColor(1f, 1f, 1f, 1f);
     }
 

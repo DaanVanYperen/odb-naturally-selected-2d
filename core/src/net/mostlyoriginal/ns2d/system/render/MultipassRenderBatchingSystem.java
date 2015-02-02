@@ -3,6 +3,8 @@ package net.mostlyoriginal.ns2d.system.render;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
 import com.artemis.utils.ImmutableBag;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import net.mostlyoriginal.api.system.graphics.RenderBatchingSystem;
 import net.mostlyoriginal.ns2d.G;
@@ -26,11 +28,15 @@ public class MultipassRenderBatchingSystem extends RenderBatchingSystem {
 
 		FrameBuffer diffuseBuffer = framebufferManager.getFrameBuffer(G.DIFFUSE_FBO);
 		diffuseBuffer.begin();
+		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		super.processEntities(entities);
 		diffuseBuffer.end();
 
 		FrameBuffer normalBuffer = framebufferManager.getFrameBuffer(G.NORMAL_FBO);
 		normalBuffer.begin();
+		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		super.processEntities(entities);
 		normalBuffer.end();
 	}

@@ -25,6 +25,7 @@ public class LightRenderSystem extends VoidEntitySystem {
 	private CameraSystem cameraSystem;
 	private ShaderProgram deferredShader;
 	private AssetSystem assetSystem;
+	private float age;
 
 	@Override
 	protected void initialize() {
@@ -38,13 +39,16 @@ public class LightRenderSystem extends VoidEntitySystem {
 	@Override
 	protected void processSystem() {
 
+		age += world.delta;
+
 		batch.setProjectionMatrix(cameraSystem.guiCamera.combined);
 		batch.begin();
+		deferredShader.setUniformf("iGlobalTime", age);
+		deferredShader.setUniformf("lightX", Gdx.graphics.getWidth() * CameraSystem.ZOOM * 0.5f);
+		deferredShader.setUniformf("lightY", Gdx.graphics.getHeight() * CameraSystem.ZOOM * 0.5f);
 
 		FrameBuffer normalBuffer = framebufferManager.getFrameBuffer(G.NORMAL_FBO);
-		bindShaderToTexture("u_texture2", 1, assetSystem.tilesetNormal);
-
-		//bindShaderToTexture("u_texture", 0, diffuseBuffer.getColorBufferTexture());
+		bindShaderToTexture("u_texture2", 1, normalBuffer.getColorBufferTexture());
 
 		Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
 

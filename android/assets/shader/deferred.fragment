@@ -7,11 +7,26 @@ precision mediump float;
 varying LOWP vec4 v_color;
 varying vec2 v_texCoords;
 uniform float iGlobalTime;
+uniform float lightX;
+uniform float lightY;
 uniform sampler2D u_texture;
 uniform sampler2D u_texture2;
 void main()
 {
-  gl_FragColor = v_color
-                    * ((texture2D(u_texture, vec2(v_texCoords.x, v_texCoords.y)) * vec4(0.5,0.5,0.5,0.5))
-                    + (texture2D(u_texture2, vec2(v_texCoords.x, v_texCoords.y)) * vec4(0.5,0.5,0.5,0.5)));
+    vec4 image  = texture2D( u_texture, v_texCoords.xy );
+    vec3 position = vec3( v_texCoords.x, v_texCoords.y, 50 );
+    vec4 normal = texture2D( u_texture2, v_texCoords.xy );
+
+    vec3 light = vec3(lightX + sin(iGlobalTime * 3.0) * 50, lightY + cos(iGlobalTime * 3.0) * 50, 50);
+    vec3 cameraPosition = vec3(50,200,50);
+    vec3 lightDir = light - position.xyz;
+
+    normal = normalize(normal);
+    lightDir = normalize(lightDir);
+
+    vec3 eyeDir = normalize(cameraPosition-position.xyz);
+    vec3 vHalfVector = normalize(lightDir.xyz+eyeDir);
+
+    gl_FragColor = max(dot(normal,lightDir),0) * image +
+                   pow(max(dot(normal,vHalfVector),0.0), 100) * 1.5;
 }
