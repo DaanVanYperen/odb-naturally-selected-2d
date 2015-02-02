@@ -8,13 +8,9 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;
-import net.mostlyoriginal.api.system.graphics.RenderBatchingSystem;
 import net.mostlyoriginal.ns2d.system.active.*;
 import net.mostlyoriginal.ns2d.system.collide.BulletCollisionSystem;
-import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
-import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
-import net.mostlyoriginal.ns2d.system.passive.CollisionSystem;
-import net.mostlyoriginal.ns2d.system.passive.MapSystem;
+import net.mostlyoriginal.ns2d.system.passive.*;
 import net.mostlyoriginal.ns2d.system.render.*;
 
 /**
@@ -31,6 +27,8 @@ public class MainScreen implements Screen {
 
         G.world.setManager(new GroupManager());
         G.world.setManager(new TagManager());
+
+	    G.world.setSystem(new FramebufferManager());
 
         // Active - Cleanup
         G.world.setSystem(new TerminalSystem());
@@ -81,9 +79,9 @@ public class MainScreen implements Screen {
         G.world.setSystem(new CostRenderSystem());
         G.world.setSystem(new HealthRenderSystem());
 
-	    RenderBatchingSystem renderBatchingSystem = new RenderBatchingSystem();
-	    G.world.setSystem(renderBatchingSystem);
-	    G.world.setSystem(new AnimRenderSystem(renderBatchingSystem), false);
+	    MultipassRenderBatchingSystem multipassRenderBatchingSystem = new MultipassRenderBatchingSystem();
+	    G.world.setSystem(multipassRenderBatchingSystem);
+	    G.world.setSystem(new AnimRenderSystem(multipassRenderBatchingSystem), false);
 
         G.world.setSystem(new MapRenderSystemInFront());
 
