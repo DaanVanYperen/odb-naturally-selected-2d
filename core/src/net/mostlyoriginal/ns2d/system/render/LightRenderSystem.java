@@ -43,9 +43,9 @@ public class LightRenderSystem extends VoidEntitySystem {
 
 		batch.setProjectionMatrix(cameraSystem.guiCamera.combined);
 		batch.begin();
-		deferredShader.setUniformf("iGlobalTime", age);
-		deferredShader.setUniformf("lightX", Gdx.graphics.getWidth() * CameraSystem.ZOOM * 0.5f);
-		deferredShader.setUniformf("lightY", Gdx.graphics.getHeight() * CameraSystem.ZOOM * 0.5f);
+		//deferredShader.setUniformf("iGlobalTime", age);
+		deferredShader.setUniformf("lightX", Gdx.input.getX() / 2f);
+		deferredShader.setUniformf("lightY", Gdx.input.getY() / 2f);
 
 		FrameBuffer normalBuffer = framebufferManager.getFrameBuffer(G.NORMAL_FBO);
 		bindShaderToTexture("u_texture2", 1, normalBuffer.getColorBufferTexture());
