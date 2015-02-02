@@ -17,8 +17,8 @@ void main()
     vec3 position = vec3( v_texCoords.x, v_texCoords.y, 50 );
     vec4 normal = texture2D( u_texture2, v_texCoords.xy );
 
-    vec3 light = vec3(lightX + sin(iGlobalTime * 3.0) * 50, lightY + cos(iGlobalTime * 3.0) * 50, 50);
-    vec3 cameraPosition = vec3(50,200,50);
+    vec3 light = vec3(lightX + sin(iGlobalTime * 3.0) * 200, lightY + cos(iGlobalTime * 3.0) * 200, 0);
+    vec3 cameraPosition = vec3(0,0,100);
     vec3 lightDir = light - position.xyz;
 
     normal = normalize(normal);

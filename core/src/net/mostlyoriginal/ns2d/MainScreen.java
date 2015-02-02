@@ -75,15 +75,15 @@ public class MainScreen implements Screen {
         G.world.setSystem(new CameraShakeSystem());
 
         // Active - Render
-	    G.world.setSystem(new MapRenderSystem());
-        G.world.setSystem(new CostRenderSystem());
-        G.world.setSystem(new HealthRenderSystem());
+	    //G.world.setSystem(new MapRenderSystem());
+        //G.world.setSystem(new CostRenderSystem());
+        //G.world.setSystem(new HealthRenderSystem());
 
 	    MultipassRenderBatchingSystem multipassRenderBatchingSystem = new MultipassRenderBatchingSystem();
 	    G.world.setSystem(multipassRenderBatchingSystem);
 	    G.world.setSystem(new AnimRenderSystem(multipassRenderBatchingSystem), false);
 
-        G.world.setSystem(new MapRenderSystemInFront());
+        //G.world.setSystem(new MapRenderSystemInFront());
 
         G.world.setSystem(new DialogRenderSystem());
         G.world.setSystem(new UIRenderSystem());

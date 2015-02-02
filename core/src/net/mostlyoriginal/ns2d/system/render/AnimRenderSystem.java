@@ -30,8 +30,9 @@ public class AnimRenderSystem extends DeferredEntityProcessingSystem {
 
     private float age;
     public final ShaderProgram shimmerProgram;
+	private boolean renderNormals;
 
-    public AnimRenderSystem(EntityProcessPrincipal principal) {
+	public AnimRenderSystem(EntityProcessPrincipal principal) {
         super(Aspect.getAspectForAll(Pos.class, Anim.class), principal);
 
         shimmerProgram = new ShaderProgram(Gdx.files.internal("shader/shimmer.vertex"), Gdx.files.internal("shader/shimmer.fragment"));
@@ -66,12 +67,23 @@ public class AnimRenderSystem extends DeferredEntityProcessingSystem {
         drawAnimation(anim, pos, anim.id);
     }
 
+
+	TextureRegion work = new TextureRegion();
+
     private void drawAnimation(final Anim animation, final Pos position, String id) {
 
         final com.badlogic.gdx.graphics.g2d.Animation gdxanim = assetSystem.get(id);
         if ( gdxanim == null) return;
 
-        final TextureRegion frame = gdxanim.getKeyFrame(animation.age, true);
+        TextureRegion frame = gdxanim.getKeyFrame(animation.age, true);
+
+	    // bit of a hack.
+	    if ( renderNormals )
+	    {
+		    work.setRegion(frame);
+		    work.setTexture(assetSystem.tilesetNormal);
+		    frame = work;
+	    }
 
         if ( animation.flippedX)
         {
@@ -116,4 +128,9 @@ public class AnimRenderSystem extends DeferredEntityProcessingSystem {
     protected boolean checkProcessing() {
         return true;
     }
+
+	public void renderNormals(boolean renderNormals) {
+
+		this.renderNormals = renderNormals;
+	}
 }
