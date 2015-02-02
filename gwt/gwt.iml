@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="naturally-selected-2d" external.system.module.version="1.0" type="JAVA_MODULE" version="4">
+<module external.linked.project.id=":gwt" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="naturally-selected-2d" external.system.module.version="1.0" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="web" name="Web Gradle : gwt-draft-1.0.war">
       <configuration>
@@ -7,29 +7,8 @@
           <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/webapp/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
-          <root url="file://$MODULE_DIR$/war" relative="/" />
           <root url="file://$MODULE_DIR$/webapp" relative="/" />
-          <root url="file://$MODULE_DIR$/build/gwt/draftOut/html" relative="//html" />
-          <root url="file://$MODULE_DIR$/build/gwt/draftOut/html/gwt" relative="//html/gwt" />
-          <root url="file://$MODULE_DIR$/build/gwt/draftOut/html/gwt/chrome" relative="//html/gwt/chrome" />
-          <root url="file://$MODULE_DIR$/build/gwt/draftOut/html/gwt/chrome/images" relative="//html/gwt/chrome/images" />
-          <root url="file://$MODULE_DIR$/build/gwt/draftOut/html/gwt/chrome/images/ie6" relative="//html/gwt/chrome/images/ie6" />
-          <root url="file://$MODULE_DIR$/build/gwt/draftOut/WEB-INF" relative="//WEB-INF" />
-          <root url="file://$MODULE_DIR$/build/gwt/draftOut/WEB-INF/deploy" relative="//WEB-INF/deploy" />
-          <root url="file://$MODULE_DIR$/build/gwt/draftOut/WEB-INF/deploy/html" relative="//WEB-INF/deploy/html" />
-          <root url="file://$MODULE_DIR$/build/gwt/draftOut/WEB-INF/deploy/html/rpcPolicyManifest" relative="//WEB-INF/deploy/html/rpcPolicyManifest" />
-          <root url="file://$MODULE_DIR$/build/gwt/draftOut/WEB-INF/deploy/html/symbolMaps" relative="//WEB-INF/deploy/html/symbolMaps" />
-          <root url="file://$MODULE_DIR$/war/assets" relative="//assets" />
-          <root url="file://$MODULE_DIR$/war/assets/com" relative="//assets/com" />
-          <root url="file://$MODULE_DIR$/war/assets/com/badlogic" relative="//assets/com/badlogic" />
-          <root url="file://$MODULE_DIR$/war/assets/com/badlogic/gdx" relative="//assets/com/badlogic/gdx" />
-          <root url="file://$MODULE_DIR$/war/assets/com/badlogic/gdx/graphics" relative="//assets/com/badlogic/gdx/graphics" />
-          <root url="file://$MODULE_DIR$/war/assets/com/badlogic/gdx/graphics/g3d" relative="//assets/com/badlogic/gdx/graphics/g3d" />
-          <root url="file://$MODULE_DIR$/war/assets/com/badlogic/gdx/graphics/g3d/shaders" relative="//assets/com/badlogic/gdx/graphics/g3d/shaders" />
-          <root url="file://$MODULE_DIR$/war/assets/com/badlogic/gdx/utils" relative="//assets/com/badlogic/gdx/utils" />
-          <root url="file://$MODULE_DIR$/war/assets/font" relative="//assets/font" />
-          <root url="file://$MODULE_DIR$/war/assets/sfx" relative="//assets/sfx" />
-          <root url="file://$MODULE_DIR$/war/assets/shader" relative="//assets/shader" />
+          <root url="file://$MODULE_DIR$/war" relative="/" />
         </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/main/resources" />
@@ -67,19 +46,18 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="core" exported="" />
-    <orderEntry type="library" exported="" name="Gradle: gdx-backend-gwt-1.2.0" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: gdx-backend-gwt-1.2.0-sources" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: gdx-1.2.0-sources" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: artemis-odb-gwt-0.6.6-SNAPSHOT" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: artemis-odb-gwt-0.6.6-SNAPSHOT-sources" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: artemis-odb-0.6.6-SNAPSHOT-sources" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: gdx-1.2.0" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: validation-api-1.0.0.GA-sources" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: validation-api-1.0.0.GA" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: json-20090211" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: gwt-user-2.6.0" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: artemis-odb-0.6.6-SNAPSHOT" level="project" />
-    <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: gwt-servlet-2.6.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: net.onedaybeard.artemis:artemis-odb-gwt:0.7.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: net.onedaybeard.artemis:artemis-odb-gwt:0.7.1:sources" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: net.onedaybeard.artemis:artemis-odb:0.7.1:sources" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javax.validation:validation-api:1.0.0.GA:sources" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javax.validation:validation-api:1.0.0.GA" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.json:json:20090211" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.google.gwt:gwt-user:2.6.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: net.onedaybeard.artemis:artemis-odb:0.7.1" level="project" />
+    <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: com.google.gwt:gwt-servlet:2.6.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.badlogicgames.gdx:gdx-backend-gwt:1.5.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.badlogicgames.gdx:gdx-backend-gwt:1.5.3:sources" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.badlogicgames.gdx:gdx:1.5.3:sources" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.badlogicgames.gdx:gdx:1.5.3" level="project" />
   </component>
 </module>
-

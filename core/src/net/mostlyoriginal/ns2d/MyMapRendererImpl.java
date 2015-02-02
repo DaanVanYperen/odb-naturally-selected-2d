@@ -13,7 +13,7 @@ public class MyMapRendererImpl extends OrthogonalTiledMapRenderer {
     }
 
     public void renderLayer(TiledMapTileLayer layer) {
-        getSpriteBatch().setColor(1f, 1f, 1f, 1f);
+        batch.setColor(1f, 1f, 1f, 1f);
         beginRender();
         super.renderTileLayer(layer);
         endRender();
