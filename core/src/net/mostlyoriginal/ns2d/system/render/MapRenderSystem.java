@@ -33,7 +33,7 @@ public class MapRenderSystem extends PassiveSystem {
         for (MapLayer layer : mapSystem.map.getLayers()) {
       			if (layer.isVisible()) {
       				if (!layer.getName().equals("infront")) {
-                        renderLayer((TiledMapTileLayer) layer, assetSystem.tilesetNormal);
+                        renderLayer((TiledMapTileLayer) layer, assetSystem.tileset);
                     }
                 }
         }
