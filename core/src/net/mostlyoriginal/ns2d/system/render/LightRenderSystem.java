@@ -41,8 +41,8 @@ public class LightRenderSystem extends VoidEntitySystem {
 
 		age += world.delta;
 
-		renderLight(Gdx.input.getX() / 2f, Gdx.graphics.getHeight() * CameraSystem.ZOOM - (Gdx.input.getY() / 2f), 10);
-		renderLight(Gdx.graphics.getWidth() * CameraSystem.ZOOM - Gdx.input.getX() / 2f, (Gdx.input.getY() / 2f), 100);
+		renderLight(Gdx.input.getX() / 2f, (Gdx.input.getY() / 2f), 10);
+		//renderLight(Gdx.graphics.getWidth() * CameraSystem.ZOOM - Gdx.input.getX() / 2f, (Gdx.input.getY() / 2f), 100);
 
 	}
 
@@ -55,6 +55,8 @@ public class LightRenderSystem extends VoidEntitySystem {
 		deferredShader.setUniformf("lightZ", lightZ);
 		deferredShader.setUniformf("screenWidth", Gdx.graphics.getWidth() * CameraSystem.ZOOM);
 		deferredShader.setUniformf("screenHeight", Gdx.graphics.getHeight() * CameraSystem.ZOOM);
+		//deferredShader.setUniformf("lightStrength", 100);
+		//deferredShader.setUniformf("lightRadius", 200);
 		FrameBuffer normalBuffer = framebufferManager.getFrameBuffer(G.NORMAL_FBO);
 		bindShaderToTexture("u_texture2", 1, normalBuffer.getColorBufferTexture());
 		Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
