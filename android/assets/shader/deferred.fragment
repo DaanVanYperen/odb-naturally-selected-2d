@@ -10,25 +10,38 @@ uniform float iGlobalTime;
 uniform float lightX;
 uniform float lightY;
 uniform float lightZ;
+//uniform float lightR;
+//uniform float lightG;
+//uniform float lightB;
+uniform float lightRadius;
 uniform float screenWidth;
 uniform float screenHeight;
 uniform sampler2D u_texture;
 uniform sampler2D u_texture2;
 void main()
 {
-    vec4 image    = texture2D( u_texture, v_texCoords.xy );
+    vec3 image    = texture2D( u_texture, v_texCoords.xy ).rgb;
     vec3 position = vec3( screenWidth * v_texCoords.x, screenHeight - screenHeight * v_texCoords.y, 0 );
-    vec4 normal   = texture2D( u_texture2, v_texCoords.xy ) * 2.0f - 1.0f;
+    vec3 normal   = normalize(texture2D( u_texture2, v_texCoords.xy ).rgb * 2.0 - 1.0);
 
     vec3 light          = vec3(lightX, lightY, lightZ);
-    vec3 lightDir       = normalize(light - position);
+    vec3 lightVector    = light - position;
+    vec3 lightDir       = normalize(lightVector);
 
-    normal.a = 0;
-    normal   = normalize(normal);
+    vec3 cameraPos        = vec3( screenWidth * 0.5, screenHeight * 0.5, 100);
+    vec3 eyeDir           = vec3( position - cameraPos );
 
-    vec3 eyeDir      = vec3(0,0,1.0);
-    vec3 vHalfVector = normalize(lightDir+eyeDir);
+    float diffuseStrength = max(0,dot(normal,lightDir));
+    vec3 diffuseLight     = diffuseStrength * image;
 
-    gl_FragColor = max(dot(normal,lightDir),0) * image +
-                   pow(max(dot(normal,vHalfVector),0.0), 100) * 1.5;
+    vec3 reflectionVector   = normalize(reflect(-lightDir, normal));
+    float specularPower     = 0.1;
+    float specularIntensity = 0.5;
+    float specularLight     = specularIntensity * pow( clamp(dot(reflectionVector, eyeDir),0.0,1.0), specularPower);
+
+    float attenuation     = clamp(1.0 - (length(lightVector) / lightRadius), 0.0, 1.0);
+    float lightIntensity  = 1.0;
+
+    gl_FragColor =
+          attenuation * lightIntensity * vec4(diffuseLight.rgb,specularLight);
 }
