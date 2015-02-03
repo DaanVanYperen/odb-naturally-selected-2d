@@ -41,24 +41,28 @@ public class LightRenderSystem extends VoidEntitySystem {
 
 		age += world.delta;
 
+		renderLight(Gdx.input.getX() / 2f, Gdx.graphics.getHeight() * CameraSystem.ZOOM - (Gdx.input.getY() / 2f), 10);
+		renderLight(Gdx.graphics.getWidth() * CameraSystem.ZOOM - Gdx.input.getX() / 2f, (Gdx.input.getY() / 2f), 100);
+
+	}
+
+	private void renderLight(float lightX, float lightY, float lightZ ) {
 		batch.setProjectionMatrix(cameraSystem.guiCamera.combined);
 		batch.begin();
 		//deferredShader.setUniformf("iGlobalTime", age);
-		deferredShader.setUniformf("lightX", Gdx.input.getX() / 2f);
-		deferredShader.setUniformf("lightY", Gdx.graphics.getHeight() * CameraSystem.ZOOM - (Gdx.input.getY() / 2f) );
+		deferredShader.setUniformf("lightX", lightX);
+		deferredShader.setUniformf("lightY", lightY);
+		deferredShader.setUniformf("lightZ", lightZ);
 		deferredShader.setUniformf("screenWidth", Gdx.graphics.getWidth() * CameraSystem.ZOOM);
 		deferredShader.setUniformf("screenHeight", Gdx.graphics.getHeight() * CameraSystem.ZOOM);
-
 		FrameBuffer normalBuffer = framebufferManager.getFrameBuffer(G.NORMAL_FBO);
 		bindShaderToTexture("u_texture2", 1, normalBuffer.getColorBufferTexture());
-
 		Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
-
+		batch.setBlendFunction(GL20.GL_ONE, GL20.GL_ONE);
 		batch.setColor(1f, 1f, 1f, 1f);
 		FrameBuffer diffuseBuffer = framebufferManager.getFrameBuffer(G.DIFFUSE_FBO);
 		batch.draw(diffuseBuffer.getColorBufferTexture(), 0, (int) (Gdx.graphics.getHeight() * CameraSystem.ZOOM), (int) (Gdx.graphics.getWidth() * CameraSystem.ZOOM), -(int) (Gdx.graphics.getHeight() * CameraSystem.ZOOM));
 		batch.end();
-
 	}
 
 	private void bindShaderToTexture(String parameter, int value, Texture texture) {

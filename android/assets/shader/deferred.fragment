@@ -9,6 +9,7 @@ varying vec2 v_texCoords;
 uniform float iGlobalTime;
 uniform float lightX;
 uniform float lightY;
+uniform float lightZ;
 uniform float screenWidth;
 uniform float screenHeight;
 uniform sampler2D u_texture;
@@ -19,8 +20,8 @@ void main()
     vec3 position = vec3( screenWidth * v_texCoords.x, screenHeight * v_texCoords.y, 0 );
     vec4 normal = texture2D( u_texture2, v_texCoords.xy );
 
-    vec3 light = vec3(lightX, lightY, 10);
-    vec3 cameraPosition = vec3( screenWidth, screenHeight, 0);
+    vec3 light = vec3(lightX, lightY, lightZ);
+    vec3 cameraPosition = position;
     vec3 lightDir = light - position.xyz;
 
     normal = normalize(normal);
