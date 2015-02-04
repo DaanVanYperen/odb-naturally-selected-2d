@@ -13,7 +13,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import net.mostlyoriginal.ns2d.G;
 import net.mostlyoriginal.ns2d.component.Bounds;
-import net.mostlyoriginal.ns2d.component.Harvester;
+import net.mostlyoriginal.ns2d.component.Light;
 import net.mostlyoriginal.ns2d.component.Pos;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
@@ -34,10 +34,11 @@ public class LightRenderSystem extends EntityProcessingSystem {
 	private float age;
 
 	protected ComponentMapper<Pos> mPos;
+	protected ComponentMapper<Light> mLight;
 	protected ComponentMapper<Bounds> mBounds;
 
 	public LightRenderSystem() {
-		super(Aspect.getAspectForAll(Pos.class, Harvester.class));
+		super(Aspect.getAspectForAll(Pos.class, Light.class));
 	}
 
 	@Override
@@ -49,7 +50,7 @@ public class LightRenderSystem extends EntityProcessingSystem {
 //		this.batch = new SpriteBatch(100, deferredShader);
 	}
 
-	private void renderLight(float lightX, float lightY, float lightZ, float lightR, float lightG, float lightB, int lightRadius, float lightIntensity) {
+	private void renderLight(float lightX, float lightY, float lightZ, float lightR, float lightG, float lightB, float lightRadius, float lightIntensity) {
 
 		deferredShader.setUniformMatrix("u_projTrans", cameraSystem.guiCamera.combined);
 
@@ -95,7 +96,7 @@ public class LightRenderSystem extends EntityProcessingSystem {
 		Gdx.gl.glDepthMask(false);
 
 		deferredShader.begin();
-		renderLight(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY(), 40, 60 / 255F, 110 / 255F, 22 / 255F, 100,10);
+		//renderLight(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY(), 40, 60 / 255F, 110 / 255F, 22 / 255F, 100,10);
 	}
 
 	@Override
@@ -114,8 +115,10 @@ public class LightRenderSystem extends EntityProcessingSystem {
 		Pos pos = mPos.get(e);
 		Bounds bounds = mBounds.get(e);
 
+		Light light = mLight.get(e);
+
 		Vector3 project = cameraSystem.camera.project(tmpVector.set(pos.x +(bounds != null ? bounds.cx() : 0) , pos.y +(bounds != null ? bounds.cy() : 0), 0));
-		renderLight(project.x, project.y , 60f, 1.0f, 1.0f, 1.0f, 80, 1);
+		renderLight(project.x, project.y , light.z, light.color.r, light.color.g, light.color.b, light.radius, light.intensity);
 
 	}
 
