@@ -95,7 +95,7 @@ public class LightRenderSystem extends EntityProcessingSystem {
 		Gdx.gl.glDepthMask(false);
 
 		deferredShader.begin();
-		renderLight(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY(), 40, 60 / 255F, 110 / 255F, 22 / 255F, 1000,10);
+		renderLight(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY(), 40, 60 / 255F, 110 / 255F, 22 / 255F, 100,10);
 	}
 
 	@Override
@@ -115,7 +115,7 @@ public class LightRenderSystem extends EntityProcessingSystem {
 		Bounds bounds = mBounds.get(e);
 
 		Vector3 project = cameraSystem.camera.project(tmpVector.set(pos.x +(bounds != null ? bounds.cx() : 0) , pos.y +(bounds != null ? bounds.cy() : 0), 0));
-		renderLight(project.x, project.y , 30, 1.0f, 1.0f, 1.0f, 80,1);
+		renderLight(project.x, project.y , 60f, 1.0f, 1.0f, 1.0f, 80, 1);
 
 	}
 
