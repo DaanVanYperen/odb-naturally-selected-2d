@@ -20,7 +20,7 @@ public class FramebufferManager extends PassiveSystem {
 		FrameBuffer result = frameBuffers.get(index);
 		if ( result == null )
 		{
-			result = new FrameBuffer(Pixmap.Format.RGBA8888, (int)(Gdx.graphics.getWidth() * CameraSystem.ZOOM), (int)(Gdx.graphics.getHeight() *  CameraSystem.ZOOM), false);
+			result = new FrameBuffer(Pixmap.Format.RGBA8888, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
 			result.getColorBufferTexture().setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
 			frameBuffers.set(index, result);
 		}
