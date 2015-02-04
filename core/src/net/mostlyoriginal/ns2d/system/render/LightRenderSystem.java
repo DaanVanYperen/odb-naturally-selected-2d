@@ -6,9 +6,7 @@ import com.artemis.Entity;
 import com.artemis.annotations.Wire;
 import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.Vector3;
@@ -28,7 +26,7 @@ public class LightRenderSystem extends EntityProcessingSystem {
 
 	private FramebufferManager framebufferManager;
 
-	private SpriteBatch batch;
+//	private SpriteBatch batch;
 	private CameraSystem cameraSystem;
 	private ShaderProgram deferredShader;
 	private AssetSystem assetSystem;
@@ -47,11 +45,13 @@ public class LightRenderSystem extends EntityProcessingSystem {
 
 		deferredShader = new ShaderProgram(Gdx.files.internal("shader/deferred.vertex"), Gdx.files.internal("shader/deferred.fragment"));
 		if ( !deferredShader.isCompiled() ) throw new RuntimeException("Compilation failed." + deferredShader.getLog());
-		this.batch = new SpriteBatch(100, deferredShader);
+//		this.batch = new SpriteBatch(100, deferredShader);
 	}
 
 	private void renderLight(float lightX, float lightY, float lightZ, float lightR, float lightG, float lightB, int lightRadius, float lightIntensity) {
-		//deferredShader.setUniformf("iGlobalTime", age);
+
+		deferredShader.setUniformMatrix("u_projTrans", cameraSystem.guiCamera.combined);
+
 		deferredShader.setUniformf("lightX", lightX);
 		deferredShader.setUniformf("lightY", lightY);
 		deferredShader.setUniformf("lightZ", lightZ);
@@ -62,14 +62,14 @@ public class LightRenderSystem extends EntityProcessingSystem {
 		deferredShader.setUniformf("screenHeight", Gdx.graphics.getHeight());
 		deferredShader.setUniformf("lightIntensity", lightIntensity);
 		deferredShader.setUniformf("lightRadius", lightRadius);
-		FrameBuffer normalBuffer = framebufferManager.getFrameBuffer(G.NORMAL_FBO);
+
+		FrameBuffer normalBuffer  = framebufferManager.getFrameBuffer(G.NORMAL_FBO);
 		bindShaderToTexture("u_texture2", 1, normalBuffer.getColorBufferTexture());
-		Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
-		batch.setBlendFunction(GL20.GL_ONE, GL20.GL_ONE);
-		batch.setColor(1f, 1f, 1f, 1f);
+
 		FrameBuffer diffuseBuffer = framebufferManager.getFrameBuffer(G.DIFFUSE_FBO);
-		batch.draw(diffuseBuffer.getColorBufferTexture(), 0, Gdx.graphics.getHeight(), Gdx.graphics.getWidth(), - (Gdx.graphics.getHeight()));
-		batch.flush();
+		bindShaderToTexture("u_texture", 0, diffuseBuffer.getColorBufferTexture());
+
+		draw(0,Gdx.graphics.getHeight(),Gdx.graphics.getWidth(),-Gdx.graphics.getHeight());
 	}
 
 	private void bindShaderToTexture(String parameter, int value, Texture texture) {
@@ -81,15 +81,20 @@ public class LightRenderSystem extends EntityProcessingSystem {
 	protected void begin() {
 		age += world.delta;
 
-		batch.setProjectionMatrix(cameraSystem.guiCamera.combined);
-		batch.begin();
-		renderLight(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY(), 40, 60 / 255F, 110 / 255F, 22 / 255F, 100,10);
-		//renderLight(Gdx.graphics.getWidth() - Gdx.input.getX() / 2f, Gdx.graphics.getHeight() - (Gdx.input.getY() / 2f), 100, 155 / 255f, 255 / 255f, 210 / 255f, 100);
+		Gdx.gl.glEnable(GL20.GL_BLEND);
+		Gdx.gl.glBlendFunc(GL20.GL_ONE, GL20.GL_ONE);
+		Gdx.gl.glDepthMask(false);
+
+		deferredShader.begin();
+		renderLight(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY(), 40, 60 / 255F, 110 / 255F, 22 / 255F, 1000,10);
 	}
 
 	@Override
 	protected void end() {
-		batch.end();
+		deferredShader.end();
+
+		Gdx.gl.glDisable(GL20.GL_BLEND);
+		Gdx.gl.glDepthMask(true);
 	}
 
 	Vector3 tmpVector = new Vector3();
@@ -104,4 +109,55 @@ public class LightRenderSystem extends EntityProcessingSystem {
 		renderLight(project.x, project.y , 30, 1.0f, 1.0f, 1.0f, 80,1);
 
 	}
+
+	float[] vertices;
+	private Mesh mesh;
+
+	public void draw (float x, float y, float width, float height) {
+
+		if ( mesh == null )
+		{
+			mesh = new Mesh(Mesh.VertexDataType.VertexArray, false, 4, 6,
+					new VertexAttribute(VertexAttributes.Usage.Position, 2, "a_position"),
+					new VertexAttribute(VertexAttributes.Usage.TextureCoordinates, 2, "a_texCoord0"));
+			mesh.setIndices(new short[] { 0, (short)1, (short)2, (short)2, (short)3, 0 });
+			vertices = new float[16];
+		}
+
+		int idx=0;
+
+		final float fx2 = x + width;
+		final float fy2 = y + height;
+		final float u = 0;
+		final float v = 1;
+		final float u2 = 1;
+		final float v2 = 0;
+
+		vertices[idx++] = x;
+		vertices[idx++] = y;
+		vertices[idx++] = u;
+		vertices[idx++] = v;
+
+		vertices[idx++] = x;
+		vertices[idx++] = fy2;
+		vertices[idx++] = u;
+		vertices[idx++] = v2;
+
+		vertices[idx++] = fx2;
+		vertices[idx++] = fy2;
+		vertices[idx++] = u2;
+		vertices[idx++] = v2;
+
+		vertices[idx++] = fx2;
+		vertices[idx++] = y;
+		vertices[idx++] = u2;
+		vertices[idx++] = v;
+
+		mesh.setVertices(vertices, 0, idx);
+		mesh.getIndicesBuffer().position(0);
+		mesh.getIndicesBuffer().limit(6);
+
+		mesh.render(deferredShader, GL20.GL_TRIANGLES, 0, 6);
+	}
+
 }
