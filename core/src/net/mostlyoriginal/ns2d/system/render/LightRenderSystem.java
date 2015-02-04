@@ -56,8 +56,8 @@ public class LightRenderSystem extends EntityProcessingSystem {
 		deferredShader.setUniformf("lightR", lightR);
 		deferredShader.setUniformf("lightG", lightG);
 		deferredShader.setUniformf("lightB", lightB);
-		deferredShader.setUniformf("screenWidth", Gdx.graphics.getWidth() * CameraSystem.ZOOM);
-		deferredShader.setUniformf("screenHeight", Gdx.graphics.getHeight() * CameraSystem.ZOOM);
+		deferredShader.setUniformf("screenWidth", Gdx.graphics.getWidth());
+		deferredShader.setUniformf("screenHeight", Gdx.graphics.getHeight());
 		//deferredShader.setUniformf("lightStrength", 100);
 		deferredShader.setUniformf("lightRadius", lightRadius);
 		FrameBuffer normalBuffer = framebufferManager.getFrameBuffer(G.NORMAL_FBO);
@@ -81,8 +81,8 @@ public class LightRenderSystem extends EntityProcessingSystem {
 
 		batch.setProjectionMatrix(cameraSystem.guiCamera.combined);
 		batch.begin();
-		renderLight(Gdx.input.getX() / 2f, (Gdx.input.getY() / 2f), 40, 60 / 255F, 110 / 255F, 22 / 255F, 100);
-		renderLight(Gdx.graphics.getWidth() - Gdx.input.getX() / 2f, Gdx.graphics.getHeight() - (Gdx.input.getY() / 2f), 100, 155 / 255f, 255 / 255f, 210 / 255f, 100);
+		renderLight(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY(), 40, 60 / 255F, 110 / 255F, 22 / 255F, 100);
+		//renderLight(Gdx.graphics.getWidth() - Gdx.input.getX() / 2f, Gdx.graphics.getHeight() - (Gdx.input.getY() / 2f), 100, 155 / 255f, 255 / 255f, 210 / 255f, 100);
 
 		renderLight(0, 0, 20, 1.0f, 1.0f, 1.0f, 80);
 	}
