@@ -9,6 +9,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import net.mostlyoriginal.ns2d.G;
 import net.mostlyoriginal.ns2d.component.Bounds;
@@ -58,8 +59,12 @@ public class LightRenderSystem extends EntityProcessingSystem {
 		deferredShader.setUniformf("lightR", lightR);
 		deferredShader.setUniformf("lightG", lightG);
 		deferredShader.setUniformf("lightB", lightB);
-		deferredShader.setUniformf("screenWidth", Gdx.graphics.getWidth());
-		deferredShader.setUniformf("screenHeight", Gdx.graphics.getHeight());
+
+		int width = Gdx.graphics.getWidth();
+		int height = Gdx.graphics.getHeight();
+
+		deferredShader.setUniformf("screenWidth", width);
+		deferredShader.setUniformf("screenHeight", height);
 		deferredShader.setUniformf("lightIntensity", lightIntensity);
 		deferredShader.setUniformf("lightRadius", lightRadius);
 
@@ -69,7 +74,11 @@ public class LightRenderSystem extends EntityProcessingSystem {
 		FrameBuffer diffuseBuffer = framebufferManager.getFrameBuffer(G.DIFFUSE_FBO);
 		bindShaderToTexture("u_texture", 0, diffuseBuffer.getColorBufferTexture());
 
-		draw(0,Gdx.graphics.getHeight(),Gdx.graphics.getWidth(),-Gdx.graphics.getHeight());
+		draw(
+				MathUtils.clamp(0,lightX - lightRadius,width),
+				MathUtils.clamp(0,lightY - lightRadius,height),
+				MathUtils.clamp(0,lightX + lightRadius,width),
+				MathUtils.clamp(0,lightY + lightRadius,height));
 	}
 
 	private void bindShaderToTexture(String parameter, int value, Texture texture) {
@@ -128,10 +137,15 @@ public class LightRenderSystem extends EntityProcessingSystem {
 
 		final float fx2 = x + width;
 		final float fy2 = y + height;
-		final float u = 0;
-		final float v = 1;
-		final float u2 = 1;
-		final float v2 = 0;
+//		final float u = x/width;
+//		final float v = height/(float)Gdx.graphics.getHeight();
+//		final float u2 = width/(float)Gdx.graphics.getWidth();
+//		final float v2 = y/height;
+		final float u = x/(float)Gdx.graphics.getWidth();
+		final float u2 = (x+width)/(float)Gdx.graphics.getWidth();
+
+		final float v = y/(float)Gdx.graphics.getHeight();
+		final float v2 = (y+height)/(float)Gdx.graphics.getHeight();
 
 		vertices[idx++] = x;
 		vertices[idx++] = y;
