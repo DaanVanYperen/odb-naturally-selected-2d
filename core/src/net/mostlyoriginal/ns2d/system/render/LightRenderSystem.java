@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.Vector3;
 import net.mostlyoriginal.ns2d.G;
+import net.mostlyoriginal.ns2d.component.Bounds;
 import net.mostlyoriginal.ns2d.component.Harvester;
 import net.mostlyoriginal.ns2d.component.Pos;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
@@ -34,6 +35,7 @@ public class LightRenderSystem extends EntityProcessingSystem {
 	private float age;
 
 	protected ComponentMapper<Pos> mPos;
+	protected ComponentMapper<Bounds> mBounds;
 
 	public LightRenderSystem() {
 		super(Aspect.getAspectForAll(Pos.class, Harvester.class));
@@ -48,7 +50,7 @@ public class LightRenderSystem extends EntityProcessingSystem {
 		this.batch = new SpriteBatch(100, deferredShader);
 	}
 
-	private void renderLight(float lightX, float lightY, float lightZ, float lightR, float lightG, float lightB, int lightRadius) {
+	private void renderLight(float lightX, float lightY, float lightZ, float lightR, float lightG, float lightB, int lightRadius, float lightIntensity) {
 		//deferredShader.setUniformf("iGlobalTime", age);
 		deferredShader.setUniformf("lightX", lightX);
 		deferredShader.setUniformf("lightY", lightY);
@@ -58,7 +60,7 @@ public class LightRenderSystem extends EntityProcessingSystem {
 		deferredShader.setUniformf("lightB", lightB);
 		deferredShader.setUniformf("screenWidth", Gdx.graphics.getWidth());
 		deferredShader.setUniformf("screenHeight", Gdx.graphics.getHeight());
-		//deferredShader.setUniformf("lightStrength", 100);
+		deferredShader.setUniformf("lightIntensity", lightIntensity);
 		deferredShader.setUniformf("lightRadius", lightRadius);
 		FrameBuffer normalBuffer = framebufferManager.getFrameBuffer(G.NORMAL_FBO);
 		bindShaderToTexture("u_texture2", 1, normalBuffer.getColorBufferTexture());
@@ -81,10 +83,8 @@ public class LightRenderSystem extends EntityProcessingSystem {
 
 		batch.setProjectionMatrix(cameraSystem.guiCamera.combined);
 		batch.begin();
-		renderLight(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY(), 40, 60 / 255F, 110 / 255F, 22 / 255F, 100);
+		renderLight(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY(), 40, 60 / 255F, 110 / 255F, 22 / 255F, 100,10);
 		//renderLight(Gdx.graphics.getWidth() - Gdx.input.getX() / 2f, Gdx.graphics.getHeight() - (Gdx.input.getY() / 2f), 100, 155 / 255f, 255 / 255f, 210 / 255f, 100);
-
-		renderLight(0, 0, 20, 1.0f, 1.0f, 1.0f, 80);
 	}
 
 	@Override
@@ -98,9 +98,10 @@ public class LightRenderSystem extends EntityProcessingSystem {
 	protected void process(Entity e) {
 
 		Pos pos = mPos.get(e);
+		Bounds bounds = mBounds.get(e);
 
-		Vector3 project = cameraSystem.camera.project(tmpVector.set(pos.x, pos.y, 0));
-		renderLight(project.x, Gdx.graphics.getHeight() * CameraSystem.ZOOM - project.y , 30, 1.0f, 1.0f, 1.0f, 80);
+		Vector3 project = cameraSystem.camera.project(tmpVector.set(pos.x +(bounds != null ? bounds.cx() : 0) , pos.y +(bounds != null ? bounds.cy() : 0), 0));
+		renderLight(project.x, project.y , 30, 1.0f, 1.0f, 1.0f, 80,1);
 
 	}
 }
