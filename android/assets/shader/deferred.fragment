@@ -32,7 +32,7 @@ void main()
     vec3 eyeDir           = vec3( position - cameraPos );
 
     float diffuseStrength = max(0,dot(normal,lightDir));
-    vec3 diffuseLight     = diffuseStrength * image;
+    vec3 diffuseLight     = diffuseStrength * vec3(1,0,0) * image;
 
     vec3 reflectionVector   = normalize(reflect(-lightDir, normal));
     float specularPower     = 0.1;
