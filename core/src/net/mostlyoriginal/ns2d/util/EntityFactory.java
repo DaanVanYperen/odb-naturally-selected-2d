@@ -3,6 +3,7 @@ package net.mostlyoriginal.ns2d.util;
 import com.artemis.Entity;
 import com.artemis.EntityEdit;
 import com.artemis.World;
+import com.badlogic.gdx.graphics.Color;
 import net.mostlyoriginal.api.component.graphics.Renderable;
 import net.mostlyoriginal.ns2d.G;
 import net.mostlyoriginal.ns2d.component.*;
@@ -27,6 +28,7 @@ public class EntityFactory {
         Entity player = newPositioned(world, x, y)
                 .add(new Anim("player-idle"))
 		        .add(new Renderable(Anim.Layer.PLAYER))
+		        .add(new Light(Color.WHITE, 20, 80, 1 ))
                 .add(new Physics())
                 .add(new Health(10))
                 .add(new RespawnOnDeath())
@@ -201,6 +203,7 @@ public class EntityFactory {
         return newPositioned(world, x, y)
                 .add(new Anim("bullet"))
 		        .add(new Renderable(Anim.Layer.BULLETS))
+		        .add(new Light(Color.YELLOW, 40, 60, 2f))
                 .add(physics)
                 .add(new Gravity(-4f))
                 .add(new Bounds(7, 4)).getEntity();
@@ -208,7 +211,8 @@ public class EntityFactory {
 
     public static Entity createMouseCursor(World world, float x, float y) {
         return newPositioned(world, x, y)
-                .add(new MouseCursor()).getEntity();
+                .add(new MouseCursor())
+		        .add(new Light(Color.WHITE, 20, 160, 0.5f)).getEntity();
     }
 
     public static Entity createResourceTower(World world, float x, float y) {
@@ -218,6 +222,7 @@ public class EntityFactory {
                 .add(new Bounds(16 * 3, 16 * 3))
                 .add(new Harvester())
                 .add(resourceDispenserWeapon(5, 2, 3))
+		        .add(newMachineDisabledLight())
                 .add(new Attached(structureSocket))
                 .add(new HealthIndicator())
                 .add(new Buildable("resourcetower", "resourcetower-unbuilt", COST_RESOURCETOWER))
@@ -226,7 +231,15 @@ public class EntityFactory {
 		        .getEntity();
     }
 
-    private static Weapon resourceDispenserWeapon( float cooldown, int min, int max ) {
+	public static Light newMachineDisabledLight() {
+		return new Light(Color.MAROON, 40, 240, 1f);
+	}
+
+	public static Light newMachineBuiltLight(float intensity) {
+		return new Light(Color.WHITE, 35, 280, intensity);
+	}
+
+	private static Weapon resourceDispenserWeapon( float cooldown, int min, int max ) {
         Weapon weapon = new Weapon();
         weapon.cooldown = weapon.fireCooldown = cooldown;
         weapon.aimRotation = 90;
@@ -260,7 +273,8 @@ public class EntityFactory {
                 .add(new Bounds(64, 64))
                 .add(health)
                 .add(buildable)
-                .add(resourceDispenserWeapon(12, 1, 1))
+		        .add(new Light(Color.PINK, 35, 280, 0.4f))
+		        .add(resourceDispenserWeapon(12, 1, 1))
                 .add(new Critical())
                 .add(new Attached(structureSocket))
                 .add(new HealthIndicator())
@@ -275,6 +289,7 @@ public class EntityFactory {
         buildable.built = true;
         return newPositioned(world, x, y)
                 .add(new Bounds(16, 16))
+		        .add(new Light(Color.GREEN, 30, 80, 1f))
                 .add(new Attached(structureSocket))
                 .add(buildable)
 		        .add(new Renderable(Anim.Layer.DIRECTLY_BEHIND_PLAYER))
@@ -308,6 +323,7 @@ public class EntityFactory {
                 .add(new HealthIndicator())
                 .add(new Attached(structureSocket))
                 .add(weapon)
+		        .add(newMachineDisabledLight())
                 .add(new Buildable("armory", "armory-unbuilt", COST_ARMORY))
 		        .add(new Renderable(Anim.Layer.DIRECTLY_BEHIND_PLAYER))
 		        .add(new Anim("armory-unbuilt"))

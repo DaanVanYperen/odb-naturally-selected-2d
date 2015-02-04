@@ -3,6 +3,7 @@ package net.mostlyoriginal.ns2d.system.active;
 import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
@@ -123,6 +124,7 @@ public class ParticleSystem extends PassiveSystem {
 		        .edit()
                 .add(new Terminal(animation.getAnimationDuration(), 0.1f))
                 .add(physics)
+		        .add(new Light(Color.RED, 30, 80, 1f))
                 .add(new Bounds(frame)).getEntity();
 	    mRenderable.get(entity).layer = Anim.Layer.DIRECTLY_BEHIND_PLAYER;
     }

@@ -14,6 +14,7 @@ import net.mostlyoriginal.ns2d.component.*;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CollisionSystem;
 import net.mostlyoriginal.ns2d.system.render.DialogRenderSystem;
+import net.mostlyoriginal.ns2d.util.EntityFactory;
 
 /**
  * @author Daan van Yperen
@@ -37,7 +38,7 @@ public class BuildableSystem extends EntityProcessingSystem {
     private CombatSystem combatSystem;
     private AssetSystem assetSystem;
 
-    public BuildableSystem()
+	public BuildableSystem()
     {
         super(Aspect.getAspectForAll(Buildable.class,Pos.class,Bounds.class));
     }
@@ -74,6 +75,8 @@ public class BuildableSystem extends EntityProcessingSystem {
                 Wallet wallet = wm.get(player);
                 if (wallet.resources >= buildable.resourceCost)
                 {
+	                e.edit().add(EntityFactory.newMachineBuiltLight(2f));
+	                
                     wallet.resources -= buildable.resourceCost;
                     assetSystem.playSfx("ns2d_sfx_construct", e);
                     buildable.built = true;
@@ -95,6 +98,8 @@ public class BuildableSystem extends EntityProcessingSystem {
         if ( buildable.built )
         {
             dialogRenderSystem.randomSay(DialogRenderSystem.BUILDING_DESTROYED_MESSAGES);
+
+	        victim.edit().add(EntityFactory.newMachineDisabledLight());
 
             Pos pos = pm.get(victim);
             Bounds bounds = om.get(victim);
