@@ -60,10 +60,8 @@
     <orderEntry type="library" exported="" name="Gradle: net.onedaybeard.artemis:artemis-odb:0.8.2-SNAPSHOT:sources" level="project" />
     <orderEntry type="library" exported="" name="Gradle: net.onedaybeard.artemis:artemis-odb:0.8.2-SNAPSHOT" level="project" />
     <orderEntry type="library" exported="" name="Gradle: net.mostlyoriginal.artemis-odb:contrib-core:0.8.1-SNAPSHOT:sources" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: net.mostlyoriginal.artemis-odb:contrib-components:0.8.1-SNAPSHOT:sources" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: net.mostlyoriginal.artemis-odb:contrib-components-libgdx:0.8.1-SNAPSHOT:sources" level="project" />
     <orderEntry type="library" exported="" name="Gradle: net.mostlyoriginal.artemis-odb:contrib-eventbus:0.8.1-SNAPSHOT:sources" level="project" />
     <orderEntry type="library" exported="" name="Gradle: net.mostlyoriginal.artemis-odb:contrib-core:0.8.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: net.mostlyoriginal.artemis-odb:contrib-components:0.8.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: net.mostlyoriginal.artemis-odb:contrib-jam:0.8.1-SNAPSHOT:sources" level="project" />
   </component>
 </module>

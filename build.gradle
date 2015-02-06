@@ -42,8 +42,7 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
 
         compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion:sources"
-        compile "net.mostlyoriginal.artemis-odb:contrib-components:$artemisContribVersion:sources"
-        compile "net.mostlyoriginal.artemis-odb:contrib-components-libgdx:$artemisContribVersion:sources"
+        compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion:sources"
         compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion:sources"
     }
 }
@@ -76,8 +75,7 @@ project(":gwt") {
         compile "net.onedaybeard.artemis:artemis-odb:$artemisVersion:sources"
 
         compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion:sources"
-        compile "net.mostlyoriginal.artemis-odb:contrib-components:$artemisContribVersion:sources"
-        compile "net.mostlyoriginal.artemis-odb:contrib-components-libgdx:$artemisContribVersion:sources"
+        compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion:sources"
         compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion:sources"
     }
 }

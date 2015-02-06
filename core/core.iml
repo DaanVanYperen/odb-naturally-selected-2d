@@ -18,8 +18,6 @@
     <orderEntry type="library" exported="" name="Gradle: net.onedaybeard.artemis:artemis-odb:0.8.2-SNAPSHOT" level="project" />
     <orderEntry type="library" exported="" name="Gradle: net.onedaybeard.artemis:artemis-odb:0.8.2-SNAPSHOT:sources" level="project" />
     <orderEntry type="library" exported="" name="Gradle: net.mostlyoriginal.artemis-odb:contrib-core:0.8.1-SNAPSHOT:sources" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: net.mostlyoriginal.artemis-odb:contrib-components:0.8.1-SNAPSHOT:sources" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: net.mostlyoriginal.artemis-odb:contrib-components-libgdx:0.8.1-SNAPSHOT:sources" level="project" />
     <orderEntry type="library" exported="" name="Gradle: net.mostlyoriginal.artemis-odb:contrib-eventbus:0.8.1-SNAPSHOT:sources" level="project" />
     <orderEntry type="library" exported="" name="Gradle: net.mostlyoriginal.artemis-odb:contrib-core:0.8.1-SNAPSHOT" level="project" />
     <orderEntry type="library" exported="" name="Gradle: javax.validation:validation-api:1.0.0.GA:sources" level="project" />
@@ -27,6 +25,6 @@
     <orderEntry type="library" exported="" name="Gradle: org.json:json:20090211" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.google.gwt:gwt-user:2.6.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.badlogicgames.gdx:gdx-backend-gwt:1.5.0" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: net.mostlyoriginal.artemis-odb:contrib-components:0.8.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: net.mostlyoriginal.artemis-odb:contrib-jam:0.8.1-SNAPSHOT:sources" level="project" />
   </component>
 </module>
