@@ -2,6 +2,7 @@
 /gwt/war
 */build
 */out
+.gradle
 
 *.iml
 *.ipr
