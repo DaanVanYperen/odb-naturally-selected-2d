@@ -2,15 +2,14 @@ apply plugin: "java"
 
 sourceCompatibility = 1.7
 sourceSets.main.java.srcDirs = [ "src/" ]
+sourceSets.main.resources.srcDirs = [ "../android/assets/" ]
 
 project.ext.mainClassName = "net.mostlyoriginal.ns2d.desktop.DesktopLauncher"
-project.ext.assetsDir = new File("../android/assets");
 
 task run(dependsOn: classes, type: JavaExec) {
     main = project.mainClassName
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in
-    workingDir = project.assetsDir
     ignoreExitValue = true
 }
 
@@ -18,15 +17,13 @@ task dist(type: Jar) {
     from files(sourceSets.main.output.classesDir)
     from files(sourceSets.main.output.resourcesDir)
     from {configurations.compile.collect {zipTree(it)}}
-    from files(project.assetsDir);
- 
+
     manifest {
         attributes 'Main-Class': project.mainClassName
     }
 }
 
 dist.dependsOn classes
-
 
 eclipse.project {
     name = appName + "-desktop"

@@ -1,5 +1,7 @@
 package net.mostlyoriginal.ns2d.system.passive;
 
+import java.util.HashMap;
+
 import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
@@ -9,14 +11,14 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.BitmapFont.BitmapFontData;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
-import net.mostlyoriginal.ns2d.api.PassiveSystem;
+
+import net.mostlyoriginal.api.system.core.PassiveSystem;
 import net.mostlyoriginal.ns2d.component.Pos;
 import net.mostlyoriginal.ns2d.system.active.ParticleSystem;
 import net.mostlyoriginal.ns2d.util.EntityUtil;
-
-import java.util.HashMap;
 
 /**
  * @author Daan van Yperen
@@ -73,11 +75,11 @@ public class AssetSystem extends PassiveSystem {
     }
 
     public AssetSystem() {
-
         font = new BitmapFont(Gdx.files.internal("font/tahoma-10.fnt"), false);
         font.setColor(0, 0, 0, 0.9f);
-        fontLarge = new BitmapFont(Gdx.files.internal("font/tahoma-10.fnt"), false);
-        fontLarge.setScale(3);
+        BitmapFontData fontLargeData = new BitmapFontData(Gdx.files.internal("font/tahoma-10.fnt"), false);
+        fontLargeData.setScale(3f);
+        fontLarge = new BitmapFont(fontLargeData, (TextureRegion) null, true);
         fontLarge.setColor(0, 0, 0, 0.9f);
 
 	    tileset = new Texture("ns2d_tileset.png");

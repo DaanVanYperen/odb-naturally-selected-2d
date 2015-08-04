@@ -33,7 +33,7 @@ public class AnimRenderSystem extends DeferredEntityProcessingSystem {
 	private boolean renderNormals;
 
 	public AnimRenderSystem(EntityProcessPrincipal principal) {
-        super(Aspect.getAspectForAll(Pos.class, Anim.class), principal);
+        super(Aspect.all(Pos.class, Anim.class), principal);
 
         shimmerProgram = new ShaderProgram(Gdx.files.internal("shader/shimmer.vertex"), Gdx.files.internal("shader/shimmer.fragment"));
         if ( !shimmerProgram.isCompiled() ) throw new RuntimeException("Compilation failed." + shimmerProgram.getLog());

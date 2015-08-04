@@ -8,6 +8,8 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;
+
+import net.mostlyoriginal.api.utils.builder.WorldConfigurationBuilder;
 import net.mostlyoriginal.ns2d.system.active.*;
 import net.mostlyoriginal.ns2d.system.collide.BulletCollisionSystem;
 import net.mostlyoriginal.ns2d.system.passive.*;
@@ -17,128 +19,125 @@ import net.mostlyoriginal.ns2d.system.render.*;
  * @author Daan van Yperen
  */
 public class MainScreen implements Screen {
+	OrthographicCamera camera;
 
-    OrthographicCamera camera;
+	public MainScreen() {
+		G.screen = this;
 
-    public MainScreen() {
-        G.screen = this;
+		WorldConfigurationBuilder builder = new WorldConfigurationBuilder();
 
-        G.world = new World();
+		builder.with(new GroupManager());
+		builder.with(new TagManager());
+		builder.with(new FramebufferManager());
 
-        G.world.setManager(new GroupManager());
-        G.world.setManager(new TagManager());
+		// Active - Cleanup
+		builder.with(new TerminalSystem());
+		builder.with(new EntitySpawnerSystem());
+		builder.with(new ScriptSystem());
 
-	    G.world.setSystem(new FramebufferManager());
+		// Passive System, loader helpers.
+		builder.with(new AssetSystem());
+		builder.with(new MapSystem());
+		builder.with(new CameraSystem());
+		builder.with(new CollisionSystem());
+		builder.with(new ParticleSystem());
 
-        // Active - Cleanup
-        G.world.setSystem(new TerminalSystem());
-        G.world.setSystem(new EntitySpawnerSystem());
-        G.world.setSystem(new ScriptSystem());
+		// Active - Input/Logic
+		builder.with(new PlayerControlSystem());
+		builder.with(new SkulkControlSystem());
+		builder.with(new WeaponSystem());
 
-        // Passive System, loader helpers.
-        G.world.setSystem(new AssetSystem());
-        G.world.setSystem(new MapSystem());
-        G.world.setSystem(new CameraSystem());
-        G.world.setSystem(new CollisionSystem());
-        G.world.setSystem(new ParticleSystem());
+		// Active - Interactions
+		builder.with(new BuildableSystem());
+		builder.with(new CombatSystem());
+		builder.with(new HarvesterSystem());
 
-        // Active - Input/Logic
-        G.world.setSystem(new PlayerControlSystem());
-        G.world.setSystem(new SkulkControlSystem());
-        G.world.setSystem(new WeaponSystem());
+		// Active - Physics. Order is important! Alter velocity, then constrain.
+		builder.with(new PhysicsSystem());
+		builder.with(new GravitySystem());
+		builder.with(new HomingSystem());
+		builder.with(new InbetweenSystem());
+		builder.with(new MapCollisionSystem());
+		builder.with(new AfterPhysicsSystem());
 
-        // Active - Interactions
-        G.world.setSystem(new BuildableSystem());
-        G.world.setSystem(new CombatSystem());
-        G.world.setSystem(new HarvesterSystem());
+		// Active - Fixed movement
+		builder.with(new AttachmentSystem());
+		builder.with(new MouseCursorSystem());
+		builder.with(new AimSystem());
 
-        // Active - Physics. Order is important! Alter velocity, then constrain.
-        G.world.setSystem(new PhysicsSystem());
-        G.world.setSystem(new GravitySystem());
-        G.world.setSystem(new HomingSystem());
-        G.world.setSystem(new InbetweenSystem());
-        G.world.setSystem(new MapCollisionSystem());
-        G.world.setSystem(new AfterPhysicsSystem());
+		// Active - Post Movement Calculations.
+		builder.with(new WallSensorSystem());
 
-        // Active - Fixed movement
-        G.world.setSystem(new AttachmentSystem());
-        G.world.setSystem(new MouseCursorSystem());
-        G.world.setSystem(new AimSystem());
+		builder.with(new BulletCollisionSystem());
 
-        // Active - Post Movement Calculations.
-        G.world.setSystem(new WallSensorSystem());
+		// Active - Camera
+		builder.with(new CameraFocusSystem());
+		builder.with(new CameraShakeSystem());
 
-        G.world.setSystem(new BulletCollisionSystem());
+		// Active - Render
+		// G.world.setSystem(new MapRenderSystem());
+		// G.world.setSystem(new CostRenderSystem());
+		// G.world.setSystem(new HealthRenderSystem());
 
-        // Active - Camera
-        G.world.setSystem(new CameraFocusSystem());
-        G.world.setSystem(new CameraShakeSystem());
+		MultipassRenderBatchingSystem multipassRenderBatchingSystem = new MultipassRenderBatchingSystem();
+		builder.with(multipassRenderBatchingSystem);
+		builder.with(new AnimRenderSystem(multipassRenderBatchingSystem));
 
-        // Active - Render
-	    //G.world.setSystem(new MapRenderSystem());
-        //G.world.setSystem(new CostRenderSystem());
-        //G.world.setSystem(new HealthRenderSystem());
+		// G.world.setSystem(new MapRenderSystemInFront());
 
-	    MultipassRenderBatchingSystem multipassRenderBatchingSystem = new MultipassRenderBatchingSystem();
-	    G.world.setSystem(multipassRenderBatchingSystem);
-	    G.world.setSystem(new AnimRenderSystem(multipassRenderBatchingSystem), false);
+		builder.with(new DialogRenderSystem());
+		builder.with(new UIRenderSystem());
+		builder.with(new UIAlertActiveSpawnerSystem());
+		builder.with(new UIAlertBuildableUnderAttack());
 
-        //G.world.setSystem(new MapRenderSystemInFront());
+		builder.with(new UIAlertTechpointUnderAttack());
+		builder.with(new UIStageRenderSystem());
+		builder.with(new UIStopwatchRenderSytem());
 
-        G.world.setSystem(new DialogRenderSystem());
-        G.world.setSystem(new UIRenderSystem());
-        G.world.setSystem(new UIAlertActiveSpawnerSystem());
-        G.world.setSystem(new UIAlertBuildableUnderAttack());
+		builder.with(new LightRenderSystem());
 
-        G.world.setSystem(new UIAlertTechpointUnderAttack());
-        G.world.setSystem(new UIStageRenderSystem());
-        G.world.setSystem(new UIStopwatchRenderSytem());
+		builder.with(new DirectorSystem());
 
-	    G.world.setSystem(new LightRenderSystem());
+		G.world = new World(builder.build());
+	}
 
-        G.world.setSystem(new DirectorSystem());
+	@Override
+	public void render(float delta) {
 
+		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        G.world.initialize();
-    }
+		G.world.setDelta(MathUtils.clamp(delta, 0, 1 / 15f));
+		G.world.process();
+	}
 
-    @Override
-    public void render(float delta) {
+	@Override
+	public void resize(int width, int height) {
 
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-  		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+	}
 
-        G.world.setDelta(MathUtils.clamp(delta,0, 1/15f));
-        G.world.process();
-    }
+	@Override
+	public void show() {
 
-    @Override
-    public void resize(int width, int height) {
+	}
 
-    }
+	@Override
+	public void hide() {
 
-    @Override
-    public void show() {
+	}
 
-    }
+	@Override
+	public void pause() {
 
-    @Override
-    public void hide() {
+	}
 
-    }
+	@Override
+	public void resume() {
 
-    @Override
-    public void pause() {
+	}
 
-    }
+	@Override
+	public void dispose() {
 
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void dispose() {
-
-    }
+	}
 }

@@ -7,7 +7,10 @@ import com.artemis.annotations.Wire;
 import com.artemis.managers.TagManager;
 import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Pools;
+
 import net.mostlyoriginal.ns2d.component.*;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
@@ -38,7 +41,7 @@ public class CostRenderSystem extends EntityProcessingSystem {
     public Entity player;
 
     public CostRenderSystem() {
-        super(Aspect.getAspectForAll(Pos.class, Anim.class, Bounds.class, Buildable.class));
+        super(Aspect.all(Pos.class, Anim.class, Bounds.class, Buildable.class));
     }
 
     @Override
@@ -68,13 +71,16 @@ public class CostRenderSystem extends EntityProcessingSystem {
             boolean affordable = buildable.resourceCost <= walletCash;
             assetSystem.font.setColor(affordable ? HOLO_COLOR : HOLO_COLOR_RED );
             String cost = "" + buildable.resourceCost + "$";
-            assetSystem.font.draw(batch, cost, pos.x + bounds.cx() - assetSystem.font.getBounds(cost).width/2, pos.y +  bounds.y2 + 20);
+            GlyphLayout layout = Pools.obtain(GlyphLayout.class);
+            layout.setText(assetSystem.font, cost);
+            assetSystem.font.draw(batch, cost, pos.x + bounds.cx() - layout.width/2, pos.y +  bounds.y2 + 20);
 
             if ( collisionSystem.overlaps(player, e) && affordable )
             {
                 String msg = "'e' to purchase";
-                assetSystem.font.draw(batch, msg, pos.x + bounds.cx() - assetSystem.font.getBounds(msg).width/2, pos.y +  bounds.y2 + 32);
+                assetSystem.font.draw(batch, msg, pos.x + bounds.cx() - layout.width/2, pos.y +  bounds.y2 + 32);
             }
+            Pools.free(layout);
         }
     }
 }

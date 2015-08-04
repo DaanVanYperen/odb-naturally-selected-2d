@@ -1,16 +1,23 @@
 package net.mostlyoriginal.ns2d.system.render;
 
+import com.artemis.BaseSystem;
 import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
 import com.artemis.managers.TagManager;
-import com.artemis.systems.VoidEntitySystem;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
-import net.mostlyoriginal.ns2d.component.*;
+import com.badlogic.gdx.utils.Pools;
+
+import net.mostlyoriginal.ns2d.component.Anim;
+import net.mostlyoriginal.ns2d.component.Bounds;
+import net.mostlyoriginal.ns2d.component.Buildable;
+import net.mostlyoriginal.ns2d.component.Pos;
+import net.mostlyoriginal.ns2d.component.Wallet;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 
@@ -18,7 +25,7 @@ import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
  * @author Daan van Yperen
  */
 @Wire
-public class DialogRenderSystem extends VoidEntitySystem {
+public class DialogRenderSystem extends BaseSystem {
 
     private ComponentMapper<Pos> pm;
     private ComponentMapper<Anim> sm;
@@ -174,7 +181,9 @@ public class DialogRenderSystem extends VoidEntitySystem {
 
             final int dialogX = (int) pos.x + 8;
             final int dialogY = (int) pos.y + 32;
-            final int middleWidth = (int) assetSystem.font.getBounds(activeMessage).width + 1;
+            GlyphLayout layout = Pools.obtain(GlyphLayout.class);
+            layout.setText(assetSystem.font, activeMessage);
+            final int middleWidth = (int) layout.width + 1;
 
             batch.getColor().a = alpha;
             batch.draw(west, dialogX, dialogY);
@@ -186,7 +195,7 @@ public class DialogRenderSystem extends VoidEntitySystem {
             assetSystem.font.setColor(Color.WHITE);
             assetSystem.font.getColor().a = alpha;
             assetSystem.font.draw(batch, activeMessage, dialogX + 16, dialogY + 32);
-
+            Pools.free(layout);
             batch.end();
         }
     }

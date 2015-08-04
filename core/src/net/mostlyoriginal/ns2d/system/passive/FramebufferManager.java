@@ -5,7 +5,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
-import net.mostlyoriginal.ns2d.api.PassiveSystem;
+
+import net.mostlyoriginal.api.system.core.PassiveSystem;
 
 /**
  * @author Daan van Yperen

@@ -1,5 +1,4 @@
 buildscript {
-
     repositories {
         maven {
             url 'https://github.com/steffenschaefer/gwt-gradle-plugin/raw/maven-repo/'
@@ -16,16 +15,16 @@ buildscript {
     }
 }
 
-allprojects {
+subprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
     
     version = "1.0"
     ext {
         appName = "ns2d"
-        gdxVersion = "1.5.3"
-        artemisVersion = '0.8.2-SNAPSHOT'
-        artemisContribVersion = '0.8.1-SNAPSHOT'
+        gdxVersion = "1.6.4"
+        artemisVersion = '0.10.2'
+        artemisContribVersion = '0.10.2'
     }
 
     repositories {
@@ -41,9 +40,9 @@ project(":core") {
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
 
-        compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion:sources"
-        compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion:sources"
-        compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion:sources"
+        compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion"
+        compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion"
+        compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion"
     }
 }
 
@@ -78,8 +77,4 @@ project(":gwt") {
         compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion:sources"
         compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion:sources"
     }
-}
-
-tasks.eclipse.doLast {
-	delete ".project"
 }

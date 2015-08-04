@@ -3,7 +3,8 @@ package net.mostlyoriginal.ns2d.system.passive;
 import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
-import net.mostlyoriginal.ns2d.api.PassiveSystem;
+
+import net.mostlyoriginal.api.system.core.PassiveSystem;
 import net.mostlyoriginal.ns2d.component.Bounds;
 import net.mostlyoriginal.ns2d.component.Pos;
 

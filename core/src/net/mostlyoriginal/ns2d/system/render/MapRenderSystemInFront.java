@@ -1,11 +1,12 @@
 package net.mostlyoriginal.ns2d.system.render;
 
+import com.artemis.BaseSystem;
 import com.artemis.annotations.Wire;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+
 import net.mostlyoriginal.ns2d.MyMapRendererImpl;
-import net.mostlyoriginal.ns2d.api.PassiveSystem;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 import net.mostlyoriginal.ns2d.system.passive.MapSystem;
@@ -14,7 +15,7 @@ import net.mostlyoriginal.ns2d.system.passive.MapSystem;
  * @author Daan van Yperen
  */
 @Wire
-public class MapRenderSystemInFront extends PassiveSystem {
+public class MapRenderSystemInFront extends BaseSystem {
 
     private MapSystem mapSystem;
     private CameraSystem cameraSystem;

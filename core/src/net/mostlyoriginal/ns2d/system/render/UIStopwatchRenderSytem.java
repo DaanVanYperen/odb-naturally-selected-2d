@@ -1,13 +1,15 @@
 package net.mostlyoriginal.ns2d.system.render;
 
+import com.artemis.BaseSystem;
 import com.artemis.annotations.Wire;
-import com.artemis.systems.VoidEntitySystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.utils.Pools;
+
 import net.mostlyoriginal.ns2d.G;
 import net.mostlyoriginal.ns2d.system.active.DirectorSystem;
 import net.mostlyoriginal.ns2d.system.active.PlayerControlSystem;
@@ -18,7 +20,7 @@ import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
  * @author Daan van Yperen
  */
 @Wire
-public class UIStopwatchRenderSytem extends VoidEntitySystem {
+public class UIStopwatchRenderSytem extends BaseSystem {
 
     private static final Color HOLO_COLOR = Color.valueOf("73BCC9");
     private static final float DISPLAY_DURATION = 4;
@@ -46,7 +48,8 @@ public class UIStopwatchRenderSytem extends VoidEntitySystem {
         assetSystem.fontLarge.setColor(1f, 1f, 1f, 1f);
 
         String cost = formatAge();
-        BitmapFont.TextBounds bounds = assetSystem.fontLarge.getBounds(cost);
+        GlyphLayout layout = Pools.obtain(GlyphLayout.class);
+        layout.setText(assetSystem.fontLarge, cost);
         if (gameOver) {
 
             if ( G.settings.personalHighscore < (int)age )
@@ -60,20 +63,20 @@ public class UIStopwatchRenderSytem extends VoidEntitySystem {
             stageRenderSystem.setEnabled(false);
             playerControlSystem.setEnabled(false);
 
-            assetSystem.fontLarge.setScale(Interpolation.elastic.apply(3,( improvement > 0 ? 4 : 3),Math.abs((bounce%2)-1)));
-            BitmapFont.TextBounds bounds2 = assetSystem.fontLarge.getBounds(cost);
-            assetSystem.fontLarge.draw(batch, cost, Gdx.graphics.getWidth() / 4 - bounds2.width / 2, Gdx.graphics.getHeight() / 4 + bounds2.height/2 + 5);
-            assetSystem.fontLarge.setScale(3);
+            assetSystem.fontLarge.getData().setScale(Interpolation.elastic.apply(3,( improvement > 0 ? 4 : 3),Math.abs((bounce%2)-1)));
+            layout.setText(assetSystem.fontLarge, cost);
+            assetSystem.fontLarge.draw(batch, cost, Gdx.graphics.getWidth() / 4 - layout.width / 2, Gdx.graphics.getHeight() / 4 + layout.height/2 + 5);
+            assetSystem.fontLarge.getData().setScale(3);
 
             String message = improvement > 0 ? "Game over! Personal highscore! You survived for:" : "Game Over! You survived for:";
-            bounds = assetSystem.font.getBounds(message);
-            assetSystem.font.draw(batch, message, Gdx.graphics.getWidth() / 4 - bounds.width / 2, Gdx.graphics.getHeight() / 4 + 40);
+            layout.setText(assetSystem.font, message);
+            assetSystem.font.draw(batch, message, Gdx.graphics.getWidth() / 4 - layout.width / 2, Gdx.graphics.getHeight() / 4 + 40);
 
             retryCooldown -= world.delta;
             if (retryCooldown <= 0) {
                 message = "Press space to try again";
-                bounds = assetSystem.font.getBounds(message);
-                assetSystem.font.draw(batch, message, Gdx.graphics.getWidth() / 4 - bounds.width / 2, Gdx.graphics.getHeight() / 4 - 30);
+                layout.setText(assetSystem.font, message);
+                assetSystem.font.draw(batch, message, Gdx.graphics.getWidth() / 4 - layout.width / 2, Gdx.graphics.getHeight() / 4 - 30);
                 if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
                     G.game.restart();
                     return;
@@ -81,9 +84,9 @@ public class UIStopwatchRenderSytem extends VoidEntitySystem {
             }
         } else {
             age += world.delta;
-            assetSystem.fontLarge.draw(batch, cost, Gdx.graphics.getWidth() / 2 - bounds.width - 10, Gdx.graphics.getHeight() / 2 + 10);
-            String message = "Stage " + (directorSystem.activeStage + 1);
+            assetSystem.fontLarge.draw(batch, cost, Gdx.graphics.getWidth() / 2 - layout.width - 10, Gdx.graphics.getHeight() / 2 + 10);
         }
+        Pools.free(layout);
         batch.end();
     }
 

@@ -4,7 +4,8 @@ import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
 import com.badlogic.gdx.math.Vector2;
-import net.mostlyoriginal.ns2d.api.PassiveSystem;
+
+import net.mostlyoriginal.api.system.core.PassiveSystem;
 import net.mostlyoriginal.ns2d.component.Physics;
 
 /**
