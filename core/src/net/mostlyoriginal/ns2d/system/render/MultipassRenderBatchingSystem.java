@@ -1,14 +1,13 @@
 package net.mostlyoriginal.ns2d.system.render;
 
-import com.artemis.Entity;
 import com.artemis.annotations.Wire;
-import com.artemis.utils.ImmutableBag;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+
 import net.mostlyoriginal.api.system.graphics.RenderBatchingSystem;
 import net.mostlyoriginal.ns2d.G;
 import net.mostlyoriginal.ns2d.MyMapRendererImpl;
@@ -24,7 +23,6 @@ import net.mostlyoriginal.ns2d.system.passive.MapSystem;
  */
 @Wire(injectInherited = true)
 public class MultipassRenderBatchingSystem extends RenderBatchingSystem {
-
 	private MapSystem mapSystem;
 	private CameraSystem cameraSystem;
 	private AssetSystem assetSystem;
@@ -48,6 +46,7 @@ public class MultipassRenderBatchingSystem extends RenderBatchingSystem {
 			}
 		}
 	}
+
 	protected void renderMapInFront(Texture texture) {
 		for (MapLayer layer : mapSystem.map.getLayers()) {
 			if (layer.isVisible()) {
@@ -67,8 +66,7 @@ public class MultipassRenderBatchingSystem extends RenderBatchingSystem {
 	}
 
 	@Override
-	protected void processEntities(ImmutableBag<Entity> entities) {
-
+	protected void processSystem() {
 		FrameBuffer diffuseBuffer = framebufferManager.getFrameBuffer(G.DIFFUSE_FBO);
 
 		diffuseBuffer.begin();
@@ -76,7 +74,7 @@ public class MultipassRenderBatchingSystem extends RenderBatchingSystem {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		renderMapBehind(assetSystem.tileset);
 		animRenderSystem.renderNormals(false);
-		super.processEntities(entities);
+		super.processSystem();
 		renderMapInFront(assetSystem.tileset);
 		diffuseBuffer.end();
 
@@ -86,7 +84,7 @@ public class MultipassRenderBatchingSystem extends RenderBatchingSystem {
 		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		renderMapBehind(assetSystem.tilesetNormal);
-		super.processEntities(entities);
+		super.processSystem();
 		renderMapInFront(assetSystem.tilesetNormal);
 		normalBuffer.end();
 	}

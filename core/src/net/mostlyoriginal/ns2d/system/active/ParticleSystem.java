@@ -8,9 +8,16 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+
 import net.mostlyoriginal.api.component.graphics.Renderable;
-import net.mostlyoriginal.ns2d.api.PassiveSystem;
-import net.mostlyoriginal.ns2d.component.*;
+import net.mostlyoriginal.api.system.core.PassiveSystem;
+import net.mostlyoriginal.ns2d.component.Anim;
+import net.mostlyoriginal.ns2d.component.Bounds;
+import net.mostlyoriginal.ns2d.component.Gravity;
+import net.mostlyoriginal.ns2d.component.Light;
+import net.mostlyoriginal.ns2d.component.Physics;
+import net.mostlyoriginal.ns2d.component.Pos;
+import net.mostlyoriginal.ns2d.component.Terminal;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 
 /**

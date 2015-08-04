@@ -1,12 +1,14 @@
 package net.mostlyoriginal.ns2d.system.render;
 
+import com.artemis.BaseSystem;
 import com.artemis.annotations.Wire;
-import com.artemis.systems.VoidEntitySystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.utils.Pools;
+
 import net.mostlyoriginal.ns2d.system.active.DirectorSystem;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
@@ -15,7 +17,7 @@ import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
  * @author Daan van Yperen
  */
 @Wire
-public class UIStageRenderSystem extends VoidEntitySystem {
+public class UIStageRenderSystem extends BaseSystem {
 
     private static final Color HOLO_COLOR = Color.valueOf("73BCC9");
     private static final float DISPLAY_DURATION = 4;
@@ -39,15 +41,18 @@ public class UIStageRenderSystem extends VoidEntitySystem {
         cooldown -= world.delta;
         batch.begin();
         batch.setColor(1f, 1f, 1f, 1f);
+        GlyphLayout layout = Pools.obtain(GlyphLayout.class);
 
         if (cooldown >= 0) {
+        	layout.setText(assetSystem.font, cost);
             batch.setProjectionMatrix(cameraSystem.guiCamera.combined);
             assetSystem.fontLarge.setColor(1f, 1f, 1f, MathUtils.clamp(cooldown, 0, 1));
-            assetSystem.fontLarge.draw(batch, cost, Gdx.graphics.getWidth() / 4 - assetSystem.fontLarge.getBounds(cost).width / 2, Gdx.graphics.getHeight() / 3 + 2);
+            assetSystem.fontLarge.draw(batch, cost, Gdx.graphics.getWidth() / 4 - layout.width / 2, Gdx.graphics.getHeight() / 3 + 2);
         } else {
-            BitmapFont.TextBounds bounds = assetSystem.font.getBounds(cost);
-            assetSystem.font.draw(batch, cost, Gdx.graphics.getWidth() / 2 - bounds.width - 12, Gdx.graphics.getHeight() / 2 - 30);
+        	layout.setText(assetSystem.font, cost);
+            assetSystem.font.draw(batch, cost, Gdx.graphics.getWidth() / 2 - layout.width - 12, Gdx.graphics.getHeight() / 2 - 30);
         }
+        Pools.free(layout);
         batch.end();
     }
 }

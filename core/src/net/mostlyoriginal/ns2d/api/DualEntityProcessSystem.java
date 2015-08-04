@@ -1,8 +1,7 @@
 package net.mostlyoriginal.ns2d.api;
 
-import com.artemis.Aspect;
+import com.artemis.BaseSystem;
 import com.artemis.Entity;
-import com.artemis.EntitySystem;
 import com.artemis.managers.GroupManager;
 import com.artemis.utils.Bag;
 import com.artemis.utils.ImmutableBag;
@@ -10,8 +9,7 @@ import com.artemis.utils.ImmutableBag;
 /**
  * @author Daan van Yperen
  */
-public abstract class DualEntityProcessSystem extends EntitySystem {
-
+public abstract class DualEntityProcessSystem extends BaseSystem {
     private final String groupA;
     private final String groupB;
 
@@ -21,13 +19,12 @@ public abstract class DualEntityProcessSystem extends EntitySystem {
     protected Bag<Entity> deleteLater = new Bag<>();
 
     public DualEntityProcessSystem(String groupA, String groupB) {
-        super(Aspect.getEmpty());
         this.groupA = groupA;
         this.groupB = groupB;
     }
 
     @Override
-    protected void processEntities(ImmutableBag<Entity> entities) {
+    protected void processSystem() {
         for (int a = groupEntitiesA.size()-1; a >= 0; a--) {
             for (int b = groupEntitiesB.size()-1; b >= 0; b--) {
                 final Entity entityA = groupEntitiesA.get(a);
