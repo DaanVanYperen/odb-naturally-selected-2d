@@ -5,8 +5,7 @@ import com.artemis.Component;
 /**
  * @author Daan van Yperen
  */
-public class EntitySpawner extends Component {
-
+public final class EntitySpawner extends Component {
     public String entityId;
     public String entityId2;
     public int entityId2Chance = 10;
@@ -14,8 +13,8 @@ public class EntitySpawner extends Component {
 
     public float minInterval = 2;
     public float maxInterval = 10;
-    public int  minCount    = 1;
-    public int maxCount    = 5;
+    public int minCount = 1;
+    public int maxCount = 5;
     public boolean enabled = false;
 
     public EntitySpawner(String entityId) {

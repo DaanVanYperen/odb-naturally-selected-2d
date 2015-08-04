@@ -20,10 +20,8 @@ import net.mostlyoriginal.ns2d.system.passive.CollisionSystem;
  * @author Daan van Yperen
  */
 @Wire
-public class CostRenderSystem extends EntityProcessingSystem {
-
+public final class CostRenderSystem extends EntityProcessingSystem {
     private ComponentMapper<Pos> pm;
-    private ComponentMapper<Anim> sm;
     private ComponentMapper<Buildable> bm;
     private ComponentMapper<Bounds> om;
     private ComponentMapper<Wallet> wm;
@@ -63,22 +61,20 @@ public class CostRenderSystem extends EntityProcessingSystem {
     @Override
     protected void process(Entity e) {
         final Buildable buildable = bm.get(e);
-        if ( !buildable.built )
-        {
+        if (!buildable.built) {
             final Bounds bounds = om.get(e);
             final Pos pos = pm.get(e);
 
             boolean affordable = buildable.resourceCost <= walletCash;
-            assetSystem.font.setColor(affordable ? HOLO_COLOR : HOLO_COLOR_RED );
+            assetSystem.font.setColor(affordable ? HOLO_COLOR : HOLO_COLOR_RED);
             String cost = "" + buildable.resourceCost + "$";
             GlyphLayout layout = Pools.obtain(GlyphLayout.class);
             layout.setText(assetSystem.font, cost);
-            assetSystem.font.draw(batch, cost, pos.x + bounds.cx() - layout.width/2, pos.y +  bounds.y2 + 20);
+            assetSystem.font.draw(batch, cost, pos.x + bounds.cx() - layout.width / 2, pos.y + bounds.y2 + 20);
 
-            if ( collisionSystem.overlaps(player, e) && affordable )
-            {
+            if (collisionSystem.overlaps(player, e) && affordable) {
                 String msg = "'e' to purchase";
-                assetSystem.font.draw(batch, msg, pos.x + bounds.cx() - layout.width/2, pos.y +  bounds.y2 + 32);
+                assetSystem.font.draw(batch, msg, pos.x + bounds.cx() - layout.width / 2, pos.y + bounds.y2 + 32);
             }
             Pools.free(layout);
         }

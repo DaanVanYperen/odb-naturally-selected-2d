@@ -1,9 +1,5 @@
 package net.mostlyoriginal.ns2d.system.render;
 
-/**
- * @author Daan van Yperen
- */
-
 import com.artemis.Aspect;
 import com.artemis.ComponentMapper;
 import com.artemis.Entity;
@@ -19,12 +15,14 @@ import net.mostlyoriginal.ns2d.component.*;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 
+/**
+ * @author Daan van Yperen
+ */
 @Wire
-public class UIAlertBuildableUnderAttack extends EntityProcessingSystem {
-
-    public Entity player;
-    public TextureRegion radarImage;
-    public TextureRegion arrowImage;
+public final class UIAlertBuildableUnderAttack extends EntityProcessingSystem {
+    private Entity player;
+    private TextureRegion radarImage;
+    private TextureRegion arrowImage;
     private DialogRenderSystem dialogSystem;
 
     public UIAlertBuildableUnderAttack() {
@@ -70,14 +68,14 @@ public class UIAlertBuildableUnderAttack extends EntityProcessingSystem {
         critical.damageAge += world.delta;
 
         // we don't need to announce turret damage.
-        if ( critical.weaponUseCausesDamage ) return;
-
-        age += world.delta;
-        if ( critical.damageAge > 1 || (age % 2 < 1f) )
+        if (critical.weaponUseCausesDamage)
             return;
 
-        if ( lastAlertCooldown < 0 )
-        {
+        age += world.delta;
+        if (critical.damageAge > 1 || (age % 2 < 1f))
+            return;
+
+        if (lastAlertCooldown < 0) {
             lastAlertCooldown = 40;
             dialogSystem.randomSay(DialogRenderSystem.NON_CRITICAL_ALERT_MESSAGES);
         }
@@ -101,7 +99,7 @@ public class UIAlertBuildableUnderAttack extends EntityProcessingSystem {
 
         TextureRegion frame = arrowImage;
 
-        batch.setColor(1f,1f,1f,MathUtils.clamp((distance-50)/100f,0f,1f));
+        batch.setColor(1f, 1f, 1f, MathUtils.clamp((distance - 50) / 100f, 0f, 1f));
         batch.draw(
                 frame,
                 vTmp.x - frame.getRegionWidth() / 2,
@@ -114,6 +112,6 @@ public class UIAlertBuildableUnderAttack extends EntityProcessingSystem {
         vTmp.set(cx, cy).sub(pcx, pcy).nor().scl(Gdx.graphics.getHeight() * 0.18f).add(pcx, pcy);
         frame = radarImage;
         batch.draw(frame, vTmp.x - frame.getRegionWidth() / 2, vTmp.y - frame.getRegionHeight() / 2);
-        //cameraSystem.camera;
+        // cameraSystem.camera;
     }
 }

@@ -6,7 +6,7 @@ import com.artemis.Entity;
 /**
  * @author Daan van Yperen
  */
-public class Homing extends Component {
+public final class Homing extends Component {
     public Entity target;
     public float speedFactor = 5f;
     public float maxVelocity = 5000f;

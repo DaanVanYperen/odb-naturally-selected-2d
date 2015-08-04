@@ -8,13 +8,14 @@ import com.artemis.Entity;
  *
  * @author Daan van Yperen
  */
-public class Aim extends Component {
+public final class Aim extends Component {
     public Entity at;
+
+    public Aim() {
+        this(null);
+    }
 
     public Aim(Entity at) {
         this.at = at;
-    }
-
-    public Aim() {
     }
 }

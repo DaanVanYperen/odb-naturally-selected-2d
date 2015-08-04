@@ -7,11 +7,11 @@ import com.badlogic.gdx.utils.Pool;
  * @author Daan van Yperen
  */
 public abstract class Step implements Pool.Poolable {
-
     public float atAge;
     private Pool pool;
 
-    protected Step() {}
+    protected Step() {
+    }
 
     abstract public boolean act(float delta, Entity e);
 

@@ -6,10 +6,11 @@ import com.artemis.Entity;
 /**
  * @author Daan van Yperen
  */
-public class AddStep extends Step {
-
+public final class AddStep extends Step {
     public Component component;
-    public AddStep() {}
+
+    public AddStep() {
+    }
 
     @Override
     public boolean act(float delta, Entity e) {

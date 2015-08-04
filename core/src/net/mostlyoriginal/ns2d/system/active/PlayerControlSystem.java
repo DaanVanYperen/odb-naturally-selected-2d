@@ -17,8 +17,7 @@ import net.mostlyoriginal.ns2d.system.render.DialogRenderSystem;
  * @author Daan van Yperen
  */
 @Wire
-public class PlayerControlSystem extends EntityProcessingSystem {
-
+public final class PlayerControlSystem extends EntityProcessingSystem {
     public static final int MOVEMENT_FACTOR = 1000;
     public static final int JUMP_FACTOR = 10000;
     public static final int JETPACK_THRUST = 1500;
@@ -49,14 +48,13 @@ public class PlayerControlSystem extends EntityProcessingSystem {
     private DialogRenderSystem dialogRenderSystem;
     private float jetPackMessageCooldown;
 
+    private Vector2 tmp = new Vector2();
+    private float jetPackUsageTime = 0;
+    private float jetPackRollingTime = 0;
+
     public PlayerControlSystem() {
-        super(Aspect.getAspectForAll(PlayerControlled.class, Physics.class, WallSensor.class, Anim.class));
+        super(Aspect.all(PlayerControlled.class, Physics.class, WallSensor.class, Anim.class));
     }
-
-    Vector2 tmp = new Vector2();
-
-    float jetPackUsageTime = 0;
-    float jetPackRollingTime = 0;
 
     @Override
     protected void process(Entity player) {
@@ -118,9 +116,9 @@ public class PlayerControlSystem extends EntityProcessingSystem {
                 physics.vx += dx * world.delta;
                 anim.id = "player-walk";
             }
-            if (dy != 0) physics.vy += dy * world.delta;
+            if (dy != 0)
+                physics.vy += dy * world.delta;
         } else {
-
 
             anim.id = "player-jetpack";
             // handle player flying! :D
@@ -131,8 +129,10 @@ public class PlayerControlSystem extends EntityProcessingSystem {
 
             // slow turning.
             int rx = 0;
-            if (Gdx.input.isKeyPressed(Input.Keys.A)) rx += turningSpeed;
-            if (Gdx.input.isKeyPressed(Input.Keys.D)) rx -= turningSpeed;
+            if (Gdx.input.isKeyPressed(Input.Keys.A))
+                rx += turningSpeed;
+            if (Gdx.input.isKeyPressed(Input.Keys.D))
+                rx -= turningSpeed;
 
             if (rx != 0) {
                 if (!jetPackActive) {
@@ -141,7 +141,8 @@ public class PlayerControlSystem extends EntityProcessingSystem {
                         jetPackMessageCooldown = 10;
                         dialogRenderSystem.randomSay(DialogRenderSystem.JETPACK_ROLLING);
                     }
-                } else jetPackRollingTime=0;
+                } else
+                    jetPackRollingTime = 0;
                 physics.vr += rx * world.delta * 10f;
             } else {
                 jetPackRollingTime = 0;
@@ -150,10 +151,14 @@ public class PlayerControlSystem extends EntityProcessingSystem {
                 if (!jetPackActive) {
                     float rotationClamped = ((anim.rotation % 360 + 360) % 360);
 
-                    if (rotationClamped < 180) physics.vr -= turningSpeed * world.delta * 1f;
-                    if (rotationClamped > 180) physics.vr += turningSpeed * world.delta * 1f;
-                    if (rotationClamped < 90) physics.vr -= turningSpeed * world.delta * 1f;
-                    if (rotationClamped > 180 + 90) physics.vr += turningSpeed * world.delta * 1f;
+                    if (rotationClamped < 180)
+                        physics.vr -= turningSpeed * world.delta * 1f;
+                    if (rotationClamped > 180)
+                        physics.vr += turningSpeed * world.delta * 1f;
+                    if (rotationClamped < 90)
+                        physics.vr -= turningSpeed * world.delta * 1f;
+                    if (rotationClamped > 180 + 90)
+                        physics.vr += turningSpeed * world.delta * 1f;
                 }
             }
 
@@ -163,8 +168,8 @@ public class PlayerControlSystem extends EntityProcessingSystem {
 
                 float distanceMoved = vTmp.set(lastPuffX, lastPuffY).dst(pos.x, pos.y);
 
-                if ( distanceMoved <= 0.1f )
-                    jetPackUsageTime=0;
+                if (distanceMoved <= 0.1f)
+                    jetPackUsageTime = 0;
 
                 if (jetpackGasCooldown <= 0 || distanceMoved >= 4f) {
                     lastPuffX = pos.x;
@@ -190,7 +195,6 @@ public class PlayerControlSystem extends EntityProcessingSystem {
                 physics.vr = MathUtils.clamp(physics.vr, -ROTATIONAL_SPEED_JETPACK_OFF * 2, ROTATIONAL_SPEED_JETPACK_OFF * 2);
             }
         }
-
 
     }
 
@@ -219,14 +223,5 @@ public class PlayerControlSystem extends EntityProcessingSystem {
     private void flip(Entity player, boolean flippedX) {
         final Anim anim = am.get(player);
         anim.flippedX = flippedX;
-
-/*        Inventory inventory = im.get(player);
-        if ( inventory.weapon != null && inventory.weapon.isActive() )
-        {
-            Attached weaponAttached = attm.get(inventory.weapon);
-            Anim weaponAnim = am.get(inventory.weapon);
-            weaponAnim.flippedX = flippedX;
-
-        } */
     }
 }

@@ -5,11 +5,14 @@ import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
 import com.artemis.systems.EntityProcessingSystem;
-import net.mostlyoriginal.ns2d.component.*;
-import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
-import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
+
+import net.mostlyoriginal.api.utils.MapMask;
+import net.mostlyoriginal.ns2d.component.Anim;
+import net.mostlyoriginal.ns2d.component.Bounds;
+import net.mostlyoriginal.ns2d.component.Physics;
+import net.mostlyoriginal.ns2d.component.Pos;
+import net.mostlyoriginal.ns2d.component.Terminal;
 import net.mostlyoriginal.ns2d.system.passive.MapSystem;
-import net.mostlyoriginal.ns2d.util.MapMask;
 
 /**
  * Constrain movement to map collision.
@@ -19,13 +22,10 @@ import net.mostlyoriginal.ns2d.util.MapMask;
  * @author Daan van Yperen
  */
 @Wire
-public class MapCollisionSystem extends EntityProcessingSystem {
-
+public final class MapCollisionSystem extends EntityProcessingSystem {
     private static boolean DEBUG = false;
 
     private MapSystem mapSystem;
-    private AssetSystem assetSystem;
-    private CameraSystem cameraSystem;
 
     private boolean initialized;
     private MapMask solidMask;
@@ -35,7 +35,7 @@ public class MapCollisionSystem extends EntityProcessingSystem {
     private ComponentMapper<Bounds> bm;
 
     public MapCollisionSystem() {
-        super(Aspect.getAspectForAll(Physics.class, Pos.class, Bounds.class));
+        super(Aspect.all(Physics.class, Pos.class, Bounds.class));
     }
 
     @Override
@@ -56,7 +56,7 @@ public class MapCollisionSystem extends EntityProcessingSystem {
         final Pos pos = pm.get(e);
         final Bounds bounds = bm.get(e);
 
-        //  no math required here.
+        // no math required here.
         if (physics.vx != 0 || physics.vy != 0) {
 
             float px = pos.x + physics.vx * world.delta;
@@ -81,12 +81,11 @@ public class MapCollisionSystem extends EntityProcessingSystem {
         if (DEBUG) {
             world.createEntity()
                     .edit()
-		            .add(new Pos(x - 1, y - 1))
+                    .add(new Pos(x - 1, y - 1))
                     .add(new Anim("debug-marker"))
-                    .add(new Terminal(1))
-                    ;
+                    .add(new Terminal(1));
         }
 
-        return solidMask.atScreen(x, y);
+        return solidMask.atScreen(x, y, false);
     }
 }

@@ -8,8 +8,7 @@ import com.artemis.Entity;
  *
  * @author Daan van Yperen
  */
-public class Inbetween extends Component {
-
+public final class Inbetween extends Component {
     public Entity a;
     public Entity b;
     public float tween = 0.5f; // where are we? 0.0 at a, 1.0 at b location

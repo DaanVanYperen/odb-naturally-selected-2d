@@ -6,7 +6,6 @@ import com.artemis.Entity;
 /**
  * @author Daan van Yperen
  */
-public class Inventory extends Component {
-
+public final class Inventory extends Component {
     public Entity weapon;
 }

@@ -5,8 +5,7 @@ import com.artemis.Component;
 /**
  * @author Daan van Yperen
  */
-public class Health extends Component {
-
+public final class Health extends Component {
     public int health;
     public int damage;
 

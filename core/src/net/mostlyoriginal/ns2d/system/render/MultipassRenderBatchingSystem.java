@@ -22,70 +22,68 @@ import net.mostlyoriginal.ns2d.system.passive.MapSystem;
  * @author Daan van Yperen
  */
 @Wire(injectInherited = true)
-public class MultipassRenderBatchingSystem extends RenderBatchingSystem {
-	private MapSystem mapSystem;
-	private CameraSystem cameraSystem;
-	private AssetSystem assetSystem;
+public final class MultipassRenderBatchingSystem extends RenderBatchingSystem {
+    private MapSystem mapSystem;
+    private CameraSystem cameraSystem;
+    private AssetSystem assetSystem;
+    private MyMapRendererImpl renderer;
+    private FramebufferManager framebufferManager;
+    private AnimRenderSystem animRenderSystem;
 
-	public MyMapRendererImpl renderer;
+    @Override
+    protected void initialize() {
+        renderer = new MyMapRendererImpl(mapSystem.map);
+    }
 
-	FramebufferManager framebufferManager;
-	AnimRenderSystem animRenderSystem;
+    protected void renderMapBehind(Texture texture) {
+        for (MapLayer layer : mapSystem.map.getLayers()) {
+            if (layer.isVisible()) {
+                if (!layer.getName().equals("infront")) {
+                    renderLayer((TiledMapTileLayer) layer, texture);
+                }
+            }
+        }
+    }
 
-	@Override
-	protected void initialize() {
-		renderer = new MyMapRendererImpl(mapSystem.map);
-	}
+    protected void renderMapInFront(Texture texture) {
+        for (MapLayer layer : mapSystem.map.getLayers()) {
+            if (layer.isVisible()) {
+                if (layer.getName().equals("infront")) {
+                    renderLayer((TiledMapTileLayer) layer, texture);
+                }
+            }
+        }
+    }
 
-	protected void renderMapBehind(Texture texture) {
-		for (MapLayer layer : mapSystem.map.getLayers()) {
-			if (layer.isVisible()) {
-				if (!layer.getName().equals("infront")) {
-					renderLayer((TiledMapTileLayer) layer, texture);
-				}
-			}
-		}
-	}
+    private void renderLayer(final TiledMapTileLayer layer, Texture texture) {
+        renderer.setView(cameraSystem.camera);
+        renderer.renderLayer(layer, texture);
+    }
 
-	protected void renderMapInFront(Texture texture) {
-		for (MapLayer layer : mapSystem.map.getLayers()) {
-			if (layer.isVisible()) {
-				if (layer.getName().equals("infront")) {
-					renderLayer((TiledMapTileLayer) layer, texture);
-				}
-			}
-		}
-	}
+    public MultipassRenderBatchingSystem() {
+    }
 
-	private void renderLayer(final TiledMapTileLayer layer, Texture texture) {
-		renderer.setView(cameraSystem.camera);
-		renderer.renderLayer(layer, texture);
-	}
+    @Override
+    protected void processSystem() {
+        FrameBuffer diffuseBuffer = framebufferManager.getFrameBuffer(G.DIFFUSE_FBO);
 
-	public MultipassRenderBatchingSystem() {
-	}
+        diffuseBuffer.begin();
+        Gdx.gl.glClearColor(0, 0, 0, 0);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        renderMapBehind(assetSystem.tileset);
+        animRenderSystem.renderNormals(false);
+        super.processSystem();
+        renderMapInFront(assetSystem.tileset);
+        diffuseBuffer.end();
 
-	@Override
-	protected void processSystem() {
-		FrameBuffer diffuseBuffer = framebufferManager.getFrameBuffer(G.DIFFUSE_FBO);
-
-		diffuseBuffer.begin();
-		Gdx.gl.glClearColor(0, 0, 0, 0);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		renderMapBehind(assetSystem.tileset);
-		animRenderSystem.renderNormals(false);
-		super.processSystem();
-		renderMapInFront(assetSystem.tileset);
-		diffuseBuffer.end();
-
-		FrameBuffer normalBuffer = framebufferManager.getFrameBuffer(G.NORMAL_FBO);
-		animRenderSystem.renderNormals(true);
-		normalBuffer.begin();
-		Gdx.gl.glClearColor(0, 0, 0, 0);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		renderMapBehind(assetSystem.tilesetNormal);
-		super.processSystem();
-		renderMapInFront(assetSystem.tilesetNormal);
-		normalBuffer.end();
-	}
+        FrameBuffer normalBuffer = framebufferManager.getFrameBuffer(G.NORMAL_FBO);
+        animRenderSystem.renderNormals(true);
+        normalBuffer.begin();
+        Gdx.gl.glClearColor(0, 0, 0, 0);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        renderMapBehind(assetSystem.tilesetNormal);
+        super.processSystem();
+        renderMapInFront(assetSystem.tilesetNormal);
+        normalBuffer.end();
+    }
 }

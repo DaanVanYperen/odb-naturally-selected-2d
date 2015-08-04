@@ -5,5 +5,5 @@ import com.artemis.Component;
 /**
  * @author Daan van Yperen
  */
-public class RespawnOnDeath extends Component {
+public final class RespawnOnDeath extends Component {
 }

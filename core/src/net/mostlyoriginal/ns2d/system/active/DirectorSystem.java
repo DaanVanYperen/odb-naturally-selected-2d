@@ -1,12 +1,13 @@
 package net.mostlyoriginal.ns2d.system.active;
 
+import com.artemis.BaseSystem;
 import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
 import com.artemis.managers.GroupManager;
-import com.artemis.systems.VoidEntitySystem;
 import com.artemis.utils.ImmutableBag;
 import com.badlogic.gdx.math.MathUtils;
+
 import net.mostlyoriginal.ns2d.component.EntitySpawner;
 import net.mostlyoriginal.ns2d.system.render.DialogRenderSystem;
 
@@ -16,13 +17,11 @@ import net.mostlyoriginal.ns2d.system.render.DialogRenderSystem;
  * @author Daan van Yperen
  */
 @Wire
-public class DirectorSystem extends VoidEntitySystem {
-
+public final class DirectorSystem extends BaseSystem {
     public static final int WARMUP_SECONDS = 5;
     public static final int STAGE_WARMUP = 15;
     private ComponentMapper<EntitySpawner> sm;
-
-    GroupManager groupManager;
+    private GroupManager groupManager;
     private ImmutableBag<Entity> ducts;
     private float nextStageCooldown = 0;
     private float stageStartCooldown = 0;
@@ -49,7 +48,7 @@ public class DirectorSystem extends VoidEntitySystem {
             new Stage(20, STAGE_WARMUP, 3, 1, 0.2f, "skulk", "babbler"),
             new Stage(20, STAGE_WARMUP, 4, 1, 0.1f, "skulk", "skulk"),
             new Stage(20, STAGE_WARMUP, 4, 1, 0.1f, "skulk", "gorge"),
-            new Stage(20, STAGE_WARMUP, 6, 3, 0.1f, "babbler","babbler"),
+            new Stage(20, STAGE_WARMUP, 6, 3, 0.1f, "babbler", "babbler"),
             new Stage(60, STAGE_WARMUP, 4, 1, 0.1f, "skulk", "skulk"),
             new Stage(60, STAGE_WARMUP, 4, 1, 0.1f, "babbler", "babbler"),
             new Stage(60, STAGE_WARMUP, 4, 1, 0.1f, "gorge", "gorge"),
@@ -71,19 +70,16 @@ public class DirectorSystem extends VoidEntitySystem {
 
     @Override
     protected void processSystem() {
-        if ( stageStartCooldown > 0 )
-        {
+        if (stageStartCooldown > 0) {
             stageStartCooldown -= world.delta;
-            if ( stageStartCooldown <= 0 )
-            {
+            if (stageStartCooldown <= 0) {
                 dialogRenderSystem.randomSay(DialogRenderSystem.STAGE_ACTION_MESSAGES);
             }
         }
 
         nextStageCooldown -= world.delta;
-        if ( nextStageCooldown <= 0 )
-        {
-            if ( activeStage >= stages.length-1 )
+        if (nextStageCooldown <= 0) {
+            if (activeStage >= stages.length - 1)
                 return;
             activeStage++;
             Stage active = stages[activeStage];
@@ -148,5 +144,4 @@ public class DirectorSystem extends VoidEntitySystem {
             this.id2 = id2;
         }
     }
-
 }

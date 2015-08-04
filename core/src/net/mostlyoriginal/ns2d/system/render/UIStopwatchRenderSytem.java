@@ -4,14 +4,12 @@ import com.artemis.BaseSystem;
 import com.artemis.annotations.Wire;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.utils.Pools;
 
 import net.mostlyoriginal.ns2d.G;
-import net.mostlyoriginal.ns2d.system.active.DirectorSystem;
 import net.mostlyoriginal.ns2d.system.active.PlayerControlSystem;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
@@ -20,27 +18,21 @@ import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
  * @author Daan van Yperen
  */
 @Wire
-public class UIStopwatchRenderSytem extends BaseSystem {
-
-    private static final Color HOLO_COLOR = Color.valueOf("73BCC9");
-    private static final float DISPLAY_DURATION = 4;
-
+public final class UIStopwatchRenderSytem extends BaseSystem {
     private CameraSystem cameraSystem;
     private AssetSystem assetSystem;
-    private DirectorSystem directorSystem;
     private UIStageRenderSystem stageRenderSystem;
     private PlayerControlSystem playerControlSystem;
 
     private SpriteBatch batch = new SpriteBatch();
     private float retryCooldown = 1;
     private float age = 0;
-    public boolean gameOver =false;
-    private float improvement=0;
-    float bounce;
+    private float improvement = 0;
+    private float bounce;
+    public boolean gameOver = false;
 
     @Override
     protected void processSystem() {
-
         bounce += world.delta;
         batch.setProjectionMatrix(cameraSystem.guiCamera.combined);
         batch.begin();
@@ -51,11 +43,9 @@ public class UIStopwatchRenderSytem extends BaseSystem {
         GlyphLayout layout = Pools.obtain(GlyphLayout.class);
         layout.setText(assetSystem.fontLarge, cost);
         if (gameOver) {
-
-            if ( G.settings.personalHighscore < (int)age )
-            {
-                improvement = (int)age - G.settings.personalHighscore;
-                G.settings.personalHighscore = (int)age;
+            if (G.settings.personalHighscore < (int) age) {
+                improvement = (int) age - G.settings.personalHighscore;
+                G.settings.personalHighscore = (int) age;
                 G.settings.save();
             }
 
@@ -63,9 +53,9 @@ public class UIStopwatchRenderSytem extends BaseSystem {
             stageRenderSystem.setEnabled(false);
             playerControlSystem.setEnabled(false);
 
-            assetSystem.fontLarge.getData().setScale(Interpolation.elastic.apply(3,( improvement > 0 ? 4 : 3),Math.abs((bounce%2)-1)));
+            assetSystem.fontLarge.getData().setScale(Interpolation.elastic.apply(3, (improvement > 0 ? 4 : 3), Math.abs((bounce % 2) - 1)));
             layout.setText(assetSystem.fontLarge, cost);
-            assetSystem.fontLarge.draw(batch, cost, Gdx.graphics.getWidth() / 4 - layout.width / 2, Gdx.graphics.getHeight() / 4 + layout.height/2 + 5);
+            assetSystem.fontLarge.draw(batch, cost, Gdx.graphics.getWidth() / 4 - layout.width / 2, Gdx.graphics.getHeight() / 4 + layout.height / 2 + 5);
             assetSystem.fontLarge.getData().setScale(3);
 
             String message = improvement > 0 ? "Game over! Personal highscore! You survived for:" : "Game Over! You survived for:";
@@ -91,11 +81,10 @@ public class UIStopwatchRenderSytem extends BaseSystem {
     }
 
     private String formatAge() {
-        return
-                format((int) (age / 60)) + ":" +format((int) (age % 60)) + ":" +format((int) ((age * 100) % 100));
+        return format((int) (age / 60)) + ":" + format((int) (age % 60)) + ":" + format((int) ((age * 100) % 100));
     }
 
     private String format(int value) {
-        return value < 10 ? "0" + value : ""+value;
+        return value < 10 ? "0" + value : "" + value;
     }
 }

@@ -5,8 +5,7 @@ import com.artemis.Component;
 /**
  * @author Daan van Yperen
  */
-public class Weapon extends Component {
-
+public final class Weapon extends Component {
     public float cooldown = 0;
 
     public float bulletLifetime = 10;
@@ -28,7 +27,7 @@ public class Weapon extends Component {
     public String shellParticle;
     public float bulletGravityFactor = 1;
     public float aimRotation = 0;
-    public boolean cooldownWhileNotFiring=true;
+    public boolean cooldownWhileNotFiring = true;
     public String fireSfxId;
     public float sfxCooldown;
 }

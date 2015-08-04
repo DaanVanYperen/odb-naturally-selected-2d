@@ -5,35 +5,30 @@ import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
 import com.artemis.systems.EntityProcessingSystem;
+
+import net.mostlyoriginal.api.utils.MapMask;
 import net.mostlyoriginal.ns2d.component.Bounds;
-import net.mostlyoriginal.ns2d.component.Physics;
 import net.mostlyoriginal.ns2d.component.Pos;
 import net.mostlyoriginal.ns2d.component.WallSensor;
 import net.mostlyoriginal.ns2d.system.passive.MapSystem;
-import net.mostlyoriginal.ns2d.util.MapMask;
 
 /**
  * Constrain movement to map collision.
- * <p/>
  * Inteded to clamp physics calculations.
  *
  * @author Daan van Yperen
  */
 @Wire
-public class WallSensorSystem extends EntityProcessingSystem {
-
+public final class WallSensorSystem extends EntityProcessingSystem {
     private MapSystem mapSystem;
-
     private boolean initialized;
     private MapMask solidMask;
-
-    private ComponentMapper<Physics> ym;
     private ComponentMapper<Pos> pm;
     private ComponentMapper<Bounds> bm;
     private ComponentMapper<WallSensor> ws;
 
     public WallSensorSystem() {
-        super(Aspect.getAspectForAll(WallSensor.class, Pos.class, Bounds.class));
+        super(Aspect.all(WallSensor.class, Pos.class, Bounds.class));
     }
 
     @Override
@@ -68,13 +63,10 @@ public class WallSensorSystem extends EntityProcessingSystem {
         wallSensor.onHorizontalSurface = onCeiling || wallSensor.onFloor;
 
         wallSensor.wallAngle =
-                    onFloor ? 90 :
-                    onCeiling ? -90 :
-                    onEastWall ? 0  :
-                    onWestWall ? 180 : 90;
+                onFloor ? 90 : onCeiling ? -90 : onEastWall ? 0 : onWestWall ? 180 : 90;
     }
 
     private boolean collides(final float x, final float y) {
-        return solidMask.atScreen(x, y);
+        return solidMask.atScreen(x, y, false);
     }
 }

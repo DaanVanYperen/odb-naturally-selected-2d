@@ -13,11 +13,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Pools;
 
-import net.mostlyoriginal.ns2d.component.Anim;
-import net.mostlyoriginal.ns2d.component.Bounds;
-import net.mostlyoriginal.ns2d.component.Buildable;
 import net.mostlyoriginal.ns2d.component.Pos;
-import net.mostlyoriginal.ns2d.component.Wallet;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 
@@ -25,27 +21,18 @@ import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
  * @author Daan van Yperen
  */
 @Wire
-public class DialogRenderSystem extends BaseSystem {
-
+public final class DialogRenderSystem extends BaseSystem {
     private ComponentMapper<Pos> pm;
-    private ComponentMapper<Anim> sm;
-    private ComponentMapper<Buildable> bm;
-    private ComponentMapper<Bounds> om;
-    private ComponentMapper<Wallet> wm;
 
     private Array<String> messages = new Array<String>();
     private String activeMessage = null;
     private float activeMessageCooldown = 0;
-
-    private static final Color HOLO_COLOR = Color.valueOf("73BCC9");
-    private static final Color HOLO_COLOR_RED = Color.valueOf("FF7799");
 
     private CameraSystem cameraSystem;
     private AssetSystem assetSystem;
     private TagManager tagManager;
 
     private SpriteBatch batch = new SpriteBatch();
-    private int walletCash;
     public TextureRegion west;
     public TextureRegion middle;
     public TextureRegion east;
@@ -101,7 +88,6 @@ public class DialogRenderSystem extends BaseSystem {
                     "I hear the nibblies!"
             };
 
-
     public final static String[] CRITICAL_ALERT_MESSAGES = {
             "If that techpoint goes down, i'm fired!",
             "Techpoint under attack!",
@@ -118,14 +104,12 @@ public class DialogRenderSystem extends BaseSystem {
             "Extractors equals cash. Cash equals weapons!",
     };
 
-
     public final static String[] BUILDING_DESTROYED_MESSAGES = {
             "Crap! Something broke.",
             "Why is nobody welding!",
             "*sigh*",
             "I was nowhere near that!"
     };
-
 
     public final static String[] WEAPON_READY_MESSAGES = {
             "Did you hear the beep? Weapon's done!",
@@ -152,8 +136,6 @@ public class DialogRenderSystem extends BaseSystem {
 
     @Override
     protected void processSystem() {
-
-
         activeMessageCooldown -= world.delta;
         if (activeMessageCooldown <= 0) {
             activeMessageCooldown = 0.25f;
@@ -161,7 +143,8 @@ public class DialogRenderSystem extends BaseSystem {
                 activeMessage = messages.first();
                 messages.removeIndex(0);
                 activeMessageCooldown = 0.8f + (activeMessage.length() * 0.1f);
-            } else activeMessage = null;
+            } else
+                activeMessage = null;
         }
 
         if (activeMessage != null) {
@@ -171,7 +154,6 @@ public class DialogRenderSystem extends BaseSystem {
 
             final Entity player = tagManager.getEntity("player");
             pos = pm.get(player);
-            walletCash = wm.has(player) ? wm.get(player).resources : 0;
 
             float alpha = MathUtils.clamp(activeMessageCooldown, 0, 1);
 

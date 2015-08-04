@@ -7,5 +7,5 @@ import com.artemis.Component;
  *
  * @author Daan van Yperen
  */
-public class MouseCursor extends Component {
+public final class MouseCursor extends Component {
 }

@@ -5,7 +5,7 @@ import com.artemis.Component;
 /**
  * @author Daan van Yperen
  */
-public class Buildable extends Component {
+public final class Buildable extends Component {
     public boolean built;
     public String builtAnimId;
     public String unbuiltAnimId;
@@ -13,7 +13,7 @@ public class Buildable extends Component {
     public boolean weaponUseCausesDamage;
     public float weaponUseDamageCooldown;
     public int defaultHealth = 30;
-    public float damageAge=999;
+    public float damageAge = 999;
 
     public Buildable(String builtAnimId, String unbuiltAnimId, int resourceCost) {
         this.builtAnimId = builtAnimId;

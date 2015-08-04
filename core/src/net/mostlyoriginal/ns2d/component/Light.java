@@ -6,20 +6,19 @@ import com.badlogic.gdx.graphics.Color;
 /**
  * @author Daan van Yperen
  */
-public class Light extends Component {
+public final class Light extends Component {
+    public Light() {
+    }
 
-	public Light() {
-	}
+    public Light(Color color, float z, float radius, float intensity) {
+        this.z = z;
+        this.radius = radius;
+        this.intensity = intensity;
+        this.color.set(color);
+    }
 
-	public Light( Color color, float z, float radius, float intensity ) {
-		this.z = z;
-		this.radius = radius;
-		this.intensity = intensity;
-		this.color.set(color);
-	}
-
-	public Color color = new Color();
-	public float intensity = 1;
-	public float radius = 10;
-	public float z = 60;
+    public Color color = new Color();
+    public float intensity = 1;
+    public float radius = 10;
+    public float z = 60;
 }

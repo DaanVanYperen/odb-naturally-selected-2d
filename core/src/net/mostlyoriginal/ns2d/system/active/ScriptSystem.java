@@ -13,12 +13,11 @@ import net.mostlyoriginal.ns2d.step.Step;
  * @author Daan van Yperen
  */
 @Wire
-public class ScriptSystem extends EntityProcessingSystem {
-
+public final class ScriptSystem extends EntityProcessingSystem {
     private ComponentMapper<Script> sm;
 
     public ScriptSystem() {
-        super(Aspect.getAspectForAll(Script.class));
+        super(Aspect.all(Script.class));
     }
 
     @Override

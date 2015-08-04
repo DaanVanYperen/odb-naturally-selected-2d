@@ -1,17 +1,12 @@
 package net.mostlyoriginal.ns2d;
 
-/**
- * @author Daan van Yperen
- */
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 
 /**
  * @author Daan van Yperen
  */
-public class Settings {
-
+public final class Settings {
     public static final String PREF_MUSIC_ON = "musicOn";
     public static final String PREF_SFX_ON = "sfxOn";
     private static final String PREF_PERSONAL_HIGHSCORE = "highestscore";
@@ -30,17 +25,15 @@ public class Settings {
         load();
     }
 
-    public void load()
-    {
-        sfxOn = prefs.getBoolean(PREF_SFX_ON,true);
-        musicOn = prefs.getBoolean(PREF_MUSIC_ON,true);
-        personalHighscore = prefs.getInteger(PREF_PERSONAL_HIGHSCORE,0);
-        personalHighscoreStars = prefs.getInteger(PREF_PERSONAL_HIGHSCORE_STARS,0);
+    public void load() {
+        sfxOn = prefs.getBoolean(PREF_SFX_ON, true);
+        musicOn = prefs.getBoolean(PREF_MUSIC_ON, true);
+        personalHighscore = prefs.getInteger(PREF_PERSONAL_HIGHSCORE, 0);
+        personalHighscoreStars = prefs.getInteger(PREF_PERSONAL_HIGHSCORE_STARS, 0);
 
     }
 
-    public void save()
-    {
+    public void save() {
         prefs.putBoolean(PREF_SFX_ON, sfxOn);
         prefs.putBoolean(PREF_MUSIC_ON, musicOn);
         prefs.putInteger(PREF_PERSONAL_HIGHSCORE, personalHighscore);

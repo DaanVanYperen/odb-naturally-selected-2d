@@ -13,8 +13,7 @@ import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
  * @author Daan van Yperen
  */
 @Wire
-public class CameraFocusSystem extends EntityProcessingSystem {
-
+public final class CameraFocusSystem extends EntityProcessingSystem {
     private ComponentMapper<Pos> pm;
     private CameraSystem cameraSystem;
 
@@ -25,8 +24,8 @@ public class CameraFocusSystem extends EntityProcessingSystem {
     @Override
     protected void process(Entity e) {
         final Pos pos = pm.get(e);
-        cameraSystem.camera.position.x = (int)(pos.x);
-        cameraSystem.camera.position.y = (int)(pos.y);
+        cameraSystem.camera.position.x = (int) (pos.x);
+        cameraSystem.camera.position.y = (int) (pos.y);
         cameraSystem.camera.update();
     }
 }
