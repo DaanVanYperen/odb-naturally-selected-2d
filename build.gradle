@@ -1,5 +1,4 @@
 buildscript {
-
     repositories {
         maven {
             url 'https://github.com/steffenschaefer/gwt-gradle-plugin/raw/maven-repo/'
@@ -16,7 +15,7 @@ buildscript {
     }
 }
 
-allprojects {
+subprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
     
@@ -78,8 +77,4 @@ project(":gwt") {
         compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion:sources"
         compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion:sources"
     }
-}
-
-tasks.eclipse.doLast {
-	delete ".project"
 }
