@@ -11,7 +11,7 @@ buildscript {
         classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.3'
 //      classpath 'com.android.tools.build:gradle:0.7.3+'
 //		classpath 'com.github.jtakakura:gradle-robovm-plugin:0.0.5'
-        classpath "com.badlogicgames.gdx:gdx-tools:1.5.3"
+        classpath "com.badlogicgames.gdx:gdx-tools:1.6.4"
     }
 }
 
