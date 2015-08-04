@@ -5,7 +5,7 @@ import com.artemis.Component;
 /**
  * @author Daan van Yperen
  */
-public class Wallet extends Component {
+public final class Wallet extends Component {
     public int resources;
 
     public Wallet(int resources) {

@@ -12,23 +12,17 @@ import net.mostlyoriginal.ns2d.component.Pos;
  * @author Daan van Yperen
  */
 @Wire
-public class CollisionSystem  extends PassiveSystem {
-
-
-
+public final class CollisionSystem extends PassiveSystem {
     private ComponentMapper<Bounds> bm;
     private ComponentMapper<Pos> pm;
 
-
-    public final boolean overlaps( final Entity a, final Entity b)
-    {
-
+    public final boolean overlaps(final Entity a, final Entity b) {
         final Bounds b1 = bm.getSafe(a);
-        final Pos p1 =  pm.getSafe(a);
+        final Pos p1 = pm.getSafe(a);
         final Bounds b2 = bm.getSafe(b);
-        final Pos p2 =  pm.getSafe(b);
+        final Pos p2 = pm.getSafe(b);
 
-        if ( b1==null || p1 ==null || b2==null || p2==null)
+        if (b1 == null || p1 == null || b2 == null || p2 == null)
             return false;
 
         final float minx = p1.x + b1.x1;
@@ -41,9 +35,7 @@ public class CollisionSystem  extends PassiveSystem {
         final float bmaxx = p2.x + b2.x2;
         final float bmaxy = p2.y + b2.y2;
 
-        return
-                !(minx > bmaxx || maxx < bminx ||
-                  miny > bmaxy || maxy < bminy );
+        return !(minx > bmaxx || maxx < bminx ||
+                miny > bmaxy || maxy < bminy);
     }
-
 }

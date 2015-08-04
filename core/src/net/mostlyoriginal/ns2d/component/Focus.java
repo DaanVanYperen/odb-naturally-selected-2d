@@ -8,6 +8,6 @@ import com.artemis.Entity;
  *
  * @author Daan van Yperen
  */
-public class Focus extends Component {
+public final class Focus extends Component {
     public Entity entity;
 }

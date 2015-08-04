@@ -23,8 +23,7 @@ import net.mostlyoriginal.ns2d.util.EntityUtil;
  * @author Daan van Yperen
  */
 @Wire
-public class BulletCollisionSystem extends EntityProcessingSystem {
-
+public final class BulletCollisionSystem extends EntityProcessingSystem {
     private CameraShakeSystem cameraShakeSystem;
     private ComponentMapper<Payload> pm;
     private ComponentMapper<Pos> om;
@@ -39,23 +38,19 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
     private ComponentMapper<Anim> am;
     private AssetSystem assetSystem;
 
-
     public BulletCollisionSystem() {
-        super(Aspect.getAspectForAll(Payload.class));
+        super(Aspect.all(Payload.class));
     }
 
     @Override
     protected void process(Entity bullet) {
-
-
         final Payload payload = pm.get(bullet);
 
         payload.age += world.delta;
         if (payload.age >= payload.maxLifetime - 0.25f) {
-            if ( am.has(bullet) )
-            {
+            if (am.has(bullet)) {
                 // fade out bullets.
-                am.get(bullet).color.a = (payload.maxLifetime - payload.age) *4f;
+                am.get(bullet).color.a = (payload.maxLifetime - payload.age) * 4f;
             }
         }
         if (payload.age >= payload.maxLifetime) {
@@ -78,7 +73,6 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
     }
 
     private void triggerPayload(Entity victim, Entity bullet) {
-
         final Payload payload = pm.get(bullet);
 
         int damage = MathUtils.random(payload.minDamage, payload.maxDamage);
@@ -90,56 +84,53 @@ public class BulletCollisionSystem extends EntityProcessingSystem {
 
         switch (payload.type) {
 
-            case WEAPON_PICKUP: {
-                final Entity player = tagManager.getEntity("player");
-                entitySpawnerSystem.giveWeapon(player, am.get(bullet).id);
-                assetSystem.playSfx("ns2d_sfx_pickup",bullet);
-                break;
-            }
-            case RESOURCE: {
-                final Entity player = tagManager.getEntity("player");
-                if (wm.has(player))
-                {
-                    wm.get(player).resources += damage;
-                    assetSystem.playSfx("ns2d_sfx_pickup",bullet);
-                }
-                break;
-            }
-            case EXPLOSIVE:
-                if (radius == 0) {
-                    //cameraShakeSystem.shake(1);
-                    combatSystem.damage(victim, damage);
-                } else {
-                    damageArea(bullet, payload.triggerGroup, radius, damage, payload.type);
-                }
-                break;
+        case WEAPON_PICKUP: {
+            final Entity player = tagManager.getEntity("player");
+            entitySpawnerSystem.giveWeapon(player, am.get(bullet).id);
+            assetSystem.playSfx("ns2d_sfx_pickup", bullet);
+            break;
         }
-
+        case RESOURCE: {
+            final Entity player = tagManager.getEntity("player");
+            if (wm.has(player)) {
+                wm.get(player).resources += damage;
+                assetSystem.playSfx("ns2d_sfx_pickup", bullet);
+            }
+            break;
+        }
+        case EXPLOSIVE:
+            if (radius == 0) {
+                // cameraShakeSystem.shake(1);
+                combatSystem.damage(victim, damage);
+            } else {
+                damageArea(bullet, payload.triggerGroup, radius, damage, payload.type);
+            }
+            break;
+        }
     }
 
-    Vector2 vTmp = new Vector2();
+    private Vector2 vTmp = new Vector2();
 
     private void damageArea(Entity bullet, String groupId, float radius, int damage, Payload.DamageType type) {
-
         Payload payload = pm.get(bullet);
         Pos pos = om.get(bullet);
 
         switch (type) {
-            case BILE:
-                for (int i = 0, s = MathUtils.random(5, 10); i < s; i++) {
-                    vTmp.set(MathUtils.random(0, radius), 0).rotate(MathUtils.random(0, 360)).add(pos.x, pos.y);
-                    particleSystem.spawnParticle(
-                            (int) vTmp.x, (int) vTmp.y, "bile");
-                }
-                break;
-            default:
-                cameraShakeSystem.shake(1 + radius / 20);
-                particleSystem.spawnParticle((int) pos.x, (int) pos.y, "explosion");
-                for (int i = 0, s = MathUtils.random(3, 5); i < s; i++) {
-                    vTmp.set(MathUtils.random(0, radius), 0).rotate(MathUtils.random(0, 360)).add(pos.x, pos.y);
-                    particleSystem.spawnParticle(
-                            (int) vTmp.x, (int) vTmp.y, "tiny-explosion");
-                }
+        case BILE:
+            for (int i = 0, s = MathUtils.random(5, 10); i < s; i++) {
+                vTmp.set(MathUtils.random(0, radius), 0).rotate(MathUtils.random(0, 360)).add(pos.x, pos.y);
+                particleSystem.spawnParticle(
+                        (int) vTmp.x, (int) vTmp.y, "bile");
+            }
+            break;
+        default:
+            cameraShakeSystem.shake(1 + radius / 20);
+            particleSystem.spawnParticle((int) pos.x, (int) pos.y, "explosion");
+            for (int i = 0, s = MathUtils.random(3, 5); i < s; i++) {
+                vTmp.set(MathUtils.random(0, radius), 0).rotate(MathUtils.random(0, 360)).add(pos.x, pos.y);
+                particleSystem.spawnParticle(
+                        (int) vTmp.x, (int) vTmp.y, "tiny-explosion");
+            }
 
         }
 

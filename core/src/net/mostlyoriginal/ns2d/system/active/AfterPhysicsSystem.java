@@ -15,17 +15,14 @@ import net.mostlyoriginal.ns2d.component.WallSensor;
  *
  * @author Daan van Yperen
  */
-
 @Wire
-public class AfterPhysicsSystem extends EntityProcessingSystem {
-
+public final class AfterPhysicsSystem extends EntityProcessingSystem {
     MapCollisionSystem mapCollisionSystem;
 
     private ComponentMapper<Physics> ym;
     private ComponentMapper<Pos> pm;
     private ComponentMapper<Anim> am;
     private ComponentMapper<WallSensor> wm;
-
 
     public AfterPhysicsSystem() {
         super(Aspect.getAspectForAll(Physics.class, Pos.class));
@@ -39,13 +36,12 @@ public class AfterPhysicsSystem extends EntityProcessingSystem {
         pos.x += physics.vx * world.getDelta();
         pos.y += physics.vy * world.getDelta();
 
-        if ( physics.vr != 0 && am.has(e))
-        {
+        if (physics.vr != 0 && am.has(e)) {
             am.get(e).rotation += physics.vr * world.delta;
         }
-        
+
         if (physics.friction != 0) {
-            float adjustedFriction = physics.friction * (wm.has(e) && !wm.get(e).onFloor ? 0.25f : 1 );
+            float adjustedFriction = physics.friction * (wm.has(e) && !wm.get(e).onFloor ? 0.25f : 1);
 
             if (Math.abs(physics.vx) > 0.005f) {
                 physics.vx = physics.vx - (physics.vx * world.delta * adjustedFriction);
@@ -65,6 +61,6 @@ public class AfterPhysicsSystem extends EntityProcessingSystem {
                 physics.vy = 0;
             }
         }
-       
+
     }
 }

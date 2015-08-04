@@ -7,8 +7,7 @@ import com.artemis.Component;
  *
  * @author Daan van Yperen
  */
-public class Harvester extends Component {
-
+public final class Harvester extends Component {
     public int count = 1;
     public float cooldown;
     public float interval = 3;

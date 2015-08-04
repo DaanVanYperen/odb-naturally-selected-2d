@@ -5,9 +5,9 @@ import com.artemis.Entity;
 /**
  * @author Daan van Yperen
  */
-public class DeleteFromWorldStep extends Step {
-
-    public DeleteFromWorldStep() {}
+public final class DeleteFromWorldStep extends Step {
+    public DeleteFromWorldStep() {
+    }
 
     @Override
     public boolean act(float delta, Entity e) {

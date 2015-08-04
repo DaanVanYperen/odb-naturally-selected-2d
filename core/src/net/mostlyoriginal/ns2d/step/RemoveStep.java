@@ -6,8 +6,7 @@ import com.artemis.Entity;
 /**
  * @author Daan van Yperen
  */
-public class RemoveStep extends Step {
-
+public final class RemoveStep extends Step {
     public Class<? extends Component> componentClass;
 
     public RemoveStep() {

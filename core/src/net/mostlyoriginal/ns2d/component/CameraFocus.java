@@ -5,5 +5,5 @@ import com.artemis.Component;
 /**
  * @author Daan van Yperen
  */
-public class CameraFocus extends Component {
+public final class CameraFocus extends Component {
 }

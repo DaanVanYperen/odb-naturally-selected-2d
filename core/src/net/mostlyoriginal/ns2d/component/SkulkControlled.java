@@ -5,9 +5,8 @@ import com.artemis.Component;
 /**
  * @author Daan van Yperen
  */
-public class SkulkControlled extends Component {
-
+public final class SkulkControlled extends Component {
     public float leapCooldown;
-    public float closestEnemyApproach= 0;
+    public float closestEnemyApproach = 0;
     public boolean canLeap = true;
 }

@@ -1,14 +1,14 @@
 package net.mostlyoriginal.ns2d.system.passive;
 
-import com.artemis.systems.VoidEntitySystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+
+import net.mostlyoriginal.api.system.core.PassiveSystem;
 
 /**
  * @author Daan van Yperen
  */
-public class CameraSystem extends VoidEntitySystem {
-
+public final class CameraSystem extends PassiveSystem {
     public final OrthographicCamera camera;
     public final OrthographicCamera guiCamera;
 
@@ -22,10 +22,5 @@ public class CameraSystem extends VoidEntitySystem {
         guiCamera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         guiCamera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         guiCamera.update();
-    }
-
-    @Override
-    protected void processSystem() {
-
     }
 }

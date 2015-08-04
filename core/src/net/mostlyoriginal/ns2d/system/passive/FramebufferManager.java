@@ -11,20 +11,17 @@ import net.mostlyoriginal.api.system.core.PassiveSystem;
 /**
  * @author Daan van Yperen
  */
-public class FramebufferManager extends PassiveSystem {
+public final class FramebufferManager extends PassiveSystem {
+    private Bag<FrameBuffer> frameBuffers = new Bag<>();
 
-	Bag<FrameBuffer> frameBuffers = new Bag<>();
-
-	/** Fetch a canvas size framebuffer. */
-	public FrameBuffer getFrameBuffer( int index )
-	{
-		FrameBuffer result = frameBuffers.get(index);
-		if ( result == null )
-		{
-			result = new FrameBuffer(Pixmap.Format.RGBA8888, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
-			result.getColorBufferTexture().setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
-			frameBuffers.set(index, result);
-		}
-		return result;
-	}
+    /** Fetch a canvas size framebuffer. */
+    public FrameBuffer getFrameBuffer(int index) {
+        FrameBuffer result = frameBuffers.get(index);
+        if (result == null) {
+            result = new FrameBuffer(Pixmap.Format.RGBA8888, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
+            result.getColorBufferTexture().setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
+            frameBuffers.set(index, result);
+        }
+        return result;
+    }
 }

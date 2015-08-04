@@ -5,5 +5,5 @@ import com.artemis.Component;
 /**
  * @author Daan van Yperen
  */
-public class HealthIndicator extends Component {
+public final class HealthIndicator extends Component {
 }

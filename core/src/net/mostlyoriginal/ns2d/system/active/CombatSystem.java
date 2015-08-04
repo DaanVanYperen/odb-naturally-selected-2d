@@ -1,13 +1,23 @@
 package net.mostlyoriginal.ns2d.system.active;
 
+import com.artemis.BaseSystem;
 import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
 import com.artemis.managers.GroupManager;
-import com.artemis.systems.VoidEntitySystem;
 import com.artemis.utils.ImmutableBag;
 import com.badlogic.gdx.math.MathUtils;
-import net.mostlyoriginal.ns2d.component.*;
+
+import net.mostlyoriginal.ns2d.component.Attached;
+import net.mostlyoriginal.ns2d.component.Bounds;
+import net.mostlyoriginal.ns2d.component.Buildable;
+import net.mostlyoriginal.ns2d.component.Critical;
+import net.mostlyoriginal.ns2d.component.Frozen;
+import net.mostlyoriginal.ns2d.component.Health;
+import net.mostlyoriginal.ns2d.component.Payload;
+import net.mostlyoriginal.ns2d.component.Pos;
+import net.mostlyoriginal.ns2d.component.RespawnOnDeath;
+import net.mostlyoriginal.ns2d.component.Script;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.render.DialogRenderSystem;
 import net.mostlyoriginal.ns2d.system.render.UIStopwatchRenderSytem;
@@ -16,12 +26,10 @@ import net.mostlyoriginal.ns2d.system.render.UIStopwatchRenderSytem;
  * @author Daan van Yperen
  */
 @Wire
-public class CombatSystem extends VoidEntitySystem {
-
+public class CombatSystem extends BaseSystem {
     private ComponentMapper<Health> hm;
     private ComponentMapper<Buildable> bm;
     private ComponentMapper<RespawnOnDeath> rm;
-    private ComponentMapper<Payload> pm;
     private ComponentMapper<Attached> am;
     private ComponentMapper<Pos> pom;
     private ComponentMapper<Bounds> bom;
@@ -55,39 +63,32 @@ public class CombatSystem extends VoidEntitySystem {
             }
 
             // flag critical as recently damaged
-            if (cm.has(victim))
-            {
+            if (cm.has(victim)) {
                 cm.get(victim).damageAge = 0;
-            } else if (bm.has(victim))
-            {
+            } else if (bm.has(victim)) {
                 bm.get(victim).damageAge = 0;
             }
 
             boolean dead = health.damage >= health.health;
 
-            if ( health.woundParticle != null )
-            {
-                for ( int i=0, s=MathUtils.random( dead ? 6 : 1, dead ? 10 : 2); s>i; i++ )
-                {
+            if (health.woundParticle != null) {
+                for (int i = 0, s = MathUtils.random(dead ? 6 : 1, dead ? 10 : 2); s > i; i++) {
                     final Pos pos = pom.get(victim);
                     final Bounds bounds = bom.get(victim);
-                    particleSystem.setRotation(MathUtils.random(20,160));
-                    particleSystem.spawnParticle((int)(pos.x + bounds.cx()), (int)(pos.y + bounds.cy()), health.woundParticle );
+                    particleSystem.setRotation(MathUtils.random(20, 160));
+                    particleSystem.spawnParticle((int) (pos.x + bounds.cx()), (int) (pos.y + bounds.cy()), health.woundParticle);
                     particleSystem.setRotation(0);
                 }
             }
 
-
             if (dead) {
 
-                if (cm.has(victim))
-                {
+                if (cm.has(victim)) {
                     uiStopwatchRenderSytem.gameOver = true;
                 }
 
-                if (health.deathSfxId!= null)
-                {
-                    assetSystem.playSfx(health.deathSfxId[MathUtils.random(0,health.deathSfxId.length-1)],victim);
+                if (health.deathSfxId != null) {
+                    assetSystem.playSfx(health.deathSfxId[MathUtils.random(0, health.deathSfxId.length - 1)], victim);
                 }
 
                 if (rm.has(victim)) {
@@ -106,9 +107,8 @@ public class CombatSystem extends VoidEntitySystem {
                     victim.deleteFromWorld();
                 }
             } else {
-                if (health.damageSfxId!= null)
-                {
-                    assetSystem.playSfx(health.damageSfxId[MathUtils.random(0,health.damageSfxId.length-1)],victim);
+                if (health.damageSfxId != null) {
+                    assetSystem.playSfx(health.damageSfxId[MathUtils.random(0, health.damageSfxId.length - 1)], victim);
                 }
             }
         }
@@ -132,7 +132,6 @@ public class CombatSystem extends VoidEntitySystem {
                 .remove(Frozen.class)
                 .add(new Health(10)));
 
-
         // move to spawner.
         ImmutableBag<Entity> spawners = groupManager.getEntities("spawner");
         if (spawners.size() > 0) {
@@ -154,13 +153,10 @@ public class CombatSystem extends VoidEntitySystem {
         age += world.delta;
         funnyCooldown -= world.delta;
 
-        if ( age > 1 )
-        {
+        if (age > 1) {
             age = 0;
-            if ( killsPerSecond > 3)
-            {
-                if ( funnyCooldown <= 0)
-                {
+            if (killsPerSecond > 3) {
+                if (funnyCooldown <= 0) {
                     funnyCooldown = 30f;
                     dialogRenderSystem.randomSay(DialogRenderSystem.SLOW_KILL_BEAST);
                 }

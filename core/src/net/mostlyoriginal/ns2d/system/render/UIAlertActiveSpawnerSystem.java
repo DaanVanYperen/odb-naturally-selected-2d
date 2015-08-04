@@ -1,9 +1,5 @@
 package net.mostlyoriginal.ns2d.system.render;
 
-/**
- * @author Daan van Yperen
- */
-
 import com.artemis.Aspect;
 import com.artemis.ComponentMapper;
 import com.artemis.Entity;
@@ -21,15 +17,17 @@ import net.mostlyoriginal.ns2d.component.Pos;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 
+/**
+ * @author Daan van Yperen
+ */
 @Wire
-public class UIAlertActiveSpawnerSystem extends EntityProcessingSystem {
-
-    public Entity player;
-    public TextureRegion radarImage;
-    public TextureRegion arrowImage;
+public final class UIAlertActiveSpawnerSystem extends EntityProcessingSystem {
+    private Entity player;
+    private TextureRegion radarImage;
+    private TextureRegion arrowImage;
 
     public UIAlertActiveSpawnerSystem() {
-        super(Aspect.getAspectForAll(EntitySpawner.class, Pos.class, Bounds.class));
+        super(Aspect.all(EntitySpawner.class, Pos.class, Bounds.class));
     }
 
     private ComponentMapper<Pos> pm;
@@ -62,9 +60,8 @@ public class UIAlertActiveSpawnerSystem extends EntityProcessingSystem {
 
     @Override
     protected void process(Entity spawner) {
-
         EntitySpawner entitySpawner = hm.get(spawner);
-        if ( !entitySpawner.enabled )
+        if (!entitySpawner.enabled)
             return;
 
         final Pos pPos = pm.get(player);
@@ -86,7 +83,7 @@ public class UIAlertActiveSpawnerSystem extends EntityProcessingSystem {
 
         TextureRegion frame = arrowImage;
 
-        batch.setColor(1f,1f,1f,MathUtils.clamp((distance-300)/100f,0f,1f));
+        batch.setColor(1f, 1f, 1f, MathUtils.clamp((distance - 300) / 100f, 0f, 1f));
         batch.draw(
                 frame,
                 vTmp.x - frame.getRegionWidth() / 2,
@@ -99,6 +96,5 @@ public class UIAlertActiveSpawnerSystem extends EntityProcessingSystem {
         vTmp.set(cx, cy).sub(pcx, pcy).nor().scl(Gdx.graphics.getHeight() * 0.18f).add(pcx, pcy);
         frame = radarImage;
         batch.draw(frame, vTmp.x - frame.getRegionWidth() / 2, vTmp.y - frame.getRegionHeight() / 2);
-        //cameraSystem.camera;
     }
 }

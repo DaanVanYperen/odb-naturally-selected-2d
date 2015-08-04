@@ -15,14 +15,11 @@ import net.mostlyoriginal.ns2d.system.passive.MapSystem;
  * @author Daan van Yperen
  */
 @Wire
-public class MapRenderSystem extends BaseSystem {
-
+public final class MapRenderSystem extends BaseSystem {
     private MapSystem mapSystem;
     private CameraSystem cameraSystem;
-	private AssetSystem assetSystem;
-
-    public MyMapRendererImpl renderer;
-
+    private AssetSystem assetSystem;
+    private MyMapRendererImpl renderer;
 
     @Override
     protected void initialize() {
@@ -32,11 +29,11 @@ public class MapRenderSystem extends BaseSystem {
     @Override
     protected void processSystem() {
         for (MapLayer layer : mapSystem.map.getLayers()) {
-      			if (layer.isVisible()) {
-      				if (!layer.getName().equals("infront")) {
-                        renderLayer((TiledMapTileLayer) layer, assetSystem.tileset);
-                    }
+            if (layer.isVisible()) {
+                if (!layer.getName().equals("infront")) {
+                    renderLayer((TiledMapTileLayer) layer, assetSystem.tileset);
                 }
+            }
         }
     }
 

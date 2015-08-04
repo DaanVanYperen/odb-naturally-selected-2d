@@ -1,23 +1,23 @@
 package net.mostlyoriginal.ns2d.system.active;
 
+import com.artemis.BaseSystem;
+
 /**
  * @author Daan van Yperen
  */
 
 import com.artemis.annotations.Wire;
-import com.artemis.systems.VoidEntitySystem;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 
 /**
  * @author Daan van Yperen
  */
 @Wire
-public class CameraShakeSystem extends VoidEntitySystem {
-
-
+public final class CameraShakeSystem extends BaseSystem {
     public CameraSystem cameraSystem;
     public float shake;
     public Vector2 push = new Vector2();
@@ -45,7 +45,8 @@ public class CameraShakeSystem extends VoidEntitySystem {
 
             if (shake > 0) {
                 shake -= world.delta * 4f;
-                if (shake < 0) shake = 0;
+                if (shake < 0)
+                    shake = 0;
             }
             decrease(push, world.delta * 16f);
         }

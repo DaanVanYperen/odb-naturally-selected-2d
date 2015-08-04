@@ -12,15 +12,14 @@ import net.mostlyoriginal.ns2d.component.Physics;
  * @author Daan van Yperen
  */
 @Wire
-public class GravitySystem extends EntityProcessingSystem {
-
+public final class GravitySystem extends EntityProcessingSystem {
     public static final int GRAVITY_FACTOR = 50;
 
     ComponentMapper<Physics> pm;
     ComponentMapper<Gravity> gm;
 
     public GravitySystem() {
-        super(Aspect.getAspectForAll(Gravity.class, Physics.class));
+        super(Aspect.all(Gravity.class, Physics.class));
     }
 
     @Override

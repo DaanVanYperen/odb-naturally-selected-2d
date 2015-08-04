@@ -1,9 +1,5 @@
 package net.mostlyoriginal.ns2d.system.render;
 
-/**
- * @author Daan van Yperen
- */
-
 import com.artemis.Aspect;
 import com.artemis.ComponentMapper;
 import com.artemis.Entity;
@@ -21,16 +17,18 @@ import net.mostlyoriginal.ns2d.component.Pos;
 import net.mostlyoriginal.ns2d.system.passive.AssetSystem;
 import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
 
+/**
+ * @author Daan van Yperen
+ */
 @Wire
-public class UIAlertTechpointUnderAttack extends EntityProcessingSystem {
-
-    public Entity player;
-    public TextureRegion radarImage;
-    public TextureRegion arrowImage;
+public final class UIAlertTechpointUnderAttack extends EntityProcessingSystem {
+    private Entity player;
+    private TextureRegion radarImage;
+    private TextureRegion arrowImage;
     private DialogRenderSystem dialogSystem;
 
     public UIAlertTechpointUnderAttack() {
-        super(Aspect.getAspectForAll(Critical.class, Pos.class, Bounds.class));
+        super(Aspect.all(Critical.class, Pos.class, Bounds.class));
     }
 
     private ComponentMapper<Pos> pm;
@@ -65,16 +63,14 @@ public class UIAlertTechpointUnderAttack extends EntityProcessingSystem {
 
     @Override
     protected void process(Entity spawner) {
-
         lastAlertCooldown -= world.delta;
         Critical critical = bum.get(spawner);
         critical.damageAge += world.delta;
         age += world.delta;
-        if ( critical.damageAge > 1 || (age % 2 < 1f) )
+        if (critical.damageAge > 1 || (age % 2 < 1f))
             return;
 
-        if ( lastAlertCooldown < 0 )
-        {
+        if (lastAlertCooldown < 0) {
             lastAlertCooldown = 40;
             dialogSystem.randomSay(DialogRenderSystem.CRITICAL_ALERT_MESSAGES);
         }
@@ -98,7 +94,7 @@ public class UIAlertTechpointUnderAttack extends EntityProcessingSystem {
 
         TextureRegion frame = arrowImage;
 
-        batch.setColor(1f,1f,1f,MathUtils.clamp((distance-50)/100f,0f,1f));
+        batch.setColor(1f, 1f, 1f, MathUtils.clamp((distance - 50) / 100f, 0f, 1f));
         batch.draw(
                 frame,
                 vTmp.x - frame.getRegionWidth() / 2,
@@ -111,6 +107,5 @@ public class UIAlertTechpointUnderAttack extends EntityProcessingSystem {
         vTmp.set(cx, cy).sub(pcx, pcy).nor().scl(Gdx.graphics.getHeight() * 0.18f).add(pcx, pcy);
         frame = radarImage;
         batch.draw(frame, vTmp.x - frame.getRegionWidth() / 2, vTmp.y - frame.getRegionHeight() / 2);
-        //cameraSystem.camera;
     }
 }

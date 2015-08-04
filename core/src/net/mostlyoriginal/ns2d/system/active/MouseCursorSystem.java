@@ -15,22 +15,20 @@ import net.mostlyoriginal.ns2d.system.passive.CameraSystem;
  * @author Daan van Yperen
  */
 @Wire
-public class MouseCursorSystem extends EntityProcessingSystem {
-
+public final class MouseCursorSystem extends EntityProcessingSystem {
     private ComponentMapper<Pos> pm;
     private ComponentMapper<MouseCursor> am;
 
     private CameraSystem cameraSystem;
 
     public MouseCursorSystem() {
-        super(Aspect.getAspectForAll(Pos.class, MouseCursor.class));
+        super(Aspect.all(Pos.class, MouseCursor.class));
     }
 
-    Vector3 aimAtTmp = new Vector3();
+    private Vector3 aimAtTmp = new Vector3();
 
     @Override
     protected void process(Entity e) {
-
         final Pos pos = pm.get(e);
 
         aimAtTmp.set(Gdx.input.getX(), Gdx.input.getY(), 0);

@@ -12,8 +12,7 @@ import net.mostlyoriginal.ns2d.step.Step;
 /**
  * @author Daan van Yperen
  */
-public class Script extends Component {
-
+public final class Script extends Component {
     public Array<Step> steps = new Array<Step>(1);
 
     public float age;
@@ -33,8 +32,7 @@ public class Script extends Component {
         return node;
     }
 
-    public Script wait(float delaySeconds)
-    {
+    public Script wait(float delaySeconds) {
         this.atAge += delaySeconds;
         return this;
     }
@@ -44,14 +42,14 @@ public class Script extends Component {
         return this;
     }
 
-    public Script add( final Component component ) {
+    public Script add(final Component component) {
         AddStep step = prepare(AddStep.class, atAge);
         step.component = component;
         steps.add(step);
         return this;
     }
 
-    public Script remove( final Class<? extends Component> component ) {
+    public Script remove(final Class<? extends Component> component) {
         RemoveStep step = prepare(RemoveStep.class, atAge);
         step.componentClass = component;
         steps.add(step);

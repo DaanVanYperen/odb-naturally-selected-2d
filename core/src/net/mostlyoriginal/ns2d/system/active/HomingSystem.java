@@ -15,18 +15,15 @@ import net.mostlyoriginal.ns2d.util.EntityUtil;
  * @author Daan van Yperen
  */
 @Wire
-public class HomingSystem extends EntityProcessingSystem {
-
-    ComponentMapper<Homing> hm;
-    ComponentMapper<Pos> pm;
-    ComponentMapper<Physics> ym;
-
-    PhysicsSystem physicsSystem;
+public final class HomingSystem extends EntityProcessingSystem {
+    private ComponentMapper<Homing> hm;
+    private ComponentMapper<Pos> pm;
+    private ComponentMapper<Physics> ym;
+    private PhysicsSystem physicsSystem;
 
     public HomingSystem() {
         super(Aspect.getAspectForAll(Homing.class, Pos.class, Physics.class));
     }
-
 
     Vector2 tmp = new Vector2();
 
@@ -50,6 +47,8 @@ public class HomingSystem extends EntityProcessingSystem {
                 physics.vy = tmp.y;
             }
 
-        } else homing.target = null;
+        } else {
+            homing.target = null;
+        }
     }
 }

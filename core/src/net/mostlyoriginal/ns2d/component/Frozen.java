@@ -5,5 +5,5 @@ import com.artemis.Component;
 /**
  * @author Daan van Yperen
  */
-public class Frozen extends Component {
+public final class Frozen extends Component {
 }

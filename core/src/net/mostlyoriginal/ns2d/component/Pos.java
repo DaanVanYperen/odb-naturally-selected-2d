@@ -5,7 +5,7 @@ import com.artemis.Component;
 /**
  * @author Daan van Yperen
  */
-public class Pos extends Component {
+public final class Pos extends Component {
     public float x;
     public float y;
 

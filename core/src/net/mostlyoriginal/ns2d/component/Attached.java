@@ -6,21 +6,19 @@ import com.artemis.Entity;
 /**
  * @author Daan van Yperen
  */
-public class Attached extends Component{
-
+public final class Attached extends Component {
     public Entity parent;
     public int xo;
     public int yo;
 
-
     // slack, like recoil on a weapon.
     public float maxSlack = 10; // max length of the slack vector. like weapon recoil.
-    public float slackX;   // offset X
-    public float slackY;   // offset Y
-    public float spring=30;   // Tension on the spring to return to its original state. 1= really slow.
+    public float slackX; // offset X
+    public float slackY; // offset Y
+    public float spring = 30; // Tension on the spring to return to its original state. 1= really slow.
 
     public Attached(Entity parent) {
-        this.parent = parent;
+        this(parent, 0, 0);
     }
 
     public Attached(Entity parent, int xo, int yo) {

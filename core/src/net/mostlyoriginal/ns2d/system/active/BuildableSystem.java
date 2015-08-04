@@ -20,8 +20,7 @@ import net.mostlyoriginal.ns2d.util.EntityFactory;
  * @author Daan van Yperen
  */
 @Wire
-public class BuildableSystem extends EntityProcessingSystem {
-
+public final class BuildableSystem extends EntityProcessingSystem {
     ComponentMapper<Buildable> bm;
     ComponentMapper<Pos> pm;
     ComponentMapper<Anim> am;
@@ -38,9 +37,8 @@ public class BuildableSystem extends EntityProcessingSystem {
     private CombatSystem combatSystem;
     private AssetSystem assetSystem;
 
-	public BuildableSystem()
-    {
-        super(Aspect.getAspectForAll(Buildable.class,Pos.class,Bounds.class));
+    public BuildableSystem() {
+        super(Aspect.all(Buildable.class, Pos.class, Bounds.class));
     }
 
     @Override
@@ -53,37 +51,31 @@ public class BuildableSystem extends EntityProcessingSystem {
         final Buildable buildable = bm.get(e);
 
         // fire resource towers and turrets
-        if ( buildable.built && wem.has(e) )
-        {
+        if (buildable.built && wem.has(e)) {
             wem.get(e).firing = true;
 
-            if ( buildable.weaponUseCausesDamage )
-            {
+            if (buildable.weaponUseCausesDamage) {
                 buildable.weaponUseDamageCooldown -= world.delta;
-                if ( buildable.weaponUseDamageCooldown < 0 )
-                {
-                    buildable.weaponUseDamageCooldown=1;
+                if (buildable.weaponUseDamageCooldown < 0) {
+                    buildable.weaponUseDamageCooldown = 1;
                     combatSystem.damage(e, 1);
                 }
             }
         }
 
-        if ( !buildable.built && collisionSystem.overlaps(player, e))
-        {
-            if (Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isKeyPressed(Input.Keys.E))
-            {
+        if (!buildable.built && collisionSystem.overlaps(player, e)) {
+            if (Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isKeyPressed(Input.Keys.E)) {
                 Wallet wallet = wm.get(player);
-                if (wallet.resources >= buildable.resourceCost)
-                {
-	                e.edit().add(EntityFactory.newMachineBuiltLight(2f));
-	                
+                if (wallet.resources >= buildable.resourceCost) {
+                    e.edit().add(EntityFactory.newMachineBuiltLight(2f));
+
                     wallet.resources -= buildable.resourceCost;
                     assetSystem.playSfx("ns2d_sfx_construct", e);
                     buildable.built = true;
                     Anim anim = am.get(e);
                     anim.id = buildable.builtAnimId;
                     Health health = new Health(buildable.defaultHealth);
-                    health.damageSfxId = new String[]{"ns2d_sfx_structure_damage1","ns2d_sfx_structure_damage2","ns2d_sfx_structure_damage1"};
+                    health.damageSfxId = new String[] { "ns2d_sfx_structure_damage1", "ns2d_sfx_structure_damage2", "ns2d_sfx_structure_damage1" };
                     health.woundParticle = "debris";
                     e.edit().add(health);
                 }
@@ -95,20 +87,19 @@ public class BuildableSystem extends EntityProcessingSystem {
 
     public void destroyBuildable(Entity victim) {
         final Buildable buildable = bm.get(victim);
-        if ( buildable.built )
-        {
+        if (buildable.built) {
             dialogRenderSystem.randomSay(DialogRenderSystem.BUILDING_DESTROYED_MESSAGES);
 
-	        victim.edit().add(EntityFactory.newMachineDisabledLight());
+            victim.edit().add(EntityFactory.newMachineDisabledLight());
 
             Pos pos = pm.get(victim);
             Bounds bounds = om.get(victim);
 
-            particleSystem.spawnParticle( (int)(pos.x + bounds.cx()), (int)(pos.y + bounds.cy()), "explosion" );
-            for ( int i=0, s= MathUtils.random(3, 5); i<s; i++ ) {
-                vTmp.set(MathUtils.random(0,50),0).rotate(MathUtils.random(0,360)).add(pos.x,pos.y);
+            particleSystem.spawnParticle((int) (pos.x + bounds.cx()), (int) (pos.y + bounds.cy()), "explosion");
+            for (int i = 0, s = MathUtils.random(3, 5); i < s; i++) {
+                vTmp.set(MathUtils.random(0, 50), 0).rotate(MathUtils.random(0, 360)).add(pos.x, pos.y);
                 particleSystem.spawnParticle(
-                        (int)vTmp.x, (int)vTmp.y, "tiny-explosion");
+                        (int) vTmp.x, (int) vTmp.y, "tiny-explosion");
             }
 
             buildable.built = false;
